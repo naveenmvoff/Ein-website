@@ -24,6 +24,7 @@ import Carousel from "@/components/test";
 import Image from "next/image";
 import Table from "@/components/Table/Table";
 import StaticUI from "@/components/StaticUI/StaticUI";
+import Footer from "@/components/Footer";
 
 export default function Component() {
   const [isVisible, setIsVisible] = useState(false);
@@ -177,6 +178,8 @@ export default function Component() {
       <div className="h-screen"></div>
       <div className="h-screen"></div>
       <div className="h-screen"></div>
+
+      <Footer/>
     </>
   );
 }
