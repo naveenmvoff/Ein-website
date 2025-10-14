@@ -188,32 +188,35 @@ export default function Component() {
       "Packing Material Cost": "₹850 – ₹1,950",
       "Men Power Cost": "₹1,210 – ₹2,580",
       "Transport Cost": "₹840 – ₹2,600",
-      "Total Cost": "₹2,060 – ₹4,530",
+      "Total Cost": "₹2,900 – ₹5,630",
     },
     {
       Equipment: "1 BHK",
       "Packing Material Cost": "₹1,450 – ₹2,950",
       "Men Power Cost": "₹2,050 – ₹3,850",
-      "Total Cost": "₹3,500 – ₹6,800",
+      "Transport Cost": "₹1290 – ₹3,930",
+      "Total Cost": "₹4,790 – ₹8,730",
     },
     {
       Equipment: "2 BHK",
       "Packing Material Cost": "₹1,790 – ₹4,330",
       "Men Power Cost": "₹2,450 – ₹4,420",
-      "Total Cost": "₹4,240 – ₹8,750",
+      "Transport Cost": "₹1550 – ₹4,630",
+      "Total Cost": "₹5,790 – ₹10,380",
     },
     {
       Equipment: "3 BHK",
       "Packing Material Cost": "₹2,590 – ₹6,640",
       "Men Power Cost": "₹3,700 – ₹6,140",
-      "Total Cost": "₹6,290 – ₹12,780",
+      "Transport Cost": "₹2320 – ₹6,880",
+      "Total Cost": "₹8,610 – ₹15,660",
     },
     {
       Equipment: "Villa / Bungalow",
       "Packing Material Cost": "₹3,600 – ₹7,550",
       "Men Power Cost": "₹5,250 – ₹9,900",
-      "Total Cost": "₹8,850 – ₹17,450",
-      "Dkjk Cost": "₹8,850 – ₹17,450",
+      "Transport Cost": "₹3,360 – ₹9,280",
+      "Total Cost": "₹12,210 – ₹22,730",
     },
   ];
 
@@ -919,7 +922,10 @@ export default function Component() {
 
       <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white">
         <div className="container mx-auto max-w-7xl">
-          <Table data={localShitingCost} caption="Local Shifting Cost(Within 100km)" />
+          <Table
+            data={localShitingCost}
+            caption="Local Shifting Cost(Within 100km)"
+          />
           <StaticUI />
         </div>
       </section>
