@@ -10,30 +10,21 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
-
+type CompanyInfo = {
+  name: string;
+  value: string;
+};
+const companyDetails: CompanyInfo[] = [
+  { name: "GSTIN", value: "29AAICE9652R1ZJ" },
+  { name: "PAN", value: "AAICE9652R" },
+];
 function Footer() {
   const [isVisible, setIsVisible] = useState(true);
 
   return (
     <footer id="contact" className="bg-gray-900 text-white py-6  px-4 sm:px-6">
       <div className="container mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          <div
-            className={`transition-all duration-1000 ${
-              isVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-10 opacity-0"
-            } animation-delay-1600`}
-          >
-            <h3 className="text-2xl  md:text-xl xl:text-2xl font-bold mb-6 text-white">
-              Eintransport Pvt Ltd
-            </h3>
-            <p className="text-gray-400 text-base leading-relaxed mb-6">
-              Your trusted partner for sustainable and efficient transportation
-              services. Moving forward together towards a better future.
-            </p>
-          </div>
-
+        <div className="grid grid-cols-2  sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           <div
             className={`transition-all duration-1000 ${
               isVisible
@@ -41,22 +32,36 @@ function Footer() {
                 : "translate-y-10 opacity-0"
             } animation-delay-1800`}
           >
-            <h4 className="font-bold text-xl mb-6 text-[#0086FF]">Services</h4>
+            <h4 className="font-bold text-xl mb-6 text-[#0086FF]">
+              Service Areas
+            </h4>
             <ul className="space-y-3 text-gray-400">
               {[
-                { name: "Packers & Movers", href: "/packers-and-movers" },
-                { name: "Trucks Service", href: "/trucks-service" },
-                { name: "Local Moving", href: "/packers-and-movers" },
                 {
-                  name: "Long Distance Moving",
-                  href: "/packers-and-movers",
+                  name: "Eintransport Packers and Movers in Bangalore",
+                  href: "/packers-and-movers/bangalore",
                 },
-                { name: "Commercial Moving", href: "/packers-and-movers" },
+                {
+                  name: "Eintransport Packers and Movers in Chennai",
+                  href: "/packers-and-movers/chennai",
+                },
+                {
+                  name: "Eintransport Packers and Movers in Coimbatore",
+                  href: "/packers-and-movers/coimbatore",
+                },
+                {
+                  name: "Eintransport Packers and Movers in Kochi",
+                  href: "/packers-and-movers/kochi",
+                },
+                {
+                  name: "Eintransport Packers and Movers in Trivandrum",
+                  href: "/packers-and-movers/trivandrum",
+                },
               ].map((service, index) => (
                 <li key={index}>
                   <Link
                     href={service.href}
-                    className="hover:text-white hover:translate-x-2 transition-all duration-300 inline-block"
+                    className="hover:text-white text-sm hover:translate-x-2 transition-all duration-300 inline-block"
                   >
                     {service.name}
                   </Link>
@@ -72,23 +77,27 @@ function Footer() {
                 : "translate-y-10 opacity-0"
             } animation-delay-2000`}
           >
-            <h4 className="font-bold text-xl mb-6 text-[#0086FF]">Branch</h4>
-            <ul className="space-y-3 text-gray-400">
+            <h4 className="font-bold text-xl mb-6 text-[#0086FF]">
+              Service Types
+            </h4>
+            <div className="flex flex-col gap-2 text-gray-400">
               {[
-                "Bangalore",
-                "Chennai",
-                "Coimbatore",
-                "Kochi",
-                "Thiruvananthapuram",
+                "Domestic moving",
+                "Packers and Movers",
+                "House Shifting",
+                "Interstate moving",
+                "Local Shifting",
+                "Intercity Moving",
               ].map((city, index) => (
-                <li
+                <Link
+                  href={"/"}
                   key={index}
-                  className="hover:text-white hover:translate-x-2 transition-all duration-300"
+                  className="hover:text-white hover:translate-x-2 transition-all duration-300 "
                 >
                   {city}
-                </li>
+                </Link>
               ))}
-            </ul>
+            </div>
           </div>
 
           <div
@@ -135,21 +144,28 @@ function Footer() {
                   eintransport.booking@gmail.com
                 </Link>
               </div>
+            </div>
+          </div>
 
-              <h4 className="font-bold text-[#0086FF] mt-6 mb-4">
-                Registered office
-              </h4>
-              <div className="flex gap-3 items-start group">
-                <span className="bg-[#1E2939] rounded-xl p-3 text-white shrink-0 mt-1 group-hover:bg-[#0086FF] transition-colors duration-300">
-                  <MapPin width={18} height={18} />
-                </span>
-                <p className="text-gray-400 leading-relaxed">
-                  No. 1, 3rd Floor, Joseph K Building Huskur, Electronics City,
-                  Bangalore South, Bangalore – 560100
-                  <br />
-                  Karnataka, India
-                </p>
-              </div>
+          <div>
+
+
+            {/* {companyDetails.map((k,i)=>{
+              return(
+                
+              )
+            })} */}
+            <h4 className="font-bold text-[#0086FF] mt-6 mb-4">Address</h4>
+            <div className="flex gap-3 items-start group">
+              <span className="bg-[#1E2939] rounded-xl p-3 text-white shrink-0 mt-1 group-hover:bg-[#0086FF] transition-colors duration-300">
+                <MapPin width={18} height={18} />
+              </span>
+              <p className="text-gray-400 leading-relaxed">
+                No. 1, 3rd Floor, Joseph K Building Huskur, Electronics City,
+                Bangalore South, Bangalore – 560100
+                <br />
+                Karnataka, India
+              </p>
             </div>
           </div>
         </div>
@@ -158,13 +174,8 @@ function Footer() {
           <p className="text-gray-400">
             &copy; 2025 Eintransport. All rights reserved.
           </p>
-          {/* <div className=" border-gray-800 mt-4 pt-8 text-left hover:underline hover:text-gray-400"> */}
-          {/* <p className="text-gray-400">Check for Privacy policy</p> */}
-          <Link
-            href="https://docs.google.com/document/d/1ZjkzdEuBJaLggLBb6QeJlw_hluWLuRpqUZKTMfFxxO4/edit?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+
+          <Link href="/privacyPolicy">
             <p className="text-gray-400">Check for Privacy policy</p>
           </Link>
           {/* </div> */}

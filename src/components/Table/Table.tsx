@@ -88,7 +88,7 @@ export default function DynamicTable({ data, caption }: DynamicTableProps) {
   }
 
   const headers = Object.keys(data[0]);
-
+console.log("headdd", headers)
   return (
     <div className="overflow-x-auto">
       <Table className="w-full border border-gray-200 shadow-sm rounded-lg">

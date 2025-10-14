@@ -145,6 +145,7 @@ export default function Component() {
       "Packing Material Cost": "₹850 – ₹1,950",
       "Men Power Cost": "₹1,210 – ₹2,580",
       "Total Cost": "₹2,060 – ₹4,530",
+      "Total -----": "₹2,060 – ₹4,530",
     },
     {
       Equipment: "1 BHK",
