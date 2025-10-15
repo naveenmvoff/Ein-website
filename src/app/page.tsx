@@ -47,24 +47,24 @@ export default function Component() {
   //   return () => clearInterval(timer);
   // }, []);
 
-  useEffect(() => {
-    // First timeout: trigger after 7 seconds
-    const firstTimer = setTimeout(() => {
-      setShowModal(true);
+  // useEffect(() => {
+  //   // First timeout: trigger after 7 seconds
+  //   const firstTimer = setTimeout(() => {
+  //     setShowModal(true);
 
-      // After the first one, set interval to trigger every 20 seconds
-      const intervalTimer = setInterval(() => {
-        setShowModal(true);
-      }, 30000);
+  //     // After the first one, set interval to trigger every 20 seconds
+  //     const intervalTimer = setInterval(() => {
+  //       setShowModal(true);
+  //     }, 200000);
 
-      // Save intervalTimer to clear on cleanup
-      // This must be outside setTimeout to be reachable
-      return () => clearInterval(intervalTimer);
-    }, 7000);
+  //     // Save intervalTimer to clear on cleanup
+  //     // This must be outside setTimeout to be reachable
+  //     return () => clearInterval(intervalTimer);
+  //   }, 200000);
 
-    // Cleanup function
-    return () => clearTimeout(firstTimer);
-  }, []);
+  //   // Cleanup function
+  //   return () => clearTimeout(firstTimer);
+  // }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -384,7 +384,7 @@ export default function Component() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section>      
 
       {/* Our Secure Service */}
       <section id="services" className="py-16 sm:py-24 px-4 sm:px-6 bg-white">
