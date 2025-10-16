@@ -148,8 +148,6 @@ function Footer() {
           </div>
 
           <div>
-
-
             {/* {companyDetails.map((k,i)=>{
               return(
                 
@@ -170,17 +168,16 @@ function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+        <div className="border-t flex flex-col border-gray-800 gap-2 mt-12 pt-4 text-center">
           <p className="text-gray-400">
             &copy; 2025 Eintransport. All rights reserved.
           </p>
 
           <Link href="/privacyPolicy">
-            <p className="text-gray-400">Check for Privacy policy</p>
+            <p className="text-gray-400 hover:underline">Privacy policy</p>
           </Link>
-          {/* </div> */}
 
-          <div className="flex space-x-4">
+          <div className="flex space-x-4 justify-center mt-1.5">
             {[
               {
                 href: "https://www.facebook.com/share/1CMLVRUx1y/",
@@ -203,9 +200,9 @@ function Footer() {
                 target="_blank"
                 href={link.href}
                 key={index}
-                className="p-3 rounded-2xl bg-[#1E2939] hover:bg-[#0086FF] transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
+                className="p-2 rounded-full group   bg-white hover:bg-[#0086FF] hover:text-white transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
               >
-                <link.icon className="h-6 w-6" />
+                <link.icon className="h-5 w-5 group-hover:text-white text-[#1E2939] border-[#1E2939]" />
               </Link>
             ))}
           </div>
