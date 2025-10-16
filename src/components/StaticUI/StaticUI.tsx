@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ChevronLeft, ChevronUp, MessageCircle, Phone } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-export default function ChatButton() {
+export default function StaticUI() {
   const path = usePathname();
   const [showButton, setShowButton] = useState(false);
   const [OneTime, setOneTime] = useState(false);

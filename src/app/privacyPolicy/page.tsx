@@ -1,4 +1,4 @@
-import ChatButton from "@/components/StaticUI/StaticUI";
+import StaticUI from "@/components/StaticUI/StaticUI";
 import React from "react";
 
 function PrivacyPolicyPage() {
@@ -167,7 +167,7 @@ function PrivacyPolicyPage() {
           </div>
         </div>
       </div>
-      <ChatButton/> 
+      <StaticUI />
     </section>
   );
 }

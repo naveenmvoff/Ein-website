@@ -55,7 +55,7 @@ function Footer() {
                 },
                 {
                   name: "Eintransport Packers and Movers in Trivandrum",
-                  href: "/packers-and-movers/trivandrum",
+                  href: "/packers-and-movers/thiruvananthapuram ",
                 },
               ].map((service, index) => (
                 <li key={index}>
