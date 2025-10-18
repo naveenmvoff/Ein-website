@@ -15,8 +15,8 @@ const packersAndMoversSchema = new mongoose.Schema({
     required: true,
   },
   dateTime: {
-    type: Date,
-    required: true,
+    type: String,
+    required: false,
   },
   description: {
     type: String,
@@ -24,7 +24,7 @@ const packersAndMoversSchema = new mongoose.Schema({
   },
   shiftingThings: {
     type: String,
-    required: true,
+    default: '',
   },
   createdAt: {
     type: Date,
