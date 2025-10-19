@@ -66,7 +66,7 @@ export function PhoneNumberAnimation({ phoneNumber, href }: PhoneNumberAnimation
     <a
   ref={containerRef}
   href={href}
-  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wide hover:underline group-hover:scale-105 transition-transform duration-200"
+  className="text-xl sm:text-3xl md:text-2xl lg:text-4xl font-extrabold tracking-wide group-hover:scale-105 transition-transform duration-200"
 >
   {phoneNumber.split("").map((char, index) => (
     <span key={index}>{char}</span>

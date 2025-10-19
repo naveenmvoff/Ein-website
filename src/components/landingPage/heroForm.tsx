@@ -1,18 +1,27 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { useRouter, usePathname } from "next/navigation"
-import { motion, AnimatePresence } from "framer-motion"
-import { User, Mail, Phone, MapPin, Home, ArrowRight, CheckCircle, X } from "lucide-react"
+import type React from "react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  User,
+  Mail,
+  Phone,
+  MapPin,
+  Home,
+  ArrowRight,
+  CheckCircle,
+  X,
+} from "lucide-react";
+import {useRouter} from 'next/navigation'
 
 type FormState = {
-  name: string
-  email: string
-  phone: string
-  from: string
-  to: string
-}
+  name: string;
+  email: string;
+  phone: string;
+  from: string;
+  to: string;
+};
 
 export function HeroForm() {
   const [form, setForm] = useState<FormState>({
@@ -21,27 +30,25 @@ export function HeroForm() {
     phone: "",
     from: "",
     to: "",
-  })
-  const [focusedField, setFocusedField] = useState<string | null>(null)
-  const [loading, setLoading] = useState(false)
-  const [showModal, setShowModal] = useState(false)
-
-  const router = useRouter()
-  const pathname = usePathname()
+  });
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const router = useRouter();
 
   function handleChange<K extends keyof FormState>(key: K, value: string) {
-    setForm((prev) => ({ ...prev, [key]: value }))
+    setForm((prev) => ({ ...prev, [key]: value }));
   }
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!form.name || !form.phone || !form.from || !form.to) {
-      alert("Please fill in all required fields.")
-      return
+      alert("Please fill in all required fields.");
+      return;
     }
 
-    setLoading(true)
+    setLoading(true);
 
     const payload = {
       targetTab: "PackersAndMoversRequests",
@@ -59,53 +66,60 @@ export function HeroForm() {
       phoneNumber: form.phone,
       email: form.email || "",
       shiftingThings: "Not specified",
-    }
+    };
 
     try {
-      const sheetPromise = fetch(`${process.env.NEXT_PUBLIC_SHEET_SCRIPT_LINK}`, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      })
+      const sheetPromise = fetch(
+        `${process.env.NEXT_PUBLIC_SHEET_SCRIPT_LINK}`,
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
 
-      const sheetPromise2 = fetch(`${process.env.NEXT_PUBLIC_SHEET_SCRIPT_LINK2}`, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      })
+      const sheetPromise2 = fetch(
+        `${process.env.NEXT_PUBLIC_SHEET_SCRIPT_LINK2}`,
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
 
       const dbPromise = fetch("/api/packers-requests", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-      })
+      });
 
-      await Promise.all([sheetPromise, sheetPromise2, dbPromise])
-
-    // ✅ No navigation — just change URL visually
-    window.history.replaceState(null, "", "/order-placed")
-
-      // Success modal
-      setForm({ name: "", email: "", phone: "", from: "", to: "" })
-      setShowModal(true)
+      await Promise.all([sheetPromise, sheetPromise2, dbPromise]);
+      
+      // Redirect to success page
+      router.push("/thank-you/order-placed");
+      
     } catch (error) {
-      console.error("Submission error:", error)
-      alert("❌ Something went wrong. Please try again.")
+      console.error("Submission error:", error);
+      alert("❌ Something went wrong. Please try again.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
 
   const inputClasses = (fieldName: string) => `
     block w-full h-10 sm:h-11 rounded-lg border text-sm
-    ${focusedField === fieldName ? "border-blue-500 bg-blue-50/50 shadow-sm" : "border-gray-200 bg-white"}
+    ${
+      focusedField === fieldName
+        ? "border-blue-500 bg-blue-50/50 shadow-sm"
+        : "border-gray-200 bg-white"
+    }
     text-gray-900 placeholder:text-gray-400 pl-9 pr-3
     transition-all duration-200 ease-out
     focus:outline-none focus:border-blue-500 focus:bg-blue-50/40
     hover:border-gray-300
-  `
+  `;
 
   return (
     <>
@@ -200,7 +214,7 @@ export function HeroForm() {
               </>
             ) : (
               <>
-                Get Free Quote
+                Submit
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
               </>
             )}
@@ -226,11 +240,10 @@ export function HeroForm() {
               <div className="flex justify-end">
                 <button
                   onClick={() => {
-                    setShowModal(false)
-                    if (window.location.pathname === "/order-placed") {
-  window.history.replaceState(null, "", "/")
-}
-
+                    setShowModal(false);
+                    if (window.location.pathname === "/thank-you/order-placed") {
+                      window.history.replaceState(null, "", "/");
+                    }
                   }}
                 >
                   <X className="h-5 w-5 text-gray-400 hover:text-gray-600" />
@@ -250,11 +263,10 @@ export function HeroForm() {
 
               <button
                 onClick={() => {
-                  setShowModal(false)
-                  if (window.location.pathname === "/order-placed") {
-  window.history.replaceState(null, "", "/")
-}
-
+                  setShowModal(false);
+                  if (window.location.pathname === "/thank-you/order-placed") {
+                    window.history.replaceState(null, "", "/");
+                  }
                 }}
                 className="mt-5 bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2 rounded-lg transition-all duration-200"
               >
@@ -265,20 +277,20 @@ export function HeroForm() {
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }
 
 type InputFieldProps = {
-  label: string
-  name: keyof FormState
-  value: string
-  onChange: (v: string) => void
-  icon: React.ReactNode
-  focusedField: string | null
-  setFocusedField: React.Dispatch<React.SetStateAction<string | null>>
-  inputClasses: (field: string) => string
-  type?: string
-}
+  label: string;
+  name: keyof FormState;
+  value: string;
+  onChange: (v: string) => void;
+  icon: React.ReactNode;
+  focusedField: string | null;
+  setFocusedField: React.Dispatch<React.SetStateAction<string | null>>;
+  inputClasses: (field: string) => string;
+  type?: string;
+};
 
 function InputField({
   label,
@@ -293,7 +305,10 @@ function InputField({
 }: InputFieldProps) {
   return (
     <div className="grid gap-1">
-      <label htmlFor={name} className="text-xs font-semibold text-gray-600 tracking-wide">
+      <label
+        htmlFor={name}
+        className="text-xs font-semibold text-gray-600 tracking-wide"
+      >
         {label}
       </label>
       <div className="relative">
@@ -318,5 +333,5 @@ function InputField({
         />
       </div>
     </div>
-  )
+  );
 }

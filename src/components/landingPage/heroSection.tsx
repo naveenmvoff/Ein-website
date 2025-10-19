@@ -15,7 +15,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-[url('/patterns/subtle-grid.svg')] opacity-20 mix-blend-overlay"></div>
 
       {/* Content container */}
-      <div className="container relative z-10 mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="container relative z-10 mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-10 lg:gap-16 items-center">
         {/* Left Column — Headline + CTA */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -28,48 +28,55 @@ export default function HeroSection() {
             #1 Trusted Packers & Movers
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 tracking-tight">
+          <h1 className="text-xl sm:text-4xl md:text-4xl lg:text-5xl font-bold leading-tight text-gray-900 tracking-tight">
             <span className="block">Where’s it going?</span>
-            <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl text-blue-600 mt-1">
-              We’ll take it there — safely & on time.
+            {/* <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl text-blue-600 mt-1"> */}
+            <span className="block text-xl sm:text-2xl md:text-2xl lg:text-2xl">
+              Our Packers & Movers will take it there - safely & on time.
             </span>
           </h1>
 
           <motion.div
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="mt-6 sm:mt-8 inline-flex items-center gap-2 sm:gap-3 bg-[#0086FF] text-white text-xl sm:text-2xl md:text-3xl font-semibold px-5 sm:px-7 py-3 sm:py-4 rounded-2xl shadow-lg hover:shadow-xl hover:bg-[#0077ee] transition-all duration-300"
+            className="mt-6 sm:mt-8 flex flex-col items-center gap-3 bg-[#0086FF] text-white text-xl sm:text-2xl md:text-3xl font-semibold px-5 sm:px-7 py-3 sm:py-4 rounded-2xl shadow-lg hover:shadow-xl hover:bg-[#0077ee] transition-all duration-300"
           >
-            {/* Phone icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="w-6 h-6 sm:w-8 sm:h-8 text-white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 
-                2.25 0 0 0 2.25-2.25v-1.372a1.1 1.1 0 0 
-                0-.852-1.091l-4.423-1.106a1.1 1.1 0 0 
-                0-1.173.417l-.97 1.293a1.2 1.2 0 0 
-                1-1.21.38 12.035 12.035 0 0 
-                1-7.143-7.143 1.2 1.2 0 0 
-                1 .38-1.21l1.293-.97a1.1 1.1 0 0 
-                0 .417-1.173L6.963 3.102a1.1 1.1 0 0 
-                0-1.091-.852H4.5A2.25 2.25 0 0 
-                0 2.25 4.5v2.25Z"
+            <div className="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="w-6 h-6 sm:w-8 sm:h-8 text-white"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 
+                  2.25 0 0 0 2.25-2.25v-1.372a1.1 1.1 0 0 
+                  0-.852-1.091l-4.423-1.106a1.1 1.1 0 0 
+                  0-1.173.417l-.97 1.293a1.2 1.2 0 0 
+                  1-1.21.38 12.035 12.035 0 0 
+                  1-7.143-7.143 1.2 1.2 0 0 
+                  1 .38-1.21l1.293-.97a1.1 1.1 0 0 
+                  0 .417-1.173L6.963 3.102a1.1 1.1 0 0 
+                  0-1.091-.852H4.5A2.25 2.25 0 0 
+                  0 2.25 4.5v2.25Z"
+                />
+              </svg>
+              <PhoneNumberAnimation
+                phoneNumber="+91 9043384332"
+                href="tel:+919043384332"
               />
-            </svg>
-            <PhoneNumberAnimation
-              phoneNumber="+91 9489847336"
-              href="tel:+919489847336"
-            />
+            </div>
+            <div className="w-3/4 h-px bg-white/30"></div>
+            <p className="text-white text-[7px] sm:text-sm uppercase tracking-wide">
+              Call now for house shifting
+            </p>
           </motion.div>
-        </motion.div>
+          </motion.div>
+
 
         {/* Right Column — Form */}
         <motion.div

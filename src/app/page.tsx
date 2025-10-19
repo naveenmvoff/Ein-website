@@ -1192,7 +1192,9 @@
 //     </div>
 //   );
 // }
-
+'use client';
+import { useState, useEffect } from "react";
+import { X } from "lucide-react";
 import BastHouseShifting from "@/components/Common/BastHouseShifting";
 import ServiceCities from "@/components/Common/Service-Cities";
 import WhyChoose from "@/components/ChooseAndCompare/WhyChoose";
@@ -1204,10 +1206,23 @@ import StaticUI from "@/components/StaticUI/StaticUI";
 import { bestHouse, whyChoose } from "@/lib/dataSet";
 import React from "react";
 import MostTrusted from "@/components/ChooseAndCompare/MostTrusted";
+import {HeroForm} from "@/components/landingPage/heroForm";
 
 const page = () => {
+  const [showFormModal, setShowFormModal] = useState(false);
   const heading = `Best House Shifting Service by Eintransport Packers and Movers – Move
         Smart, Move Safe`;
+
+        useEffect(() => {
+    // Show modal after 2 seconds
+    const timer = setTimeout(() => {
+      setShowFormModal(true);
+    }, 2000);
+
+    // Cleanup timer
+    return () => clearTimeout(timer);
+  }, []); // Empty dependency array means this runs once on mount
+
   return (
     <div>
       <HeaderNavbar />
@@ -1220,6 +1235,28 @@ const page = () => {
       <MostTrusted />
       <Footer />
       <StaticUI />
+
+
+      {/* Form Modal */}
+      {showFormModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 px-4">
+          <div className="relative max-w-md w-full bg-white rounded-2xl p-6 animate-fadeIn">
+            {/* Close button */}
+            <button
+              onClick={() => setShowFormModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <X className="h-6 w-6" />
+            </button>
+            
+            {/* Form wrapper to remove additional styling */}
+            <div className="[&>*]:shadow-none [&>*]:border-none">
+              <HeroForm />
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };

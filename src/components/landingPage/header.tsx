@@ -37,7 +37,7 @@ export default function HeaderNavbar() {
             className="w-8 h-8 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-105"
           />
           <span className="hidden sm:block text-lg sm:text-xl md:text-2xl font-semibold text-[#0086ff] tracking-wide">
-            Eintransport
+            Eintransport Packers
           </span>
         </Link>
 
@@ -50,7 +50,7 @@ export default function HeaderNavbar() {
             onMouseLeave={() => setIsServicesOpen(false)}
           >
             <button className="flex items-center gap-1 hover:text-blue-700 transition-colors duration-300 py-2">
-              Services <ChevronDown className="h-4 w-4 mt-0.5" />
+              Service Location <ChevronDown className="h-4 w-4 mt-0.5" />
             </button>
 
             <AnimatePresence>
@@ -115,7 +115,7 @@ export default function HeaderNavbar() {
                   className="w-full flex justify-center items-center gap-1 py-2 px-4 hover:text-blue-700 transition-colors"
                   onClick={() => setIsServicesOpen((v) => !v)}
                 >
-                  Services{" "}
+                  Service Location{" "}
                   <ChevronDown className={`h-4 w-4 transition-transform ${isServicesOpen ? "rotate-180" : ""}`} />
                 </button>
 
