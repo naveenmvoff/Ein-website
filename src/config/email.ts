@@ -69,17 +69,9 @@ function goodsOrderTemplate(order: GoodsOrder) {
       <tr><td><strong>Name:</strong></td><td>${order.fullName}</td></tr>
       <tr><td><strong>Phone:</strong></td><td>${order.phoneNumber}</td></tr>
       <tr><td><strong>Email:</strong></td><td>${order.email || '-'}</td></tr>
-      <tr><td><strong>From:</strong></td><td>${order.fromAddress} (${order.fromDistrict || '-'})</td></tr>
-      <tr><td><strong>To:</strong></td><td>${order.toAddress} (${order.toDistrict || '-'})</td></tr>
-      <tr><td><strong>Date:</strong></td><td>${order.dateTime}</td></tr>
-      <tr><td><strong>Materials:</strong></td><td>${order.materials}</td></tr>
-      <tr><td><strong>Weight:</strong></td><td>${order.weight} kg</td></tr>
-      <tr><td><strong>Vehicle Required:</strong></td><td>${order.vehicleRequired}</td></tr>
-      <tr><td><strong>Description:</strong></td><td>${order.description || '-'}</td></tr>
+      <tr><td><strong>From:</strong></td><td>${order.fromAddress} </td></tr>
+      <tr><td><strong>To:</strong></td><td>${order.toAddress}</td></tr>
     </table>
-    <div style="margin-top:24px; color:#555;">
-      <em>Thank you for using EinTransport!</em>
-    </div>
   </div>
   `;
 }
@@ -92,15 +84,9 @@ function packersOrderTemplate(order: PackersOrder) {
       <tr><td><strong>Name:</strong></td><td>${order.fullName}</td></tr>
       <tr><td><strong>Phone:</strong></td><td>${order.phoneNumber}</td></tr>
       <tr><td><strong>Email:</strong></td><td>${order.email || '-'}</td></tr>
-      <tr><td><strong>From:</strong></td><td>${order.fromAddress} (${order.fromDistrict || '-'})</td></tr>
-      <tr><td><strong>To:</strong></td><td>${order.toAddress} (${order.toDistrict || '-'})</td></tr>
-      <tr><td><strong>Date:</strong></td><td>${order.dateTime}</td></tr>
-      <tr><td><strong>Shifting Things:</strong></td><td>${order.shiftingThings}</td></tr>
-      <tr><td><strong>Description:</strong></td><td>${order.description || '-'}</td></tr>
-    </table>
-    <div style="margin-top:24px; color:#555;">
-      <em>Thank you for using EinTransport!</em>
-    </div>
+      <tr><td><strong>From:</strong></td><td>${order.fromAddress}</td></tr>
+      <tr><td><strong>To:</strong></td><td>${order.toAddress}</td></tr>
+      </table>
   </div>
   `;
 }

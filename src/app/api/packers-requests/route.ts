@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
       toAddress,
       dateTime: new Date(dateTime),
       description: description || '',
-      shiftingThings,
+      shiftingThings: shiftingThings || '',
     });
 
     // Send email notification
