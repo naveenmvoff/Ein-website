@@ -11,20 +11,23 @@ import {
 interface DynamicTableProps {
   data: Record<string, string | number | undefined>[];
   caption?: string;
+  note?: string;
 }
 
-export default function DynamicTable({ data, caption }: DynamicTableProps) {
+export default function DynamicTable({
+  data,
+  caption,
+  note,
+}: DynamicTableProps) {
   if (!data || data.length === 0) {
     return <p className="text-center text-gray-500">No data available</p>;
   }
 
   const headers = Object.keys(data[0]);
-console.log("headdd", headers)
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto mb-3">
       {caption && <TableCaption>{caption}</TableCaption>}
       <Table className="w-full border border-gray-200 shadow-sm rounded-lg">
-
         <TableHeader>
           <TableRow>
             {headers.map((h) => (
@@ -45,8 +48,7 @@ console.log("headdd", headers)
                 <TableCell
                   key={h}
                   className={`${
-                    h.toLowerCase().includes("total") &&
-                    "font-medium"
+                    h.toLowerCase().includes("total") && "font-medium"
                   }`}
                 >
                   {row[h]}
@@ -56,6 +58,7 @@ console.log("headdd", headers)
           ))}
         </TableBody>
       </Table>
+      {note && <TableCaption className="text-sm w-full">{note}</TableCaption>}
     </div>
   );
 }

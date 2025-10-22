@@ -49,7 +49,7 @@ export default function OtherComparision() {
     <div>
       <Table
         data={whyChooseEintransport}
-        caption="Local Shifting Cost(Within 100km)"
+        caption="Eintransport Packers & Movers and Others service comparison"
       />
     </div>
   );

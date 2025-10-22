@@ -1,3 +1,5 @@
+import { text } from "stream/consumers";
+
 export const bestHouse = {
   landing: {
     heading: `Best House Shifting Service by Eintransport Packers and Movers – Move
@@ -120,5 +122,193 @@ You can also include bike shifting as part of your intercity home move with foam
 
  `,
     image: "/assets/whychoose.png",
+  },
+};
+
+export const localShitingCost = [
+  {
+    Equipment: "Few Items",
+    "Packing Material Cost": "₹850 – ₹1,950",
+    "Men Power Cost": "₹1,210 – ₹2,580",
+    "Transport Cost": "₹840 – ₹2,600",
+    "Total Cost": "₹2,900 – ₹5,630",
+  },
+  {
+    Equipment: "1 BHK",
+    "Packing Material Cost": "₹1,450 – ₹2,950",
+    "Men Power Cost": "₹2,050 – ₹3,850",
+    "Transport Cost": "₹1,290 – ₹3,930",
+    "Total Cost": "₹4,790 – ₹8,730",
+  },
+  {
+    Equipment: "2 BHK",
+    "Packing Material Cost": "₹1,790 – ₹4,330",
+    "Men Power Cost": "₹2,450 – ₹4,420",
+    "Transport Cost": "₹1,550 – ₹4,630",
+    "Total Cost": "₹5,790 – ₹10,380",
+  },
+  {
+    Equipment: "3 BHK",
+    "Packing Material Cost": "₹2,590 – ₹6,640",
+    "Men Power Cost": "₹3,700 – ₹6,140",
+    "Transport Cost": "₹2,320 – ₹6,880",
+    "Total Cost": "₹8,610 – ₹15,660",
+  },
+  {
+    Equipment: "Villa / Bungalow",
+    "Packing Material Cost": "₹3,600 – ₹7,550",
+    "Men Power Cost": "₹5,250 – ₹9,900",
+    "Transport Cost": "₹3,360 – ₹9,280",
+    "Total Cost": "₹12,210 – ₹22,730",
+  },
+];
+
+export const anotherCity = [
+  {
+    "Distance in KM": "Few Items",
+    "100 - 300 KM": "₹4,500 – ₹8,600",
+    "300 - 500 KM": "₹9,100 – ₹14,500",
+    "500 - 800 KM": "₹12,800 – ₹17,200",
+    "800 - 1100 KM": "₹15,000 – ₹27,000",
+    "1000 KM": "Contact Us",
+  },
+  {
+    "Distance in KM": "1 BHK",
+    "100 - 300 KM": "₹6,800 – ₹11,900",
+    "300 - 500 KM": "₹14,000 – ₹19,400",
+    "500 - 800 KM": "₹16,200 – ₹29,300",
+    "800 - 1100 KM": "₹19,700 – ₹31,000",
+    "1000 KM": "Contact Us",
+  },
+  {
+    "Distance in KM": "2 BHK",
+    "100 - 300 KM": "₹11,700 – ₹16,800",
+    "300 - 500 KM": "₹17,600 – ₹28,900",
+    "500 - 800 KM": "₹19,400 – ₹30,600",
+    "800 - 1100 KM": "₹23,700 – ₹38,500",
+    "1000 KM": "Contact Us",
+  },
+  {
+    "Distance in KM": "3 BHK",
+    "100 - 300 KM": "₹15,100 – ₹19,700",
+    "300 - 500 KM": "₹20,800 – ₹30,200",
+    "500 - 800 KM": "₹23,700 – ₹38,100",
+    "800 - 1100 KM": "₹27,000 – ₹44,000",
+    "1000 KM": "Contact Us",
+  },
+  {
+    "Distance in KM": "Bungalow / Villas",
+    "100 - 300 KM": "₹15,800 – ₹31,100",
+    "300 - 500 KM": "₹24,900 – ₹38,100",
+    "500 - 800 KM": "₹28,000 – ₹43,900",
+    "800 - 1100 KM": "₹36,900 – ₹53,400",
+    "1000 KM": "Contact Us",
+  },
+  {
+    "Distance in KM": "Bike",
+    "100 - 300 KM": "₹3,500 – ₹6,500",
+    "300 - 500 KM": "₹4,500 – ₹7,350",
+    "500 - 800 KM": "₹5,900 – ₹8,650",
+    "800 - 1100 KM": "₹6,600 – ₹9,500",
+    "1000 KM": "Contact Us",
+  },
+];
+
+export const packingCost = [
+  {
+    Equipment: "Few Items",
+    "Packing Material Cost": "₹850 – ₹1,950",
+    "Men Power Cost": "₹1,210 – ₹2,580",
+    "Total Cost": "₹2,060 – ₹4,530",
+  },
+  {
+    Equipment: "1 BHK",
+    "Packing Material Cost": "₹1,450 – ₹2,950",
+    "Men Power Cost": "₹2,050 – ₹3,850",
+    "Total Cost": "₹3,500 – ₹6,800",
+  },
+  {
+    Equipment: "2 BHK",
+    "Packing Material Cost": "₹1,790 – ₹4,330",
+    "Men Power Cost": "₹2,450 – ₹4,420",
+    "Total Cost": "₹4,240 – ₹8,750",
+  },
+  {
+    Equipment: "3 BHK",
+    "Packing Material Cost": "₹2,590 – ₹6,640",
+    "Men Power Cost": "₹3,700 – ₹6,140",
+    "Total Cost": "₹6,290 – ₹12,780",
+  },
+  {
+    Equipment: "Villa / Bungalow",
+    "Packing Material Cost": "₹3,600 – ₹7,550",
+    "Men Power Cost": "₹5,250 – ₹9,900",
+    "Total Cost": "₹8,850 – ₹17,450",
+    "Dkjk Cost": "₹8,850 – ₹17,450",
+  },
+];
+
+export const testimonials = [
+  {
+    name: "Anjali M",
+    initials: "AM",
+    role: "Bangalore to Chennai",
+    text: "Eintransport made my house shifting unbelievably easy. The team arrived on time, packed everything with care, and delivered it safely without a scratch. I didn't have to lift a finger. Totally stress-free!",
+    rating: 5,
+  },
+  {
+    name: "Venkat K",
+    initials: "VK",
+    role: "Bangalore to Kochi",
+    text: "I booked a mini truck for urgent goods delivery across the city. It was smooth, fast, and affordable. Will definitely book again!",
+    rating: 5,
+  },
+  {
+    name: "Dhanaasager G",
+    initials: "DG",
+    role: "Chennai to Bangalore",
+    text: "I had just a few boxes to move, but they treated it like a priority. Respectful staff, neat work — highly recommended!",
+    rating: 5,
+  },
+  {
+    name: "Kaviyarasan G",
+    initials: "KG",
+    role: "Kochi to Coimbatore",
+    text: "I've moved houses before, but never this smoothly. The eintransport team packed everything perfectly and handled my fragile items with care. It felt like I had friends helping me move.",
+    rating: 4,
+  },
+];
+
+export const StoreageDamageProduction = {
+  landing: {
+    heading: "Free Storage and Damage Protection Guarantee",
+    text: "With door-to-door local moving services, free doorstep inspection, and transparent pricing with no hidden charges, Eintransport has become one of the most reliable local packers and movers in South India. Whether you’re moving within the same city or nearby areas, we guarantee on-time delivery, damage-free shifting, and friendly customer support from start to finish.",
+  },
+
+};
+
+export const DeliveryConfirm = {
+  heading: "Delivery Confirmation & Final Acknowledgement",
+  text: "Once the unloading is complete, please check each item carefully. After confirming that all your goods are delivered safely, you can sign the acknowledgment and make the final payment.",
+};
+
+export const ContactTodayData = {
+  landing: {
+    text: "Contact us today for a free home shifting quote in Coimbatore and experience the most trusted local and intercity packers and movers service in the city.",
+  },
+  bangalore: {
+    text: "Contact us today to get your free house shifting quote and experience the most trusted relocation service in Bangalore."
+  },
+  chennai: {
+    text: "Contact us now for a free home shifting quote in Chennai, and experience a safe, affordable, and professional relocation service that delivers on time, every time."
+  },
+  coimbatore: {
+    text: "Contact us today for a free home shifting quote in Coimbatore and experience the most trusted local and intercity packers and movers service in the city."
+  },
+  kochi: {
+    text: "Call us today to get your free home shifting quote in Kochi from Eintransport Packers and Movers Kochi, and move with confidence, comfort, and care."
+  },
+  Thiruvananthapuram: {
+    text: "Contact us today for your free home shifting quote in Thiruvananthapuram, and move confidently with Eintransport, your trusted relocation partner."
   },
 };

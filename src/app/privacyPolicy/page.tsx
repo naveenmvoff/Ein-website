@@ -9,7 +9,7 @@ function PrivacyPolicyPage() {
           Privacy Policy
         </h1>
         <p className="text-sm text-gray-500 mb-8">
-          <strong>Effective Date:</strong> August 2025
+          <strong>Effective Date:</strong> October 2025
         </p>
 
         <p className="text-gray-700 mb-6">
@@ -38,8 +38,6 @@ function PrivacyPolicyPage() {
               <li>Email Address</li>
               <li>Phone Number</li>
               <li>Pickup and Delivery Addresses</li>
-              <li>Type of Service Required</li>
-              <li>Preferred Moving Date</li>
             </ul>
             <p className="text-gray-700 mt-2">
               We only collect data that is necessary to provide and manage our
