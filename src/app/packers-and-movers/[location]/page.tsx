@@ -1,3 +1,4 @@
+// "use client"
 import BastHouseShifting from "@/components/Common/BastHouseShifting";
 import WhyChoose from "@/components/ChooseAndCompare/WhyChoose";
 import Footer from "@/components/Footer";
@@ -28,9 +29,19 @@ import FaqPage from "@/components/FAQ/FAQ";
 import React from "react";
 import NotFound from "@/app/not-found";
 
+// import { Metadata } from "next";
+
+// export async function generateMetadata({ params }): Promise<Metadata> {
+//   console.log("------------------------->", params);
+//   return {
+//     title: `${params} | Eintransport Blog`,
+//     description: params,
+//   };
+// }
+
 async function page({ params }: { params: Promise<{ location: string }> }) {
   const { location } = await params;
-  
+
   console.log("=-----", location); // Logs the dynamic location
 
   // Validate if the location exists in both bestHouse and whyChoose
@@ -53,7 +64,7 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
       <BastHouseShifting data={bestHouseData} />
       <WhyChoose data={whyChooseData} />
       <MostTrusted />
-      
+
       <DynamicTable
         data={packingCost}
         caption="Packing Cost"

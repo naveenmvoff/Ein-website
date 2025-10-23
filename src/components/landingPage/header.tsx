@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { usePathname } from "next/navigation"
-import { useState } from "react"
-import { Menu, X, ChevronDown } from "lucide-react"
-import { AnimatePresence, motion } from "framer-motion"
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const locations = [
   { name: "Bangalore", slug: "bangalore" },
@@ -13,22 +13,26 @@ const locations = [
   { name: "Coimbatore", slug: "coimbatore" },
   { name: "Kochi", slug: "kochi" },
   { name: "Thiruvananthapuram", slug: "thiruvananthapuram" },
-]
+];
 
 export default function HeaderNavbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isServicesOpen, setIsServicesOpen] = useState(false)
-  const pathname = usePathname()
-  const logoHref = pathname || "/"
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const pathname = usePathname();
+  const logoHref = pathname || "/";
 
-  const toggleMenu = () => setIsMenuOpen((v) => !v)
-  const closeMenu = () => setIsMenuOpen(false)
+  const toggleMenu = () => setIsMenuOpen((v) => !v);
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-lg shadow-md">
       <div className="max-w-7xl mx-auto flex justify-between items-center py-2 sm:py-3 px-3 sm:px-6 lg:px-10">
         {/* Logo */}
-        <Link href={logoHref} scroll={false} className="flex items-center gap-1 sm:gap-2 group flex-shrink-0">
+        <Link
+          href={logoHref}
+          scroll={false}
+          className="flex items-center gap-1 sm:gap-2 group flex-shrink-0"
+        >
           <Image
             src="/images/logo1.png"
             alt="Eintransport Pvt Ltd"
@@ -76,13 +80,22 @@ export default function HeaderNavbar() {
             </AnimatePresence>
           </div>
 
-          <a href="#about" className="hover:text-blue-700 transition-colors duration-300 py-2">
+          <a
+            href="#about"
+            className="hover:text-blue-700 transition-colors duration-300 py-2"
+          >
             About
           </a>
-          <a href="#contact" className="hover:text-blue-700 transition-colors duration-300 py-2">
+          <a
+            href="#contact"
+            className="hover:text-blue-700 transition-colors duration-300 py-2"
+          >
             Contact
           </a>
-          <a href="#faq" className="hover:text-blue-700 transition-colors duration-300 py-2">
+          <a
+            href="#faq"
+            className="hover:text-blue-700 transition-colors duration-300 py-2"
+          >
             FAQ
           </a>
         </nav>
@@ -93,7 +106,11 @@ export default function HeaderNavbar() {
           onClick={toggleMenu}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {isMenuOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
         </button>
       </div>
 
@@ -116,7 +133,11 @@ export default function HeaderNavbar() {
                   onClick={() => setIsServicesOpen((v) => !v)}
                 >
                   Service Location{" "}
-                  <ChevronDown className={`h-4 w-4 transition-transform ${isServicesOpen ? "rotate-180" : ""}`} />
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${
+                      isServicesOpen ? "rotate-180" : ""
+                    }`}
+                  />
                 </button>
 
                 <AnimatePresence>
@@ -126,7 +147,7 @@ export default function HeaderNavbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -5 }}
                       transition={{ duration: 0.2 }}
-                      className="flex flex-col space-y-1 mt-2"
+                      className="flex flex-col space-y-1 mt-2 "
                     >
                       {locations.map((loc) => (
                         <Link
@@ -169,5 +190,5 @@ export default function HeaderNavbar() {
         )}
       </AnimatePresence>
     </header>
-  )
+  );
 }

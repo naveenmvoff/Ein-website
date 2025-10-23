@@ -1,5 +1,3 @@
-import { text } from "stream/consumers";
-
 export const bestHouse = {
   landing: {
     heading: `Best House Shifting Service by Eintransport Packers and Movers – Move
