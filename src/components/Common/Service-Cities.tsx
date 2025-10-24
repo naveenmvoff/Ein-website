@@ -20,23 +20,25 @@ function ServiceCities() {
     },
   ];
   return (
-    <div className="flex w-full flex-col">
+    <div className="flex w-full flex-col py-6">
       <h1 className="flex font-semibold text-xl text-center items-center justify-center">
         Service Cities
       </h1>
-      <div className="flex justify-center">
-        {Images.map((i, index) => {
-          return (
-            <div key={index} className="flex flex-row">
-              <Image
-                src={i.image}
-                alt="cities"
-                width={200}
-                height={200}
-              ></Image>
-            </div>
-          );
-        })}
+      <div className="flex justify-center flex-wrap gap-4">
+        {Images.map((i, index) => (
+          <div
+            key={index}
+            className="relative w-[150px] h-[150px] sm:w-[200px] sm:h-[200px]"
+          >
+            <Image
+              src={i.image}
+              alt="cities"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -50,7 +50,7 @@ const ContactToday: React.FC<ContactTodayProps> = ({ data }) => {
   };
 
   return (
-    <div className="flex flex-col items-center my-12">
+    <div className="flex flex-col gap-6 items-center">
       <Image
         src="/assets/contactAbove.png"
         alt="Eintransport packing"

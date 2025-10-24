@@ -55,10 +55,10 @@ export default function DynamicTable({ data, caption, note }: DynamicTableProps)
   const headers = Object.keys(data[0]);
 
   return (
-    <div className="w-full mt-6 mb-6 px-4 sm:px-6 lg:px-8">
+    <div className="w-full mt-10 mb-6 px-4 sm:px-6 lg:px-8">
       {caption && (
         <div className="mb-3 px-2 flex justify-center">
-          <h3 className="text-md font-semibold text-gray-800 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-center">
+          <h3 className="text-xl font-semibold text-gray-800 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-center">
             {caption}
           </h3>
         </div>
@@ -103,7 +103,7 @@ export default function DynamicTable({ data, caption, note }: DynamicTableProps)
       </div>
 
       {note && (
-        <TableCaption className="text-xs text-left px-2 mt-3 text-gray-500 italic">
+        <TableCaption className="text-xs text-left px-2 text-gray-500 italic">
           {note}
         </TableCaption>
       )}

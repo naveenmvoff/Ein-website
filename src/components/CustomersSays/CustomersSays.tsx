@@ -31,7 +31,7 @@ const getStarRating = (rating: number) => {
 
 export default function CustomersSays({ testimonials }: CustomersSaysProps) {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white">
+    <section className="py-10 sm:py-10 px-4 sm:px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl text-gray-900 sm:text-4xl md:text-5xl font-bold text-center mb-10">
           What Our Customers Say

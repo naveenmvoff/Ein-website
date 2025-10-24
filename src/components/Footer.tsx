@@ -168,15 +168,17 @@ function Footer() {
           </div>
         </div>
 
-        <div className="border-t flex flex-col border-gray-800 gap-2 mt-12 pt-4 text-center">
+        <div className="border-t flex flex-col items-center border-gray-800 gap-2 mt-12 pt-4 text-center">
           <p className="text-gray-400">
             &copy; 2025 Eintransport. All rights reserved.
           </p>
 
-          <Link href="/privacyPolicy">
-            <p className="text-gray-400 hover:underline">Privacy policy</p>
+          <Link
+            href="/privacyPolicy"
+            className="text-gray-400  hover:underline hover:text-white transition-colors"
+          >
+            Privacy Policy
           </Link>
-
           <div className="flex space-x-4 justify-center mt-1.5">
             {[
               {
