@@ -22,18 +22,14 @@ import {HeroForm} from "@/components/landingPage/heroForm";
 
 const Page = () => {
   const [showFormModal, setShowFormModal] = useState(false);
-  const heading = `Best House Shifting Service by Eintransport Packers and Movers – Move
-        Smart, Move Safe`;
 
-        useEffect(() => {
-    // Show modal after 2 seconds
+  useEffect(() => {
     const timer = setTimeout(() => {
       setShowFormModal(true);
     }, 2000);
 
-    // Cleanup timer
     return () => clearTimeout(timer);
-  }, []); // Empty dependency array means this runs once on mount
+  }, []);
 
   return (
     <div>
