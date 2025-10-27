@@ -18,6 +18,7 @@ import {
   DeliveryConfirm,
   StoreageDamageProduction,
   ContactTodayData,
+  metaDataByLocation,
 } from "@/lib/dataSet";
 import MostTrusted from "@/components/ChooseAndCompare/MostTrusted";
 import DynamicTable from "@/components/Table/Table";
@@ -29,7 +30,7 @@ import FaqPage from "@/components/FAQ/FAQ";
 import React from "react";
 import NotFound from "@/app/not-found";
 
-// import { Metadata } from "next";
+import { Metadata } from "next";
 
 // export async function generateMetadata({ params }): Promise<Metadata> {
 //   console.log("------------------------->", params);
@@ -38,6 +39,56 @@ import NotFound from "@/app/not-found";
 //     description: params,
 //   };
 // }
+
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { location: string };
+}): Promise<Metadata> {
+  const location = decodeURIComponent(params.location.toLowerCase());
+
+  // Find matching meta data or fallback to main
+  const meta = metaDataByLocation[location] || metaDataByLocation.main;
+
+  
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords,
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `https://eintransport.in/packers-and-movers/${location}`,
+      type: "website",
+      images: [
+        {
+          url: "https://eintransport.in/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: meta.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+      images: ["https://eintransport.in/og-image.jpg"],
+    },
+    alternates: {
+      canonical: `https://eintransport.in/packers-and-movers/${location}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: false,
+    },
+    authors: [{ name: "Eintransport Packers and movers", url: "https://eintransport.in" }],
+    publisher: "Eintransport Packers and movers",
+  };
+}
+
 
 async function page({ params }: { params: Promise<{ location: string }> }) {
   const { location } = await params;

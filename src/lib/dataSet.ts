@@ -310,3 +310,50 @@ export const ContactTodayData = {
     text: "Contact us today for your free home shifting quote in Thiruvananthapuram, and move confidently with Eintransport, your trusted relocation partner."
   },
 };
+
+
+export const metaDataByLocation = {
+  main: {
+    title: "Eintransport Packers and Movers | House Shifting Experts",
+    description:
+      "Leading packing, moving & storage experts. Eintransport Packers ensures safe, on-time home relocation across Bangalore, Chennai, Kochi & nearby cities.",
+    keywords:
+      "packers and movers near me, house shifting services, movers and packers, best packers and movers near me, local shifting service, packers and movers charges",
+    canonical: "https://eintransport.in",
+  },
+  bangalore: {
+    title: "Best Packers and Movers in Bangalore | Eintransport Packers",
+    description:
+      "Safe and affordable home shifting with Eintransport Packers and Movers in Bangalore. Professional packing, fast delivery, and trusted relocation experts.",
+    keywords:
+      "packers and movers bangalore, best packers and movers in bangalore, packers and movers bangalore near me, house shifting services in bangalore, packers for moving near me, household shifting services",
+  },
+  chennai: {
+    title: "Best Packers and Movers in Chennai | Eintransport Packers",
+    description:
+      "Relocate easily with Eintransport Packers and Movers in Chennai. Expert home shifting with secure packing, on-time delivery, and reliable moving support.",
+    keywords:
+      "packers and movers Chennai, best packers and movers in Chennai, packers and movers near me, house shifting services in Chennai, household shifting services near me, house relocation service",
+  },
+  coimbatore: {
+    title: "Packers and Movers in Coimbatore | Eintransport Packers",
+    description:
+      "Eintransport Packers and Movers in Coimbatore offer safe, affordable home shifting. Trusted experts for local and intercity relocation with on-time delivery.",
+    keywords:
+      "movers packers coimbatore, packers and movers coimbatore, house shifting services coimbatore, home shifting services, packers and movers coimbatore to chennai, best packers and movers coimbatore",
+  },
+  kochi: {
+    title: "Packers and Movers in Kochi | Eintransport Packers",
+    description:
+      "Move safely with Eintransport Packers and Movers in Kochi. Expert house shifting with premium packing, fast delivery, and hassle-free relocation services.",
+    keywords:
+      "movers packers kochi, packers and movers in kochi, house shifting services, moving packers near me, packers and movers near me",
+  },
+  thiruvananthapuram: {
+    title: "Packers and Movers in Trivandrum | Eintransport Packers",
+    description:
+      "Eintransport Packers and Movers in Trivandrum provide safe home shifting. Professional packing, timely transport, and trusted relocation services.",
+    keywords:
+      "packers and movers trivandrum, movers and packers trivandrum, household shifting services, house shifting services, best packers and movers in trivandrum",
+  },
+};
