@@ -18,32 +18,27 @@ function ServiceCities() {
           Our Service Cities
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
-          We proudly offer our trusted moving services in major cities across South India — ensuring safe, fast, and professional relocation wherever you are.
+          We proudly offer our trusted moving services in major cities across
+          South India — ensuring safe, fast, and professional relocation
+          wherever you are.
         </p>
       </div>
 
       {/* City Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center">
         {cities.map((city, index) => (
-          <div
-            key={index}
-            className="relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 w-[85%] sm:w-[90%] md:w-[180px] lg:w-[200px] text-center p-6"
-          >
-            <div className="relative w-20 h-20 mx-auto mb-4">
-              <Image
-                src={city.image}
-                alt={city.name}
-                fill
-                className="object-contain transition-transform duration-300 group-hover:scale-110"
-                priority
-              />
-            </div>
+          <div key={index}>
+            <div className="relative mx-auto"></div>
+            <Image
+              src={city.image}
+              alt={city.name}
+              width={600}
+              height={600}
+              className="object-cover transition-transform duration-300 group-hover:scale-110"
+              priority
+            />
 
-            <h3 className="text-lg font-semibold text-gray-800">
-              {city.name}
-            </h3>
-
-            <div className="absolute inset-x-0 bottom-0 h-1 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center rounded-full"></div>
+            {/* <div className="absolute inset-x-0 bottom-0 h-1 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center rounded-full"></div> */}
           </div>
         ))}
       </div>
@@ -52,10 +47,6 @@ function ServiceCities() {
 }
 
 export default ServiceCities;
-
-
-
-
 
 // import Image from "next/image";
 // import React from "react";

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-function WhyChoose({ data }) {
+function WhyChoose({ data }: any) {
   return (
     <div className="flex flex-col gap-8 mt-7 px-10">
       <h3 className="flex justify-center text-xl font-semibold">
