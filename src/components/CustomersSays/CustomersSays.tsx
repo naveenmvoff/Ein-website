@@ -16,7 +16,7 @@ const getStarRating = (rating: number) => {
   return Array.from({ length: 5 }, (_, index) => {
     if (index < rating) {
       return (
-        <span key={index} className="text-blue-400 text-xl">
+        <span key={index} className="text-[#FCC201] text-xl">
           ★
         </span>
       );

@@ -9,11 +9,7 @@ interface ContactTodayProps {
 
 const ContactToday: React.FC<ContactTodayProps> = ({ data }) => {
   // Define the two sets of CTAs
-  const set1 = [
-    "Contact us today",
-    "Call us today",
-    "Contact us now"
-  ];
+  const set1 = ["Contact us today", "Call us today", "Contact us now"];
 
   const set2 = [
     "free quote",
@@ -21,7 +17,7 @@ const ContactToday: React.FC<ContactTodayProps> = ({ data }) => {
     "free home shifting quote in Chennai",
     "free home shifting quote in Coimbatore",
     "free home shifting quote in Kochi",
-    "free home shifting quote in Thiruvananthapuram"
+    "free home shifting quote in Thiruvananthapuram",
   ];
 
   // Function to highlight each CTA
@@ -50,17 +46,24 @@ const ContactToday: React.FC<ContactTodayProps> = ({ data }) => {
   };
 
   return (
-    <div className="flex flex-col gap-6 items-center">
-      <Image
-        src="/assets/contactAbove.png"
-        alt="Eintransport packing"
-        width={500}
-        height={300}
-      />
+    <div className="relative flex flex-col gap-6 items-center">
+      {/* <div className="relative w-1/2 h-1/2">
+        <Image alt="Eintransport packing" fill className=" p-4" priority />
+      </div> */}
+      <div className="flex justify-center ">
+        <Image
+          src="/assets/contactAbove.png"
+          alt="whychoose"
+          className="sm:p-0 p-2"
+          width={600}
+          height={600}
+        />
+      </div>
+
       <p
         className="text-lg text-gray-600 text-center mb-6"
         dangerouslySetInnerHTML={{
-          __html: highlightCTA(data.text), // Set the highlighted text with HTML
+          __html: highlightCTA(data.text), // safely render highlighted HTML
         }}
       />
     </div>
@@ -68,8 +71,6 @@ const ContactToday: React.FC<ContactTodayProps> = ({ data }) => {
 };
 
 export default ContactToday;
-
-
 
 // import React from "react";
 // import Image from "next/image";
