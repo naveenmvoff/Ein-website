@@ -15,7 +15,7 @@ function FormPopUp() {
     if (isModalShown) return;
 
     const handleScroll = () => {
-      if (window.scrollY > 400) {
+      if (window.scrollY > 3000) {
         setIsOpen(true);
         localStorage.setItem("isModalShow", "true");
         window.removeEventListener("scroll", handleScroll);

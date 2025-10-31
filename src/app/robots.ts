@@ -4,8 +4,8 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: "/",
-      disallow: ["/admin", "/private"], // Add restricted paths if any
+      allow: ["/","/packers-and-movers/contact", "/packers-and-movers/bangalore", "/packers-and-movers/chennai", "/packers-and-movers/coimbatore", "/packers-and-movers/kochi", "/packers-and-movers/thiruvananthapuram"],
+      disallow: ["/admin", "/private"],
     },
     sitemap: "https://eintransport.in/sitemap.xml",
   };

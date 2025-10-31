@@ -1,47 +1,27 @@
 import { MetadataRoute } from "next";
 
-// export default function sitemap(): MetadataRoute.Sitemap {
-//   const baseUrl = "https://eintransport.in"; // ✅ Change to your live site URL
-
-//   return [
-//     {
-//       url: `${baseUrl}/`,
-//       lastModified: new Date(),
-//       changeFrequency: "weekly",
-//       priority: 1.0,
-//     },
-//     {
-//       url: `${baseUrl}/about`,
-//       lastModified: new Date(),
-//       changeFrequency: "monthly",
-//       priority: 0.8,
-//     },
-//     {
-//       url: `${baseUrl}/contact`,
-//       lastModified: new Date(),
-//       changeFrequency: "monthly",
-//       priority: 0.8,
-//     },
-//     // ✅ You can add more dynamic pages if needed later
-//   ];
-// }
-
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://eintransport.in";
-  const cities = ["bangalore", "chennai", "kochi"];
+  const cities = ["bangalore", "chennai", "coimbatore", "kochi", "thiruvananthapuram"];
+  const otherdata = ["#about", "#contact", "#faq"];
 
   const staticPages = [
     { url: `${baseUrl}/`, priority: 1 },
-    { url: `${baseUrl}/contact`, priority: 0.8 },
   ];
 
   const cityPages = cities.map((city) => ({
-    url: `${baseUrl}/${city}`,
+    url: `${baseUrl}/packers-and-movers/${city}`,
     lastModified: new Date(),
-    changeFrequency: "weekly",
+    // changeFrequency: "weekly",
     priority: 0.9,
   }));
 
-  return [...staticPages, ...cityPages];
+  const otherDetails = otherdata.map((data) => ({
+    url: `${baseUrl}/${data}`,
+    lastModified: new Date(),
+    // changeFrequency: "weekly",
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...cityPages, ...otherDetails];
 }
