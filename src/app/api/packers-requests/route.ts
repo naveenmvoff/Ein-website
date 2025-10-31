@@ -2,7 +2,7 @@ import connectDB from "@/config/db";
 import { NextResponse, NextRequest } from "next/server";
 import User from "@/models/User";
 import PackersAndMovers from "@/models/PackersAndMover";
-import { sendOrderEmail } from '@/config/email';
+// import { sendOrderEmail } from '@/config/email';
 
 export async function POST(request: NextRequest) {
   try {
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     });
 
     // Send email notification
-    await sendOrderEmail(data, 'packers', process.env.EMAIL_USER || '');
+    // await sendOrderEmail(data, 'packers', process.env.EMAIL_USER || '');
 
     return NextResponse.json({
       success: true,

@@ -79,15 +79,15 @@ export function HeroForm() {
         }
       );
 
-      const sheetPromise2 = fetch(
-        `${process.env.NEXT_PUBLIC_SHEET_SCRIPT_LINK2}`,
-        {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        }
-      );
+      // const sheetPromise2 = fetch(
+      //   `${process.env.NEXT_PUBLIC_SHEET_SCRIPT_LINK2}`,
+      //   {
+      //     method: "POST",
+      //     mode: "no-cors",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify(payload),
+      //   }
+      // );
 
       const dbPromise = fetch("/api/packers-requests", {
         method: "POST",
@@ -95,8 +95,18 @@ export function HeroForm() {
         body: JSON.stringify(payload),
       });
 
-      await Promise.all([sheetPromise, sheetPromise2, dbPromise]);
+      // await Promise.all([sheetPromise, sheetPromise2, dbPromise]);
+      await Promise.all([sheetPromise, dbPromise]);
       
+      // Set a short-lived cookie to allow navigation to the thank-you page.
+      // This is used by middleware to prevent manual access.
+      try {
+        // cookie valid for 30 seconds
+        document.cookie = `order_placed=1; path=/; max-age=${30}`;
+      } catch {
+        // ignore if cookies not available
+      }
+
       // Redirect to success page
       router.push("/thank-you/order-placed");
       
@@ -145,7 +155,7 @@ export function HeroForm() {
             name="name"
             icon={<User size={16} />}
             value={form.name}
-            onChange={(v) => handleChange("name", v)}
+            onChange={handleChange.bind(null, "name")}
             focusedField={focusedField}
             setFocusedField={setFocusedField}
             inputClasses={inputClasses}
@@ -157,7 +167,7 @@ export function HeroForm() {
             type="email"
             icon={<Mail size={16} />}
             value={form.email}
-            onChange={(v) => handleChange("email", v)}
+            onChange={handleChange.bind(null, "email")}
             focusedField={focusedField}
             setFocusedField={setFocusedField}
             inputClasses={inputClasses}
@@ -169,7 +179,7 @@ export function HeroForm() {
             type="tel"
             icon={<Phone size={16} />}
             value={form.phone}
-            onChange={(v) => handleChange("phone", v)}
+            onChange={handleChange.bind(null, "phone")}
             focusedField={focusedField}
             setFocusedField={setFocusedField}
             inputClasses={inputClasses}
@@ -180,7 +190,7 @@ export function HeroForm() {
             name="from"
             icon={<MapPin size={16} />}
             value={form.from}
-            onChange={(v) => handleChange("from", v)}
+            onChange={handleChange.bind(null, "from")}
             focusedField={focusedField}
             setFocusedField={setFocusedField}
             inputClasses={inputClasses}
@@ -191,7 +201,7 @@ export function HeroForm() {
             name="to"
             icon={<Home size={16} />}
             value={form.to}
-            onChange={(v) => handleChange("to", v)}
+            onChange={handleChange.bind(null, "to")}
             focusedField={focusedField}
             setFocusedField={setFocusedField}
             inputClasses={inputClasses}
@@ -284,10 +294,12 @@ type InputFieldProps = {
   label: string;
   name: keyof FormState;
   value: string;
+  // eslint-disable-next-line no-unused-vars
   onChange: (v: string) => void;
   icon: React.ReactNode;
   focusedField: string | null;
   setFocusedField: React.Dispatch<React.SetStateAction<string | null>>;
+  // eslint-disable-next-line no-unused-vars
   inputClasses: (field: string) => string;
   type?: string;
 };
