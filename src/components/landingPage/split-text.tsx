@@ -14,7 +14,9 @@ export interface SplitTextProps {
   className?: string
   delay?: number
   duration?: number
-  ease?: string | ((t: number) => number)
+  // allow unused typed parameter name in type position
+  // eslint-disable-next-line no-unused-vars
+  ease?: string | ((...args: unknown[]) => number)
   splitType?: "chars" | "words" | "lines" | "words, chars"
   from?: gsap.TweenVars
   to?: gsap.TweenVars
@@ -64,7 +66,7 @@ const SplitText: React.FC<SplitTextProps> = ({
       if (el._rbsplitInstance) {
         try {
           el._rbsplitInstance.revert()
-        } catch (_) {}
+        } catch{}
         el._rbsplitInstance = undefined
       }
 
@@ -129,7 +131,7 @@ const SplitText: React.FC<SplitTextProps> = ({
         })
         try {
           splitInstance.revert()
-        } catch (_) {}
+        } catch{}
         el._rbsplitInstance = undefined
       }
     },
