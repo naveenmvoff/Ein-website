@@ -12,7 +12,7 @@ export default function MostTrusted() {
   return (
     <section className="bg-gradient-to-b from-blue-50 to-white">
       <div className="pt-8 pb-6 px-4 sm:px-6 max-w-4xl mx-auto">
-        <h3 className="text-md sm:text-3xl font-bold text-gray-900 mb-3 text-left">
+        <h3 className="text-md sm:text-2xl font-bold text-gray-900 mb-3 text-center">
           Why We're the Most Trusted Packers and Movers
         </h3>
         <p className="text-base text-justify text-gray-700 leading-relaxed mb-8">

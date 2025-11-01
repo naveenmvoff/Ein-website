@@ -14,7 +14,7 @@ const StorageDamageProduction: React.FC<StorageDamageProps> = ({ data }) => {
         <h3 className="text-md sm:text-3xl font-bold text-gray-900 mb-3 text-left">
           {data.heading}
         </h3>
-        <p className="text-base text-gray-700 leading-relaxed">{data.text}</p>
+        <p className="text-base text-justify text-gray-700 leading-relaxed">{data.text}</p>
       </div>
     </section>
   );

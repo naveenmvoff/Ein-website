@@ -14,7 +14,7 @@ function ServiceCities() {
   return (
     <section className="bg-gradient-to-b from-blue-50 to-white pt-6 pb-6 px-4 sm:px-6">
       <div className="text-center mb-6">
-        <h2 className="text-lg sm:text-3xl font-bold text-gray-900 mb-3">
+        <h2 className="text-lg sm:text-2xl font-bold text-gray-900 mb-3">
           Our Service Cities
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">

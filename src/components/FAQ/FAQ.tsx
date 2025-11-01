@@ -39,10 +39,10 @@ export default function FaqPage() {
       className="bg-gradient-to-br from-gray-50 to-blue-50 py-8 sm:py-12 md:py-16 px-4 sm:px-6"
     >
       <div className="container mx-auto max-w-4xl">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4 sm:mb-6">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-2 sm:mb-3">
           Frequently Asked Questions?
         </h2>
-        <p className="text-center text-gray-600 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 md:mb-12">
+        <p className="text-center text-gray-600 text-sm sm:text-base md:text-lg mb-5 sm:mb-5 md:mb-5">
           Need more clarity? Our team is always here to help you out.
         </p>
 

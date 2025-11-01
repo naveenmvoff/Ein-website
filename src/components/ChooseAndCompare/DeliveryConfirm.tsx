@@ -10,20 +10,17 @@ interface DeliveryConfirmProps {
 const DeliveryConfirmFinal: React.FC<DeliveryConfirmProps> = ({ data }) => {
   return (
     <section className="bg-blue-50/50">
-    <div className="py-12 px-4 sm:px-6 max-w-4xl mx-auto text-center">
-      <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
-        {data.heading}
-      </h3>
-      <p className="text-base text-gray-700 leading-relaxed">
-        {data.text}
-      </p>
-    </div>
+      <div className="pt-1 pb-1 px-4 sm:px-6 max-w-4xl mx-auto text-left">
+        <h3 className="text-md sm:text-3xl font-bold text-gray-900 mb-3 text-left">
+          {data.heading}
+        </h3>
+        <p className="text-base text-justify text-gray-700 leading-relaxed">{data.text}</p>
+      </div>
     </section>
   );
 };
 
 export default DeliveryConfirmFinal;
-
 
 // import React from "react";
 
