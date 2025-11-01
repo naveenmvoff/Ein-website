@@ -29,6 +29,7 @@ import ContactToday from "@/components/ChooseAndCompare/ContactToday";
 import FaqPage from "@/components/FAQ/FAQ";
 import React from "react";
 import NotFound from "@/app/not-found";
+import Image from "next/image";
 
 import { Metadata } from "next";
 import WhyChooseBasedCity from "@/components/ChooseAndCompare/whyChooseBasedCity";
@@ -106,8 +107,32 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
     <div>
       <HeaderNavbar />
       <HeroSection />
-      <BestHouseShifting data={bestHouseData} />
-      <WhyChoose data={whyChooseData} />
+      
+      {/* Shared Image Layout - Image on left, both contents on right (desktop only) */}
+      <section className="bg-blue-50/50 pt-8 pb-6 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col lg:flex-row lg:items-stretch lg:gap-8">
+            {/* Image - Left side on desktop, top on mobile */}
+            <div className="flex justify-center items-center mb-6 lg:mb-0 lg:w-1/2 lg:flex-shrink-0 lg:flex lg:items-center lg:justify-center">
+              <Image
+                src={whyChooseData.image || "/assets/whychoose.png"}
+                alt="House Shifting Service"
+                width={600}
+                height={600}
+                className="rounded-lg w-full max-w-md lg:max-w-full object-contain"
+              />
+            </div>
+            
+            {/* Content Sections - Right side on desktop, below image on mobile */}
+            <div className="text-left lg:w-1/2 lg:flex lg:flex-col lg:justify-center space-y-6">
+              <BestHouseShifting data={bestHouseData} />
+              <div className="border-t border-gray-200 pt-6">
+                <WhyChoose data={whyChooseData} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <DynamicTable
         data={packingCost}
