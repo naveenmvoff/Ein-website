@@ -28,7 +28,7 @@ const ContactToday: React.FC<ContactTodayProps> = ({ data }) => {
       highlightedText = highlightedText.replace(
         regex,
         // `<span class="text-[#0086ff] font-semibold">$1</span>`
-         `<a href="tel:${phoneNumber}" class="text-gray-600 font-semibold hover:underline">$1</a>`
+        `<a href="tel:${phoneNumber}" class="text-gray-600 font-semibold hover:underline">$1</a>`
       );
     });
 
@@ -44,24 +44,26 @@ const ContactToday: React.FC<ContactTodayProps> = ({ data }) => {
   };
 
   return (
-    <div className="py-12 px-4 sm:px-6 max-w-4xl mx-auto text-center">
-      <div className="flex justify-center mb-6">
-        <Image
-          src="/assets/contactAbove.png"
-          alt="contact"
-          width={600}
-          height={600}
-          className="rounded-lg"
+    <section className="bg-blue-50/50">
+      <div className="pt-6 pb-2 px-4 sm:px-6 max-w-4xl mx-auto text-center">
+        <div className="flex justify-center mb-6">
+          <Image
+            src="/assets/contactAbove.png"
+            alt="contact"
+            width={600}
+            height={600}
+            className="rounded-lg"
+          />
+        </div>
+
+        <p
+          className="text-base text-gray-700 leading-relaxed"
+          dangerouslySetInnerHTML={{
+            __html: highlightCTA(data.text),
+          }}
         />
       </div>
-
-      <p
-        className="text-base text-gray-700 leading-relaxed"
-        dangerouslySetInnerHTML={{
-          __html: highlightCTA(data.text),
-        }}
-      />
-    </div>
+    </section>
   );
 };
 

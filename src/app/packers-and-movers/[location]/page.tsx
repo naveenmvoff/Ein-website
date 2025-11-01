@@ -111,13 +111,13 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
       <DynamicTable
         data={packingCost}
         caption="Packing Cost"
-        note="The prices listed are approximate. Final charges may vary depending on distance, item value, and any additional services you require."
+        note="Note: The prices listed are approximate. Final charges may vary depending on distance, item value, and any additional services you require."
       />
 
       <DynamicTable
         data={anotherCity}
         caption="Moving from one city to another? Here's our KM-wise transportation-only price chart."
-        note="The prices listed are approximate. Final charges may vary depending on distance, item value, and any additional services you require."
+        note="Note: The prices listed are approximate. Final charges may vary depending on distance, item value, and any additional services you require."
       />
 
       <OtherComparision />
@@ -126,7 +126,7 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
       <DynamicTable
         data={localShitingCost}
         caption="Local Shifting Cost (Within 100 KM)"
-        note="The prices listed are approximate. Final charges may vary depending on distance, item value, and any additional services you require."
+        note="Note: The prices listed are approximate. Final charges may vary depending on distance, item value, and any additional services you require."
       />
 
       <CustomersSays testimonials={testimonials} />
