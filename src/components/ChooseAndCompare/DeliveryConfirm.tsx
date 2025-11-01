@@ -9,6 +9,7 @@ interface DeliveryConfirmProps {
 
 const DeliveryConfirmFinal: React.FC<DeliveryConfirmProps> = ({ data }) => {
   return (
+    <section className="bg-blue-50/50">
     <div className="py-12 px-4 sm:px-6 max-w-4xl mx-auto text-center">
       <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
         {data.heading}
@@ -17,6 +18,7 @@ const DeliveryConfirmFinal: React.FC<DeliveryConfirmProps> = ({ data }) => {
         {data.text}
       </p>
     </div>
+    </section>
   );
 };
 

@@ -26,7 +26,7 @@ const TableRow = ({ children, className = "" }: { children: React.ReactNode; cla
 );
 
 const TableHead = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <th className={`px-4 py-3 text-center text-sm font-semibold text-white uppercase tracking-wider border border-black ${className}`}>
+  <th className={`px-4 py-3 text-center text-sm font-semibold text-white uppercase tracking-wider ${className}`}>
     {children}
   </th>
 );
@@ -86,11 +86,7 @@ export default function DynamicTable({ data, caption, note }: DynamicTableProps)
                   {headers.map((h) => (
                     <TableCell
                       key={h}
-                      className={`whitespace-nowrap ${
-                        h.toLowerCase().includes("total")
-                          ? "font-semibold text-blue-700"
-                          : ""
-                      }`}
+                      className={`whitespace-nowrap`}
                     >
                       {row[h]}
                     </TableCell>
