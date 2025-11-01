@@ -25,17 +25,17 @@ function Footer() {
   const [isVisible, setIsVisible] = useState(true);
 
   return (
-    <footer id="contact" className="bg-gray-900 text-white py-8 px-4 sm:px-6 lg:px-8">
+    <footer id="contact" className="bg-gray-900 text-white py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-7xl">
         {/* 2 columns on mobile, 2 on sm, 4 on lg */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-12">
           {/* Service Areas */}
           <div
             className={`transition-all duration-1000 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
           >
-            <h4 className="font-bold text-base sm:text-lg mb-4 text-[#0086FF]">
+            <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
               Service Areas
             </h4>
             <ul className="space-y-1.5 text-xs sm:text-sm text-gray-400">
@@ -79,7 +79,7 @@ function Footer() {
               isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
           >
-            <h4 className="font-bold text-base sm:text-lg mb-4 text-[#0086FF]">
+            <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
               Service Types
             </h4>
             <div className="space-y-1.5 text-xs sm:text-sm text-gray-400">
@@ -102,80 +102,62 @@ function Footer() {
             </div>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact Info + Address */}
           <div
             className={`transition-all duration-1000 col-span-1 sm:col-span-1 lg:col-span-1 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
           >
-            <h4 className="font-bold text-base sm:text-lg mb-4 text-[#0086FF]">
+            <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
               Contact Info
             </h4>
-            <div className="space-y-3 text-xs sm:text-sm text-gray-400">
-              <div className="flex gap-2 items-start group">
-                <span className="bg-[#1E2939] rounded-xl p-2 text-white group-hover:bg-[#0086FF] transition-colors duration-300 flex-shrink-0">
-                  <Phone className="w-3.5 h-3.5" />
+            <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-gray-400">
+              {/* Phone */}
+              <div className="flex gap-2 sm:gap-3 items-start group">
+                <span className="bg-[#1E2939] rounded-lg sm:rounded-xl p-1.5 sm:p-2 text-white group-hover:bg-[#0086FF] transition-colors duration-300 flex-shrink-0">
+                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </span>
-                <div className="space-y-0.5">
+                <div className="space-y-0.5 flex-1">
                   <Link
                     href="tel:+919489847336"
-                    className="block hover:text-white transition-colors duration-300"
+                    className="block hover:text-white transition-colors duration-300 break-words"
                   >
                     +91 94898 47336
                   </Link>
                   <Link
                     href="tel:+919043384332"
-                    className="block hover:text-white transition-colors duration-300"
+                    className="block hover:text-white transition-colors duration-300 break-words"
                   >
                     +91 90433 84332
                   </Link>
                 </div>
               </div>
 
-              <div className="flex gap-2 items-start group">
-                <span className="bg-[#1E2939] rounded-xl p-2 text-white group-hover:bg-[#0086FF] transition-colors duration-300 flex-shrink-0">
-                  <Mail className="w-3.5 h-3.5" />
+              {/* Email */}
+              <div className="flex gap-2 sm:gap-3 items-start group">
+                <span className="bg-[#1E2939] rounded-lg sm:rounded-xl p-1.5 sm:p-2 text-white group-hover:bg-[#0086FF] transition-colors duration-300 flex-shrink-0">
+                  <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </span>
                 <Link
                   href="mailto:eintransport.booking@gmail.com"
-                  className="hover:text-white transition-colors duration-300 break-all"
+                  className="hover:text-white transition-colors duration-300 break-all flex-1"
                 >
                   eintransport.booking@gmail.com
                 </Link>
               </div>
-            </div>
-          </div>
 
-          {/* Address + Company Details */}
-          <div className="col-span-1 sm:col-span-1 lg:col-span-1">
-            {/* Company Details (GSTIN & PAN) */}
-            <div className="mb-5">
-              <h4 className="font-bold text-[#0086FF] text-base sm:text-lg mb-3">
-                Company Details
-              </h4>
-              <div className="space-y-2 text-xs sm:text-sm text-gray-400">
-                {companyDetails.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex gap-2 items-center  px-3 py-2 "
-                  >
-                    <span className="font-medium">{item.name}:</span>
-                    <span className="font-mono text-[#00C8FF]">{item.value}</span>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Address */}
-            <div>
-              <h4 className="font-bold text-[#0086FF] text-base sm:text-lg mb-3">
+            <div className="mt-5 sm:mt-6">
+              <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
                 Address
               </h4>
-              <div className="flex gap-2 items-start group text-xs sm:text-sm">
-                <span className="bg-[#1E2939] rounded-xl p-2 text-white shrink-0 mt-0.5 group-hover:bg-[#0086FF] transition-colors duration-300">
-                  <MapPin className="w-3.5 h-3.5" />
+              <div className="flex gap-2 sm:gap-3 items-start group text-xs sm:text-sm">
+                <span className="bg-[#1E2939] rounded-lg sm:rounded-xl p-1.5 sm:p-2 text-white shrink-0 mt-0.5 group-hover:bg-[#0086FF] transition-colors duration-300">
+                  <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </span>
-                <p className="text-gray-400 leading-tight">
+                <p className="text-gray-400 leading-snug sm:leading-tight flex-1">
                   No. 1, 3rd Floor, Joseph K Building Huskur,
                   <br />
                   Electronics City, Bangalore South,
@@ -187,39 +169,60 @@ function Footer() {
               </div>
             </div>
           </div>
+
+          {/* Company Details */}
+          <div className="col-span-1 sm:col-span-1 lg:col-span-1">
+            <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
+              Company Details
+            </h4>
+            <div className="space-y-2 sm:space-y-2.5">
+              {companyDetails.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col sm:flex-row gap-1 sm:gap-2 items-start sm:items-center px-2 sm:px-3 py-2"
+                >
+                  <span className="font-medium text-xs sm:text-sm text-gray-300">{item.name}:</span>
+                  <span className="font-mono text-[#008cff] text-[8px] sm:text-[10px] lg:text-[11px] break-all">{item.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-800 mt-8 pt-5 text-center">
-          <p className="text-xs text-gray-400 mb-2">
+        <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-4 sm:pt-5 text-center">
+          <p className="text-xs sm:text-sm text-gray-400 mb-2 sm:mb-3">
             © 2025 Eintransport. All rights reserved.
           </p>
 
           <Link
             href="/privacyPolicy"
-            className="text-xs text-gray-400 hover:underline hover:text-white transition-colors inline-block mb-3"
+            className="text-xs sm:text-sm text-gray-400 hover:underline hover:text-white transition-colors inline-block mb-3 sm:mb-4"
           >
             Privacy Policy
           </Link>
 
-          <div className="flex justify-center space-x-2">
+          <div className="flex justify-center gap-2 sm:gap-3 flex-wrap">
             {[
-              { href: "https://www.facebook.com/share/1CMLVRUx1y/", icon: Facebook },
-              { href: "https://youtube.com/@eintransport", icon: Youtube },
-              { href: "https://www.instagram.com/eintransport_pvt_ltd", icon: Instagram },
-              { href: "https://www.linkedin.com/company/eintransport/", icon: Linkedin },
-            ].map((link, index) => (
-              <Link
-                target="_blank"
-                rel="noopener noreferrer"
-                href={link.href}
-                key={index}
-                className="p-2 rounded-full bg-white hover:bg-[#0086FF] transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
-                aria-label={`Visit us on ${link.icon.name}`}
-              >
-                <link.icon className="h-3.5 w-3.5 text-[#1E2939] group-hover:text-white" />
-              </Link>
-            ))}
+              { href: "https://www.facebook.com/share/1CMLVRUx1y/", icon: Facebook, label: "Facebook" },
+              { href: "https://youtube.com/@eintransport", icon: Youtube, label: "YouTube" },
+              { href: "https://www.instagram.com/eintransport_pvt_ltd", icon: Instagram, label: "Instagram" },
+              { href: "https://www.linkedin.com/company/eintransport/", icon: Linkedin, label: "LinkedIn" },
+            ].map((link, index) => {
+              const IconComponent = link.icon;
+              return (
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={link.href}
+                  key={index}
+                  className="p-2.5 sm:p-3 rounded-full bg-white hover:bg-[#0086FF] transition-all duration-300 transform hover:scale-110 hover:shadow-lg active:scale-95"
+                  aria-label={`Visit us on ${link.label}`}
+                >
+                  <IconComponent className="h-4 w-4 sm:h-4 sm:w-4 text-[#1E2939] hover:text-white transition-colors" />
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
