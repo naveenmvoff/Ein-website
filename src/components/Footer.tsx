@@ -181,8 +181,8 @@ function Footer() {
                   key={index}
                   className="flex flex-col sm:flex-row gap-1 sm:gap-2 items-start sm:items-center px-2 sm:px-3 py-2"
                 >
-                  <span className="font-medium text-xs sm:text-sm text-gray-300">{item.name}:</span>
-                  <span className="font-mono text-[#008cff] text-[8px] sm:text-[10px] lg:text-[11px] break-all">{item.value}</span>
+                  <span className="font-mono text-[8px] sm:text-[8px] lg:text-[10px] text-gray-300">{item.name}:</span>
+                  <span className="font-mono text-gray-400 text-[8px] sm:text-[8px] lg:text-[10px] break-all">{item.value}</span>
                 </div>
               ))}
             </div>
