@@ -1,12 +1,10 @@
-
-
 "use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, MapPin } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const locations = [
@@ -33,6 +31,11 @@ export default function HeaderNavbar() {
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     closeMenu();
+    
+    // Update URL hash immediately - preserve current pathname
+    const currentPath = window.location.pathname;
+    window.history.pushState(null, '', `${currentPath}#${targetId}`);
+    
     // Wait for menu animation to complete before scrolling
     setTimeout(() => {
       const element = document.getElementById(targetId);
@@ -132,7 +135,7 @@ export default function HeaderNavbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden sm:flex items-center space-x-4 md:space-x-8 text-gray-800 font-semibold text-sm md:text-base">
+        <nav className="hidden sm:flex items-center space-x-4 md:space-x-8 text-gray-800 font-medium text-sm">
           {/* Services Dropdown */}
           <div
             className="relative group"
@@ -140,7 +143,7 @@ export default function HeaderNavbar() {
             onMouseLeave={() => setIsServicesOpen(false)}
           >
             <button className="flex items-center gap-1 hover:text-blue-700 transition-colors duration-300 py-2">
-              Service Location <ChevronDown className="h-4 w-4 mt-0.5" />
+              Service Location <ChevronDown className="h-3.5 w-3.5" />
             </button>
 
               <AnimatePresence>
@@ -209,19 +212,24 @@ export default function HeaderNavbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="sm:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-lg overflow-hidden z-50"
+            className="sm:hidden bg-white border-t border-gray-200 shadow-xl overflow-hidden z-50"
           >
-            <div className="flex flex-col items-center space-y-1 py-3 text-base sm:text-lg font-medium text-gray-800">
+            <div className="flex flex-col py-2">
               {/* Services Dropdown in Mobile */}
-              <div className="w-full text-center">
+              <div className="w-full border-b border-gray-200/50">
                 <button
-                  className="w-full flex justify-center items-center gap-1 py-2 px-4 hover:text-blue-700 transition-colors"
+                  className={`w-full flex justify-center items-center gap-1.5 py-3 px-6 text-sm font-medium transition-all ${
+                    isServicesOpen
+                      ? "text-blue-700 bg-blue-50"
+                      : "text-gray-800 hover:text-blue-700 hover:bg-gray-50"
+                  }`}
                   onClick={() => setIsServicesOpen((v) => !v)}
                 >
-                  Service Location{" "}
+                  <MapPin className="h-4 w-4" />
+                  <span>Service Location</span>
                   <ChevronDown
-                    className={`h-4 w-4 transition-transform ${
-                      isServicesOpen ? "rotate-180" : ""
+                    className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                      isServicesOpen ? "rotate-180 text-blue-700" : "text-gray-500"
                     }`}
                   />
                 </button>
@@ -229,18 +237,20 @@ export default function HeaderNavbar() {
                 <AnimatePresence>
                   {isServicesOpen && (
                     <motion.div
-                      initial={{ opacity: 0, y: -5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -5 }}
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="flex flex-col space-y-1 mt-2 "
+                      className="bg-blue-50/50 border-t border-blue-100/50"
                     >
-                      {locations.map((loc) => (
+                      {locations.map((loc, index) => (
                         <Link
                           key={loc.slug}
                           href={`/packers-and-movers/${loc.slug}`}
                           onClick={closeMenu}
-                          className="block py-2 px-4 text-sm text-gray-700 hover:text-blue-700 hover:bg-blue-50 rounded-md mx-2 transition-colors"
+                          className={`block py-2.5 px-6 text-sm font-medium text-gray-700 hover:text-blue-700 hover:bg-blue-100 text-center transition-colors ${
+                            index !== locations.length - 1 ? "border-b border-blue-100/50" : ""
+                          }`}
                         >
                           {loc.name}
                         </Link>
@@ -253,21 +263,21 @@ export default function HeaderNavbar() {
               <a
                 href="#about"
                 onClick={(e) => handleAnchorClick(e, "about")}
-                className="hover:text-blue-700 transition-colors py-2 px-4 w-full text-center"
+                className="text-gray-800 hover:text-blue-700 hover:bg-gray-50 active:bg-blue-50 transition-colors py-3 px-6 text-sm font-medium text-center border-b border-gray-200/50"
               >
                 About
               </a>
               <a
                 href="#contact"
                 onClick={(e) => handleAnchorClick(e, "contact")}
-                className="hover:text-blue-700 transition-colors py-2 px-4 w-full text-center"
+                className="text-gray-800 hover:text-blue-700 hover:bg-gray-50 active:bg-blue-50 transition-colors py-3 px-6 text-sm font-medium text-center border-b border-gray-200/50"
               >
                 Contact
               </a>
               <a
                 href="#faq"
                 onClick={(e) => handleAnchorClick(e, "faq")}
-                className="hover:text-blue-700 transition-colors py-2 px-4 w-full text-center"
+                className="text-gray-800 hover:text-blue-700 hover:bg-gray-50 active:bg-blue-50 transition-colors py-3 px-6 text-sm font-medium text-center"
               >
                 FAQ
               </a>
