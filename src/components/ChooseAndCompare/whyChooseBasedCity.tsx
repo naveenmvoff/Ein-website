@@ -33,7 +33,7 @@ export default function WhyChooseBasedCity({
 
       <div className="space-y-3 mb-10">
         {benefits.map((benefit, index) => (
-          <div key={index} className="flex items-start gap-3">
+          <div key={index} className="flex items-start md:items-center gap-3">
             <svg
               className="w-6 h-6 text-[#0086ff] flex-shrink-0 mt-0.5"
               fill="currentColor"

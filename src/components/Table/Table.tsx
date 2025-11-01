@@ -12,7 +12,7 @@ const Table = ({ children, className = "" }: { children: React.ReactNode; classN
 );
 
 const TableHeader = ({ children }: { children: React.ReactNode }) => (
-  <thead className="bg-gradient-to-r from-blue-600 to-indigo-600 sticky top-0 z-10">
+  <thead className="bg-[#0086ff] sticky top-0 z-10">
     {children}
   </thead>
 );

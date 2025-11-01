@@ -132,7 +132,7 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
       <CustomersSays testimonials={testimonials} />
       <StorageDamageProduction data={StoreageDamageProduction.landing} />
       <DeliveryConfirmFinal data={DeliveryConfirm} />
-      <ContactToday data={ContactTodayData.landing} />
+      <ContactToday data={ContactTodayData[location] || ContactTodayData.landing} />
       <FaqPage />
       <Footer />
       <StaticUI />
