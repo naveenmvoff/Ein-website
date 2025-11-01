@@ -22,7 +22,7 @@ const companyDetails: CompanyInfo[] = [
 ];
 
 function Footer() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible] = useState(true);
 
   return (
     <footer id="contact" className="bg-gray-900 text-white py-6 sm:py-8 px-4 sm:px-6 lg:px-8">

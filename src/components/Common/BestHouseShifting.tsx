@@ -1,6 +1,6 @@
 import React from "react";
 
-function BestHouseShifting({ data }) {
+function BestHouseShifting({ data }: { data: { heading: string; text: string } }) {
   return (
     <section className="bg-blue-50/50 pt-8 pb-6 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto text-center">

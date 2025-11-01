@@ -122,13 +122,16 @@ const options = [
 ];
 import React from "react";
 import { UseFormSetValue } from 'react-hook-form';
-import type { FormData } from "@/app/trucks-service/page";
 
-
+interface FormData {
+    vehicleRequired: string;
+    [key: string]: unknown;
+}
 
 interface ModalProps {
     isOpen: boolean;
-    setIsOpen: (open: boolean) => void;
+    // eslint-disable-next-line no-unused-vars
+    setIsOpen: (value: boolean) => void;
     selectValue?: UseFormSetValue<FormData>;
 }
 export default function Modal({ isOpen, setIsOpen, selectValue }: ModalProps) {

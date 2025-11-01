@@ -1,5 +1,6 @@
 // "use client";
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import 'react-day-picker/dist/style.css';
@@ -37,7 +38,7 @@ const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-TNFPM87F";
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   
   return (

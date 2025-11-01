@@ -2,7 +2,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Controller } from 'react-hook-form';
 import { DayPicker } from 'react-day-picker';
-import { format } from 'date-fns';
 import 'react-day-picker/dist/style.css';
 
 

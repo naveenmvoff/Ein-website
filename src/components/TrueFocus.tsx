@@ -18,7 +18,7 @@ interface FocusRect {
     height: number;
 }
 
-const TrueFocus: React.FC<TrueFocusProps> = ({
+const TrueFocus = ({
     sentence = "Safe Fast and Hassle-Free",
     manualMode = false,
     blurAmount = 5,
@@ -26,14 +26,14 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
     glowColor = "red",
     animationDuration = 0.5,
     pauseBetweenAnimations = 1,
-}) => {
-    const { words, focusableWords, focusableIndices } = useMemo(() => {
+}: TrueFocusProps) => {
+    const { words, focusableIndices } = useMemo(() => {
         const words = sentence.split(" ");
         const focusableWords = words
           .map((word, index) => ({ word, index }))
           .filter(({ word }) => word.toLowerCase() !== "and");
         const focusableIndices = focusableWords.map(({ index }) => index);
-        return { words, focusableWords, focusableIndices };
+        return { words, focusableIndices };
     }, [sentence]);
 
     const [currentIndex, setCurrentIndex] = useState<number>(0);

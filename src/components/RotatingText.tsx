@@ -21,7 +21,8 @@ function cn(...classes: (string | undefined | null | boolean)[]): string {
 export interface RotatingTextRef {
     next: () => void;
     previous: () => void;
-    jumpTo: (index: number) => void;
+    // eslint-disable-next-line no-unused-vars
+    jumpTo: (value: number) => void;
     reset: () => void;
 }
 
@@ -43,7 +44,8 @@ export interface RotatingTextProps
     loop?: boolean;
     auto?: boolean;
     splitBy?: string;
-    onNext?: (index: number) => void;
+    // eslint-disable-next-line no-unused-vars
+    onNext?: (value: number) => void;
     mainClassName?: string;
     splitLevelClassName?: string;
     elementLevelClassName?: string;

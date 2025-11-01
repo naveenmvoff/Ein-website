@@ -36,12 +36,13 @@ import WhyChooseBasedCity from "@/components/ChooseAndCompare/whyChooseBasedCity
 export async function generateMetadata({
   params,
 }: {
-  params: { location: string };
+  params: Promise<{ location: string }>;
 }): Promise<Metadata> {
-  const location = decodeURIComponent(params.location.toLowerCase());
+  const { location: locationParam } = await params;
+  const location = decodeURIComponent(locationParam.toLowerCase());
 
   // Find matching meta data or fallback to main
-  const meta = metaDataByLocation[location] || metaDataByLocation.main;
+  const meta = (metaDataByLocation as unknown as Record<string, { title: string; description: string; keywords: string }>)[location] || metaDataByLocation.main;
 
   return {
     title: meta.title,
@@ -98,8 +99,8 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
   }
 
   // Fetch location-specific data based on the exact location
-  const bestHouseData = bestHouse[location];
-  const whyChooseData = whyChoose[location];
+  const bestHouseData = (bestHouse as unknown as Record<string, typeof bestHouse.landing>)[location] || bestHouse.landing;
+  const whyChooseData = (whyChoose as unknown as Record<string, typeof whyChoose.landing>)[location] || whyChoose.landing;
 
   return (
     <div>
@@ -132,7 +133,7 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
       <CustomersSays testimonials={testimonials} />
       <StorageDamageProduction data={StoreageDamageProduction.landing} />
       <DeliveryConfirmFinal data={DeliveryConfirm} />
-      <ContactToday data={ContactTodayData[location] || ContactTodayData.landing} />
+      <ContactToday data={(ContactTodayData as unknown as Record<string, typeof ContactTodayData.landing>)[location] || ContactTodayData.landing} />
       <FaqPage />
       <Footer />
       <StaticUI />
