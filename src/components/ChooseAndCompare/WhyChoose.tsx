@@ -8,7 +8,7 @@ function WhyChoose({ data }: any) {
         id="about"
         className="pt-1 pb-2 px-4 sm:px-6 max-w-4xl mx-auto scroll-mt-20"
       >
-        <h3 className="text-md sm:text-3xl font-bold text-gray-900 mb-3 text-center">
+        <h3 className="text-md sm:text-3xl font-bold text-gray-900 mb-3 text-left">
           {data.heading}
         </h3>
         <p className="text-base text-justify text-gray-700 leading-relaxed mb-4">

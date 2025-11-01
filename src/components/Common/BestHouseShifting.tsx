@@ -3,7 +3,7 @@ import React from "react";
 function BestHouseShifting({ data }: { data: { heading: string; text: string } }) {
   return (
     <section className="bg-blue-50/50 pt-8 pb-6 px-4 sm:px-6">
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="max-w-4xl mx-auto text-left">
         <h2 className="text-md sm:text-3xl font-bold text-gray-900 mb-3">
           {data.heading}
         </h2>
