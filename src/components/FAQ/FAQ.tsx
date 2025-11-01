@@ -36,31 +36,31 @@ export default function FaqPage() {
   return (
     <section
       id="faq"
-      className="bg-gradient-to-br from-gray-50 to-blue-50 py-16 sm:py-10 px-4 sm:px-6"
+      className="bg-gradient-to-br from-gray-50 to-blue-50 py-8 sm:py-12 md:py-16 px-4 sm:px-6"
     >
       <div className="container mx-auto max-w-4xl">
-        <h2 className="text-3xl text-gray-900 sm:text-4xl md:text-5xl font-bold text-center mb-6">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4 sm:mb-6">
           Frequently Asked Questions?
         </h2>
-        <p className="text-center text-gray-600 text-lg mb-12">
+        <p className="text-center text-gray-600 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 md:mb-12">
           Need more clarity? Our team is always here to help you out.
         </p>
 
-        <div className="space-y-6">
+        <div className="space-y-3 sm:space-y-4 md:space-y-6">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-800 hover:shadow-xl"
+              className="bg-white rounded-xl sm:rounded-2xl shadow-md sm:shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-lg sm:hover:shadow-xl"
             >
               <button
-                className="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-300"
+                className="w-full p-3 sm:p-4 md:p-6 text-left flex justify-between items-start sm:items-center gap-2 sm:gap-4 hover:bg-gray-50 transition-colors duration-300"
                 onClick={() => toggleFaq(index)}
               >
-                <h3 className="font-bold text-lg text-gray-800 pr-4">
+                <h3 className="font-semibold sm:font-bold text-sm sm:text-base md:text-lg text-gray-800 flex-1">
                   {faq.question}
                 </h3>
                 <ChevronDown
-                  className={`h-6 w-6 text-[#0086FF] transition-transform duration-300 flex-shrink-0 ${
+                  className={`h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-[#0086FF] transition-transform duration-300 flex-shrink-0 mt-1 sm:mt-0 ${
                     expandedFaq === index ? "rotate-180" : ""
                   }`}
                 />
@@ -72,8 +72,8 @@ export default function FaqPage() {
                     : "max-h-0 opacity-0"
                 }`}
               >
-                <div className="p-6 pt-0 border-t border-gray-100">
-                  <p className="text-gray-600 text-base leading-relaxed">
+                <div className="px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6 pt-0 border-t border-gray-100">
+                  <p className="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>
