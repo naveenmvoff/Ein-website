@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 export default function NotFound() {
-  return (
+  return ( 
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="text-center p-8 bg-white rounded-lg shadow-xl max-w-md w-full animate__animated animate__fadeIn animate__duration-1000">
         <h2 className="text-4xl font-bold text-gray-800 mb-4 animate__animated animate__fadeInDown animate__delay-500">404 - Not Found</h2>
