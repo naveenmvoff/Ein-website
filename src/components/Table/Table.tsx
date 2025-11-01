@@ -46,7 +46,7 @@ const TableCaption = ({ children, className = "" }: { children: React.ReactNode;
 export default function DynamicTable({ data, caption, note }: DynamicTableProps) {
   if (!data || data.length === 0) {
     return (
-      <div className="flex items-center justify-center py-12 bg-gray-50 rounded-lg">
+      <div className="flex items-center justify-center pt-6 py-6 bg-gray-50 rounded-lg">
         <p className="text-gray-500 text-sm">No data available</p>
       </div>
     );
@@ -55,9 +55,9 @@ export default function DynamicTable({ data, caption, note }: DynamicTableProps)
   const headers = Object.keys(data[0]);
 
   return (
-    <div className="bg-blue-50/50 w-full pt-5 pb-2 px-4 sm:px-6 lg:px-8">
+    <div className="bg-blue-50/50 w-full pt-4 pb-1 px-4 sm:px-6 lg:px-8">
       {caption && (
-        <div className="mb-3 px-2 flex justify-left">
+        <div className="mb-3 px-2 flex justify-start">
           <h3 className="text-md sm:text-3xl font-bold text-gray-900 text-left bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text">
             {caption}
           </h3>
