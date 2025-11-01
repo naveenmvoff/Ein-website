@@ -1,4 +1,4 @@
-import BastHouseShifting from "@/components/Common/BastHouseShifting";
+import BestHouseShifting from "@/components/Common/BestHouseShifting";
 import ServiceCities from "@/components/Common/Service-Cities";
 import WhyChoose from "@/components/ChooseAndCompare/WhyChoose";
 import Footer from "@/components/Footer";
@@ -31,7 +31,7 @@ const Page = () => {
     <div>
       <HeaderNavbar />
       <HeroSection />
-      <BastHouseShifting data={bestHouse.landing} />
+      <BestHouseShifting data={bestHouse.landing} />
       <ServiceCities />
       <WhyChoose data={whyChoose.landing} />
       <OtherComparision />
