@@ -68,6 +68,13 @@
 .required {
   color: #e53e3e;
 }
+html {
+  scroll-behavior: smooth;
+}
+/* Add this to your CSS */
+section[id] {
+  scroll-margin-top: 80px; /* Adjust this value to match your header height */
+}
 
 .error {
   font-size: 0.875rem;

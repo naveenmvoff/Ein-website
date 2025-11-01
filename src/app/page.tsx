@@ -55,7 +55,10 @@ export async function generateMetadata(): Promise<Metadata> {
       nocache: false,
     },
     authors: [
-      { name: "Eintransport Packers and Movers", url: "https://eintransport.in" },
+      {
+        name: "Eintransport Packers and Movers",
+        url: "https://eintransport.in",
+      },
     ],
     publisher: "Eintransport Packers and Movers",
   };

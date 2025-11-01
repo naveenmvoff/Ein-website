@@ -113,6 +113,7 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
       <HeaderNavbar />
       <HeroSection />
       <BastHouseShifting data={bestHouseData} />
+      <div className="h-48"></div>
       <WhyChoose data={whyChooseData} />
       <MostTrusted />
 

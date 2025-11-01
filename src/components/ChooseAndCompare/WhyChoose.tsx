@@ -3,12 +3,15 @@ import React from "react";
 
 function WhyChoose({ data }: any) {
   return (
-    <div className="flex flex-col gap-8 mt-7 px-10">
+    <div
+      id="about"
+      className="flex flex-col gap-8 mt-7 px-10 scroll-mt-28" // ← Add this
+    >
       <h3 className="flex justify-center text-xl font-semibold">
         {data.heading}
       </h3>
       <p className="leading-8">{data.text}</p>
-      <div className="flex justify-center ">
+      <div className="flex justify-center">
         <Image src={data.image} alt="whychoose" width={600} height={600} />
       </div>
     </div>
