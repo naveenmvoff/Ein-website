@@ -46,11 +46,13 @@ const whyChooseEintransport = [
 
 export default function OtherComparision() {
   return (
-    <div>
-      <Table
-        data={whyChooseEintransport}
-        caption="Eintransport Packers & Movers and Others service comparison"
-      />
-    </div>
+    <section className="bg-blue-50/50">
+      <div>
+        <Table
+          data={whyChooseEintransport}
+          caption="Eintransport Packers & Movers and Others service comparison"
+        />
+      </div>
+    </section>
   );
 }
