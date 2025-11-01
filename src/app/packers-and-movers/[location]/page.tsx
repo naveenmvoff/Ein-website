@@ -29,6 +29,7 @@ import ContactToday from "@/components/ChooseAndCompare/ContactToday";
 import FaqPage from "@/components/FAQ/FAQ";
 import React from "react";
 import NotFound from "@/app/not-found";
+import Image from "next/image";
 
 import { Metadata } from "next";
 import WhyChooseBasedCity from "@/components/ChooseAndCompare/whyChooseBasedCity";
@@ -42,7 +43,13 @@ export async function generateMetadata({
   const location = decodeURIComponent(locationParam.toLowerCase());
 
   // Find matching meta data or fallback to main
-  const meta = (metaDataByLocation as unknown as Record<string, { title: string; description: string; keywords: string }>)[location] || metaDataByLocation.main;
+  const meta =
+    (
+      metaDataByLocation as unknown as Record<
+        string,
+        { title: string; description: string; keywords: string }
+      >
+    )[location] || metaDataByLocation.main;
 
   return {
     title: meta.title,
@@ -99,15 +106,38 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
   }
 
   // Fetch location-specific data based on the exact location
-  const bestHouseData = (bestHouse as unknown as Record<string, typeof bestHouse.landing>)[location] || bestHouse.landing;
-  const whyChooseData = (whyChoose as unknown as Record<string, typeof whyChoose.landing>)[location] || whyChoose.landing;
+  const bestHouseData =
+    (bestHouse as unknown as Record<string, typeof bestHouse.landing>)[
+      location
+    ] || bestHouse.landing;
+  const whyChooseData =
+    (whyChoose as unknown as Record<string, typeof whyChoose.landing>)[
+      location
+    ] || whyChoose.landing;
 
   return (
     <div>
       <HeaderNavbar />
       <HeroSection />
-      <BestHouseShifting data={bestHouseData} />
-      <WhyChoose data={whyChooseData} />
+
+      <section className="bg-blue-50/50 pt-8 pb-6 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="relative">
+            <Image
+              src={whyChooseData.image || "/assets/whychoose.png"}
+              alt="House Shifting Service"
+              width={400}
+              height={400}
+              className="rounded-lg float-right ml-6 mb-4 object-cover"
+            />
+
+            <BestHouseShifting data={bestHouseData} />
+            <WhyChoose data={whyChooseData} />
+
+            <div className="clear-both"></div>
+          </div>
+        </div>
+      </section>
 
       <DynamicTable
         data={packingCost}
@@ -133,7 +163,16 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
       <CustomersSays testimonials={testimonials} />
       <StorageDamageProduction data={StoreageDamageProduction.landing} />
       <DeliveryConfirmFinal data={DeliveryConfirm} />
-      <ContactToday data={(ContactTodayData as unknown as Record<string, typeof ContactTodayData.landing>)[location] || ContactTodayData.landing} />
+      <ContactToday
+        data={
+          (
+            ContactTodayData as unknown as Record<
+              string,
+              typeof ContactTodayData.landing
+            >
+          )[location] || ContactTodayData.landing
+        }
+      />
       <FaqPage />
       <Footer />
       <StaticUI />

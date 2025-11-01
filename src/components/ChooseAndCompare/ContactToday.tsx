@@ -45,8 +45,8 @@ const ContactToday: React.FC<ContactTodayProps> = ({ data }) => {
 
   return (
     <section className="bg-blue-50/50">
-      <div className="pt-6 pb-2 px-4 sm:px-6 max-w-4xl mx-auto text-center">
-        <div className="flex justify-center mb-6">
+      <div className="pt-6 pb-2 px-4 sm:px-6 max-w-5xl mx-auto text-center">
+        <div className="flex justify-center mb-5">
           <Image
             src="/assets/contactAbove.png"
             alt="contact"
@@ -57,7 +57,7 @@ const ContactToday: React.FC<ContactTodayProps> = ({ data }) => {
         </div>
 
         <p
-          className="text-base text-gray-700 leading-relaxed"
+          className="text-md md:text-xl text-gray-700 leading-relaxed"
           dangerouslySetInnerHTML={{
             __html: highlightCTA(data.text),
           }}

@@ -48,7 +48,7 @@ export default function CustomersSays({ testimonials }: CustomersSaysProps) {
   return (
     <section className="pt-6 sm:pt-10 px-4 sm:px-6 bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto max-w-7xl">
-        <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 sm:mb-10">
+        <h2 className="text-xl md:text-3xl font-bold text-center mb-3">
           What Our Customers Say
         </h2>
 

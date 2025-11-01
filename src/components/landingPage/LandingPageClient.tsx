@@ -26,14 +26,33 @@ import DeliveryConfirmFinal from "@/components/ChooseAndCompare/DeliveryConfirm"
 import ContactToday from "@/components/ChooseAndCompare/ContactToday";
 import FaqPage from "@/components/FAQ/FAQ";
 import FormPopUp from "@/components/PopUP/FormPop";
+import Image from "next/image";
+
+
 const Page = () => {
   return (
     <div>
       <HeaderNavbar />
       <HeroSection />
-      <BestHouseShifting data={bestHouse.landing} />
       <ServiceCities />
-      <WhyChoose data={whyChoose.landing} />
+      <section className="bg-blue-50/50 pt-8 pb-6 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="relative">
+            <Image
+              src={"/assets/whychoose.png"}
+              alt="House Shifting Service"
+              width={400}
+              height={400}
+              className="rounded-lg float-right ml-6 mb-4 object-cover"
+            />
+
+            <BestHouseShifting data={bestHouse.landing} />
+            <WhyChoose data={whyChoose.landing} />
+
+            <div className="clear-both"></div>
+          </div>
+        </div>
+      </section>
       <OtherComparision />
 
       <MostTrusted />

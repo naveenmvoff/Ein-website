@@ -36,7 +36,7 @@ export default function FaqPage() {
   return (
     <section
       id="faq"
-      className="bg-gradient-to-br from-gray-50 to-blue-50 py-8 sm:py-12 md:py-16 px-4 sm:px-6"
+      className="bg-gradient-to-br from-gray-50 to-blue-50 py-5 md:py-8 px-4 sm:px-6"
     >
       <div className="container mx-auto max-w-4xl">
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-2 sm:mb-3">
