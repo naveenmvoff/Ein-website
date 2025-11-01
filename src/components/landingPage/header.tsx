@@ -29,6 +29,26 @@ export default function HeaderNavbar() {
   const toggleMenu = () => setIsMenuOpen((v) => !v);
   const closeMenu = () => setIsMenuOpen(false);
 
+  // Handle smooth scroll to anchor with menu close
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    closeMenu();
+    // Wait for menu animation to complete before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(targetId);
+      if (element) {
+        const headerOffset = headerRef.current?.offsetHeight || 0;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 300); // Wait for menu close animation (matches transition duration)
+  };
+
   // Phone number used in the sticky bar. Reusing existing project contact.
   const PHONE_DISPLAY = "+91 9043384332";
   const PHONE_HREF = "+919043384332"; // tel: link value (digits only)
@@ -232,21 +252,21 @@ export default function HeaderNavbar() {
 
               <a
                 href="#about"
-                onClick={closeMenu}
+                onClick={(e) => handleAnchorClick(e, "about")}
                 className="hover:text-blue-700 transition-colors py-2 px-4 w-full text-center"
               >
                 About
               </a>
               <a
                 href="#contact"
-                onClick={closeMenu}
+                onClick={(e) => handleAnchorClick(e, "contact")}
                 className="hover:text-blue-700 transition-colors py-2 px-4 w-full text-center"
               >
                 Contact
               </a>
               <a
                 href="#faq"
-                onClick={closeMenu}
+                onClick={(e) => handleAnchorClick(e, "faq")}
                 className="hover:text-blue-700 transition-colors py-2 px-4 w-full text-center"
               >
                 FAQ

@@ -3,8 +3,23 @@
 import { motion } from "framer-motion"
 import { HeroForm } from "./heroForm"
 import { PhoneNumberAnimation } from "./phone-number-animation"
+import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
 
 export default function HeroSection() {
+  const pathname = usePathname()
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    // Reset animation state on route change
+    setIsVisible(false)
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      setIsVisible(true)
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [pathname])
+
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 overflow-hidden flex items-center px-4 sm:px-8 py-16 sm:py-24">
       {/* Animated gradient glow */}
@@ -18,10 +33,10 @@ export default function HeroSection() {
       <div className="container relative z-10 mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-10 lg:gap-16 items-center">
         {/* Left Column — Headline + CTA */}
         <motion.div
+          key={pathname}
           initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
           className="text-center md:text-left"
         >
           <div className="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full mb-4 shadow-sm">
@@ -80,10 +95,10 @@ export default function HeroSection() {
 
         {/* Right Column — Form */}
         <motion.div
+          key={`${pathname}-form`}
           initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="relative flex justify-center items-center mt-7"
         >
           {/* Floating glow background for form */}
