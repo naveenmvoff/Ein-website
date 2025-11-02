@@ -53,7 +53,7 @@ function FormPopUp() {
           >
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+              className="absolute top-4 z-40 right-4 text-gray-400 hover:text-gray-600 transition-colors"
             >
               <X size={24} />
             </button>

@@ -172,7 +172,16 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
       />
 
       <CustomersSays testimonials={testimonials} />
-      <StorageDamageProduction data={StoreageDamageProduction.landing} />
+      <StorageDamageProduction
+        data={
+          (
+            StoreageDamageProduction as unknown as Record<
+              string,
+              typeof StoreageDamageProduction.landing
+            >
+          )[location] || StoreageDamageProduction.landing
+        }
+      />
 
       <DeliveryConfirmFinal data={DeliveryConfirm} />
       <ContactToday
