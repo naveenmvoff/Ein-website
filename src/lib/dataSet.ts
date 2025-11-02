@@ -282,7 +282,6 @@ export const StoreageDamageProduction = {
     heading: "Free Storage and Damage Protection Guarantee",
     text: "With door-to-door local moving services, free doorstep inspection, and transparent pricing with no hidden charges, Eintransport has become one of the most reliable local packers and movers in South India. Whether you’re moving within the same city or nearby areas, we guarantee on-time delivery, damage-free shifting, and friendly customer support from start to finish.",
   },
-
 };
 
 export const DeliveryConfirm = {
@@ -295,22 +294,21 @@ export const ContactTodayData = {
     text: "Contact us today for a free home shifting quote in Coimbatore and experience the most trusted local and intercity packers and movers service in the city.",
   },
   bangalore: {
-    text: "Contact us today to get your free house shifting quote and experience the most trusted relocation service in Bangalore."
+    text: "Contact us today to get your free house shifting quote and experience the most trusted relocation service in Bangalore.",
   },
   chennai: {
-    text: "Contact us now for a free home shifting quote in Chennai, and experience a safe, affordable, and professional relocation service that delivers on time, every time."
+    text: "Contact us now for a free home shifting quote in Chennai, and experience a safe, affordable, and professional relocation service that delivers on time, every time.",
   },
   coimbatore: {
-    text: "Contact us today for a free home shifting quote in Coimbatore and experience the most trusted local and intercity packers and movers service in the city."
+    text: "Contact us today for a free home shifting quote in Coimbatore and experience the most trusted local and intercity packers and movers service in the city.",
   },
   kochi: {
-    text: "Call us today to get your free home shifting quote in Kochi from Eintransport Packers and Movers Kochi, and move with confidence, comfort, and care."
+    text: "Call us today to get your free home shifting quote in Kochi from Eintransport Packers and Movers Kochi, and move with confidence, comfort, and care.",
   },
-  Thiruvananthapuram: {
-    text: "Contact us today for your free home shifting quote in Thiruvananthapuram, and move confidently with Eintransport, your trusted relocation partner."
+  thiruvananthapuram: {
+    text: "Contact us today for your free home shifting quote in Thiruvananthapuram, and move confidently with Eintransport, your trusted relocation partner.",
   },
 };
-
 
 export const metaDataByLocation = {
   main: {
@@ -355,5 +353,132 @@ export const metaDataByLocation = {
       "Eintransport Packers and Movers in Trivandrum provide safe home shifting. Professional packing, timely transport, and trusted relocation services.",
     keywords:
       "packers and movers trivandrum, movers and packers trivandrum, household shifting services, house shifting services, best packers and movers in trivandrum",
+  },
+};
+
+export const shiftingService = {
+  landing: {
+    heading: "Local and Intercity House Shifting Services",
+    text: `No matter where you live, Eintransport Packers and Movers provides reliable local and intercity shifting services across South India.
+
+Local Shifting: Fast and budget-friendly home relocation within your city.
+Intercity Shifting: Safe, secure, and punctual delivery to any destination.
+Villa & Bungalow Moves: Tailored solutions for all home sizes.
+Bike Transport: Move your two-wheeler safely along with your household goods.
+
+
+Our network covers major cities — Bangalore, Chennai, Coimbatore, Kochi, and Thiruvananthapuram ensuring professional relocation anywhere, anytime.
+`,
+  },
+  bangalore: {
+    heading: "Local House Shifting Services in Bangalore",
+    text: `
+When it comes to local shifting within Bangalore, Eintransport ensures fast, reliable, and budget-friendly relocation.
+Whether you’re moving from Whitefield to HSR Layout, Electronic City to Yelahanka, or anywhere within the city, we guarantee on-time pickup and delivery with complete care for your valuables.
+
+We also provide optional bike transport services for those who wish to move their two-wheelers along with household goods — ensuring both your home and bike reach your new location safely and on time.
+`,
+  },
+  chennai: {
+    heading: "Local House Shifting Services in Chennai",
+    text: `Moving homes within Chennai?
+Eintransport Packers and Movers offers fast, efficient, and reliable local shifting across all major areas including T. Nagar, Velachery, Tambaram, Anna Nagar, OMR, Porur, and Adyar.
+
+Our expert movers handle everything from packing your household items to unloading and arranging them at your new home. For customers relocating within the city, we also provide optional bike transport services, ensuring your two-wheeler reaches safely along with your household goods.
+
+Choose Eintransport for hassle-free local house shifting in Chennai that’s safe, affordable, and quick.
+
+`,
+  },
+  coimbatore: {
+    heading: "Local House Shifting Services in Coimbatore",
+    text: `Moving within Coimbatore?
+    
+Our local house shifting team provides quick and secure relocation across all major areas including RS Puram, Peelamedu, Saibaba Colony, Gandhipuram, Singanallur, and Avinashi Road.
+
+We ensure your move happens safely, on time, and within budget. Our experts handle everything — packing, loading, transportation, unloading, and unpacking with professionalism and care.
+
+For customers relocating locally, we also offer optional two-wheeler (bike) shifting, so your bike reaches your new home safely along with your household goods.
+`,
+  },
+  kochi: {
+    heading: "Local House Shifting Services in Kochi",
+    text: `Relocating within Kochi?
+Eintransport Packers and Movers offers fast and affordable local shifting services across major areas like Edappally, Kakkanad, Vyttila, Aluva, Panampilly Nagar, and Kaloor.
+
+Our experts handle your move with utmost care — from packing, loading, and transporting to unloading and unpacking at your new home. For customers relocating locally, we also provide optional bike transport services, ensuring your two-wheeler is moved safely along with your household goods.
+
+Choose Eintransport for stress-free local home shifting in Kochi that’s reliable, professional, and within budget.
+
+
+
+`,
+  },
+  thiruvananthapuram: {
+    heading: "Local House Shifting Services in Thiruvananthapuram",
+    text: `Planning to move within Thiruvananthapuram?
+Eintransport Packers and Movers offers quick and efficient local house shifting services across major areas such as Kazhakoottam, Pattom, Vellayambalam, Kowdiar, Poojappura, and Ulloor.
+
+From packing and loading to transportation and unloading, our skilled movers handle every step with precision and care. For customers shifting locally, we also offer optional bike transport services, so your two-wheeler is safely relocated along with your household goods.
+
+With Eintransport Packers and Movers Trivandrum, enjoy affordable, secure, and timely local shifting services that make your move truly effortless.
+
+`,
+  },
+};
+
+export const MoveSmart = {
+  landing: {
+    heading: "Local and Intercity House Shifting Services",
+    text: `No matter where you live, Eintransport Packers and Movers provides reliable local and intercity shifting services across South India.
+
+Local Shifting: Fast and budget-friendly home relocation within your city.
+Intercity Shifting: Safe, secure, and punctual delivery to any destination.
+Villa & Bungalow Moves: Tailored solutions for all home sizes.
+Bike Transport: Move your two-wheeler safely along with your household goods.
+
+
+Our network covers major cities — Bangalore, Chennai, Coimbatore, Kochi, and Thiruvananthapuram ensuring professional relocation anywhere, anytime.
+`,
+  },
+  bangalore: {
+    heading:
+      "Move Smart, Move Safe with Eintransport - Free Storage and Damage Protection Guarantee",
+    text: `
+At Eintransport Packers and Movers Bangalore, we don’t just move your goods — we move your home with care. Whether it’s a local home relocation within Bangalore or an intercity shifting across South India, we ensure a stress-free, damage-free, and on-time delivery experience every time.
+
+`,
+  },
+  chennai: {
+    heading:
+      "Move Smart, Move Safe with Eintransport - Free Storage and Damage Protection Guarantee",
+    text: `
+Make your next move easy and worry-free with Eintransport Packers and Movers Chennai the name you can trust for local and intercity house shifting services.
+
+From start to finish, we handle everything — packing, loading, transporting, unloading, and unpacking your home items. so you can sit back and relax while we take care of the rest
+
+`,
+  },
+  coimbatore: {
+    heading:
+      "Move Smart, Move Safe with Eintransport - Free Storage and Damage Protection Guarantee",
+    text: `
+At Eintransport Packers and Movers Coimbatore, we understand that every move is more than just transporting goods — it’s moving your home and memories. Our goal is to make your relocation simple, safe, and cost-effective with personalized moving solutions
+`,
+  },
+  kochi: {
+    heading:
+      "Move Smart, Move Safe with Eintransport - Free Storage and Damage Protection Guarantee",
+    text: `
+At Eintransport Packers and Movers Kochi, we make every relocation easy, affordable, and secure. From local home shifting within Kochi to intercity relocation across South India, we ensure professional service, timely delivery, and total customer satisfaction.
+`,
+  },
+  thiruvananthapuram: {
+    heading:
+      "Move Smart, Move Safe with Eintransport - Free Storage and Damage Protection Guarantee",
+    text: `
+At Eintransport Packers and Movers Thiruvananthapuram, we take pride in offering reliable, affordable, and customer-focused home relocation services. Whether it’s a local house shifting within the city or an intercity move across South India, our expert team ensures a seamless and damage-free experience from start to finish.
+
+`,
   },
 };

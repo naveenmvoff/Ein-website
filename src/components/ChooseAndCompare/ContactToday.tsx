@@ -28,7 +28,7 @@ const ContactToday: React.FC<ContactTodayProps> = ({ data }) => {
       highlightedText = highlightedText.replace(
         regex,
         // `<span class="text-[#0086ff] font-semibold">$1</span>`
-        `<a href="tel:${phoneNumber}" class="text-gray-600 font-semibold hover:underline">$1</a>`
+        `<a href="tel:${phoneNumber}" class="text-blue-600 font-semibold underline">$1</a>`
       );
     });
 
@@ -36,7 +36,7 @@ const ContactToday: React.FC<ContactTodayProps> = ({ data }) => {
       const regex = new RegExp(`(${phrase})`, "gi");
       highlightedText = highlightedText.replace(
         regex,
-        `<a href="tel:${phoneNumber}" class="text-gray-600 font-semibold hover:underline">$1</a>`
+        `<a href="tel:${phoneNumber}" class="text-blue-600 font-semibold underline">$1</a>`
       );
     });
 

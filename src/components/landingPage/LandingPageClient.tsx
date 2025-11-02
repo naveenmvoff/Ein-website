@@ -16,6 +16,7 @@ import {
   DeliveryConfirm,
   StoreageDamageProduction,
   ContactTodayData,
+  shiftingService,
 } from "@/lib/dataSet";
 import React from "react";
 import MostTrusted from "@/components/ChooseAndCompare/MostTrusted";
@@ -27,7 +28,7 @@ import ContactToday from "@/components/ChooseAndCompare/ContactToday";
 import FaqPage from "@/components/FAQ/FAQ";
 import FormPopUp from "@/components/PopUP/FormPop";
 import Image from "next/image";
-
+import LocalShifting from "../ChooseAndCompare/LocalShifting";
 
 const Page = () => {
   return (
@@ -66,6 +67,10 @@ const Page = () => {
         caption="Moving from one city to another? Here's our KM-wise transportation-only price chart."
         note="Note: The prices listed are approximate. Final charges may vary depending on distance, item value, and any additional services you require."
       />
+
+      {/* venkii */}
+
+      <LocalShifting data={shiftingService.landing} />
       <DynamicTable
         data={packingCost}
         caption="Packing Cost"

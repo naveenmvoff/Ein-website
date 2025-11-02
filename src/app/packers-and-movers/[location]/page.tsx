@@ -19,6 +19,7 @@ import {
   StoreageDamageProduction,
   ContactTodayData,
   metaDataByLocation,
+  shiftingService,
 } from "@/lib/dataSet";
 // import MostTrusted from "@/components/ChooseAndCompare/MostTrusted";
 import DynamicTable from "@/components/Table/Table";
@@ -33,6 +34,7 @@ import Image from "next/image";
 
 import { Metadata } from "next";
 import WhyChooseBasedCity from "@/components/ChooseAndCompare/whyChooseBasedCity";
+import LocalShifting from "@/components/ChooseAndCompare/LocalShifting";
 
 export async function generateMetadata({
   params,
@@ -114,6 +116,13 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
     (whyChoose as unknown as Record<string, typeof whyChoose.landing>)[
       location
     ] || whyChoose.landing;
+  const shiftService =
+    (
+      shiftingService as unknown as Record<
+        string,
+        typeof shiftingService.landing
+      >
+    )[location] || shiftingService.landing;
 
   return (
     <div>
@@ -154,6 +163,8 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
       <OtherComparision />
       <WhyChooseBasedCity location={location} />
 
+      {/* new add venki */}
+      <LocalShifting data={shiftService} />
       <DynamicTable
         data={localShitingCost}
         caption="Local Shifting Cost (Within 100 KM)"
@@ -162,6 +173,7 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
 
       <CustomersSays testimonials={testimonials} />
       <StorageDamageProduction data={StoreageDamageProduction.landing} />
+
       <DeliveryConfirmFinal data={DeliveryConfirm} />
       <ContactToday
         data={

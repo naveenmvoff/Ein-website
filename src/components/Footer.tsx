@@ -25,14 +25,19 @@ function Footer() {
   const [isVisible] = useState(true);
 
   return (
-    <footer id="contact" className="bg-gray-900 text-white py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
+    <footer
+      id="contact"
+      className="bg-gray-900 text-white py-6 sm:py-8 px-4 sm:px-6 lg:px-8"
+    >
       <div className="container mx-auto max-w-7xl">
         {/* 2 columns on mobile, 2 on sm, 4 on lg */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-12">
           {/* Service Areas */}
           <div
             className={`transition-all duration-1000 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
             }`}
           >
             <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
@@ -76,7 +81,9 @@ function Footer() {
           {/* Service Types */}
           <div
             className={`transition-all duration-1000 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
             }`}
           >
             <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
@@ -91,13 +98,13 @@ function Footer() {
                 "Local Shifting",
                 "Intercity Moving",
               ].map((service, index) => (
-                <Link
-                  href="/"
+                <p
+                  // href="/"
                   key={index}
-                  className="block hover:text-white hover:translate-x-1 transition-all duration-300"
+                  className="block hover:text-white  transition-all duration-300"
                 >
                   {service}
-                </Link>
+                </p>
               ))}
             </div>
           </div>
@@ -105,7 +112,9 @@ function Footer() {
           {/* Contact Info + Address */}
           <div
             className={`transition-all duration-1000 col-span-1 sm:col-span-1 lg:col-span-1 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
             }`}
           >
             <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
@@ -134,7 +143,7 @@ function Footer() {
               </div>
 
               {/* Email */}
-              <div className="flex gap-2 sm:gap-3 items-start group">
+              <div className="flex  items-center gap-2 sm:gap-3  group">
                 <span className="bg-[#1E2939] rounded-lg sm:rounded-xl p-1.5 sm:p-2 text-white group-hover:bg-[#0086FF] transition-colors duration-300 flex-shrink-0">
                   <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </span>
@@ -145,11 +154,32 @@ function Footer() {
                   eintransport.booking@gmail.com
                 </Link>
               </div>
-
             </div>
 
             {/* Address */}
-            <div className="mt-5 sm:mt-6">
+          </div>
+
+          {/* Company Details */}
+          <div className="col-span-1 sm:col-span-1 lg:col-span-1">
+            <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
+              Company Details
+            </h4>
+            <div className="space-y-2 sm:space-y-2.5 w-full">
+              {companyDetails.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex flex-row gap-1 text-base sm:gap-2 items-start sm:items-center px-2 sm:px-3 py-2"
+                >
+                  <span className="font-mono text-[10px] sm:text-[8px] lg:text-[12px] text-gray-300">
+                    {item.name}:
+                  </span>
+                  <span className="font-mono text-gray-400 text-[8px] sm:text-[10px] lg:text-[12px] break-all">
+                    {item.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-5 sm:mt-6 absolute  left-0 p-3 lg:relative ">
               <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
                 Address
               </h4>
@@ -169,28 +199,10 @@ function Footer() {
               </div>
             </div>
           </div>
-
-          {/* Company Details */}
-          <div className="col-span-1 sm:col-span-1 lg:col-span-1">
-            <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
-              Company Details
-            </h4>
-            <div className="space-y-2 sm:space-y-2.5">
-              {companyDetails.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col sm:flex-row gap-1 sm:gap-2 items-start sm:items-center px-2 sm:px-3 py-2"
-                >
-                  <span className="font-mono text-[8px] sm:text-[8px] lg:text-[10px] text-gray-300">{item.name}:</span>
-                  <span className="font-mono text-gray-400 text-[8px] sm:text-[8px] lg:text-[10px] break-all">{item.value}</span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-4 sm:pt-5 text-center">
+        <div className="border-t border-gray-800 mt-[50%] sm:mt-8 pt-4 sm:pt-5 text-center">
           <p className="text-xs sm:text-sm text-gray-400 mb-2 sm:mb-3">
             © 2025 Eintransport. All rights reserved.
           </p>
@@ -204,10 +216,26 @@ function Footer() {
 
           <div className="flex justify-center gap-2 sm:gap-3 flex-wrap">
             {[
-              { href: "https://www.facebook.com/share/1CMLVRUx1y/", icon: Facebook, label: "Facebook" },
-              { href: "https://youtube.com/@eintransport", icon: Youtube, label: "YouTube" },
-              { href: "https://www.instagram.com/eintransport_pvt_ltd", icon: Instagram, label: "Instagram" },
-              { href: "https://www.linkedin.com/company/eintransport/", icon: Linkedin, label: "LinkedIn" },
+              {
+                href: "https://www.facebook.com/share/1CMLVRUx1y/",
+                icon: Facebook,
+                label: "Facebook",
+              },
+              {
+                href: "https://youtube.com/@eintransport",
+                icon: Youtube,
+                label: "YouTube",
+              },
+              {
+                href: "https://www.instagram.com/eintransport_pvt_ltd",
+                icon: Instagram,
+                label: "Instagram",
+              },
+              {
+                href: "https://www.linkedin.com/company/eintransport/",
+                icon: Linkedin,
+                label: "LinkedIn",
+              },
             ].map((link, index) => {
               const IconComponent = link.icon;
               return (
