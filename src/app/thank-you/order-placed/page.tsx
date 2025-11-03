@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { CheckCircle, X } from "lucide-react"; // Add X icon import
 import Link from "next/link";
 import HeaderNavbar from "@/components/landingPage/header";
@@ -6,6 +8,22 @@ import Footer from "@/components/Footer";
 import HeroSection from "@/components/landingPage/heroSection";
 
 export default function OrderPlacedPage() {
+  const [returnUrl, setReturnUrl] = useState("/");
+
+  useEffect(() => {
+    // Get return URL from sessionStorage
+    try {
+      const stored = sessionStorage.getItem("returnUrl");
+      if (stored) {
+        setReturnUrl(stored);
+        // Clear it after reading
+        sessionStorage.removeItem("returnUrl");
+      }
+    } catch {
+      // ignore if sessionStorage not available
+    }
+  }, []);
+
   return (
     <div className="relative min-h-screen">
       {/* Background Content */}
@@ -20,7 +38,7 @@ export default function OrderPlacedPage() {
         <div className="relative max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center animate-fadeIn">
           {/* Close Icon */}
           <Link 
-            href="/"
+            href={returnUrl}
             className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
           >
             <X className="h-6 w-6" />
@@ -39,7 +57,7 @@ export default function OrderPlacedPage() {
           </p>
 
           <Link 
-            href="/"
+            href={returnUrl}
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition-all duration-200"
           >
             close 

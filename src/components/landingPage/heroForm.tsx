@@ -115,6 +115,8 @@ export function HeroForm() {
       try {
         // cookie valid for 30 seconds
         document.cookie = `order_placed=1; path=/; max-age=${30}`;
+        // Store return URL in sessionStorage to keep URL clean
+        sessionStorage.setItem("returnUrl", pathname);
       } catch {
         // ignore if cookies not available
       }
@@ -333,7 +335,7 @@ function InputField({
         htmlFor={name}
         className="text-xs font-semibold text-gray-600 tracking-wide"
       >
-        {label}
+        {label} <span className="text-red-500">*</span>
       </label>
       <div className="relative">
         <div
