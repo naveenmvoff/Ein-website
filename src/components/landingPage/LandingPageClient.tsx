@@ -34,7 +34,9 @@ const Page = () => {
   return (
     <div>
       <HeaderNavbar />
-      <HeroSection />
+       <section id="hero-section">
+        <HeroSection />
+      </section>
       <ServiceCities />
       <section className="bg-blue-50/50 pt-8 pb-6 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
@@ -57,6 +59,8 @@ const Page = () => {
       <OtherComparision />
 
       <MostTrusted />
+      <LocalShifting data={shiftingService.landing} />
+      
       <DynamicTable
         data={localShitingCost}
         caption="Local Shifting Cost (Within 100 KM)"
@@ -68,9 +72,7 @@ const Page = () => {
         note="Note: The prices listed are approximate. Final charges may vary depending on distance, item value, and any additional services you require."
       />
 
-      {/* venkii */}
 
-      <LocalShifting data={shiftingService.landing} />
       <DynamicTable
         data={packingCost}
         caption="Packing Cost"

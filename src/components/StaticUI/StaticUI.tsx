@@ -68,7 +68,7 @@ export default function StaticUI() {
              `}
           >
             <Link
-              href="tel:+918765432109"
+              href="tel:+919043384332"
               className="opacity-100  scale-90 bg-blue-400 hover:bg-blue-600 text-white p-3 rounded-full shadow-lg flex items-center justify-center transition"
             >
               <Phone className="w-8 h-8" />{" "}

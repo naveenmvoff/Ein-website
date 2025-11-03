@@ -127,7 +127,9 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
   return (
     <div>
       <HeaderNavbar />
-      <HeroSection />
+      <section id="hero-section">
+        <HeroSection />
+      </section>
 
       <section className="bg-blue-50/50 pt-8 pb-6 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
@@ -163,7 +165,6 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
       <OtherComparision />
       <WhyChooseBasedCity location={location} />
 
-      {/* new add venki */}
       <LocalShifting data={shiftService} />
       <DynamicTable
         data={localShitingCost}

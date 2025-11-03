@@ -168,7 +168,7 @@ export const anotherCity = [
     "300 - 500 KM": "₹9,100 – ₹14,500",
     "500 - 800 KM": "₹12,800 – ₹17,200",
     "800 - 1100 KM": "₹15,000 – ₹27,000",
-    "1000 KM": "Contact Us",
+    "1100 KM": "Contact Us",
   },
   {
     "Distance in KM": "1 BHK",
@@ -176,7 +176,7 @@ export const anotherCity = [
     "300 - 500 KM": "₹14,000 – ₹19,400",
     "500 - 800 KM": "₹16,200 – ₹29,300",
     "800 - 1100 KM": "₹19,700 – ₹31,000",
-    "1000 KM": "Contact Us",
+    "1100 KM": "Contact Us",
   },
   {
     "Distance in KM": "2 BHK",
@@ -184,7 +184,7 @@ export const anotherCity = [
     "300 - 500 KM": "₹17,600 – ₹28,900",
     "500 - 800 KM": "₹19,400 – ₹30,600",
     "800 - 1100 KM": "₹23,700 – ₹38,500",
-    "1000 KM": "Contact Us",
+    "1100 KM": "Contact Us",
   },
   {
     "Distance in KM": "3 BHK",
@@ -192,7 +192,7 @@ export const anotherCity = [
     "300 - 500 KM": "₹20,800 – ₹30,200",
     "500 - 800 KM": "₹23,700 – ₹38,100",
     "800 - 1100 KM": "₹27,000 – ₹44,000",
-    "1000 KM": "Contact Us",
+    "1100 KM": "Contact Us",
   },
   {
     "Distance in KM": "Bungalow / Villas",
@@ -200,7 +200,7 @@ export const anotherCity = [
     "300 - 500 KM": "₹24,900 – ₹38,100",
     "500 - 800 KM": "₹28,000 – ₹43,900",
     "800 - 1100 KM": "₹36,900 – ₹53,400",
-    "1000 KM": "Contact Us",
+    "1100 KM": "Contact Us",
   },
   {
     "Distance in KM": "Bike",
@@ -208,7 +208,7 @@ export const anotherCity = [
     "300 - 500 KM": "₹4,500 – ₹7,350",
     "500 - 800 KM": "₹5,900 – ₹8,650",
     "800 - 1100 KM": "₹6,600 – ₹9,500",
-    "1000 KM": "Contact Us",
+    "1100 KM": "Contact Us",
   },
 ];
 
