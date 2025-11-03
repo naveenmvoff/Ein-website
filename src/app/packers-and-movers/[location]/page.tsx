@@ -134,15 +134,28 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
       <section className="bg-blue-50/50 pt-8 pb-6 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="relative">
-            <Image
-              src={whyChooseData.image || "/assets/whychoose.png"}
-              alt="House Shifting Service"
-              width={400}
-              height={400}
-              className="rounded-lg float-right ml-6 mb-4 object-cover"
-            />
+            <div className="hidden md:block">
+              <Image
+                src={whyChooseData.image || "/assets/whychoose.png"}
+                alt="House Shifting Service"
+                width={400}
+                height={400}
+                className="rounded-lg float-right ml-6 mb-4 object-cover"
+              />
+            </div>
 
             <BestHouseShifting data={bestHouseData} />
+            
+            <div className="md:hidden flex justify-center my-4">
+              <Image
+                src={whyChooseData.image || "/assets/whychoose.png"}
+                alt="House Shifting Service"
+                width={400}
+                height={400}
+                className="rounded-lg object-cover"
+              />
+            </div>
+            
             <WhyChoose data={whyChooseData} />
 
             <div className="clear-both"></div>

@@ -41,15 +41,28 @@ const Page = () => {
       <section className="bg-blue-50/50 pt-8 pb-6 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="relative">
-            <Image
-              src={"/assets/whychoose.png"}
-              alt="House Shifting Service"
-              width={400}
-              height={400}
-              className="rounded-lg float-right ml-6 mb-4 object-cover"
-            />
+            <div className="hidden md:block">
+              <Image
+                src={"/assets/whychoose.png"}
+                alt="House Shifting Service"
+                width={400}
+                height={400}
+                className="rounded-lg float-right ml-6 mb-4 object-cover"
+              />
+            </div>
 
             <BestHouseShifting data={bestHouse.landing} />
+            
+            <div className="md:hidden flex justify-center my-4">
+              <Image
+                src={"/assets/whychoose.png"}
+                alt="House Shifting Service"
+                width={400}
+                height={400}
+                className="rounded-lg object-cover"
+              />
+            </div>
+            
             <WhyChoose data={whyChoose.landing} />
 
             <div className="clear-both"></div>
