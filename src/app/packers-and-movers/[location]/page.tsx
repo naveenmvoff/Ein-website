@@ -98,8 +98,6 @@ export async function generateMetadata({
 async function page({ params }: { params: Promise<{ location: string }> }) {
   const { location } = await params;
 
-  console.log("=-----", location); // Logs the dynamic location
-
   // Validate if the location exists in both bestHouse and whyChoose
   const validLocations = Object.keys(bestHouse);
   if (!validLocations.includes(location)) {
