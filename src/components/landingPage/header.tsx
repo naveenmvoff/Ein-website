@@ -28,25 +28,29 @@ export default function HeaderNavbar() {
   const closeMenu = () => setIsMenuOpen(false);
 
   // Handle smooth scroll to anchor with menu close
-  const handleAnchorClick = (e: MouseEvent<HTMLAnchorElement>, targetId: string) => {
+  const handleAnchorClick = (
+    e: MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
     e.preventDefault();
     closeMenu();
-    
+
     // Update URL hash immediately - preserve current pathname
     const currentPath = window.location.pathname;
-    window.history.pushState(null, '', `${currentPath}#${targetId}`);
-    
+    window.history.pushState(null, "", `${currentPath}#${targetId}`);
+
     // Wait for menu animation to complete before scrolling
     setTimeout(() => {
       const element = document.getElementById(targetId);
       if (element) {
         const headerOffset = headerRef.current?.offsetHeight || 0;
         const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20;
-        
+        const offsetPosition =
+          elementPosition + window.pageYOffset - headerOffset - 20;
+
         window.scrollTo({
           top: offsetPosition,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       }
     }, 300); // Wait for menu close animation (matches transition duration)
@@ -91,7 +95,9 @@ export default function HeaderNavbar() {
         if (rafId) cancelAnimationFrame(rafId);
         rafId = requestAnimationFrame(() => {
           const scrolled = window.scrollY || window.pageYOffset;
-          setIsPhoneSticky(scrolled > (headerRef.current?.offsetHeight ?? 0) + 20);
+          setIsPhoneSticky(
+            scrolled > (headerRef.current?.offsetHeight ?? 0) + 20
+          );
         });
       };
 
@@ -114,13 +120,36 @@ export default function HeaderNavbar() {
   }, []);
 
   return (
-  <header ref={headerRef} className="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-lg shadow-md">
+    <header
+      ref={headerRef}
+      className="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-lg shadow-md"
+    >
       <div className="max-w-7xl mx-auto flex justify-between items-center py-2 sm:py-3 px-3 sm:px-6 lg:px-10">
-        {/* Logo */}
-        <Link
-          href={logoHref}
-          scroll={false}
-          className="flex items-center gap-1 sm:gap-2 group flex-shrink-0"
+        <button
+          onClick={() => {
+            const hero = document.getElementById("hero-section");
+            if (hero) {
+              hero.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest",
+              });
+
+              hero.classList.add("ring-2", "ring-blue-400", "transition");
+              setTimeout(() => {
+                hero.classList.remove("ring-2", "ring-blue-400", "transition");
+              }, 1500);
+            } else {
+              window.location.href = "/";
+              setTimeout(() => {
+                const heroLater = document.getElementById("hero-section");
+                if (heroLater) {
+                  heroLater.scrollIntoView({ behavior: "smooth" });
+                }
+              }, 800);
+            }
+          }}
+          className="flex items-center gap-1 sm:gap-2 group flex-shrink-0 cursor-pointer"
         >
           <Image
             src="/images/logo1.png"
@@ -129,10 +158,10 @@ export default function HeaderNavbar() {
             height={40}
             className="w-8 h-8 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-105"
           />
-          <span className="hidden sm:block text-lg sm:text-xl md:text-2xl font-semibold text-[#0086ff] tracking-wide">
+          <span className="sm:text-sm md:text-xl lg:text-2xl font-semibold text-[#0086ff] tracking-wide">
             Eintransport Packers
           </span>
-        </Link>
+        </button>
 
         {/* Desktop Navigation */}
         <nav className="hidden sm:flex items-center space-x-4 md:space-x-8 text-gray-800 font-medium text-sm">
@@ -146,27 +175,27 @@ export default function HeaderNavbar() {
               Service Location <ChevronDown className="h-3.5 w-3.5" />
             </button>
 
-              <AnimatePresence>
-                {isServicesOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute left-1/2 -translate-x-1/2 mt-3 w-48 sm:w-56 bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden z-50"
-                  >
-                    {locations.map((loc) => (
-                      <Link
-                        key={loc.slug}
-                        href={`/packers-and-movers/${loc.slug}`}
-                        className="block px-4 sm:px-5 py-2 sm:py-3 text-sm sm:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200"
-                      >
-                        {loc.name}
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+            <AnimatePresence>
+              {isServicesOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute left-1/2 -translate-x-1/2 mt-3 w-48 sm:w-56 bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden z-50"
+                >
+                  {locations.map((loc) => (
+                    <Link
+                      key={loc.slug}
+                      href={`/packers-and-movers/${loc.slug}`}
+                      className="block px-4 sm:px-5 py-2 sm:py-3 text-sm sm:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200"
+                    >
+                      {loc.name}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           <a
@@ -229,7 +258,9 @@ export default function HeaderNavbar() {
                   <span>Service Location</span>
                   <ChevronDown
                     className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                      isServicesOpen ? "rotate-180 text-blue-700" : "text-gray-500"
+                      isServicesOpen
+                        ? "rotate-180 text-blue-700"
+                        : "text-gray-500"
                     }`}
                   />
                 </button>
@@ -249,7 +280,9 @@ export default function HeaderNavbar() {
                           href={`/packers-and-movers/${loc.slug}`}
                           onClick={closeMenu}
                           className={`block py-2.5 px-6 text-sm font-medium text-gray-700 hover:text-blue-700 hover:bg-blue-100 text-center transition-colors ${
-                            index !== locations.length - 1 ? "border-b border-blue-100/50" : ""
+                            index !== locations.length - 1
+                              ? "border-b border-blue-100/50"
+                              : ""
                           }`}
                         >
                           {loc.name}
@@ -308,7 +341,9 @@ export default function HeaderNavbar() {
                   aria-label={`Call us ${PHONE_DISPLAY}`}
                 >
                   {/* <Phone className="h-10 w-10 text-white/90" /> */}
-                  <span className="text-[#0086FF] text-lg">{PHONE_DISPLAY}</span>
+                  <span className="text-[#0086FF] text-lg">
+                    {PHONE_DISPLAY}
+                  </span>
                 </a>
               </div>
             </div>
