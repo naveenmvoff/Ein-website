@@ -27,12 +27,13 @@ function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-gray-900 text-white py-6 sm:py-8 px-4 sm:px-6 lg:px-8"
+      className="bg-gray-900 text-white py-6 sm:py-8 lg:py-10 px-4 sm:px-6 lg:px-8"
     >
       <div className="container mx-auto max-w-7xl">
-        {/* 2 columns on mobile, 2 on sm, 4 on lg */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-12">
-          {/* Service Areas */}
+        {/* 2 columns on mobile, 4 on desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
+          
+          {/* Column 1: Service Areas */}
           <div
             className={`transition-all duration-1000 ${
               isVisible
@@ -43,7 +44,7 @@ function Footer() {
             <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
               Service Areas
             </h4>
-            <ul className="space-y-1.5 text-xs sm:text-sm text-gray-400">
+            <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
               {[
                 {
                   name: "Eintransport Packers and Movers in Bangalore",
@@ -69,7 +70,7 @@ function Footer() {
                 <li key={index}>
                   <Link
                     href={service.href}
-                    className="block hover:text-white hover:translate-x-1 transition-all duration-300"
+                    className="block hover:text-white hover:translate-x-1 transition-all duration-300 leading-relaxed"
                   >
                     {service.name}
                   </Link>
@@ -78,7 +79,7 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Service Types */}
+          {/* Column 2: Service Types */}
           <div
             className={`transition-all duration-1000 ${
               isVisible
@@ -89,7 +90,7 @@ function Footer() {
             <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
               Service Types
             </h4>
-            <div className="space-y-1.5 text-xs sm:text-sm text-gray-400">
+            <div className="space-y-2 text-xs sm:text-sm text-gray-400">
               {[
                 "Domestic moving",
                 "Packers and Movers",
@@ -99,19 +100,30 @@ function Footer() {
                 "Intercity Moving",
               ].map((service, index) => (
                 <p
-                  // href="/"
                   key={index}
-                  className="block hover:text-white  transition-all duration-300"
+                  className="block hover:text-white transition-all duration-300 cursor-default"
                 >
                   {service}
                 </p>
               ))}
             </div>
+
+            {/* Secure Storage - below Service Types */}
+            <div className="mt-6 sm:mt-8">
+              <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
+                Secure Storage
+              </h4>
+              <div className="space-y-2 text-xs sm:text-sm text-gray-400">
+                <p className="block hover:text-white transition-all duration-300 cursor-default">
+                  Home storage
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* Contact Info + Address */}
+          {/* Column 3: Contact Info (Column 1 on mobile, Row 2) */}
           <div
-            className={`transition-all duration-1000 col-span-1 sm:col-span-1 lg:col-span-1 ${
+            className={`transition-all duration-1000 ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"
@@ -126,16 +138,16 @@ function Footer() {
                 <span className="bg-[#1E2939] rounded-lg sm:rounded-xl p-1.5 sm:p-2 text-white group-hover:bg-[#0086FF] transition-colors duration-300 flex-shrink-0">
                   <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </span>
-                <div className="space-y-0.5 flex-1">
+                <div className="space-y-1 flex-1 min-w-0">
                   <Link
                     href="tel:+919489847336"
-                    className="block hover:text-white transition-colors duration-300 break-words"
+                    className="block hover:text-white transition-colors duration-300"
                   >
                     +91 94898 47336
                   </Link>
                   <Link
                     href="tel:+919043384332"
-                    className="block hover:text-white transition-colors duration-300 break-words"
+                    className="block hover:text-white transition-colors duration-300"
                   >
                     +91 90433 84332
                   </Link>
@@ -143,78 +155,104 @@ function Footer() {
               </div>
 
               {/* Email */}
-              <div className="flex  items-center gap-2 sm:gap-3  group">
+              <div className="flex items-start gap-2 sm:gap-3 group">
                 <span className="bg-[#1E2939] rounded-lg sm:rounded-xl p-1.5 sm:p-2 text-white group-hover:bg-[#0086FF] transition-colors duration-300 flex-shrink-0">
                   <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </span>
                 <Link
                   href="mailto:eintransport.booking@gmail.com"
-                  className="hover:text-white transition-colors duration-300 break-all flex-1"
+                  className="hover:text-white transition-colors duration-300 break-words flex-1 min-w-0"
                 >
                   eintransport.booking@gmail.com
                 </Link>
               </div>
             </div>
-
-            {/* Address */}
           </div>
 
-          {/* Company Details */}
-          <div className="col-span-1 sm:col-span-1 lg:col-span-1">
-            <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
-              Company Details
-            </h4>
-            <div className="space-y-2 sm:space-y-2.5 w-full">
-              {companyDetails.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex flex-row gap-1 text-base sm:gap-2 items-start sm:items-center px-2 sm:px-3 py-2"
-                >
-                  <span className="font-mono text-[10px] sm:text-[8px] lg:text-[12px] text-gray-300">
-                    {item.name}:
-                  </span>
-                  <span className="font-mono text-gray-400 text-[8px] sm:text-[10px] lg:text-[12px] break-all">
-                    {item.value}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <div className="mt-5 sm:mt-6 absolute  left-0 p-3 lg:relative ">
+          {/* Column 4: Quick Links & Company Details (Column 2 on mobile, Row 2) */}
+          <div
+            className={`transition-all duration-1000 ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
+            }`}
+          >
+            {/* Quick Links */}
+            <div className="mb-6 sm:mb-8">
               <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
-                Address
+                Quick Links
               </h4>
-              <div className="flex gap-2 sm:gap-3 items-start group text-xs sm:text-sm">
-                <span className="bg-[#1E2939] rounded-lg sm:rounded-xl p-1.5 sm:p-2 text-white shrink-0 mt-0.5 group-hover:bg-[#0086FF] transition-colors duration-300">
-                  <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                </span>
-                <p className="text-gray-400 leading-snug sm:leading-tight flex-1">
-                  No. 1, 3rd Floor, Joseph K Building Huskur,
-                  <br />
-                  Electronics City, Bangalore South,
-                  <br />
-                  Bangalore – 560100
-                  <br />
-                  Karnataka, India
-                </p>
+              <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
+                {[
+                  // { name: "Blog", href: "/blog" },
+                  { name: "FAQ's", href: "#faq" },
+                  { name: "About us", href: "#about" },
+                  { name: "Contact us", href: "#contact" },
+                ].map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      href={link.href}
+                      className="block hover:text-white hover:translate-x-1 transition-all duration-300"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Company Details */}
+            <div>
+              <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
+                Company Details
+              </h4>
+              <div className="space-y-2 sm:space-y-3 w-full">
+                {/* Address */}
+                <div className="flex gap-2 items-start text-xs sm:text-sm mb-3 sm:mb-4">
+                  <span className="font-medium text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
+                    Address:
+                  </span>
+                  <p className="text-gray-400 leading-relaxed flex-1 min-w-0">
+                    NO. 25, GPR LAYOUT, SFS WARD 1, BLOCK 92, Sri Muneshwara Swamy Temple, Hebbagodi, Bengaluru urban, Karnataka, 560100
+                  </p>
+                </div>
+                
+                {/* GSTIN and PAN */}
+                {companyDetails.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex gap-2 items-start text-xs sm:text-sm"
+                  >
+                    <span className="font-medium text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
+                      {item.name}:
+                    </span>
+                    <span className="font-mono text-gray-400 text-[10px] sm:text-xs break-all flex-1">
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-800 mt-[50%] sm:mt-8 pt-4 sm:pt-5 text-center">
-          <p className="text-xs sm:text-sm text-gray-400 mb-2 sm:mb-3">
-            © 2025 Eintransport. All rights reserved.
-          </p>
+        <div className="border-t border-gray-800 mt-8 sm:mt-10 pt-5 sm:pt-6">
+          {/* Copyright & Privacy */}
+          <div className="text-center mb-4 sm:mb-5">
+            <p className="text-xs sm:text-sm text-gray-400 mb-2">
+              © 2025 Eintransport. All rights reserved.
+            </p>
+            <Link
+              href="/privacyPolicy"
+              className="text-xs sm:text-sm text-gray-400 hover:underline hover:text-white transition-colors inline-block"
+            >
+              Privacy Policy
+            </Link>
+          </div>
 
-          <Link
-            href="/privacyPolicy"
-            className="text-xs sm:text-sm text-gray-400 hover:underline hover:text-white transition-colors inline-block mb-3 sm:mb-4"
-          >
-            Privacy Policy
-          </Link>
-
-          <div className="flex justify-center gap-2 sm:gap-3 flex-wrap">
+          {/* Social Media Icons */}
+          <div className="flex justify-center gap-3 sm:gap-4 flex-wrap">
             {[
               {
                 href: "https://www.facebook.com/share/1CMLVRUx1y/",
@@ -247,7 +285,7 @@ function Footer() {
                   className="p-2.5 sm:p-3 rounded-full bg-white hover:bg-[#0086FF] transition-all duration-300 transform hover:scale-110 hover:shadow-lg active:scale-95"
                   aria-label={`Visit us on ${link.label}`}
                 >
-                  <IconComponent className="h-4 w-4 sm:h-4 sm:w-4 text-[#1E2939] hover:text-white transition-colors" />
+                  <IconComponent className="h-4 w-4 sm:h-5 sm:w-5 text-[#1E2939]" />
                 </Link>
               );
             })}

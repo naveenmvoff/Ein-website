@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect, type MouseEvent } from "react";
 import { Menu, X, ChevronDown, MapPin } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -21,8 +20,7 @@ export default function HeaderNavbar() {
   const [isPhoneSticky, setIsPhoneSticky] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef<HTMLElement | null>(null);
-  const pathname = usePathname();
-  const logoHref = pathname || "/";
+
 
   const toggleMenu = () => setIsMenuOpen((v) => !v);
   const closeMenu = () => setIsMenuOpen(false);
