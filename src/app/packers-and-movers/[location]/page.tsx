@@ -156,7 +156,7 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
       </section>
 
       <section className="bg-blue-50/50 pt-8 pb-6 ">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="relative">
             <div className="hidden md:block">
               <Image

@@ -10,7 +10,7 @@ interface DeliveryConfirmProps {
 const DeliveryConfirmFinal: React.FC<DeliveryConfirmProps> = ({ data }) => {
   return (
     <section className="bg-blue-50/50">
-      <div className="pt-1 pb-1 px-4 sm:px-6 max-w-7xl mx-auto text-left">
+      <div className="pt-1 pb-1 px-4 sm:px-6 max-w-[83rem] mx-auto text-left">
         <h3 className="text-md sm:text-2xl font-bold text-gray-900 mb-3 text-left">
           {data.heading}
         </h3>

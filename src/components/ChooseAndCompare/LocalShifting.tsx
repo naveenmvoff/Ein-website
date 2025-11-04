@@ -9,8 +9,8 @@ type LocationData = {
 function LocalShifting({ data }: { data: LocationData }) {
   return (
     <section className="bg-gradient-to-b from-blue-0 to-white">
-      <div className="pt-1 pb-1 px-4 sm:px-6 max-w-7xl mx-auto text-left">
-        <h3 className="text-md sm:text-2xl font-bold text-gray-900 mb-3 text-left">
+      <div className="pt-1 pb-1 px-4 sm:px-6 max-w-[83rem] mx-auto text-left">
+        <h3 className="text-md sm:text-xl font-bold text-gray-900 mb-3 text-left">
           {data.heading}
         </h3>
 
