@@ -137,7 +137,7 @@ function Footer() {
                 <span className="bg-[#1E2939] rounded-lg sm:rounded-xl p-1.5 sm:p-2 text-white group-hover:bg-[#0086FF] transition-colors duration-300 flex-shrink-0">
                   <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </span>
-                <div className="space-y-1 flex-1 min-w-0">
+                <div className="space-y-1 text-[11px] sm:text-base flex-1 min-w-0">
                   <Link
                     href="tel:+919489847336"
                     className="block hover:text-white transition-colors duration-300"
@@ -154,7 +154,7 @@ function Footer() {
               </div>
 
               {/* Email */}
-              <div className="flex items-start gap-2 sm:gap-3 group">
+              <div className="flex items-center gap-2 sm:gap-3 group">
                 <span className="bg-[#1E2939] rounded-lg sm:rounded-xl p-1.5 sm:p-2 text-white group-hover:bg-[#0086FF] transition-colors duration-300 flex-shrink-0">
                   <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </span>
@@ -207,11 +207,11 @@ function Footer() {
               </h4>
               <div className="space-y-2 sm:space-y-3 w-full">
                 {/* Address */}
-                <div className="flex gap-2 items-start text-xs sm:text-sm mb-3 sm:mb-4">
-                  <span className="font-medium text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
+                <div className="flex flex-col gap-2 items-start text-xs sm:text-sm mb-3 sm:mb-4">
+                  <span className="font-medium text-[10px] sm:text-base text-gray-300 whitespace-nowrap">
                     Address:
                   </span>
-                  <p className="text-gray-400 leading-relaxed flex-1 min-w-0">
+                  <p className="text-gray-400 text-[10px] sm:text-base leading-relaxed flex-1 min-w-0">
                     NO. 25, GPR LAYOUT, SFS WARD 1, BLOCK 92, Sri Muneshwara Swamy Temple, Hebbagodi, Bengaluru urban, Karnataka, 560100
                   </p>
                 </div>
