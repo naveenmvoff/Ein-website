@@ -11,7 +11,7 @@ interface StorageDamageProps {
 const StorageDamageProduction: React.FC<StorageDamageProps> = ({ data }) => {
   return (
     <section className="bg-blue-50/50">
-      <div className="max-w-7xl mx-auto pt-8 pb-6 px-4 sm:px-6 text-left">
+      <div className="max-w-[83rem] mx-auto pt-8 pb-6 px-4 sm:px-6 text-left">
         <h3 className="text-md sm:text-2xl font-bold text-gray-900 mb-3 text-left">
           {data.heading}
         </h3>
