@@ -20,6 +20,7 @@ import {
   ContactTodayData,
   metaDataByLocation,
   shiftingService,
+  MoveSmart,
 } from "@/lib/dataSet";
 // import MostTrusted from "@/components/ChooseAndCompare/MostTrusted";
 import DynamicTable from "@/components/Table/Table";
@@ -122,6 +123,14 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
       >
     )[location] || shiftingService.landing;
 
+  const moveSmart =
+    (
+      MoveSmart as unknown as Record<
+        string,
+        typeof StoreageDamageProduction.landing
+      >
+    )[location] || StoreageDamageProduction.landing;
+
   return (
     <div>
       <HeaderNavbar />
@@ -129,7 +138,7 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
         <HeroSection />
       </section>
 
-      <section className="bg-blue-50/50 pt-8 pb-6 px-4 sm:px-6">
+      <section className="bg-blue-50/50 pt-8 pb-6 ">
         <div className="max-w-6xl mx-auto">
           <div className="relative">
             <div className="hidden md:block">
@@ -143,7 +152,7 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
             </div>
 
             <BestHouseShifting data={bestHouseData} />
-            
+
             <div className="md:hidden flex justify-center my-4">
               <Image
                 src={whyChooseData.image || "/assets/whychoose.png"}
@@ -153,7 +162,7 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
                 className="rounded-lg object-cover"
               />
             </div>
-            
+
             <WhyChoose data={whyChooseData} />
 
             <div className="clear-both"></div>
@@ -184,16 +193,7 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
       />
 
       <CustomersSays testimonials={testimonials} />
-      <StorageDamageProduction
-        data={
-          (
-            StoreageDamageProduction as unknown as Record<
-              string,
-              typeof StoreageDamageProduction.landing
-            >
-          )[location] || StoreageDamageProduction.landing
-        }
-      />
+      <StorageDamageProduction data={moveSmart} />
 
       <DeliveryConfirmFinal data={DeliveryConfirm} />
       <ContactToday

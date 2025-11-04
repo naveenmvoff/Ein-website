@@ -38,7 +38,7 @@ const Page = () => {
         <HeroSection />
       </section>
       <ServiceCities />
-      <section className="bg-blue-50/50 pt-8 pb-6 px-10">
+      <section className="bg-blue-50/50 pt-8 pb-6 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="relative">
             <div className="hidden md:block">

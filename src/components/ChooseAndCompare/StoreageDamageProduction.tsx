@@ -1,4 +1,5 @@
 import React from "react";
+import parse from "html-react-parser";
 
 interface StorageDamageProps {
   data: {
@@ -14,7 +15,9 @@ const StorageDamageProduction: React.FC<StorageDamageProps> = ({ data }) => {
         <h3 className="text-md sm:text-2xl font-bold text-gray-900 mb-3 text-left">
           {data.heading}
         </h3>
-        <p className="text-base text-justify text-gray-700 leading-relaxed">{data.text}</p>
+        <p className="text-base text-justify text-gray-700 leading-relaxed">
+          {parse(data.text)}
+        </p>
       </div>
     </section>
   );

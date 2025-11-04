@@ -34,7 +34,7 @@ We use high-quality packing materials like bubble wraps, foam sheets, and sturdy
   chennai: {
     heading: `Eintransport Packers and Movers in Chennai – Trusted Experts for Local & Intercity Home Shifting`,
     text: `Relocate your home safely and effortlessly with Eintransport Packers and Movers in Chennai, your reliable partner for local and intercity house shifting services. We specialize in smooth, secure, and affordable home relocation, providing professional packing, careful handling, and on-time delivery ensuring a stress-free moving experience from start to finish.
-
+<br/>
         Whether you’re shifting within Chennai or moving to another city, our trained relocation team ensures that your household goods are packed and transported with maximum protection. We use premium materials like bubble wrap, foam sheets, and waterproof cartons to safeguard your belongings during every move.
 
         `,
@@ -43,7 +43,7 @@ We use high-quality packing materials like bubble wraps, foam sheets, and sturdy
     heading: ` Eintransport Packers and Movers in Coimbatore – Reliable Experts for Local & Intercity Home Shifting`,
     text: `Experience smooth, safe, and affordable home relocation with Eintransport Packers and Movers in Coimbatore, your trusted partner for local and intercity house shifting services.
         Whether you’re moving within Coimbatore or to another city, we make your relocation stress-free and efficient, with professional packing, careful loading, and on-time delivery.
-
+        <br/>
         At Eintransport, we specialize in household goods relocation, ensuring complete care for every item from fragile kitchenware to furniture and electronics.
         Our experienced movers use premium packing materials like bubble wraps, foam sheets, and strong cartons to ensure damage-free delivery at your new destination.
    `,
@@ -85,10 +85,9 @@ Choose Eintransport Packers and Movers for your house shifting, and experience a
   },
   bangalore: {
     heading: "Intercity House Shifting from Bangalore",
-    text: `Planning to relocate from Bangalore to Chennai, Hyderabad, Coimbatore, or Kochi?
-    <br/>
+    text: `<p className="text-lg font-semibold">Planning to relocate from Bangalore to Chennai, Hyderabad, Coimbatore, or Kochi?</p>
+    
 Our intercity house shifting services are designed for long-distance moves that require secure packing to Safe Delivery.
-    <br/>
 
 From 1 BHK and 2 BHK and 3 BHK apartments to villas and family homes, Eintransport offers customized relocation plans suited to your needs and budget. We also handle safe two-wheeler relocation as part of your intercity move, so you can travel worry-free while we take care of your household and bike.
 `,
@@ -97,7 +96,7 @@ From 1 BHK and 2 BHK and 3 BHK apartments to villas and family homes, Eintranspo
   chennai: {
     heading: `Intercity House Shifting from Chennai`,
     text: `Planning to move from Chennai to Bangalore, Hyderabad, Coimbatore, Trivandrum, or Kochi? Our intercity shifting services are designed for long-distance moves that require extra care, secure loading to Safe unloading.
-
+<br/>
 We handle 1 BHK, 2 BHK, 3 BHK, and villa relocations with precision and reliability.
 Experienced drivers ensure safe, on-time delivery across cities. You can also include bike shifting with your intercity house move. We transport your bike in special carriers with protective wrapping, ensuring scratch-free and secure delivery to your destination.
  `,
@@ -105,12 +104,15 @@ Experienced drivers ensure safe, on-time delivery across cities. You can also in
   },
   coimbatore: {
     heading: `  Intercity House Shifting from Coimbatore`,
-    text: `Planning to move from Coimbatore to another city?
-Eintransport Packers and Movers offers intercity home relocation services to popular destinations like Bangalore, Chennai, Kochi, Trivandrum, and Hyderabad.
-
-Skilled drivers and experienced packers ensure your goods arrive on time and in perfect condition. We handle 1 BHK, 2 BHK, 3 BHK apartments, and villas with customized moving plans that fit your needs and budget.
-
-You can also include bike relocation with your intercity house shifting. We use specialized carriers and foam wrapping to transport your bike securely and scratch-free across states.
+    text: `<p className="text-lg font-semibold">Planning to move from Coimbatore to another city? </p>
+    
+    Eintransport Packers and Movers offers intercity home relocation services to popular destinations like Bangalore, Chennai, Kochi, Trivandrum, and Hyderabad.
+    
+    <br/>
+    Skilled drivers and experienced packers ensure your goods arrive on time and in perfect condition. We handle 1 BHK, 2 BHK, 3 BHK apartments, and villas with customized moving plans that fit your needs and budget.
+    
+    <br/>
+    You can also include bike relocation with your intercity house shifting. We use specialized carriers and foam wrapping to transport your bike securely and scratch-free across states.
 `,
     image: "/assets/whychoose.png",
   },
@@ -435,19 +437,26 @@ export const shiftingService = {
     heading: "Local House Shifting Services in Bangalore",
     text: `
 When it comes to local shifting within Bangalore, Eintransport ensures fast, reliable, and budget-friendly relocation.
+<br/>
 Whether you’re moving from Whitefield to HSR Layout, Electronic City to Yelahanka, or anywhere within the city, we guarantee on-time pickup and delivery with complete care for your valuables.
+<br/>
 
 We also provide optional bike transport services for those who wish to move their two-wheelers along with household goods — ensuring both your home and bike reach your new location safely and on time.
 `,
   },
   chennai: {
     heading: "Local House Shifting Services in Chennai",
-    text: `Moving homes within Chennai?
-Eintransport Packers and Movers offers fast, efficient, and reliable local shifting across all major areas including T. Nagar, Velachery, Tambaram, Anna Nagar, OMR, Porur, and Adyar.
-
-Our expert movers handle everything from packing your household items to unloading and arranging them at your new home. For customers relocating within the city, we also provide optional bike transport services, ensuring your two-wheeler reaches safely along with your household goods.
-
-Choose Eintransport for hassle-free local house shifting in Chennai that’s safe, affordable, and quick.
+    text: `<p className="text-lg font-semibold"> Moving homes within Chennai? </p>
+    
+    Eintransport Packers and Movers offers fast, efficient, and reliable local shifting across all major areas including T. Nagar, Velachery, Tambaram, Anna Nagar, OMR, Porur, and Adyar.
+    <br/>
+    <br/>
+    
+    Our expert movers handle everything from packing your household items to unloading and arranging them at your new home. For customers relocating within the city, we also provide optional bike transport services, ensuring your two-wheeler reaches safely along with your household goods.
+    <br/>
+    <br/>
+    
+    Choose Eintransport for hassle-free local house shifting in Chennai that’s safe, affordable, and quick.
 
 `,
   },
@@ -515,8 +524,9 @@ At Eintransport Packers and Movers Bangalore, we don’t just move your goods �
       "Move Smart, Move Safe with Eintransport - Free Storage and Damage Protection Guarantee",
     text: `
 Make your next move easy and worry-free with Eintransport Packers and Movers Chennai the name you can trust for local and intercity house shifting services.
+<br/>
 
-From start to finish, we handle everything — packing, loading, transporting, unloading, and unpacking your home items. so you can sit back and relax while we take care of the rest
+From start to finish, we handle everything — packing, loading, transporting, unloading, and unpacking your home items. so you can sit back and relax while we take care of the rest.
 
 `,
   },
@@ -524,6 +534,7 @@ From start to finish, we handle everything — packing, loading, transporting, u
     heading:
       "Move Smart, Move Safe with Eintransport - Free Storage and Damage Protection Guarantee",
     text: `
+  // <br/>
 At Eintransport Packers and Movers Coimbatore, we understand that every move is more than just transporting goods — it’s moving your home and memories. Our goal is to make your relocation simple, safe, and cost-effective with personalized moving solutions
 `,
   },
