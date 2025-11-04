@@ -33,8 +33,11 @@ import LocalShifting from "../ChooseAndCompare/LocalShifting";
 const Page = () => {
   return (
     <div>
+      <h1 className="sr-only">
+        Professional Packing & Moving Services Across India | Eintransport
+      </h1>
       <HeaderNavbar />
-       <section id="hero-section">
+      <section id="hero-section">
         <HeroSection />
       </section>
       <ServiceCities />
@@ -44,7 +47,7 @@ const Page = () => {
             <div className="hidden md:block">
               <Image
                 src={"/assets/whychoose.png"}
-                alt="House Shifting Service"
+                alt="Packers and movers packing and loading goods"
                 width={400}
                 height={400}
                 className="rounded-lg float-right ml-6 mb-4 object-cover"
@@ -52,17 +55,17 @@ const Page = () => {
             </div>
 
             <BestHouseShifting data={bestHouse.landing} />
-            
+
             <div className="md:hidden flex justify-center my-4">
               <Image
                 src={"/assets/whychoose.png"}
-                alt="House Shifting Service"
+                alt="Packers and movers packing and loading goods"
                 width={400}
                 height={400}
                 className="rounded-lg object-cover"
               />
             </div>
-            
+
             <WhyChoose data={whyChoose.landing} />
 
             <div className="clear-both"></div>
@@ -73,7 +76,7 @@ const Page = () => {
 
       <MostTrusted />
       <LocalShifting data={shiftingService.landing} />
-      
+
       <DynamicTable
         data={localShitingCost}
         caption="Local Shifting Cost (Within 100 KM)"
@@ -84,7 +87,6 @@ const Page = () => {
         caption="Moving from one city to another? Here's our KM-wise transportation-only price chart."
         note="Note: The prices listed are approximate. Final charges may vary depending on distance, item value, and any additional services you require."
       />
-
 
       <DynamicTable
         data={packingCost}

@@ -97,6 +97,19 @@ export async function generateMetadata({
 
 async function page({ params }: { params: Promise<{ location: string }> }) {
   const { location } = await params;
+  const city = location.toLowerCase();
+
+  const h1ByCity: Record<string, string> = {
+    bangalore: "Best Packers and Movers in Bangalore | Eintransport",
+    chennai: "Affordable Relocation Services in Chennai | Eintransport",
+    coimbatore: "Professional Home Shifting in Coimbatore | Eintransport",
+    kochi: "Affordable House Shifting in Kochi | Eintransport",
+    thiruvananthapuram: "Best Packers and Movers in Trivandrum | Eintransport",
+  };
+
+  const h1Title =
+    h1ByCity[city] ||
+    "Professional Packing & Moving Services Across India | Eintransport";
 
   // Validate if the location exists in both bestHouse and whyChoose
   const validLocations = Object.keys(bestHouse);
@@ -125,6 +138,10 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
   return (
     <div>
       <HeaderNavbar />
+
+      <h1 className="sr-only">
+        {h1Title}
+      </h1>
       <section id="hero-section">
         <HeroSection />
       </section>
@@ -143,7 +160,7 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
             </div>
 
             <BestHouseShifting data={bestHouseData} />
-            
+
             <div className="md:hidden flex justify-center my-4">
               <Image
                 src={whyChooseData.image || "/assets/whychoose.png"}
@@ -153,7 +170,7 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
                 className="rounded-lg object-cover"
               />
             </div>
-            
+
             <WhyChoose data={whyChooseData} />
 
             <div className="clear-both"></div>
