@@ -4,22 +4,32 @@ export const bestHouse = {
         Smart, Move Safe`,
     text: `Relocating your home has never been easier. With Eintransport Packers
         and Movers, you get the best house shifting service that combines
-        safety, speed, and reliability — all at an affordable price. Whether
+        safety, speed, and reliability — all at an affordable price.
+        <br/>
+        <br/>
+        Whether
         you’re shifting within your city or moving to another state, our
         professional movers handle everything from
         <b>packing and loading, transporting, unloading, and unpacking </b> your
-        household goods with care. At Eintransport, we believe in “Your Home,
+        household goods with care.
+        <br/>
+        <br/>
+        At Eintransport, we believe in “Your Home,
         Our Care” and that’s exactly how we move every home, every time.`,
   },
   bangalore: {
     heading: ` Eintransport Packers and Movers in Bangalore – Trusted Experts for Local & Intercity Home Shifting`,
-    text: `Looking for reliable Packers and Movers in Bangalore to handle your local or intercity home shifting?
-        Choose Eintransport Packers and Movers, your trusted relocation partner for safe, smooth, and affordable house shifting services across Bangalore and beyond.
+    text: `
+Looking for reliable Packers and Movers in Bangalore to handle your local or intercity home shifting?
+<br/>
+Choose Eintransport Packers and Movers, your trusted relocation partner for safe, smooth, and affordable house shifting services across Bangalore and beyond.
+<br/>
 
-        With 15 years of experience and a team of trained professionals, we make your household relocation hassle-free ensuring every item, from furniture and appliances to fragile goods, is packed and moved with complete care.
+With 15 years of experience and a team of trained professionals, we make your household relocation hassle-free ensuring every item, from furniture and appliances to fragile goods, is packed and moved with complete care.
+<br/>
 
-        We use high-quality packing materials like bubble wraps, foam sheets, and sturdy boxes to ensure zero damage during transit. Our expert staff handles every stage — packing, loading, transportation, unloading, and unpacking with precision and professionalism.
-        `,
+We use high-quality packing materials like bubble wraps, foam sheets, and sturdy boxes to ensure zero damage during transit. Our expert staff handles every stage — packing, loading, transportation, unloading, and unpacking with precision and professionalism.
+ `,
   },
   chennai: {
     heading: `Eintransport Packers and Movers in Chennai – Trusted Experts for Local & Intercity Home Shifting`,
@@ -58,9 +68,16 @@ Whether you’re shifting your home within Thiruvananthapuram or moving to anoth
 export const whyChoose = {
   landing: {
     heading: "Why do you choose Eintransport Packers and Movers",
-    text: `At Eintransport Packers and Movers, we specialize in house shifting services designed to make your relocation smooth, safe, and completely hassle-free. As one of the most trusted packers and movers for home relocation, we handle every step from professional packing and loading to safe transportation and unpacking with complete care. Our expert team uses premium-quality bubble and foam wrapping to ensure that your household goods, furniture, and appliances remain fully protected during transit. Unlike many others, we offer free storage for up to 3 days, damage protection guarantee, and cot dismantling and reassembly at no extra charge.
+    text: `At Eintransport Packers and Movers, we specialize in house shifting services designed to make your relocation smooth, safe, and completely hassle-free. As one of the most trusted packers and movers for home relocation, we handle every step from professional packing and loading to safe transportation and unpacking with complete care.
+    <br/>
+    <br/>
+    Our expert team uses premium-quality bubble and foam wrapping to ensure that your household goods, furniture, and appliances remain fully protected during transit. Unlike many others, we offer free storage for up to 3 days, damage protection guarantee, and cot dismantling and reassembly at no extra charge.
+    <br/> 
+    <br/> 
+    We take pride in being recognized as the most reliable home shifting service provider, offering on-time delivery, 24×7 customer support, and transparent pricing with no hidden costs. Whether you’re moving within the same city or Intercity, Eintransport Packers and Movers ensures safe, fast, and affordable home shifting with a personal touch. Our dedicated professionals treat your belongings like their own, making sure everything reaches your new home in perfect condition.
+    <br/> 
+    <br/> 
 
-We take pride in being recognized as the most reliable home shifting service provider, offering on-time delivery, 24×7 customer support, and transparent pricing with no hidden costs. Whether you’re moving within the same city or Intercity, Eintransport Packers and Movers ensures safe, fast, and affordable home shifting with a personal touch. Our dedicated professionals treat your belongings like their own, making sure everything reaches your new home in perfect condition.
 
 Choose Eintransport Packers and Movers for your house shifting, and experience a trusted, professional, and affordable relocation service that truly cares about your comfort and peace of mind. We’re not just moving your things — we’re moving your memories safely.
 `,
@@ -69,7 +86,9 @@ Choose Eintransport Packers and Movers for your house shifting, and experience a
   bangalore: {
     heading: "Intercity House Shifting from Bangalore",
     text: `Planning to relocate from Bangalore to Chennai, Hyderabad, Coimbatore, or Kochi?
+    <br/>
 Our intercity house shifting services are designed for long-distance moves that require secure packing to Safe Delivery.
+    <br/>
 
 From 1 BHK and 2 BHK and 3 BHK apartments to villas and family homes, Eintransport offers customized relocation plans suited to your needs and budget. We also handle safe two-wheeler relocation as part of your intercity move, so you can travel worry-free while we take care of your household and bike.
 `,
@@ -384,15 +403,32 @@ export const metaDataByLocation = {
 export const shiftingService = {
   landing: {
     heading: "Local and Intercity House Shifting Services",
-    text: `No matter where you live, Eintransport Packers and Movers provides reliable local and intercity shifting services across South India.
+    text: `
+   <div className="text-base text-gray-700 leading-relaxed">
+  No matter where you live, Eintransport Packers and Movers provides reliable
+  local and intercity shifting services across South India.
+  <br />
+  <b className="">Local Shifting:</b> Fast and budget-friendly home
+  relocation within your city.
+  <br />
+  <b className="">Intercity Shifting:</b> Safe, secure, and
+  punctual delivery to any destination.
+  <br />
+  <b className="">Villa &amp; Bungalow Moves:</b> Tailored
+  solutions for all home sizes.
+  <br />
+  <b className="">Bike Transport:</b> Move your two-wheeler safely
+  along with your household goods.
+  <br />
+  Our network covers major cities —
+  <span className="font-semibold text-gray-800">
+    Bangalore, Chennai, Coimbatore, Kochi,
+  </span>
+  and
+  <span className="font-semibold text-gray-800">Thiruvananthapuram</span>
+  ensuring professional relocation anywhere, anytime.
+</div>
 
-Local Shifting: Fast and budget-friendly home relocation within your city.
-Intercity Shifting: Safe, secure, and punctual delivery to any destination.
-Villa & Bungalow Moves: Tailored solutions for all home sizes.
-Bike Transport: Move your two-wheeler safely along with your household goods.
-
-
-Our network covers major cities — Bangalore, Chennai, Coimbatore, Kochi, and Thiruvananthapuram ensuring professional relocation anywhere, anytime.
 `,
   },
   bangalore: {

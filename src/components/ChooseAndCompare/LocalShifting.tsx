@@ -1,4 +1,5 @@
 import React from "react";
+import parse from "html-react-parser";
 
 type LocationData = {
   heading: string;
@@ -16,16 +17,14 @@ function LocalShifting({ data }: { data: LocationData }) {
         <h3 className="text-md sm:text-2xl font-bold text-gray-900 mb-3 text-left">
           {data.heading}
         </h3>
-        <p className="text-base text-justify text-gray-700 leading-relaxed">
-          {data.text}
-        </p>
-
-        {/* <p
-          className="text-md md:text-xl text-gray-700 leading-relaxed"
+        {/* 
+        <p
+          className="text-sm  text-gray-700 leading-relaxed"
           dangerouslySetInnerHTML={{
             __html: data.text,
           }}
         /> */}
+        {parse(data.text)}
       </div>
     </section>
   );

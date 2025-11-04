@@ -1,4 +1,5 @@
 import React from "react";
+import parse from "html-react-parser";
 
 function WhyChoose({ data }: any) {
   return (
@@ -10,7 +11,7 @@ function WhyChoose({ data }: any) {
         {data.heading}
       </h3>
       <p className="text-base text-justify text-gray-700 leading-relaxed">
-        {data.text}
+       {parse(data.text)}
       </p>
     </div>
   );
