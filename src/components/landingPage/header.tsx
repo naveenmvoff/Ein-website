@@ -151,7 +151,7 @@ export default function HeaderNavbar() {
         >
           <Image
             src="/images/logo1.png"
-            alt="Eintransport Pvt Ltd"
+            alt="Eintransport PvtLtd"
             width={40}
             height={40}
             className="w-8 h-8 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-105"

@@ -116,7 +116,7 @@ const ContactToday: React.FC<ContactTodayProps> = ({ data }) => {
         <div className="flex justify-center mb-5">
           <Image
             src="/assets/contactAbove.png"
-            alt="contact"
+            alt="Movers wrapping furniture for safe shifting"
             width={600}
             height={600}
             className="rounded-lg"
