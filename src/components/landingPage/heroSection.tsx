@@ -43,13 +43,13 @@ export default function HeroSection() {
             #1 Trusted Packers & Movers
           </div>
 
-          <h1 className="text-xl sm:text-4xl md:text-4xl lg:text-5xl font-bold leading-tight text-gray-900 tracking-tight">
+          <h2 className="text-xl sm:text-4xl md:text-4xl lg:text-5xl font-bold leading-tight text-gray-900 tracking-tight">
             <span className="block">Where’s it going?</span>
             {/* <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl text-blue-600 mt-1"> */}
             <span className="block text-xl sm:text-2xl md:text-2xl lg:text-2xl">
               Our Packers & Movers will take it there - safely & on time.
             </span>
-          </h1>
+          </h2>
 
           <motion.div
             whileHover={{ scale: 1.03 }}
