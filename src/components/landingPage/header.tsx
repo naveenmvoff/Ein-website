@@ -21,7 +21,6 @@ export default function HeaderNavbar() {
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef<HTMLElement | null>(null);
 
-
   const toggleMenu = () => setIsMenuOpen((v) => !v);
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -148,6 +147,7 @@ export default function HeaderNavbar() {
             }
           }}
           className="flex items-center gap-1 sm:gap-2 group flex-shrink-0 cursor-pointer"
+          style={{ flexDirection: "row" }}
         >
           <Image
             src="/images/logo1.png"
@@ -155,10 +155,14 @@ export default function HeaderNavbar() {
             width={40}
             height={40}
             className="w-8 h-8 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-105"
+            style={{ order: 1 }}
           />
-          <span className="sm:text-sm md:text-xl lg:text-2xl font-semibold text-[#0086ff] tracking-wide">
+          <p
+            className="sm:text-sm md:text-xl lg:text-2xl font-semibold text-[#0086ff] tracking-wide"
+            style={{ order: 2 }}
+          >
             Eintransport Packers
-          </span>
+          </p>
         </button>
 
         {/* Desktop Navigation */}
