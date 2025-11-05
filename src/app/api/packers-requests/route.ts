@@ -15,9 +15,9 @@ export async function POST(request: NextRequest) {
       phoneNumber,
       fromAddress,
       toAddress,
-      dateTime,
-      description,
-      shiftingThings,
+      // dateTime,
+      // description,
+      // shiftingThings,
     } = data;
 
     // Check for existing user
@@ -32,9 +32,9 @@ export async function POST(request: NextRequest) {
       userId: user._id,
       fromAddress,
       toAddress,
-      dateTime: new Date(dateTime),
-      description: description || '',
-      shiftingThings: shiftingThings || '',
+      // dateTime: new Date(dateTime),
+      // description: description || "",
+      // shiftingThings: shiftingThings || "",
     });
 
     // Send email notification
@@ -45,7 +45,6 @@ export async function POST(request: NextRequest) {
       message: "Packers and Movers request created successfully",
       data: packersAndMovers,
     });
-
   } catch (error) {
     console.error("Error in PackersAndMovers POST:", error);
     return NextResponse.json(
