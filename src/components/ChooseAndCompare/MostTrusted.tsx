@@ -15,7 +15,7 @@ export default function MostTrusted() {
         <h3 className="text-md sm:text-2xl font-bold text-gray-900 mb-3 text-center">
           Why We're the Most Trusted Packers and Movers
         </h3>
-        <p className="text-base flex items-center text-gray-700 leading-relaxed mb-8">
+        <p className="text-base text-justify flex items-center text-gray-700 leading-relaxed mb-8">
           Thousands of families choose Eintransport Packers and Movers for their
           home relocation because we deliver trust, safety, and satisfaction.
           Our mission is simple — to make your moving day comfortable,
