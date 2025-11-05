@@ -13,7 +13,7 @@ import {
   CheckCircle,
   X,
 } from "lucide-react";
-import {useRouter, usePathname} from 'next/navigation'
+import { useRouter, usePathname } from "next/navigation";
 
 type FormState = {
   name: string;
@@ -39,12 +39,8 @@ export function HeroForm() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Reset animation state on route change
     setIsVisible(false);
-    // Small delay to ensure DOM is ready
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 150);
+    const timer = setTimeout(() => setIsVisible(true), 150);
     return () => clearTimeout(timer);
   }, [pathname]);
 
@@ -91,42 +87,26 @@ export function HeroForm() {
         }
       );
 
-      // const sheetPromise2 = fetch(
-      //   `${process.env.NEXT_PUBLIC_SHEET_SCRIPT_LINK2}`,
-      //   {
-      //     method: "POST",
-      //     mode: "no-cors",
-      //     headers: { "Content-Type": "application/json" },
-      //     body: JSON.stringify(payload),
-      //   }
-      // );
-
       const dbPromise = fetch("/api/packers-requests", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
-      // await Promise.all([sheetPromise, sheetPromise2, dbPromise]);
-      await Promise.all([sheetPromise, dbPromise]);
-      
-      // Set a short-lived cookie to allow navigation to the thank-you page.
-      // This is used by middleware to prevent manual access.
+      await Promise.any([sheetPromise, dbPromise]);
+
+      // short-lived cookie + session storage
       try {
-        // cookie valid for 30 seconds
         document.cookie = `order_placed=1; path=/; max-age=${30}`;
-        // Store return URL in sessionStorage to keep URL clean
         sessionStorage.setItem("returnUrl", pathname);
       } catch {
-        // ignore if cookies not available
+        // ignore
       }
 
-      // Redirect to success page
       router.push("/thank-you/order-placed");
-      
     } catch (error) {
       console.error("Submission error:", error);
-      alert("❌ Something went wrong. Please try again.");
+      alert("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -190,13 +170,23 @@ export function HeroForm() {
           <InputField
             label="Phone Number"
             name="phone"
-            type="tel"
+            type="text"
             icon={<Phone size={16} />}
             value={form.phone}
             onChange={handleChange.bind(null, "phone")}
             focusedField={focusedField}
             setFocusedField={setFocusedField}
             inputClasses={inputClasses}
+            onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+              if (
+                !/[0-9]/.test(e.key) &&
+                e.key !== "Backspace" &&
+                e.key !== "Tab"
+              ) {
+                e.preventDefault();
+              }
+            }}
+            maxLength="10"
           />
 
           <InputField
@@ -246,7 +236,7 @@ export function HeroForm() {
         </form>
       </motion.div>
 
-      {/* ✅ Success Modal */}
+      {/* Success Modal */}
       <AnimatePresence>
         {showModal && (
           <motion.div
@@ -265,7 +255,9 @@ export function HeroForm() {
                 <button
                   onClick={() => {
                     setShowModal(false);
-                    if (window.location.pathname === "/thank-you/order-placed") {
+                    if (
+                      window.location.pathname === "/thank-you/order-placed"
+                    ) {
                       window.history.replaceState(null, "", "/");
                     }
                   }}
@@ -304,18 +296,21 @@ export function HeroForm() {
   );
 }
 
+/* ---------- InputField ---------- */
 type InputFieldProps = {
   label: string;
   name: keyof FormState;
   value: string;
-  // eslint-disable-next-line no-unused-vars
   onChange: (v: string) => void;
   icon: React.ReactNode;
   focusedField: string | null;
   setFocusedField: React.Dispatch<React.SetStateAction<string | null>>;
-  // eslint-disable-next-line no-unused-vars
   inputClasses: (field: string) => string;
   type?: string;
+  /** Optional – only used for phone field */
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  /** Optional – only used for phone field */
+  maxLength?: string;
 };
 
 function InputField({
@@ -328,6 +323,8 @@ function InputField({
   setFocusedField,
   inputClasses,
   type = "text",
+  onKeyDown,
+  maxLength,
 }: InputFieldProps) {
   return (
     <div className="grid gap-1">
@@ -356,6 +353,9 @@ function InputField({
           onFocus={() => setFocusedField(name)}
           onBlur={() => setFocusedField(null)}
           className={inputClasses(name)}
+          // apply only when defined
+          {...(onKeyDown ? { onKeyDown } : {})}
+          {...(maxLength ? { maxLength: Number(maxLength) } : {})}
         />
       </div>
     </div>
