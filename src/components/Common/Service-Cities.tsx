@@ -8,7 +8,7 @@ function ServiceCities() {
     { name: "Chennai", image: "/cities/chennai.png", slug: "chennai" },
     { name: "Coimbatore", image: "/cities/cbe.png", slug: "coimbatore" },
     { name: "Kochi", image: "/cities/kochi.png", slug: "kochi" },
-    { name: "Trivandrum", image: "/cities/trivan.png", slug: "thiruvananthapuram" },
+    { name: "Trivandrum", image: "/cities/trivandrum.png", slug: "thiruvananthapuram" },
   ];
 
   return (

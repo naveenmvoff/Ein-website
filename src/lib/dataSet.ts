@@ -85,7 +85,7 @@ Choose Eintransport Packers and Movers for your house shifting, and experience a
   },
   bangalore: {
     heading: "Intercity House Shifting from Bangalore",
-    text: `<p className="text-lg font-semibold">Planning to relocate from Bangalore to Chennai, Hyderabad, Coimbatore, or Kochi?</p>
+    text: `<p className="text-sm md:text-lg font-semibold">Planning to relocate from Bangalore to Chennai, Hyderabad, Coimbatore, or Kochi?</p>
     
 Our intercity house shifting services are designed for long-distance moves that require secure packing to Safe Delivery.
 
@@ -95,7 +95,7 @@ From 1 BHK and 2 BHK and 3 BHK apartments to villas and family homes, Eintranspo
   },
   chennai: {
     heading: `Intercity House Shifting from Chennai`,
-    text: `Planning to move from Chennai to Bangalore, Hyderabad, Coimbatore, Trivandrum, or Kochi? Our intercity shifting services are designed for long-distance moves that require extra care, secure loading to Safe unloading.
+    text: `<p className="text-sm md:text-lg font-semibold"> Planning to move from Chennai to Bangalore, Hyderabad, Coimbatore, Trivandrum, or Kochi? </p>Planning to move from Chennai to Bangalore, Hyderabad, Coimbatore, Trivandrum, or Kochi? Our intercity shifting services are designed for long-distance moves that require extra care, secure loading to Safe unloading.
 <br/>
 We handle 1 BHK, 2 BHK, 3 BHK, and villa relocations with precision and reliability.
 Experienced drivers ensure safe, on-time delivery across cities. You can also include bike shifting with your intercity house move. We transport your bike in special carriers with protective wrapping, ensuring scratch-free and secure delivery to your destination.
@@ -104,7 +104,7 @@ Experienced drivers ensure safe, on-time delivery across cities. You can also in
   },
   coimbatore: {
     heading: `  Intercity House Shifting from Coimbatore`,
-    text: `<p className="text-lg font-semibold">Planning to move from Coimbatore to another city? </p>
+    text: `<p className="text-sm md:text-lg font-semibold">Planning to move from Coimbatore to another city? </p>
     
     Eintransport Packers and Movers offers intercity home relocation services to popular destinations like Bangalore, Chennai, Kochi, Trivandrum, and Hyderabad.
     
@@ -118,7 +118,7 @@ Experienced drivers ensure safe, on-time delivery across cities. You can also in
   },
   kochi: {
     heading: `Intercity House Shifting from Kochi`,
-    text: `<p className="text-lg font-semibold"> Moving from Kochi to another city?  </p>
+    text: `<p className="text-sm md:text-lg font-semibold"> Moving from Kochi to another city?  </p>
     
     We provide intercity home shifting services to major destinations like Chennai, Coimbatore, Bangalore, Trivandrum, and Hyderabad.
     <br/>
@@ -134,7 +134,7 @@ Experienced drivers ensure safe, on-time delivery across cities. You can also in
   },
   thiruvananthapuram: {
     heading: ` Intercity House Shifting from Thiruvananthapuram`,
-    text: `<p className="text-lg font-semibold"> Moving from Thiruvananthapuram to another city? </p>
+    text: `<p className="text-sm md:text-lg font-semibold"> Moving from Thiruvananthapuram to another city? </p>
     We provide intercity house relocation services to major destinations like Kochi, Coimbatore, Chennai, Bangalore, and Hyderabad.
     <br/>
     
