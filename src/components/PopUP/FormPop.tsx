@@ -11,13 +11,13 @@ function FormPopUp() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const isModalShown = localStorage.getItem("isModalShow");
+    const isModalShown = sessionStorage.getItem("isModalShow");
     if (isModalShown) return;
 
     const handleScroll = () => {
       if (window.scrollY > 3000) {
         setIsOpen(true);
-        localStorage.setItem("isModalShow", "true");
+        sessionStorage.setItem("isModalShow", "true");
         window.removeEventListener("scroll", handleScroll);
       }
     };
