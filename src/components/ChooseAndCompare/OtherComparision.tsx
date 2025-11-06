@@ -1,6 +1,10 @@
 import React from "react";
 import Table from "@/components/Table/Table";
 
+interface OtherComparisionProps {
+  location?: string;
+}
+
 const whyChooseEintransport = [
   {
     service: "Bubble & Foam Wrapping",
@@ -44,13 +48,13 @@ const whyChooseEintransport = [
   },
 ];
 
-export default function OtherComparision() {
+export default function OtherComparision({ location }: OtherComparisionProps) {
   return (
     <section className="bg-blue-50/50">
       <div>
         <Table
           data={whyChooseEintransport}
-          caption="Eintransport Packers & Movers and Others service comparison"
+          caption={`Eintransport Packers & Movers and Others service comparison in ${location}`}
         />
       </div>
     </section>

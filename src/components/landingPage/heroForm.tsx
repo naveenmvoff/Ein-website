@@ -332,7 +332,8 @@ function InputField({
         htmlFor={name}
         className="text-xs font-semibold text-gray-600 tracking-wide"
       >
-        {label} <span className="text-red-500">*</span>
+        {label}
+        {name !== "email" && <span className="text-red-500">*</span>}
       </label>
       <div className="relative">
         <div
@@ -353,7 +354,6 @@ function InputField({
           onFocus={() => setFocusedField(name)}
           onBlur={() => setFocusedField(null)}
           className={inputClasses(name)}
-          // apply only when defined
           {...(onKeyDown ? { onKeyDown } : {})}
           {...(maxLength ? { maxLength: Number(maxLength) } : {})}
         />

@@ -33,12 +33,9 @@ import LocalShifting from "../ChooseAndCompare/LocalShifting";
 const Page = () => {
   return (
     <div>
-      <h1 className="sr-only">
-        Professional Packing & Moving Services Across India | Eintransport
-      </h1>
       <HeaderNavbar />
       <section id="hero-section">
-        <HeroSection />
+        <HeroSection title="Professional Packing & Moving Services Across India" />
       </section>
       <ServiceCities />
       <section className="bg-blue-50/50 pt-8 pb-6 px-4 sm:px-6">

@@ -148,11 +148,12 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
     <div>
       <HeaderNavbar />
 
-      <h1 className="sr-only">
-        {h1Title}
-      </h1>
+      {/* <h1 className="sr-only">{h1Title}</h1>
       <section id="hero-section">
         <HeroSection />
+      </section> */}
+      <section id="hero-section">
+        <HeroSection title= {h1Title}/>
       </section>
 
       <section className="bg-blue-50/50 pt-8 pb-6 px-4 sm:px-6">
@@ -199,13 +200,13 @@ async function page({ params }: { params: Promise<{ location: string }> }) {
         note="Note: The prices listed are approximate. Final charges may vary depending on distance, item value, and any additional services you require."
       />
 
-      <OtherComparision />
+      <OtherComparision location={location}/>
       <WhyChooseBasedCity location={location} />
 
       <LocalShifting data={shiftService} />
       <DynamicTable
         data={localShitingCost}
-        caption="Local Shifting Cost (Within 100 KM)"
+        caption={`Local Shifting Cost in ${location} (Within 100 KM)`}
         note="Note: The prices listed are approximate. Final charges may vary depending on distance, item value, and any additional services you require."
       />
 
