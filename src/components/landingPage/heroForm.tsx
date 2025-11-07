@@ -57,6 +57,11 @@ export function HeroForm() {
       return;
     }
 
+    if (form.phone.length !== 10) {
+      alert("Please enter a valid 10-digit phone number.");
+      return;
+    }
+
     setLoading(true);
 
     const payload = {
