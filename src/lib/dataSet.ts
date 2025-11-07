@@ -451,9 +451,7 @@ We also provide optional bike transport services for those who wish to move thei
   },
   chennai: {
     heading: "Local House Shifting Services in Chennai",
-    text: `<p className="text-lg font-semibold"> Moving homes within Chennai? </p>
-    
-    Eintransport Packers and Movers offers fast, efficient, and reliable local shifting across all major areas including T. Nagar, Velachery, Tambaram, Anna Nagar, OMR, Porur, and Adyar.
+    text: ` Moving homes within Chennai? Eintransport Packers and Movers offers fast, efficient, and reliable local shifting across all major areas including T. Nagar, Velachery, Tambaram, Anna Nagar, OMR, Porur, and Adyar.
     <br/>
     <br/>
     

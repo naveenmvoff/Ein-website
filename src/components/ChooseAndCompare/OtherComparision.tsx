@@ -54,7 +54,11 @@ export default function OtherComparision({ location }: OtherComparisionProps) {
       <div>
         <Table
           data={whyChooseEintransport}
-          caption={`Eintransport Packers & Movers and Others service comparison in ${location}`}
+          caption={
+            location == undefined
+              ? `Eintransport Packers & Movers and Others service comparison`
+              : `Eintransport Packers & Movers and Others service comparison in ${location}`
+          }
         />
       </div>
     </section>

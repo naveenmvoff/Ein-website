@@ -3,7 +3,7 @@ import CountUp from "../ui/CountUp";
 
 export default function MostTrusted() {
   const counts = [
-    { name: "Experience", count: 15 },
+    { name: "Years of Experience", count: 15 },
     { name: "Homes Moved", count: 8500 },
     { name: "Branch", count: 5 },
     { name: "Trained Manpower", count: 250 },
