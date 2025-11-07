@@ -9,7 +9,7 @@ export default function WhyChooseBasedCity({
   location,
 }: WhyChooseBasedCityProps) {
   const counts = [
-    { name: "Experience", count: 15 },
+    { name: "Years of Experience", count: 15 },
     { name: "Homes Moved", count: 8500 },
     { name: "Branch", count: 5 },
     { name: "Trained Manpower", count: 250 },
@@ -74,56 +74,3 @@ export default function WhyChooseBasedCity({
     </div>
   );
 }
-
-// import React from "react";
-// import CountUp from "../ui/CountUp";
-
-// interface WhyChooseBasedCityProps {
-//   location: string;
-// }
-
-// export default function WhyChooseBasedCity({ location }: WhyChooseBasedCityProps) {
-//   const counts = [
-//     { name: "Experience", count: 15 },
-//     { name: "Homes Moved", count: 8500 },
-//     { name: "Branch", count: 5 },
-//     { name: "Trained Manpower", count: 250 },
-//   ];
-
-//   return (
-//     <div className="px-10">
-//       <h3 className="text-xl p-4 font-semibold text-black flex justify-center">
-//         Why Choose Eintransport Packers and Movers in {location}?
-//       </h3>
-
-//       <div>
-//         <p>Professional & Experienced Moving Team</p>
-//         <p>Safe Packing with Premium-Quality Materials</p>
-//         <p>On-Time Pickup and Safe Delivery Guarantee</p>
-//         <p>Local & Intercity Coverage</p>
-//         <p>Optional Bike Relocation with Home Shifting</p>
-//         <p>Affordable, Transparent Pricing (No Hidden Charges)</p>
-//         <p>Free Doorstep Quote & Inspection</p>
-//       </div>
-
-//       <div className="grid grid-cols-2 mt-5 text-center items-center">
-//         {counts.map((item) => (
-//           <div key={item.name} className="flex flex-col mt-3">
-//             <div>
-//               <CountUp
-//                 from={0}
-//                 to={item.count}
-//                 separator=","
-//                 direction="up"
-//                 duration={3}
-//                 className="count-up-text text-xl text-red-500 font-semibold"
-//               />
-//               <span className="text-xl text-red-500 font-semibold">+</span>
-//             </div>
-//             <b>{item.name}</b>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }

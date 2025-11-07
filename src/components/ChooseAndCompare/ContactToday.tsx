@@ -44,7 +44,7 @@ const ContactToday: React.FC<ContactTodayProps> = ({ data }) => {
     }
   };
 
-  // ✅ Highlight CTAs dynamically
+
   const highlightCTA = (text: string) => {
     let highlightedText = text;
 
@@ -55,6 +55,7 @@ const ContactToday: React.FC<ContactTodayProps> = ({ data }) => {
     const set2 = [
       "free quote",
       "get your free house shifting quote",
+      "free home shifting quote in Bangalore",
       "free home shifting quote in Chennai",
       "free home shifting quote in Coimbatore",
       "free home shifting quote in Kochi",
@@ -72,13 +73,15 @@ const ContactToday: React.FC<ContactTodayProps> = ({ data }) => {
 
     // Set 2 → route links
     set2.forEach((phrase) => {
-      let action = "main"; // default
+      let action = "main";
       if (phrase.includes("Chennai")) action = "chennai";
       else if (phrase.includes("Coimbatore")) action = "coimbatore";
       else if (phrase.includes("Kochi")) action = "kochi";
       else if (phrase.includes("Thiruvananthapuram"))
         action = "thiruvananthapuram";
-      else if (phrase.includes("get free house shifting quote")) action = "bangalore";
+      else if (phrase.toLowerCase().includes("bangalore")) action = "bangalore";
+      // else if (phrase.includes("get free house shifting quote")) action = "bangalore";
+      // else if (phrase.includes("bangalore")) action = "bangalore";
 
       const regex = new RegExp(`(${phrase})`, "gi");
       highlightedText = highlightedText.replace(

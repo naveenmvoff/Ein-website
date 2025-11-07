@@ -29,10 +29,7 @@ function Footer() {
       className="bg-gray-900 text-white py-6 sm:py-8 lg:py-10 px-4 sm:px-6 lg:px-8"
     >
       <div className="container mx-auto max-w-7xl">
-        {/* 2 columns on mobile, 4 on desktop */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
-          
-          {/* Column 1: Service Areas */}
           <div
             className={`transition-all duration-1000 ${
               isVisible
@@ -78,7 +75,6 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Column 2: Service Types */}
           <div
             className={`transition-all duration-1000 ${
               isVisible
@@ -89,6 +85,7 @@ function Footer() {
             <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
               Service Types
             </h4>
+
             <div className="space-y-2 text-xs sm:text-sm text-gray-400">
               {[
                 "Domestic moving",
@@ -100,27 +97,59 @@ function Footer() {
               ].map((service, index) => (
                 <p
                   key={index}
-                  className="block hover:text-white transition-all duration-300 cursor-default"
+                  onClick={() => {
+                    const hero = document.getElementById("hero-section");
+                    if (hero) {
+                      hero.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                        inline: "nearest",
+                      });
+                      hero.classList.add(
+                        "ring-2",
+                        "ring-blue-400",
+                        "transition"
+                      );
+                      setTimeout(() => {
+                        hero.classList.remove(
+                          "ring-2",
+                          "ring-blue-400",
+                          "transition"
+                        );
+                      }, 1500);
+                    } else {
+                      window.location.href = "/";
+                      setTimeout(() => {
+                        const heroLater =
+                          document.getElementById("hero-section");
+                        if (heroLater) {
+                          heroLater.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }, 800);
+                    }
+                  }}
+                  className="block hover:text-white transition-all duration-300 cursor-pointer"
                 >
                   {service}
                 </p>
               ))}
             </div>
 
-            {/* Secure Storage - below Service Types */}
             <div className="mt-6 sm:mt-8">
-              <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
+              <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-1 text-[#0086FF]">
                 Secure Storage
               </h4>
               <div className="space-y-2 text-xs sm:text-sm text-gray-400">
-                <p className="block hover:text-white transition-all duration-300 cursor-default">
+                <a
+                  href="tel:+919043384332"
+                  className="block hover:text-white transition-all duration-300 cursor-pointer"
+                >
                   Home storage
-                </p>
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Column 3: Contact Info (Column 1 on mobile, Row 2) */}
           <div
             className={`transition-all duration-1000 ${
               isVisible
@@ -153,7 +182,6 @@ function Footer() {
                 </div>
               </div>
 
-              {/* Email */}
               <div className="flex items-center gap-2 sm:gap-3 group">
                 <span className="bg-[#1E2939] rounded-lg sm:rounded-xl p-1.5 sm:p-2 text-white group-hover:bg-[#0086FF] transition-colors duration-300 flex-shrink-0">
                   <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -168,7 +196,6 @@ function Footer() {
             </div>
           </div>
 
-          {/* Column 4: Quick Links & Company Details (Column 2 on mobile, Row 2) */}
           <div
             className={`transition-all duration-1000 ${
               isVisible
@@ -183,7 +210,6 @@ function Footer() {
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
                 {[
-                  // { name: "Blog", href: "/blog" },
                   { name: "FAQ's", href: "#faq" },
                   { name: "About us", href: "#about" },
                   { name: "Contact us", href: "#contact" },
@@ -200,7 +226,6 @@ function Footer() {
               </ul>
             </div>
 
-            {/* Company Details */}
             <div>
               <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
                 Company Details
@@ -212,11 +237,11 @@ function Footer() {
                     Address:
                   </span>
                   <p className="text-gray-400 text-[10px] sm:text-base leading-relaxed flex-1 min-w-0">
-                    NO. 25, GPR LAYOUT, SFS WARD 1, BLOCK 92, Sri Muneshwara Swamy Temple, Hebbagodi, Bengaluru urban, Karnataka, 560100
+                    NO. 25, GPR LAYOUT, SFS WARD 1, BLOCK 92, Sri Muneshwara
+                    Swamy Temple, Hebbagodi, Bengaluru urban, Karnataka, 560100
                   </p>
                 </div>
-                
-                {/* GSTIN and PAN */}
+
                 {companyDetails.map((item, index) => (
                   <div
                     key={index}
@@ -235,7 +260,6 @@ function Footer() {
           </div>
         </div>
 
-        {/* Bottom Section */}
         <div className="border-t border-gray-800 mt-8 sm:mt-10 pt-5 sm:pt-6">
           {/* Copyright & Privacy */}
           <div className="text-center mb-4 sm:mb-5">
@@ -269,7 +293,7 @@ function Footer() {
                 label: "Instagram",
               },
               {
-                href: "https://www.linkedin.com/company/eintransport/",
+                href: "https://www.linkedin.com/company/eintransport/?viewAsMember=true",
                 icon: Linkedin,
                 label: "LinkedIn",
               },

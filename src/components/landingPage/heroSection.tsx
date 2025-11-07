@@ -1,37 +1,35 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { HeroForm } from "./heroForm"
-import { PhoneNumberAnimation } from "./phone-number-animation"
-import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
+import { motion } from "framer-motion";
+import { HeroForm } from "./heroForm";
+import { PhoneNumberAnimation } from "./phone-number-animation";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default function HeroSection() {
-  const pathname = usePathname()
-  const [isVisible, setIsVisible] = useState(false)
+interface HeroSectionProps {
+  title?: string;
+}
+
+export default function HeroSection({title}: HeroSectionProps) {
+  const pathname = usePathname();
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Reset animation state on route change
-    setIsVisible(false)
-    // Small delay to ensure DOM is ready
+    setIsVisible(false);
     const timer = setTimeout(() => {
-      setIsVisible(true)
-    }, 100)
-    return () => clearTimeout(timer)
-  }, [pathname])
+      setIsVisible(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [pathname]);
 
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 overflow-hidden flex items-center px-4 sm:px-8 py-16 sm:py-24">
-      {/* Animated gradient glow */}
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-blue-200 rounded-full blur-3xl opacity-30 animate-pulse"></div>
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-indigo-200 rounded-full blur-3xl opacity-20"></div>
 
-      {/* Optional pattern background */}
       <div className="absolute inset-0 bg-[url('/patterns/subtle-grid.svg')] opacity-20 mix-blend-overlay"></div>
 
-      {/* Content container */}
       <div className="container relative z-10 mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-10 lg:gap-16 items-center">
-        {/* Left Column — Headline + CTA */}
         <motion.div
           key={pathname}
           initial={{ opacity: 0, x: -40 }}
@@ -43,10 +41,12 @@ export default function HeroSection() {
             #1 Trusted Packers & Movers
           </div>
 
-          <h2 className="text-xl sm:text-4xl md:text-4xl lg:text-5xl font-bold leading-tight text-gray-900 tracking-tight">
-            <span className="block">Where’s it going?</span>
-            {/* <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl text-blue-600 mt-1"> */}
-            <span className="block text-xl sm:text-2xl md:text-2xl lg:text-2xl">
+          <h1 className="text-xl sm:text-xl md:text-xl lg:text-xl font-bold leading-tight text-gray-900 tracking-tight">
+            {title}
+          </h1>
+          <h2 className="hidden md:block text-lg sm:text-4xl md:text-4xl lg:text-5xl font-bold leading-tight text-gray-900 tracking-tight">
+            Where’s it going?
+            <span className="block sm:text-lg md:text-2xl lg:text-2xl">
               Our Packers & Movers will take it there - safely & on time.
             </span>
           </h2>
@@ -90,10 +90,8 @@ export default function HeroSection() {
               Call now for house shifting
             </p>
           </motion.div>
-          </motion.div>
+        </motion.div>
 
-
-        {/* Right Column — Form */}
         <motion.div
           key={`${pathname}-form`}
           initial={{ opacity: 0, x: 40 }}
@@ -101,12 +99,11 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="relative flex justify-center items-center mt-7"
         >
-          {/* Floating glow background for form */}
           <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-blue-200/40 to-blue-100/20 rounded-3xl blur-3xl"></div>
 
           <HeroForm />
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
