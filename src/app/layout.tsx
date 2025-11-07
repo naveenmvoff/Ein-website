@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import 'react-day-picker/dist/style.css';
+import "react-day-picker/dist/style.css";
 import Script from "next/script";
 
 export const viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
 };
 const geistSans = Geist({
@@ -21,17 +21,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Eintransport",
-  description: "We provide on-demand, reliable, and affordable transport services for all your moving and delivery needs. Whether you need to relocate household items, deliver goods to customers, or transport commercial cargo, our fleet of vehicles and professional drivers ensure safe, fast, and hassle-free transportation.",
+  title: "Best Packers and Movers | Home Shifting Made Easy | Eintransport",
+  description:
+    "We provide on-demand, reliable, and affordable transport services for all your moving and delivery needs. Whether you need to relocate household items, deliver goods to customers, or transport commercial cargo, our fleet of vehicles and professional drivers ensure safe, fast, and hassle-free transportation.",
   icons: {
     icon: [
       { url: "/Eintransport.png", type: "image/png" },
-      { url: "/Eintransport.png",  type: "image/png" },
+      { url: "/Eintransport.png", type: "image/png" },
     ],
     apple: "/Eintransport.png",
   },
-}
-
+  keywords:
+    "packers and movers, home shifting services, relocation experts, movers and packers near me, Eintransport",
+  authors: [
+    {
+      name: "Eintransport Packers and Movers",
+      url: "https://eintransport.in",
+    },
+  ],
+  publisher: "Eintransport Packers and Movers",
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+  },
+};
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-TNFPM87F";
 
@@ -40,10 +54,9 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  
   return (
     <html lang="en">
-            <head>
+      <head>
         {/* Google Tag Manager */}
         <Script id="gtm-base" strategy="afterInteractive">
           {`
