@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 "use client";
 
 import type React from "react";
@@ -149,7 +150,7 @@ export function HeroForm() {
             name="name"
             icon={<User size={16} />}
             value={form.name}
-            onChange={handleChange.bind(null, "name")}
+            onChange={(value) => handleChange("name", value)}
             focusedField={focusedField}
             setFocusedField={setFocusedField}
             inputClasses={inputClasses}
@@ -361,3 +362,4 @@ function InputField({
     </div>
   );
 }
+
