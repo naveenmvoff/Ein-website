@@ -9,8 +9,8 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+  const loginCookie = request.cookies.get("login")?.value;
 
-  // Guard thank-you page
   if (pathname === "/thank-you/order-placed") {
     const cookie = request.cookies.get("order_placed");
     if (!cookie || cookie.value !== "1") {
@@ -23,14 +23,30 @@ export function middleware(request: NextRequest) {
     return res;
   }
 
-  // Existing move-order guards
-  if (pathname === "/trucks-service/orderPlaced" || pathname === "/packers-and-movers/orderPlaced") {
+  if (
+    pathname === "/trucks-service/orderPlaced" ||
+    pathname === "/packers-and-movers/orderPlaced"
+  ) {
     const isMove = request.cookies.get("isMove")?.value;
     // debug log (server logs)
     // console.log('Middleware check for move routes', pathname, isMove);
     if (isMove !== "true") {
       return NextResponse.redirect(new URL("/", request.url));
     }
+  }
+
+  if (pathname.startsWith("/admin/login")) {
+    // If user IS logged in, redirect to /admin
+    if (loginCookie) {
+      return NextResponse.redirect(new URL("/admin/blog", request.url));
+    }
+    // If not logged in, just allow /admin/login
+    return NextResponse.next();
+  }
+
+  // Protect /admin page
+  if (pathname === "/admin/blog" && !loginCookie) {
+    return NextResponse.redirect(new URL("/admin/login", request.url));
   }
 
   return NextResponse.next();
@@ -41,5 +57,6 @@ export const config = {
     "/thank-you/order-placed",
     "/trucks-service/orderPlaced",
     "/packers-and-movers/orderPlaced",
+    "/admin/:path*",
   ],
 };
