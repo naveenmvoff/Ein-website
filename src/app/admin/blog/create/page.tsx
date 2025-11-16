@@ -1,9 +1,9 @@
-"use client"
-import type React from "react"
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import {toast} from "react-hot-toast"
-import RichTextEditorTiny from "@/components/admin/blog/Rich-text-editor-tiny"
+"use client";
+import type React from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
+import RichTextEditorTiny from "@/components/admin/blog/Rich-text-editor-tiny";
 
 const removeFieldError = (
   field: string,
@@ -11,95 +11,107 @@ const removeFieldError = (
 ) => {
   setErrors((prev) => {
     if (!prev[field]) return prev;
-    const { [field]: _removed, ...rest } = prev;
+    const rest = { ...prev };
+    delete rest[field];
     return rest;
   });
 };
 
 export default function CreateBlogPage() {
-  const router = useRouter()
-  const [content, setContent] = useState("<p>Start writing your content...</p>")
-  const [metaTitle, setMetaTitle] = useState("")
-  const [metaDescription, setMetaDescription] = useState("")
-  const [inputValue, setInputValue] = useState("")
-  const [metaKeywords, setMetaKeywords] = useState<string[]>([])
-  const [pageURL, setPageURL] = useState("")
-  const [title, setTitle] = useState("")
-  const [urlError, setURLError] = useState("")
-  const [loading, setLoading] = useState(false)
-  const [formErrors, setFormErrors] = useState<Record<string, string>>({})
+  const router = useRouter();
+  const [content, setContent] = useState(
+    "<p>Start writing your content...</p>"
+  );
+  const [metaTitle, setMetaTitle] = useState("");
+  const [metaDescription, setMetaDescription] = useState("");
+  const [inputValue, setInputValue] = useState("");
+  const [metaKeywords, setMetaKeywords] = useState<string[]>([]);
+  const [pageURL, setPageURL] = useState("");
+  const [title, setTitle] = useState("");
+  const [urlError, setURLError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
   const handleKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" || e.key === "," || e.key === " ") {
-      e.preventDefault()
-      const trimmed = inputValue.trim()
+      e.preventDefault();
+      const trimmed = inputValue.trim();
       if (!trimmed) {
-        return
+        return;
       }
 
-      const alreadyExists = metaKeywords.some((keyword) => keyword.toLowerCase() === trimmed.toLowerCase())
+      const alreadyExists = metaKeywords.some(
+        (keyword) => keyword.toLowerCase() === trimmed.toLowerCase()
+      );
       if (alreadyExists) {
-        toast.error("Keyword already added")
-        setInputValue("")
-        return
+        toast.error("Keyword already added");
+        setInputValue("");
+        return;
       }
 
-      setMetaKeywords((prev) => [...prev, trimmed])
-      setInputValue("")
+      setMetaKeywords((prev) => [...prev, trimmed]);
+      setInputValue("");
     }
-  }
+  };
 
   const handlePageURLChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value.toLowerCase()
-    value = value.replace(/\s+/g, "-")
-    const validPattern = /^[a-z0-9-]+$/
+    let value = e.target.value.toLowerCase();
+    value = value.replace(/\s+/g, "-");
+    const validPattern = /^[a-z0-9-]+$/;
 
     if (value.includes("/")) {
-      setURLError("Slashes ( / ) are not allowed — use a single word or hyphens only.")
+      setURLError(
+        "Slashes ( / ) are not allowed — use a single word or hyphens only."
+      );
     } else if (!validPattern.test(value) && value.length > 0) {
-      setURLError("Only lowercase letters, numbers, and hyphens are allowed.")
+      setURLError("Only lowercase letters, numbers, and hyphens are allowed.");
     } else if (value.length > 60) {
-      setURLError("Slug too long — keep it under 60 characters.")
+      setURLError("Slug too long — keep it under 60 characters.");
     } else {
-      setURLError("")
+      setURLError("");
     }
 
-    value = value.replace(/[^a-z0-9-]/g, "")
-    setPageURL(value)
-    removeFieldError("pageURL", setFormErrors)
-  }
+    value = value.replace(/[^a-z0-9-]/g, "");
+    setPageURL(value);
+    removeFieldError("pageURL", setFormErrors);
+  };
 
   const handleSave = async () => {
     try {
-      setFormErrors({})
+      setFormErrors({});
       if (!title.trim()) {
-        toast.error("Please enter a blog title")
-        setFormErrors((prev) => ({ ...prev, title: "Title is required." }))
-        return
+        toast.error("Please enter a blog title");
+        setFormErrors((prev) => ({ ...prev, title: "Title is required." }));
+        return;
       }
 
       if (!content.trim()) {
-        toast.error("Please add blog content")
-        setFormErrors((prev) => ({ ...prev, content: "Content is required." }))
-        return
+        toast.error("Please add blog content");
+        setFormErrors((prev) => ({ ...prev, content: "Content is required." }));
+        return;
       }
 
       if (!pageURL.trim()) {
-        toast.error("Please enter a page URL slug")
-        setFormErrors((prev) => ({ ...prev, pageURL: "Page URL slug is required." }))
-        return
+        toast.error("Please enter a page URL slug");
+        setFormErrors((prev) => ({
+          ...prev,
+          pageURL: "Page URL slug is required.",
+        }));
+        return;
       }
 
       if (urlError) {
-        toast.error(urlError)
-        return
+        toast.error(urlError);
+        return;
       }
 
-      setLoading(true)
+      setLoading(true);
 
       const keywords = metaKeywords
         .map((keyword) => keyword.trim())
-        .filter((keyword, index, arr) => keyword && arr.indexOf(keyword) === index)
+        .filter(
+          (keyword, index, arr) => keyword && arr.indexOf(keyword) === index
+        );
 
       const payload = {
         title: title.trim(),
@@ -108,7 +120,7 @@ export default function CreateBlogPage() {
         metaKeywords: keywords,
         metaTitle: metaTitle.trim(),
         pageURL: pageURL.trim(),
-      }
+      };
 
       const res = await fetch("/api/admin/blog", {
         method: "POST",
@@ -116,48 +128,54 @@ export default function CreateBlogPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
-      })
+      });
 
-      const data = await res.json()
+      const data = await res.json();
 
       if (!res.ok || !data.success) {
         if (res.status === 409) {
-          const message = data.message || "A blog with this page URL already exists."
-          setURLError(message)
-          setFormErrors((prev) => ({ ...prev, pageURL: message }))
-          throw new Error(message)
+          const message =
+            data.message || "A blog with this page URL already exists.";
+          setURLError(message);
+          setFormErrors((prev) => ({ ...prev, pageURL: message }));
+          throw new Error(message);
         }
         if (res.status === 400 && data.errors) {
-          setFormErrors(data.errors)
+          setFormErrors(data.errors);
           if (data.errors.pageURL) {
-            setURLError(data.errors.pageURL)
+            setURLError(data.errors.pageURL);
           }
-          throw new Error(data.message || "Validation failed")
+          throw new Error(data.message || "Validation failed");
         }
-        throw new Error(data.message || "Failed to create blog")
+        throw new Error(data.message || "Failed to create blog");
       }
 
-      toast.success("Blog created successfully!")
+      toast.success("Blog created successfully!");
 
-      router.push(`/admin/blog/${data.data._id}`)
+      router.push(`/admin/blog/${data.data._id}`);
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Error saving blog"
-      toast.error(message)
-      console.error("Error creating blog:", error)
+      const message =
+        error instanceof Error ? error.message : "Error saving blog";
+      toast.error(message);
+      console.error("Error creating blog:", error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
-  const goBack = () => router.push("/admin/blog")
+  const goBack = () => router.push("/admin/blog");
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-800">Blog Editor</h1>
-            <p className="text-sm text-gray-600">Draft a new post and fine-tune the on-page SEO before publishing.</p>
+            <h1 className="text-2xl font-semibold text-gray-800">
+              Blog Editor
+            </h1>
+            <p className="text-sm text-gray-600">
+              Draft a new post and fine-tune the on-page SEO before publishing.
+            </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <button
@@ -182,65 +200,85 @@ export default function CreateBlogPage() {
         <div className="grid gap-6 lg:grid-cols-[2fr,1fr]">
           <form
             onSubmit={(event) => {
-              event.preventDefault()
-              handleSave()
+              event.preventDefault();
+              handleSave();
             }}
             className="space-y-6 rounded-lg bg-white p-6 shadow"
           >
             <div className="grid gap-4 md:grid-cols-2">
               <div className="md:col-span-2">
-                <label className="mb-1 block text-sm font-medium text-gray-700">Title</label>
+                <label className="mb-1 block text-sm font-medium text-gray-700">
+                  Title
+                </label>
                 <input
                   type="text"
                   value={title}
                   onChange={(e) => {
-                    setTitle(e.target.value)
-                    removeFieldError("title", setFormErrors)
+                    setTitle(e.target.value);
+                    removeFieldError("title", setFormErrors);
                   }}
                   className="w-full rounded-md border border-gray-300 bg-gray-50 px-3 py-2 text-gray-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 disabled:opacity-70"
                   placeholder="Enter blog title"
                   disabled={loading}
                 />
-                {formErrors.title && <p className="mt-1 text-sm text-red-500">{formErrors.title}</p>}
+                {formErrors.title && (
+                  <p className="mt-1 text-sm text-red-500">
+                    {formErrors.title}
+                  </p>
+                )}
               </div>
 
               <div>
-                <label className="mb-1 block text-sm font-medium text-gray-700">Meta Title</label>
+                <label className="mb-1 block text-sm font-medium text-gray-700">
+                  Meta Title
+                </label>
                 <input
                   type="text"
                   value={metaTitle}
                   onChange={(e) => {
-                    setMetaTitle(e.target.value)
-                    removeFieldError("metaTitle", setFormErrors)
+                    setMetaTitle(e.target.value);
+                    removeFieldError("metaTitle", setFormErrors);
                   }}
                   className="w-full rounded-md border border-gray-300 bg-gray-50 px-3 py-2 text-gray-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 disabled:opacity-70"
                   placeholder="Enter meta title"
                   disabled={loading}
                 />
-                {formErrors.metaTitle && <p className="mt-1 text-sm text-red-500">{formErrors.metaTitle}</p>}
+                {formErrors.metaTitle && (
+                  <p className="mt-1 text-sm text-red-500">
+                    {formErrors.metaTitle}
+                  </p>
+                )}
               </div>
 
               <div>
-                <label className="mb-1 block text-sm font-medium text-gray-700">Meta Description</label>
+                <label className="mb-1 block text-sm font-medium text-gray-700">
+                  Meta Description
+                </label>
                 <textarea
                   value={metaDescription}
                   onChange={(e) => {
-                    setMetaDescription(e.target.value)
-                    removeFieldError("metaDescription", setFormErrors)
+                    setMetaDescription(e.target.value);
+                    removeFieldError("metaDescription", setFormErrors);
                   }}
                   className="min-h-[120px] w-full rounded-md border border-gray-300 bg-gray-50 px-3 py-2 text-gray-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 disabled:opacity-70"
                   placeholder="Enter meta description"
                   disabled={loading}
                 />
                 {formErrors.metaDescription && (
-                  <p className="mt-1 text-sm text-red-500">{formErrors.metaDescription}</p>
+                  <p className="mt-1 text-sm text-red-500">
+                    {formErrors.metaDescription}
+                  </p>
                 )}
               </div>
             </div>
 
             <div>
-              <label className="mb-1 block text-sm font-medium text-gray-700">Meta Keywords</label>
-              <p className="mb-2 text-xs text-gray-500">Press Enter, comma, or space to add each keyword.</p>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Meta Keywords
+              </label>
+              <p className="mb-2 text-xs text-gray-500">
+                Press Enter, comma, or space to add each keyword.
+              </p>
               <input
                 type="text"
                 value={inputValue}
@@ -260,7 +298,11 @@ export default function CreateBlogPage() {
                       {item}
                       <button
                         type="button"
-                        onClick={() => setMetaKeywords((prev) => prev.filter((_, i) => i !== index))}
+                        onClick={() =>
+                          setMetaKeywords((prev) =>
+                            prev.filter((_, i) => i !== index)
+                          )
+                        }
                         className="ml-2 text-blue-500 transition hover:text-blue-700"
                         disabled={loading}
                         aria-label={`Remove keyword ${item}`}
@@ -274,7 +316,9 @@ export default function CreateBlogPage() {
             </div>
 
             <div>
-              <label className="mb-1 block text-sm font-medium text-gray-700">Page URL Slug</label>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                Page URL Slug
+              </label>
               <input
                 type="text"
                 value={pageURL}
@@ -288,26 +332,35 @@ export default function CreateBlogPage() {
                 disabled={loading}
               />
               {formErrors.pageURL || urlError ? (
-                <p className="mt-1 text-sm text-red-500">{formErrors.pageURL || urlError}</p>
+                <p className="mt-1 text-sm text-red-500">
+                  {formErrors.pageURL || urlError}
+                </p>
               ) : null}
               <p className="mt-1 text-sm text-gray-500">
                 Final URL:{" "}
                 <span className="font-medium text-gray-800">
-                  {process.env.NEXT_PUBLIC_APP_URL}/blog/{pageURL || "<your-slug>"}
+                  {process.env.NEXT_PUBLIC_APP_URL}/blog/
+                  {pageURL || "<your-slug>"}
                 </span>
               </p>
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Content</label>
+              <label className="mb-2 block text-sm font-medium text-gray-700">
+                Content
+              </label>
               <RichTextEditorTiny
                 value={content}
                 onChange={(value) => {
-                  setContent(value)
-                  removeFieldError("content", setFormErrors)
+                  setContent(value);
+                  removeFieldError("content", setFormErrors);
                 }}
               />
-              {formErrors.content && <p className="mt-1 text-sm text-red-500">{formErrors.content}</p>}
+              {formErrors.content && (
+                <p className="mt-1 text-sm text-red-500">
+                  {formErrors.content}
+                </p>
+              )}
             </div>
 
             <div className="flex flex-col gap-2 sm:hidden">
@@ -332,7 +385,9 @@ export default function CreateBlogPage() {
           <div className="rounded-lg bg-white p-6 shadow">
             <div className="mb-4 flex items-center justify-between">
               <h2 className="text-lg font-semibold text-gray-800">Preview</h2>
-              <span className="text-xs uppercase tracking-wide text-gray-400">Live Update</span>
+              <span className="text-xs uppercase tracking-wide text-gray-400">
+                Live Update
+              </span>
             </div>
             <div className="prose max-w-none">
               <div dangerouslySetInnerHTML={{ __html: content }} />
@@ -341,5 +396,5 @@ export default function CreateBlogPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

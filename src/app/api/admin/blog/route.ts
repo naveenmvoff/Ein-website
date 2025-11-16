@@ -1,3 +1,4 @@
+// File: src/app/api/admin/blog/route.ts
 import connectDB from "@/config/db";
 import { NextResponse, NextRequest } from "next/server";
 import Blog from "@/models/Blog";
@@ -128,16 +129,60 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET() {
+// export async function GET(request: NextRequest) {
+//   try {
+//     await connectDB();
+    
+//     const searchParams = request.nextUrl.searchParams;
+//     const includeContent = searchParams.get('includeContent') === 'true';
+    
+//     let query = Blog.find().sort({ updatedAt: -1 });
+    
+//     if (!includeContent) {
+//       query = query.select('_id title metaDescription metaTitle metaKeywords pageURL createdAt updatedAt');
+//     }
+    
+//     const blogs = await query.lean();
+    
+//     return NextResponse.json({
+//       success: true,
+//       data: blogs,
+//       count: blogs.length,
+//     });
+//   } catch (error) {
+//     console.error("Error in Blog GET:", error);
+//     return NextResponse.json(
+//       { success: false, message: "Server error", error },
+//       { status: 500 }
+//     );
+//   }
+// }
+
+
+
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ slug: string }> }
+) {
   try {
     await connectDB();
-    const blogs = await Blog.find().sort({ createdAt: -1 });
+    const { slug } = await params;
+    
+    const blog = await Blog.findOne({ pageURL: slug }).lean();
+    
+    if (!blog) {
+      return NextResponse.json(
+        { success: false, message: "Blog not found" },
+        { status: 404 }
+      );
+    }
+    
     return NextResponse.json({
       success: true,
-      data: blogs,
+      data: blog,
     });
   } catch (error) {
-    console.error("Error in Blog GET:", error);
+    console.error("Error fetching blog by slug:", error);
     return NextResponse.json(
       { success: false, message: "Server error", error },
       { status: 500 }

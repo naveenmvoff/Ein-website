@@ -24,7 +24,6 @@ function PrivacyPolicyPage() {
         </p>
 
         <div className="space-y-8">
-          {/* Section 1 */}
           <div>
             <h2 className="text-xl font-semibold text-gray-900 mb-3">
               1. Information We Collect
