@@ -7,20 +7,18 @@ import HeaderNavbar from "@/components/landingPage/header";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/landingPage/heroSection";
 
+
 export default function OrderPlacedPage() {
   const [returnUrl, setReturnUrl] = useState("/");
  
   useEffect(() => {
-    // Get return URL from sessionStorage
     try {
       const stored = sessionStorage.getItem("returnUrl");
       if (stored) {
         setReturnUrl(stored);
-        // Clear it after reading
         sessionStorage.removeItem("returnUrl");
       }
     } catch {
-      // ignore if sessionStorage not available
     }
   }, []);
 
