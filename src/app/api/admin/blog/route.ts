@@ -129,63 +129,63 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// export async function GET(request: NextRequest) {
-//   try {
-//     await connectDB();
-    
-//     const searchParams = request.nextUrl.searchParams;
-//     const includeContent = searchParams.get('includeContent') === 'true';
-    
-//     let query = Blog.find().sort({ updatedAt: -1 });
-    
-//     if (!includeContent) {
-//       query = query.select('_id title metaDescription metaTitle metaKeywords pageURL createdAt updatedAt');
-//     }
-    
-//     const blogs = await query.lean();
-    
-//     return NextResponse.json({
-//       success: true,
-//       data: blogs,
-//       count: blogs.length,
-//     });
-//   } catch (error) {
-//     console.error("Error in Blog GET:", error);
-//     return NextResponse.json(
-//       { success: false, message: "Server error", error },
-//       { status: 500 }
-//     );
-//   }
-// }
-
-
-
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
-) {
+export async function GET(request: NextRequest) {
   try {
     await connectDB();
-    const { slug } = await params;
     
-    const blog = await Blog.findOne({ pageURL: slug }).lean();
+    const searchParams = request.nextUrl.searchParams;
+    const includeContent = searchParams.get('includeContent') === 'true';
     
-    if (!blog) {
-      return NextResponse.json(
-        { success: false, message: "Blog not found" },
-        { status: 404 }
-      );
+    let query = Blog.find().sort({ updatedAt: -1 });
+    
+    if (!includeContent) {
+      query = query.select('_id title metaDescription metaTitle metaKeywords pageURL createdAt updatedAt');
     }
+    
+    const blogs = await query.lean();
     
     return NextResponse.json({
       success: true,
-      data: blog,
+      data: blogs,
+      count: blogs.length,
     });
   } catch (error) {
-    console.error("Error fetching blog by slug:", error);
+    console.error("Error in Blog GET:", error);
     return NextResponse.json(
       { success: false, message: "Server error", error },
       { status: 500 }
     );
   }
 }
+
+
+
+// export async function GET(
+//   request: NextRequest,
+//   { params }: { params: Promise<{ slug: string }> }
+// ) {
+//   try {
+//     await connectDB();
+//     const { slug } = await params;
+    
+//     const blog = await Blog.findOne({ pageURL: slug }).lean();
+    
+//     if (!blog) {
+//       return NextResponse.json(
+//         { success: false, message: "Blog not found" },
+//         { status: 404 }
+//       );
+//     }
+    
+//     return NextResponse.json({
+//       success: true,
+//       data: blog,
+//     });
+//   } catch (error) {
+//     console.error("Error fetching blog by slug:", error);
+//     return NextResponse.json(
+//       { success: false, message: "Server error", error },
+//       { status: 500 }
+//     );
+//   }
+// }
