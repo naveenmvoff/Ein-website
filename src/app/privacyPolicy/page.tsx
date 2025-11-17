@@ -1,5 +1,19 @@
 import StaticUI from "@/components/StaticUI/StaticUI";
 import React from "react";
+import { Metadata } from "next";
+
+export async function generateMetadata({}: {
+  params: Promise<{ location: string }>;
+}): Promise<Metadata> {
+  return {
+    title: "Privacy Policy | Eintransport Packers and Movers",
+    description:
+      "Learn how Eintransport Packers & Movers collects, uses, and protects your personal data with secure and transparent privacy practices.",
+    alternates: {
+      canonical: `https://eintransport.in/privacyPolicy`,
+    },
+  };
+}
 
 function PrivacyPolicyPage() {
   return (

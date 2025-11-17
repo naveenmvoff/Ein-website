@@ -21,9 +21,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Best Packers and Movers | Home Shifting Made Easy | Eintransport",
-  description:
-    "We provide on-demand, reliable, and affordable transport services for all your moving and delivery needs. Whether you need to relocate household items, deliver goods to customers, or transport commercial cargo, our fleet of vehicles and professional drivers ensure safe, fast, and hassle-free transportation.",
+  // title: "Best Packers and Movers | Home Shifting Made Easy | Eintransport",
+  // description:
+  //   "We provide on-demand, reliable, and affordable transport services for all your moving and delivery needs. Whether you need to relocate household items, deliver goods to customers, or transport commercial cargo, our fleet of vehicles and professional drivers ensure safe, fast, and hassle-free transportation.",
   icons: {
     icon: [
       { url: "/Eintransport.png", type: "image/png" },
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
     ],
     apple: "/Eintransport.png",
   },
-  keywords:
-    "packers and movers, home shifting services, relocation experts, movers and packers near me, Eintransport",
+  // keywords:
+  //   "packers and movers, home shifting services, relocation experts, movers and packers near me, Eintransport",
   authors: [
     {
       name: "Eintransport Packers and Movers",
