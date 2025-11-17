@@ -31,6 +31,7 @@ export default function CreateBlogPage() {
   const [urlError, setURLError] = useState("");
   const [loading, setLoading] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [file, setFile] = useState();
 
   const handleKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" || e.key === "," || e.key === " ") {
@@ -120,6 +121,8 @@ export default function CreateBlogPage() {
         metaKeywords: keywords,
         metaTitle: metaTitle.trim(),
         pageURL: pageURL.trim(),
+        thumbnail: file,
+        status: "Draft",
       };
 
       const res = await fetch("/api/admin/blog", {
@@ -343,6 +346,39 @@ export default function CreateBlogPage() {
                   {pageURL || "<your-slug>"}
                 </span>
               </p>
+            </div>
+
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                upload thumbnail{" "}
+              </label>
+              <input
+                type="file"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (!file) return;
+
+                  const reader = new FileReader();
+                  reader.onloadend = () => {
+                    const base64String = reader.result;
+                    console.log("BASE64 FILE:", base64String);
+                    setFile(base64String);
+                  };
+                  reader.readAsDataURL(file);
+                }}
+              />
+              {/* {formErrors.pageURL || urlError ? (
+                <p className="mt-1 text-sm text-red-500">
+                  {formErrors.pageURL || urlError}
+                </p>
+              ) : null} */}
+              {/* <p className="mt-1 text-sm text-gray-500">
+                Final URL:{" "}
+                <span className="font-medium text-gray-800">
+                  {process.env.NEXT_PUBLIC_APP_URL}/blog/
+                  {pageURL || "<your-slug>"}
+                </span>
+              </p> */}
             </div>
 
             <div>

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import HeaderNavbar from "@/components/landingPage/header";
 import Footer from "@/components/Footer";
 import StaticUI from "@/components/StaticUI/StaticUI";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Blog | Packing & Moving Tips | Eintransport Packers and Movers",
@@ -18,7 +19,9 @@ export const metadata: Metadata = {
     "office relocation guide",
   ],
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"}/blog`,
+    canonical: `${
+      process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"
+    }/blog`,
   },
   openGraph: {
     title: "Blog | Packing & Moving Tips | Eintransport",
@@ -45,16 +48,13 @@ export const revalidate = 300;
 async function getBlogPosts() {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-    const res = await fetch(
-      `${baseUrl}/api/admin/blog?includeContent=false`,
-      {
-        next: { revalidate: 300 },
-        headers: {
-          "Content-Type": "application/json",
-        },
-        cache: 'no-store',
-      }
-    );
+    const res = await fetch(`${baseUrl}/api/admin/blog?includeContent=false`, {
+      next: { revalidate: 300 },
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
+    });
 
     if (!res.ok) {
       console.error("Failed to fetch blogs:", res.status, res.statusText);
@@ -84,17 +84,23 @@ export default async function BlogPage() {
       name: "Eintransport Packers and Movers",
       logo: {
         "@type": "ImageObject",
-        url: `${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"}/logo.png`,
+        url: `${
+          process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"
+        }/logo.png`,
       },
     },
-    blogPost: blogs.map((blog: any) => ({
-      "@type": "BlogPosting",
-      headline: blog.title,
-      description: blog.metaDescription || blog.title,
-      datePublished: blog.createdAt,
-      dateModified: blog.updatedAt || blog.createdAt,
-      url: `${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"}/blog/${blog.pageURL}`,
-    })),
+    blogPost: blogs
+      .filter((i: any) => i.status == "Active")
+      .map((blog: any) => ({
+        "@type": "BlogPosting",
+        headline: blog.title,
+        description: blog.metaDescription || blog.title,
+        datePublished: blog.createdAt,
+        dateModified: blog.updatedAt || blog.createdAt,
+        url: `${
+          process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"
+        }/blog/${blog.pageURL}`,
+      })),
   };
 
   return (
@@ -161,14 +167,23 @@ export default async function BlogPage() {
               >
                 <Link
                   href={`/blog/${blog.pageURL}`}
-                  className="block p-6 h-full flex flex-col"
+                  className="p-6 h-full flex flex-col"
                 >
-                  <h2
-                    className="text-xl font-semibold mb-3 text-gray-900 hover:text-blue-600 transition line-clamp-2"
-                    itemProp="headline"
-                  >
-                    {blog.title}
-                  </h2>
+                  {blogs.thumbnail ? (
+                    <Image
+                      src={`data:image/png;base64,${blogs.thumbnail}`}
+                      alt="Uploaded image"
+                      width={300}
+                      height={300}
+                    />
+                  ) : (
+                    <h2
+                      className="text-xl font-semibold mb-3 text-gray-900 hover:text-blue-600 transition line-clamp-2"
+                      itemProp="headline"
+                    >
+                      {blog.title}
+                    </h2>
+                  )}
 
                   {blog.metaDescription && (
                     <p
@@ -224,7 +239,10 @@ export default async function BlogPage() {
                     </span>
                   </div>
 
-                  <meta itemProp="author" content="Eintransport Packers and Movers" />
+                  <meta
+                    itemProp="author"
+                    content="Eintransport Packers and Movers"
+                  />
                   <meta itemProp="dateModified" content={blog.updatedAt} />
                 </Link>
               </article>
@@ -238,8 +256,6 @@ export default async function BlogPage() {
     </div>
   );
 }
-
-
 
 // // File: src/app/blog/page.tsx
 // import Link from "next/link";
@@ -519,12 +535,6 @@ export default async function BlogPage() {
 //   );
 // }
 
-
-
-
-
-
-
 // // // File: src/app/blog/page.tsx
 // // import Link from "next/link";
 // // import type { Metadata } from "next";
@@ -762,7 +772,6 @@ export default async function BlogPage() {
 // //     </div>
 // //   );
 // // }
-
 
 // // // import Link from "next/link";
 // // // import HeaderNavbar from "@/components/landingPage/header";

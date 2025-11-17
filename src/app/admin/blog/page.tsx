@@ -1,48 +1,49 @@
-"use client"
-import { useEffect, useState } from "react"
-import Link from "next/link"
-import {toast} from "react-hot-toast"
+"use client";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { toast } from "react-hot-toast";
 
 interface Blog {
-  _id: string
-  title: string
-  metaTitle?: string
-  metaDescription?: string
-  pageURL: string
-  createdAt: string
-  updatedAt?: string
+  _id: string;
+  title: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  pageURL: string;
+  createdAt: string;
+  updatedAt?: string;
+  status?: String;
 }
 
 export default function BlogPage() {
-  const [blogs, setBlogs] = useState<Blog[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchBlogs()
-  }, [])
+    fetchBlogs();
+  }, []);
 
   const fetchBlogs = async () => {
     try {
-      setLoading(true)
-      setError(null)
-      const res = await fetch("/api/admin/blog")
-      const data = await res.json()
+      setLoading(true);
+      setError(null);
+      const res = await fetch("/api/admin/blog");
+      const data = await res.json();
 
       if (!res.ok || !data.success) {
-        throw new Error(data.message || "Failed to fetch blogs")
+        throw new Error(data.message || "Failed to fetch blogs");
       }
 
-      setBlogs(data.data || [])
+      setBlogs(data.data || []);
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Failed to load blogs"
-      setError(message)
-      toast.error(message)
+      const message =
+        err instanceof Error ? err.message : "Failed to load blogs";
+      setError(message);
+      toast.error(message);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   if (loading) {
     return (
@@ -54,7 +55,7 @@ export default function BlogPage() {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -70,7 +71,11 @@ export default function BlogPage() {
           </Link>
         </div>
 
-        {error && <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-md text-red-700">{error}</div>}
+        {error && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-md text-red-700">
+            {error}
+          </div>
+        )}
 
         {blogs.length === 0 ? (
           <div className="bg-white rounded-lg shadow p-8 text-center">
@@ -85,17 +90,39 @@ export default function BlogPage() {
         ) : (
           <div className="grid gap-6">
             {blogs.map((blog) => {
-              const createdDate = blog.createdAt ? new Date(blog.createdAt) : null
+              const createdDate = blog.createdAt
+                ? new Date(blog.createdAt)
+                : null;
               const formattedDate =
-                createdDate && !isNaN(createdDate.getTime()) ? createdDate.toLocaleDateString() : "—"
+                createdDate && !isNaN(createdDate.getTime())
+                  ? createdDate.toLocaleDateString()
+                  : "—";
 
               return (
-                <div key={blog._id} className="bg-white rounded-lg shadow hover:shadow-lg transition p-6">
+                <div
+                  key={blog._id}
+                  className="bg-white rounded-lg shadow hover:shadow-lg transition p-6"
+                >
                   <div className="flex justify-between items-start">
                     <div className="flex-1">
-                      <h2 className="text-xl font-semibold text-gray-800 mb-2">{blog.title}</h2>
-                      <p className="text-gray-600 text-sm mb-2">{blog.metaDescription}</p>
-                      <p className="text-gray-400 text-xs">Published on {formattedDate}</p>
+                      <h2 className="text-xl font-semibold text-gray-800 mb-2">
+                        {blog.title}
+                      </h2>
+                      <p
+                        className={`${
+                          blog.status == "Active"
+                            ? "bg-green-300"
+                            : "bg-red-300"
+                        } w-fit rounded-md  p-2 text-sm font-semibold text-gray-800 mb-2`}
+                      >
+                        {blog.status}
+                      </p>
+                      <p className="text-gray-600 text-sm mb-2">
+                        {blog.metaDescription}
+                      </p>
+                      <p className="text-gray-400 text-xs">
+                        Published on {formattedDate}
+                      </p>
                     </div>
                     <div className="flex gap-2">
                       <Link
@@ -113,11 +140,11 @@ export default function BlogPage() {
                     </div>
                   </div>
                 </div>
-              )
+              );
             })}
           </div>
         )}
       </div>
     </div>
-  )
+  );
 }

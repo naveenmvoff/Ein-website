@@ -16,7 +16,9 @@ const normalizeSlug = (value: unknown): string => {
 
 const normalizeKeywords = (keywords: unknown): string[] => {
   if (!keywords) return [];
-  const items = Array.isArray(keywords) ? keywords : String(keywords).split(",");
+  const items = Array.isArray(keywords)
+    ? keywords
+    : String(keywords).split(",");
   const deduped = new Set<string>();
 
   return items
@@ -40,7 +42,8 @@ const validatePayload = (payload: any) => {
     errors.title = "Title must be 150 characters or less.";
   }
 
-  const content = typeof payload?.content === "string" ? payload.content.trim() : "";
+  const content =
+    typeof payload?.content === "string" ? payload.content.trim() : "";
   if (!content) {
     errors.content = "Content is required.";
   }
@@ -62,6 +65,7 @@ const validatePayload = (payload: any) => {
   const pageURLRaw =
     typeof payload?.pageURL === "string" ? payload.pageURL : "";
   const pageURL = normalizeSlug(pageURLRaw);
+
   if (!pageURL) {
     errors.pageURL = "Page URL slug is required.";
   } else if (!slugRegex.test(pageURL)) {
@@ -70,7 +74,10 @@ const validatePayload = (payload: any) => {
   } else if (pageURL.length > 60) {
     errors.pageURL = "Slug must be 60 characters or less.";
   }
+  const thumbnail =
+    typeof payload?.thumbnail === "string" ? payload.thumbnail : "";
 
+  const status = typeof payload?.status === "string" ? payload.status : "";
   const metaKeywords = normalizeKeywords(payload?.metaKeywords);
 
   return {
@@ -83,6 +90,8 @@ const validatePayload = (payload: any) => {
       metaKeywords,
       metaTitle,
       pageURL,
+      thumbnail,
+      status,
     },
   };
 };
@@ -92,7 +101,7 @@ export async function POST(request: NextRequest) {
     await connectDB();
     const body = await request.json();
     const { isValid, errors, sanitized } = validatePayload(body);
-
+    console.log("sanitized", sanitized);
     if (!isValid) {
       return NextResponse.json(
         { success: false, message: "Validation failed", errors },
@@ -103,7 +112,10 @@ export async function POST(request: NextRequest) {
     const existing = await Blog.exists({ pageURL: sanitized.pageURL });
     if (existing) {
       return NextResponse.json(
-        { success: false, message: "A blog with this page URL already exists." },
+        {
+          success: false,
+          message: "A blog with this page URL already exists.",
+        },
         { status: 409 }
       );
     }
@@ -118,7 +130,10 @@ export async function POST(request: NextRequest) {
     console.error("Error in Blog POST:", error);
     if (error?.code === 11000) {
       return NextResponse.json(
-        { success: false, message: "A blog with this page URL already exists." },
+        {
+          success: false,
+          message: "A blog with this page URL already exists.",
+        },
         { status: 409 }
       );
     }
@@ -129,63 +144,63 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// export async function GET(request: NextRequest) {
-//   try {
-//     await connectDB();
-    
-//     const searchParams = request.nextUrl.searchParams;
-//     const includeContent = searchParams.get('includeContent') === 'true';
-    
-//     let query = Blog.find().sort({ updatedAt: -1 });
-    
-//     if (!includeContent) {
-//       query = query.select('_id title metaDescription metaTitle metaKeywords pageURL createdAt updatedAt');
-//     }
-    
-//     const blogs = await query.lean();
-    
-//     return NextResponse.json({
-//       success: true,
-//       data: blogs,
-//       count: blogs.length,
-//     });
-//   } catch (error) {
-//     console.error("Error in Blog GET:", error);
-//     return NextResponse.json(
-//       { success: false, message: "Server error", error },
-//       { status: 500 }
-//     );
-//   }
-// }
-
-
-
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
-) {
+export async function GET(request: NextRequest) {
   try {
     await connectDB();
-    const { slug } = await params;
-    
-    const blog = await Blog.findOne({ pageURL: slug }).lean();
-    
-    if (!blog) {
-      return NextResponse.json(
-        { success: false, message: "Blog not found" },
-        { status: 404 }
+
+    const searchParams = request.nextUrl.searchParams;
+    const includeContent = searchParams.get("includeContent") === "true";
+
+    let query = Blog.find().sort({ updatedAt: -1 });
+
+    if (!includeContent) {
+      query = query.select(
+        "_id title metaDescription metaTitle metaKeywords pageURL status thumbnail  createdAt updatedAt"
       );
     }
-    
+
+    const blogs = await query.lean();
+
     return NextResponse.json({
       success: true,
-      data: blog,
+      data: blogs,
+      count: blogs.length,
     });
   } catch (error) {
-    console.error("Error fetching blog by slug:", error);
+    console.error("Error in Blog GET:", error);
     return NextResponse.json(
       { success: false, message: "Server error", error },
       { status: 500 }
     );
   }
 }
+
+// export async function GET(
+//   request: NextRequest,
+//   { params }: { params: Promise<{ slug: string }> }
+// ) {
+//   try {
+//     await connectDB();
+//     const { slug } = await params;
+
+//     const blog = await Blog.findOne({ pageURL: slug }).lean();
+
+//     if (!blog) {
+//       return NextResponse.json(
+//         { success: false, message: "Blog not found" },
+//         { status: 404 }
+//       );
+//     }
+
+//     return NextResponse.json({
+//       success: true,
+//       data: blog,
+//     });
+//   } catch (error) {
+//     console.error("Error fetching blog by slug:", error);
+//     return NextResponse.json(
+//       { success: false, message: "Server error", error },
+//       { status: 500 }
+//     );
+//   }
+// }

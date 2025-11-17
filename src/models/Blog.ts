@@ -1,33 +1,45 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const blogSchema = new mongoose.Schema({
+const blogSchema = new mongoose.Schema(
+  {
     title: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     content: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     metaDescription: {
-        type: String,
-        default: '',
+      type: String,
+      default: "",
     },
     metaKeywords: {
-        type: [String],
-        default: [],
+      type: [String],
+      default: [],
     },
     metaTitle: {
-        type: String,
-        default: '',
+      type: String,
+      default: "",
     },
     pageURL: {
-        type: String,
-        default: '',
-        unique: true,
-        required: true,
+      type: String,
+      default: "",
+      unique: true,
+      required: true,
     },
-}, { timestamps: true });
+    thumbnail: {
+      type: String,
+      default: "",
+    },
+    status: {
+      type: String,
+      enum: ["Active", "Draft", "Delete"],
+      default: "Draft",
+    },
+  },
+  { timestamps: true }
+);
 
 const Blog = mongoose.models.Blog || mongoose.model("Blog", blogSchema);
 export default Blog;

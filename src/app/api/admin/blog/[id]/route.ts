@@ -15,7 +15,9 @@ const normalizeSlug = (value: unknown): string => {
 
 const normalizeKeywords = (keywords: unknown): string[] => {
   if (!keywords) return [];
-  const items = Array.isArray(keywords) ? keywords : String(keywords).split(",");
+  const items = Array.isArray(keywords)
+    ? keywords
+    : String(keywords).split(",");
   const deduped = new Set<string>();
 
   return items
@@ -39,7 +41,8 @@ const validatePayload = (payload: any) => {
     errors.title = "Title must be 150 characters or less.";
   }
 
-  const content = typeof payload?.content === "string" ? payload.content.trim() : "";
+  const content =
+    typeof payload?.content === "string" ? payload.content.trim() : "";
   if (!content) {
     errors.content = "Content is required.";
   }
@@ -69,7 +72,10 @@ const validatePayload = (payload: any) => {
   } else if (pageURL.length > 60) {
     errors.pageURL = "Slug must be 60 characters or less.";
   }
+  const thumbnail =
+    typeof payload?.thumbnail === "string" ? payload.thumbnail : "";
 
+  const status = typeof payload?.status === "string" ? payload.status : "";
   const metaKeywords = normalizeKeywords(payload?.metaKeywords);
 
   return {
@@ -82,6 +88,8 @@ const validatePayload = (payload: any) => {
       metaKeywords,
       metaTitle,
       pageURL,
+      thumbnail,
+      status,
     },
   };
 };
@@ -119,7 +127,10 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     });
     if (slugConflict) {
       return NextResponse.json(
-        { success: false, message: "A blog with this page URL already exists." },
+        {
+          success: false,
+          message: "A blog with this page URL already exists.",
+        },
         { status: 409 }
       );
     }
@@ -146,7 +157,10 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     console.error("Error in Blog PUT:", error);
     if (error?.code === 11000) {
       return NextResponse.json(
-        { success: false, message: "A blog with this page URL already exists." },
+        {
+          success: false,
+          message: "A blog with this page URL already exists.",
+        },
         { status: 409 }
       );
     }
@@ -160,7 +174,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 export async function GET(_request: NextRequest, { params }: RouteParams) {
   try {
     await connectDB();
-    const { id } = params;
+    const { id } = await params;
 
     if (!id) {
       return NextResponse.json(
