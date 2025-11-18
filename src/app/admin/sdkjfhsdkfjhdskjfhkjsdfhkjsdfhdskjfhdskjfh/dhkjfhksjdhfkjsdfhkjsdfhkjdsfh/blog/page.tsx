@@ -64,7 +64,7 @@ export default function BlogPage() {
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800">All Blogs</h1>
           <Link
-            href="/admin/blog/create"
+            href="/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog/create"
             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
           >
             New Blog
@@ -132,7 +132,7 @@ export default function BlogPage() {
                         View
                       </Link>
                       <Link
-                        href={`/admin/blog/edit/${blog._id}`}
+                        href={`/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog/edit/${blog._id}`}
                         className="px-3 py-1 bg-blue-200 text-blue-800 rounded text-sm hover:bg-blue-300 transition"
                       >
                         Edit

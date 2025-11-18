@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { toast } from "react-hot-toast";
 import RichTextEditorTiny from "@/components/admin/blog/Rich-text-editor-tiny";
+import Image from "next/image";
 
 const removeFieldError = (
   field: string,
@@ -43,9 +44,10 @@ export default function EditBlogPage() {
   const [metaKeywords, setMetaKeywords] = useState<string[]>([]);
   const [pageURL, setPageURL] = useState("");
   const [title, setTitle] = useState("");
-  const [status, setStatus] = useState("");
   const [urlError, setURLError] = useState("");
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [thumbnail, setThumbnail] = useState<string | null>(null);
+  const [thumbError, setThumbError] = useState("");
 
   useEffect(() => {
     fetchBlog();
@@ -71,6 +73,7 @@ export default function EditBlogPage() {
       setContent(blogData.content);
       setMetaTitle(blogData.metaTitle);
       setMetaDescription(blogData.metaDescription);
+      setThumbnail(blogData.thumbnail);
       // setStatus()
       const keywords = Array.isArray(blogData.metaKeywords)
         ? blogData.metaKeywords
@@ -166,7 +169,17 @@ export default function EditBlogPage() {
         toast.error(urlError);
         return;
       }
+      if (!thumbnail) {
+        setThumbError("Thumbnail is required");
 
+        toast.error("Please add thumbnail");
+        return;
+      }
+
+      if (thumbError) {
+        toast.error(thumbError);
+        return;
+      }
       setSaving(true);
 
       const keywords = metaKeywords
@@ -182,6 +195,7 @@ export default function EditBlogPage() {
         metaKeywords: keywords,
         metaTitle: metaTitle.trim(),
         pageURL: pageURL.trim(),
+        thumbnail: thumbnail,
         status: type == "publish" ? "Active" : "Draft",
       };
 
@@ -215,7 +229,9 @@ export default function EditBlogPage() {
 
       toast.success("Blog updated successfully!");
 
-      router.push(`/admin/blog/${blogId}`);
+      router.push(
+        `/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog/${blogId}`
+      );
     } catch (error) {
       const message =
         error instanceof Error ? error.message : "Error updating blog";
@@ -224,6 +240,23 @@ export default function EditBlogPage() {
     } finally {
       setSaving(false);
     }
+  };
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setThumbError(""); // clear error
+    const file = e.target.files?.[0];
+
+    if (!file) {
+      setThumbError("Thumbnail is required");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setThumbnail(reader.result as string);
+    };
+
+    reader.readAsDataURL(file);
   };
 
   if (loading) {
@@ -446,7 +479,41 @@ export default function EditBlogPage() {
                 </span>
               </p>
             </div>
+            <div className="space-y-2">
+              {/* Label */}
+              <label className="block text-sm font-medium text-gray-700">
+                Upload Thumbnail
+              </label>
 
+              {/* Input */}
+              <div className="p-3 border border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100 transition">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileUpload}
+                  className="text-sm"
+                />
+              </div>
+              {thumbError ? (
+                <p className="mt-1 text-sm text-red-500">{thumbError}</p>
+              ) : null}
+
+              {/* Preview */}
+              {thumbnail && (
+                <div className="mt-3">
+                  <p className="text-sm text-gray-600 mb-1">Preview:</p>
+
+                  <div className="w-40 h-28 relative rounded-lg overflow-hidden border">
+                    <Image
+                      src={thumbnail}
+                      alt="Thumbnail Preview"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-700">
                 Content

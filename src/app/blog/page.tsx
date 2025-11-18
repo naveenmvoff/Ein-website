@@ -62,7 +62,7 @@ async function getBlogPosts() {
     }
 
     const json = await res.json();
-    return json?.data || [];
+    return json?.data.filter((i: any) => i.status == "Active") || [];
   } catch (error) {
     console.error("Error fetching blog posts:", error);
     return [];
@@ -102,6 +102,7 @@ export default async function BlogPage() {
         }/blog/${blog.pageURL}`,
       })),
   };
+  console.log("blogs", blogs);
 
   return (
     <div className="bg-blue-50/50 min-h-screen">
@@ -167,83 +168,109 @@ export default async function BlogPage() {
               >
                 <Link
                   href={`/blog/${blog.pageURL}`}
-                  className="p-6 h-full flex flex-col"
+                  className="
+   
+  "
                 >
-                  {blogs.thumbnail ? (
-                    <Image
-                      src={`data:image/png;base64,${blogs.thumbnail}`}
-                      alt="Uploaded image"
-                      width={300}
-                      height={300}
-                    />
-                  ) : (
-                    <h2
-                      className="text-xl font-semibold mb-3 text-gray-900 hover:text-blue-600 transition line-clamp-2"
-                      itemProp="headline"
-                    >
-                      {blog.title}
-                    </h2>
-                  )}
-
-                  {blog.metaDescription && (
-                    <p
-                      className="text-sm text-gray-600 mb-4 line-clamp-3 flex-grow"
-                      itemProp="description"
-                    >
-                      {blog.metaDescription}
-                    </p>
-                  )}
-
-                  <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                    <time
-                      className="text-xs text-gray-500 flex items-center gap-1"
-                      dateTime={blog.updatedAt}
-                      itemProp="datePublished"
-                    >
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                  {/* Thumbnail */}
+                  <div className="relative w-full h-48 bg-gray-100 flex items-center justify-center">
+                    {blog.thumbnail ? (
+                      <Image
+                        src={
+                          blog.thumbnail.startsWith("data:")
+                            ? blog.thumbnail
+                            : `data:image/jpeg;base64,${blog.thumbnail}`
+                        }
+                        alt={blog.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition duration-300"
+                        sizes="100vw"
+                      />
+                    ) : (
+                      <h2
+                        className="text-xl font-semibold text-gray-900 px-4 text-center"
+                        itemProp="headline"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg>
-                      {new Date(blog.updatedAt).toLocaleDateString("en-IN", {
-                        timeZone: "Asia/Kolkata",
-                        year: "numeric",
-                        month: "short",
-                        day: "2-digit",
-                      })}
-                    </time>
-
-                    <span className="text-blue-600 font-medium text-sm flex items-center gap-1 hover:gap-2 transition-all">
-                      Read More
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </span>
+                        {blog.title}
+                      </h2>
+                    )}
                   </div>
 
-                  <meta
-                    itemProp="author"
-                    content="Eintransport Packers and Movers"
-                  />
-                  <meta itemProp="dateModified" content={blog.updatedAt} />
+                  {/* Content */}
+                  <div className="flex flex-col flex-grow p-5">
+                    {/* Title (visible only if image exists) */}
+                    {blog.thumbnail && (
+                      <h2
+                        className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition"
+                        itemProp="headline"
+                      >
+                        {blog.title}
+                      </h2>
+                    )}
+
+                    {/* Description */}
+                    {blog.metaDescription && (
+                      <p
+                        className="text-sm text-gray-600 mb-4 line-clamp-3 flex-grow"
+                        itemProp="description"
+                      >
+                        {blog.metaDescription}
+                      </p>
+                    )}
+
+                    {/* Footer */}
+                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+                      <time
+                        className="text-xs text-gray-500 flex items-center gap-1"
+                        dateTime={blog.updatedAt}
+                        itemProp="datePublished"
+                      >
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
+                        </svg>
+
+                        {new Date(blog.updatedAt).toLocaleDateString("en-IN", {
+                          timeZone: "Asia/Kolkata",
+                          year: "numeric",
+                          month: "short",
+                          day: "2-digit",
+                        })}
+                      </time>
+
+                      <span className="text-blue-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Read More
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+
+                    <meta
+                      itemProp="author"
+                      content="Eintransport Packers and Movers"
+                    />
+                    <meta itemProp="dateModified" content={blog.updatedAt} />
+                  </div>
                 </Link>
               </article>
             ))}

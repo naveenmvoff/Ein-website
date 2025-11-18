@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import RichTextEditorTiny from "@/components/admin/blog/Rich-text-editor-tiny";
+import Image from "next/image";
 
 const removeFieldError = (
   field: string,
@@ -32,6 +33,8 @@ export default function CreateBlogPage() {
   const [loading, setLoading] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [file, setFile] = useState();
+  const [thumbnail, setThumbnail] = useState<string | null>(null);
+  const [thumbError, setThumbError] = useState("");
 
   const handleKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" || e.key === "," || e.key === " ") {
@@ -105,6 +108,17 @@ export default function CreateBlogPage() {
         toast.error(urlError);
         return;
       }
+      if (!thumbnail) {
+        setThumbError("Thumbnail is required");
+
+        toast.error("Please add thumbnail");
+        return;
+      }
+
+      if (thumbError) {
+        toast.error(thumbError);
+        return;
+      }
 
       setLoading(true);
 
@@ -121,7 +135,7 @@ export default function CreateBlogPage() {
         metaKeywords: keywords,
         metaTitle: metaTitle.trim(),
         pageURL: pageURL.trim(),
-        thumbnail: file,
+        thumbnail: thumbnail,
         status: "Draft",
       };
 
@@ -155,7 +169,9 @@ export default function CreateBlogPage() {
 
       toast.success("Blog created successfully!");
 
-      router.push(`/admin/blog/${data.data._id}`);
+      router.push(
+        `/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog/${data.data._id}`
+      );
     } catch (error) {
       const message =
         error instanceof Error ? error.message : "Error saving blog";
@@ -167,6 +183,23 @@ export default function CreateBlogPage() {
   };
 
   const goBack = () => router.push("/admin/blog");
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setThumbError(""); // clear error
+    const file = e.target.files?.[0];
+
+    if (!file) {
+      setThumbError("Thumbnail is required");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setThumbnail(reader.result as string);
+    };
+
+    reader.readAsDataURL(file);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
@@ -348,37 +381,40 @@ export default function CreateBlogPage() {
               </p>
             </div>
 
-            <div>
-              <label className="mb-1 block text-sm font-medium text-gray-700">
-                upload thumbnail{" "}
+            <div className="space-y-2">
+              {/* Label */}
+              <label className="block text-sm font-medium text-gray-700">
+                Upload Thumbnail
               </label>
-              <input
-                type="file"
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
-                  if (!file) return;
 
-                  const reader = new FileReader();
-                  reader.onloadend = () => {
-                    const base64String = reader.result;
-                    console.log("BASE64 FILE:", base64String);
-                    setFile(base64String);
-                  };
-                  reader.readAsDataURL(file);
-                }}
-              />
-              {/* {formErrors.pageURL || urlError ? (
-                <p className="mt-1 text-sm text-red-500">
-                  {formErrors.pageURL || urlError}
-                </p>
-              ) : null} */}
-              {/* <p className="mt-1 text-sm text-gray-500">
-                Final URL:{" "}
-                <span className="font-medium text-gray-800">
-                  {process.env.NEXT_PUBLIC_APP_URL}/blog/
-                  {pageURL || "<your-slug>"}
-                </span>
-              </p> */}
+              {/* Input */}
+              <div className="p-3 border border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100 transition">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileUpload}
+                  className="text-sm"
+                />
+              </div>
+              {thumbError ? (
+                <p className="mt-1 text-sm text-red-500">{thumbError}</p>
+              ) : null}
+
+              {/* Preview */}
+              {thumbnail && (
+                <div className="mt-3">
+                  <p className="text-sm text-gray-600 mb-1">Preview:</p>
+
+                  <div className="w-40 h-28 relative rounded-lg overflow-hidden border">
+                    <Image
+                      src={thumbnail}
+                      alt="Thumbnail Preview"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              )}
             </div>
 
             <div>
