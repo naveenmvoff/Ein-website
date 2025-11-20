@@ -22,6 +22,11 @@ export type BlogDocument = {
   updatedAt: string | null;
 };
 
+export const buildCanonicalUrl = (slug: string): string => {
+  const base = process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in";
+  return `${base.replace(/\/$/, "")}/blog/${slug}`;
+};
+
 type BlogModelResult = {
   _id: { toString(): string } | string;
   title: string;
@@ -35,7 +40,8 @@ type BlogModelResult = {
 };
 
 export async function getBlogBySlug(
-  slugParam: string
+  slugParam: string,
+  options?: { metadataOnly?: boolean }
 ): Promise<BlogDocument | null> {
   if (!slugParam?.trim()) {
     return null;
@@ -48,7 +54,22 @@ export async function getBlogBySlug(
 
   await connectDB();
 
-  const blog = await Blog.findOne({ pageURL: normalizedSlug }).lean<BlogModelResult | null>();
+  // For metadata generation, only fetch necessary fields to improve performance
+  const selectFields = options?.metadataOnly
+    ? "title metaTitle metaDescription metaKeywords pageURL createdAt updatedAt"
+    : undefined;
+
+  // Use maxTimeMS to prevent slow queries from blocking metadata generation
+  let query = Blog.findOne({ pageURL: normalizedSlug });
+  
+  if (selectFields) {
+    query = query.select(selectFields);
+  }
+  
+  const blog = await query
+    .maxTimeMS(3000) // 3 second timeout for metadata queries
+    .lean<BlogModelResult | null>();
+    
   if (!blog) {
     return null;
   }
@@ -61,7 +82,7 @@ export async function getBlogBySlug(
         ? blog._id.toString()
         : "",
     title: blog.title,
-    content: blog.content,
+    content: blog.content || "",
     metaTitle: blog.metaTitle ?? "",
     metaDescription: blog.metaDescription ?? "",
     metaKeywords: Array.isArray(blog.metaKeywords) ? blog.metaKeywords : [],

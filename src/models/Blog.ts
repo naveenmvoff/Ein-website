@@ -27,6 +27,7 @@ const blogSchema = new mongoose.Schema(
       default: "",
       unique: true,
       required: true,
+      index: true, // Explicit index for faster queries
     },
     thumbnail: {
       type: String,
