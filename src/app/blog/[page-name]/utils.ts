@@ -52,7 +52,23 @@ export async function getBlogBySlug(
     return null;
   }
 
-  await connectDB();
+  // For metadata-only queries, use a faster connection check
+  if (options?.metadataOnly) {
+    // Try to connect, but don't wait too long
+    try {
+      await Promise.race([
+        connectDB(),
+        new Promise((_, reject) => 
+          setTimeout(() => reject(new Error("Connection timeout")), 300)
+        )
+      ]);
+    } catch (error) {
+      // If connection fails or times out, return null immediately
+      return null;
+    }
+  } else {
+    await connectDB();
+  }
 
   // For metadata generation, only fetch necessary fields to improve performance
   const selectFields = options?.metadataOnly
@@ -66,8 +82,11 @@ export async function getBlogBySlug(
     query = query.select(selectFields);
   }
   
+  // Very aggressive timeout for metadata queries - must be fast
+  const timeout = options?.metadataOnly ? 500 : 3000;
+  
   const blog = await query
-    .maxTimeMS(3000) // 3 second timeout for metadata queries
+    .maxTimeMS(timeout)
     .lean<BlogModelResult | null>();
     
   if (!blog) {

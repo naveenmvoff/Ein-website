@@ -13,75 +13,14 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { "page-name": pageName } = await params;
-  
-  // Use Promise.race to timeout the database query if it takes too long
-  const blogPromise = getBlogBySlug(pageName, { metadataOnly: true });
-  const timeoutPromise = new Promise<null>((resolve) => 
-    setTimeout(() => resolve(null), 2000) // 2 second timeout
-  );
+  const canonicalUrl = buildCanonicalUrl(pageName);
 
-  let blog: BlogDocument | null;
-  try {
-    blog = await Promise.race([blogPromise, timeoutPromise]);
-  } catch (error) {
-    console.error("Error fetching blog for metadata:", error);
-    blog = null;
-  }
-
-  if (!blog) {
-    // Return basic metadata immediately if query fails or times out
-    const canonicalUrl = buildCanonicalUrl(pageName);
-    return {
-      title: "Blog | Eintransport Packers and Movers",
-      description: "Read expert articles, moving guides, and packing tips on Eintransport blog.",
-      keywords: ["packers and movers", "moving tips", "relocation guide"],
-      authors: [{ name: "Eintransport Packers and Movers" }],
-      creator: "Eintransport",
-      publisher: "Eintransport Packers and Movers",
-      alternates: {
-        canonical: canonicalUrl,
-      },
-      openGraph: {
-        title: "Blog | Eintransport Packers and Movers",
-        description: "Expert articles and guides for hassle-free relocation.",
-        url: canonicalUrl,
-        siteName: "Eintransport Packers and Movers",
-        type: "article",
-        locale: "en_IN",
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: "Blog | Eintransport",
-        description: "Expert relocation guides and tips from Eintransport",
-        creator: "@eintransport",
-      },
-      robots: {
-        index: true,
-        follow: true,
-        googleBot: {
-          index: true,
-          follow: true,
-          "max-video-preview": -1,
-          "max-image-preview": "large",
-          "max-snippet": -1,
-        },
-      },
-    };
-  }
-
-  const title = blog.metaTitle || blog.title;
-  const description =
-    blog.metaDescription || `Read ${blog.title} on Eintransport blog.`;
-  const keywords = blog.metaKeywords?.length ? blog.metaKeywords : undefined;
-  const canonicalUrl = buildCanonicalUrl(blog.pageURL);
-
-  // Use description directly since we're fetching metadataOnly
-  const finalDescription = description || `Read ${blog.title} on Eintransport blog.`;
-
-  return {
-    title,
-    description: finalDescription,
-    keywords,
+  // Return fallback metadata immediately (like landing page does with static data)
+  // This ensures metadata is always fast for SEO tools
+  const fallbackMetadata: Metadata = {
+    title: "Blog | Eintransport Packers and Movers",
+    description: "Read expert articles, moving guides, and packing tips on Eintransport blog.",
+    keywords: ["packers and movers", "moving tips", "relocation guide"],
     authors: [{ name: "Eintransport Packers and Movers" }],
     creator: "Eintransport",
     publisher: "Eintransport Packers and Movers",
@@ -89,19 +28,17 @@ export async function generateMetadata({
       canonical: canonicalUrl,
     },
     openGraph: {
-      title,
-      description: finalDescription,
+      title: "Blog | Eintransport Packers and Movers",
+      description: "Expert articles and guides for hassle-free relocation.",
       url: canonicalUrl,
       siteName: "Eintransport Packers and Movers",
       type: "article",
-      publishedTime: blog.createdAt || undefined,
-      modifiedTime: blog.updatedAt || undefined,
       locale: "en_IN",
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description: finalDescription,
+      title: "Blog | Eintransport",
+      description: "Expert relocation guides and tips from Eintransport",
       creator: "@eintransport",
     },
     robots: {
@@ -116,6 +53,71 @@ export async function generateMetadata({
       },
     },
   };
+
+  // Try to fetch blog metadata with very aggressive timeout (500ms)
+  // If it succeeds quickly, use it; otherwise return fallback immediately
+  try {
+    const blogPromise = getBlogBySlug(pageName, { metadataOnly: true });
+    const timeoutPromise = new Promise<null>((resolve) => 
+      setTimeout(() => resolve(null), 500) // 500ms timeout - very aggressive
+    );
+
+    const blog = await Promise.race([blogPromise, timeoutPromise]);
+
+    if (blog) {
+      // If we got the blog data quickly, use it for better SEO
+      const title = blog.metaTitle || blog.title;
+      const description =
+        blog.metaDescription || `Read ${blog.title} on Eintransport blog.`;
+      const keywords = blog.metaKeywords?.length ? blog.metaKeywords : undefined;
+      const blogCanonicalUrl = buildCanonicalUrl(blog.pageURL);
+      const finalDescription = description || `Read ${blog.title} on Eintransport blog.`;
+
+      return {
+        title,
+        description: finalDescription,
+        keywords,
+        authors: [{ name: "Eintransport Packers and Movers" }],
+        creator: "Eintransport",
+        publisher: "Eintransport Packers and Movers",
+        alternates: {
+          canonical: blogCanonicalUrl,
+        },
+        openGraph: {
+          title,
+          description: finalDescription,
+          url: blogCanonicalUrl,
+          siteName: "Eintransport Packers and Movers",
+          type: "article",
+          publishedTime: blog.createdAt || undefined,
+          modifiedTime: blog.updatedAt || undefined,
+          locale: "en_IN",
+        },
+        twitter: {
+          card: "summary_large_image",
+          title,
+          description: finalDescription,
+          creator: "@eintransport",
+        },
+        robots: {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+          },
+        },
+      };
+    }
+  } catch (error) {
+    // Silently fail and return fallback - don't log to avoid noise
+  }
+
+  // Return fallback metadata immediately (always fast, like landing page)
+  return fallbackMetadata;
 }
 
 // Dynamic rendering configuration
