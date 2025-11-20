@@ -236,9 +236,13 @@ function Footer() {
                   <span className="font-medium text-[10px] sm:text-base text-gray-300 whitespace-nowrap">
                     Address:
                   </span>
-                  <p className="text-gray-400 text-[10px] sm:text-base leading-relaxed flex-1 min-w-0">
+                  {/* <p className="text-gray-400 text-[10px] sm:text-base leading-relaxed flex-1 min-w-0">
                     NO. 25, GPR LAYOUT, SFS WARD 1, BLOCK 92, Sri Muneshwara
                     Swamy Temple, Hebbagodi, Bengaluru urban, Karnataka, 560100
+                  </p> */}
+                  <p className="text-gray-400 text-[10px] sm:text-base leading-relaxed flex-1 min-w-0">
+                    22, 4th Cross Rd, Muneshwara Layout, Phase II, 
+                    Electronic City, Bengaluru, Karnataka - 560100
                   </p>
                 </div>
 
