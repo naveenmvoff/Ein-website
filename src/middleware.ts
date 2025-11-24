@@ -38,14 +38,14 @@ export function middleware(request: NextRequest) {
   if (pathname.startsWith("/admin/login")) {
     // If user IS logged in, redirect to /admin
     if (loginCookie) {
-      return NextResponse.redirect(new URL("/admin/blog", request.url));
+      return NextResponse.redirect(new URL("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog", request.url));
     }
     // If not logged in, just allow /admin/login
     return NextResponse.next();
   }
 
   // Protect /admin page
-  if (pathname === "/admin/blog" && !loginCookie) {
+  if (pathname === "/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog" && !loginCookie) {
     return NextResponse.redirect(new URL("/admin/login", request.url));
   }
 

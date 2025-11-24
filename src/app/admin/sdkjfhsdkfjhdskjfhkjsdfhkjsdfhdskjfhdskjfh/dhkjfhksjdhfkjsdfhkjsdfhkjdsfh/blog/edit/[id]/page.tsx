@@ -77,13 +77,13 @@ export default function EditBlogPage() {
       // setStatus()
       const keywords = Array.isArray(blogData.metaKeywords)
         ? blogData.metaKeywords
-            .map((keyword: unknown) =>
-              typeof keyword === "string" ? keyword.trim() : ""
-            )
-            .filter(
-              (keyword: string, index: number, arr: string[]) =>
-                keyword && arr.indexOf(keyword) === index
-            )
+          .map((keyword: unknown) =>
+            typeof keyword === "string" ? keyword.trim() : ""
+          )
+          .filter(
+            (keyword: string, index: number, arr: string[]) =>
+              keyword && arr.indexOf(keyword) === index
+          )
         : [];
       setMetaKeywords(keywords);
       setPageURL(blogData.pageURL);
@@ -141,7 +141,7 @@ export default function EditBlogPage() {
     removeFieldError("pageURL", setFormErrors);
   };
 
-  const handleUpdate = async (type) => {
+  const handleUpdate = async (type: any) => {
     try {
       setFormErrors({});
       if (!title.trim()) {
@@ -199,7 +199,7 @@ export default function EditBlogPage() {
         status: type == "publish" ? "Active" : "Draft",
       };
 
-      const res = await fetch(`/api/admin/blog/${blogId}`, {
+      const res = await fetch(`/api/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog/${blogId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -281,7 +281,7 @@ export default function EditBlogPage() {
           <h1 className="text-2xl font-semibold text-gray-800">Edit Blog</h1>
           <p className="mt-3 text-red-700">{error || "Blog not found"}</p>
           <button
-            onClick={() => router.push("/admin/blog")}
+            onClick={() => router.push("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog")}
             className="mt-6 rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700"
           >
             Back to Blogs
@@ -291,7 +291,7 @@ export default function EditBlogPage() {
     );
   }
 
-  const goBack = () => router.push("/admin/blog");
+  const goBack = () => router.push("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog");
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
@@ -336,7 +336,7 @@ export default function EditBlogPage() {
           <form
             onSubmit={(event) => {
               event.preventDefault();
-              handleUpdate();
+              handleUpdate("update");
             }}
             className="space-y-6 rounded-lg bg-white p-6 shadow"
           >
@@ -459,11 +459,10 @@ export default function EditBlogPage() {
                 value={pageURL}
                 onChange={handlePageURLChange}
                 placeholder="e.g. my-updated-blog"
-                className={`w-full rounded-md border px-3 py-2 text-gray-900 transition focus:outline-none focus:ring-2 ${
-                  urlError
-                    ? "border-red-500 focus:border-red-500 focus:ring-red-100"
-                    : "border-gray-300 bg-gray-50 focus:border-blue-500 focus:ring-blue-100"
-                } disabled:opacity-70`}
+                className={`w-full rounded-md border px-3 py-2 text-gray-900 transition focus:outline-none focus:ring-2 ${urlError
+                  ? "border-red-500 focus:border-red-500 focus:ring-red-100"
+                  : "border-gray-300 bg-gray-50 focus:border-blue-500 focus:ring-blue-100"
+                  } disabled:opacity-70`}
                 disabled={saving}
               />
               {formErrors.pageURL || urlError ? (

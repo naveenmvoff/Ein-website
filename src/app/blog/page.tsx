@@ -19,9 +19,8 @@ export const metadata: Metadata = {
     "office relocation guide",
   ],
   alternates: {
-    canonical: `${
-      process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"
-    }/blog`,
+    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"
+      }/blog`,
   },
   openGraph: {
     title: "Blog | Packing & Moving Tips | Eintransport",
@@ -48,7 +47,7 @@ export const revalidate = 300;
 async function getBlogPosts() {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-    const res = await fetch(`${baseUrl}/api/admin/blog?includeContent=false`, {
+    const res = await fetch(`${baseUrl}/api/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog?includeContent=false`, {
       next: { revalidate: 300 },
       headers: {
         "Content-Type": "application/json",
@@ -84,9 +83,8 @@ export default async function BlogPage() {
       name: "Eintransport Packers and Movers",
       logo: {
         "@type": "ImageObject",
-        url: `${
-          process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"
-        }/logo.png`,
+        url: `${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"
+          }/logo.png`,
       },
     },
     blogPost: blogs
@@ -97,9 +95,8 @@ export default async function BlogPage() {
         description: blog.metaDescription || blog.title,
         datePublished: blog.createdAt,
         dateModified: blog.updatedAt || blog.createdAt,
-        url: `${
-          process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"
-        }/blog/${blog.pageURL}`,
+        url: `${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"
+          }/blog/${blog.pageURL}`,
       })),
   };
   console.log("blogs", blogs);
@@ -333,7 +330,7 @@ export default async function BlogPage() {
 //     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 //     // Only fetch necessary fields for listing page to reduce payload size
 //     const res = await fetch(
-//       `${baseUrl}/api/admin/blog?fields=_id title metaDescription pageURL createdAt updatedAt`,
+//       `${baseUrl}/api/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog?fields=_id title metaDescription pageURL createdAt updatedAt`,
 //       {
 //         next: { revalidate: 300 },
 //         headers: {
@@ -609,7 +606,7 @@ export default async function BlogPage() {
 // // async function getBlogPosts() {
 // //   try {
 // //     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-// //     const res = await fetch(`${baseUrl}/api/admin/blog`, {
+// //     const res = await fetch(`${baseUrl}/api/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog`, {
 // //       next: { revalidate: 300 },
 // //       headers: {
 // //         'Content-Type': 'application/json',
@@ -806,7 +803,7 @@ export default async function BlogPage() {
 // // // import StaticUI from "@/components/StaticUI/StaticUI";
 
 // // // export default async function BlogPage() {
-// // //   const res = await fetch("http://localhost:3000/api/admin/blog", {
+// // //   const res = await fetch("http://localhost:3000/api/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog", {
 // // //     next: { revalidate: 10 },
 // // //   });
 

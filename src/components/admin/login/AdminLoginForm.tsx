@@ -46,7 +46,7 @@ function AdminLoginForm() {
       JSON.stringify(formData)
     )}; path=/; max-age=3600; secure; samesite=strict`;
 
-    router.push("/admin/blog");
+    router.push("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog");
     // Add your API call or login logic here
   };
 

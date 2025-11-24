@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import { useRouter, useParams } from "next/navigation"
 import Link from "next/link"
-import {toast} from "react-hot-toast"
+import { toast } from "react-hot-toast"
 
 interface Blog {
   _id: string
@@ -70,7 +70,7 @@ export default function ViewBlogPage() {
 
       toast.success("Blog deleted successfully")
 
-      router.push("/admin/blog")
+      router.push("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog")
     } catch (error) {
       const message = error instanceof Error ? error.message : "Error deleting blog"
       toast.error(message)
@@ -98,7 +98,7 @@ export default function ViewBlogPage() {
         <div className="max-w-4xl mx-auto">
           <div className="bg-red-50 border border-red-200 rounded-md p-6 text-red-700">
             <p className="mb-4">{error || "Blog not found"}</p>
-            <Link href="/admin/blog" className="inline-block px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">
+            <Link href="/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog" className="inline-block px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">
               Back to Blogs
             </Link>
           </div>
@@ -119,7 +119,7 @@ export default function ViewBlogPage() {
       <div className="max-w-4xl mx-auto">
         <div className="mb-6 flex justify-between items-start">
           <div>
-            <Link href="/admin/blog" className="text-blue-600 hover:text-blue-800 mb-4 inline-block">
+            <Link href="/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog" className="text-blue-600 hover:text-blue-800 mb-4 inline-block">
               ← Back to Blogs
             </Link>
             <h1 className="text-4xl font-bold text-gray-800 mb-2">{blog.title}</h1>
@@ -128,7 +128,7 @@ export default function ViewBlogPage() {
           </div>
           <div className="flex gap-2">
             <Link
-              href={`/admin/blog/edit/${blog._id}`}
+              href={`/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog/edit/${blog._id}`}
               className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
             >
               Edit

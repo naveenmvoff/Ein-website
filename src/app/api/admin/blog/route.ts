@@ -1,4 +1,3 @@
-// File: src/app/api/admin/blog/route.ts
 import connectDB from "@/config/db";
 import { NextResponse, NextRequest } from "next/server";
 import Blog from "@/models/Blog";
