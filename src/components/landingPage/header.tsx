@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState, useRef, useEffect, type MouseEvent } from "react";
 import { Menu, X, ChevronDown, MapPin } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-
+import { usePathname } from "next/navigation";
 const locations = [
   { name: "Bangalore", slug: "bangalore" },
   { name: "Chennai", slug: "chennai" },
@@ -20,7 +20,7 @@ export default function HeaderNavbar() {
   const [isPhoneSticky, setIsPhoneSticky] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef<HTMLElement | null>(null);
-
+  const pathname = usePathname();
   const toggleMenu = () => setIsMenuOpen((v) => !v);
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -116,6 +116,7 @@ export default function HeaderNavbar() {
     };
   }, []);
 
+
   return (
     <header
       ref={headerRef}
@@ -201,19 +202,19 @@ export default function HeaderNavbar() {
           </div>
 
           <a
-            href="#about"
+            href={pathname.includes("/blog") ? "/#about" : "#about"}
             className="hover:text-blue-700 transition-colors duration-300 py-2"
           >
             About
           </a>
           <a
-            href="#contact"
+            href={pathname.includes("/blog") ? "/#contact" : "#contact"}
             className="hover:text-blue-700 transition-colors duration-300 py-2"
           >
             Contact
           </a>
           <a
-            href="#faq"
+            href={pathname.includes("/blog") ? "/#faq" : "#faq"}
             className="hover:text-blue-700 transition-colors duration-300 py-2"
           >
             FAQ
@@ -249,21 +250,19 @@ export default function HeaderNavbar() {
               {/* Services Dropdown in Mobile */}
               <div className="w-full border-b border-gray-200/50">
                 <button
-                  className={`w-full flex justify-center items-center gap-1.5 py-3 px-6 text-sm font-medium transition-all ${
-                    isServicesOpen
-                      ? "text-blue-700 bg-blue-50"
-                      : "text-gray-800 hover:text-blue-700 hover:bg-gray-50"
-                  }`}
+                  className={`w-full flex justify-center items-center gap-1.5 py-3 px-6 text-sm font-medium transition-all ${isServicesOpen
+                    ? "text-blue-700 bg-blue-50"
+                    : "text-gray-800 hover:text-blue-700 hover:bg-gray-50"
+                    }`}
                   onClick={() => setIsServicesOpen((v) => !v)}
                 >
                   <MapPin className="h-4 w-4" />
                   <span>Service Location</span>
                   <ChevronDown
-                    className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                      isServicesOpen
-                        ? "rotate-180 text-blue-700"
-                        : "text-gray-500"
-                    }`}
+                    className={`h-3.5 w-3.5 transition-transform duration-200 ${isServicesOpen
+                      ? "rotate-180 text-blue-700"
+                      : "text-gray-500"
+                      }`}
                   />
                 </button>
 
@@ -281,11 +280,10 @@ export default function HeaderNavbar() {
                           key={loc.slug}
                           href={`/packers-and-movers/${loc.slug}`}
                           onClick={closeMenu}
-                          className={`block py-2.5 px-6 text-sm font-medium text-gray-700 hover:text-blue-700 hover:bg-blue-100 text-center transition-colors ${
-                            index !== locations.length - 1
-                              ? "border-b border-blue-100/50"
-                              : ""
-                          }`}
+                          className={`block py-2.5 px-6 text-sm font-medium text-gray-700 hover:text-blue-700 hover:bg-blue-100 text-center transition-colors ${index !== locations.length - 1
+                            ? "border-b border-blue-100/50"
+                            : ""
+                            }`}
                         >
                           {loc.name}
                         </Link>
