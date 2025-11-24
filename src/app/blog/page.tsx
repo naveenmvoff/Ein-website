@@ -47,7 +47,7 @@ export const revalidate = 300;
 async function getBlogPosts() {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-    const res = await fetch(`${baseUrl}/api/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog?includeContent=false`, {
+    const res = await fetch(`${baseUrl}/api/admin/blog?includeContent=false`, {
       next: { revalidate: 300 },
       headers: {
         "Content-Type": "application/json",
