@@ -326,7 +326,7 @@ export default function EditBlogPage() {
                 onClick={() => handleUpdate("publish")}
                 className="px-3 py-1 bg-green-200 text-green-800 rounded text-sm hover:bg-green-300 transition"
               >
-                Publish
+                {saving ? "Publishing..." : "Publish"}
               </button>
             )}
           </div>
