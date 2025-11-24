@@ -199,7 +199,7 @@ export default function EditBlogPage() {
         status: type == "publish" ? "Active" : "Draft",
       };
 
-      const res = await fetch(`/api/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog/${blogId}`, {
+      const res = await fetch(`/api/admin/blog/${blogId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
