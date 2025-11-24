@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getBlogBySlug, buildCanonicalUrl, type BlogDocument } from "./utils";
+import { getBlogBySlug, buildCanonicalUrl } from "./utils";
 import BlogPostClient from "@/components/blog/BlogPostClient";
 
 type PageProps = {
@@ -58,7 +58,7 @@ export async function generateMetadata({
   // If it succeeds quickly, use it; otherwise return fallback immediately
   try {
     const blogPromise = getBlogBySlug(pageName, { metadataOnly: true });
-    const timeoutPromise = new Promise<null>((resolve) => 
+    const timeoutPromise = new Promise<null>((resolve) =>
       setTimeout(() => resolve(null), 500) // 500ms timeout - very aggressive
     );
 
@@ -112,7 +112,7 @@ export async function generateMetadata({
         },
       };
     }
-  } catch (error) {
+  } catch {
     // Silently fail and return fallback - don't log to avoid noise
   }
 
@@ -127,9 +127,9 @@ export async function generateStaticParams() {
   try {
     const connectDB = (await import("@/config/db")).default;
     const Blog = (await import("@/models/Blog")).default;
-    
+
     await connectDB();
-    
+
     const blogs = await Blog.find().select('pageURL').lean();
 
     return blogs.map((blog: any) => ({

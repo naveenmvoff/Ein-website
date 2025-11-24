@@ -13,24 +13,24 @@ interface MongooseCache {
 
 // Use global to cache the connection across hot reloads in development
 declare global {
-  // eslint-disable-next-line no-var
-  var mongoose: MongooseCache | undefined;
+  // eslint-disable-next-line no-unused-vars
+  var mongooseCache: MongooseCache | undefined;
 }
 
-let cached: MongooseCache = global.mongoose || { conn: null, promise: null };
+const cached: MongooseCache = global.mongooseCache || { conn: null, promise: null };
 
-if (!global.mongoose) {
-  global.mongoose = cached;
+if (!global.mongooseCache) {
+  global.mongooseCache = cached;
 }
 
 async function connectDB(): Promise<typeof mongoose> {
   // Check if mongoose is already connected (readyState: 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting)
-  if (mongoose.connection.readyState === 1) {
+  if ((mongoose.connection.readyState as number) === 1) {
     return mongoose;
   }
 
   // If already connected in cache, verify it's still connected
-  if (cached.conn && mongoose.connection.readyState === 1) {
+  if (cached.conn && (mongoose.connection.readyState as number) === 1) {
     return cached.conn;
   }
 
@@ -39,7 +39,7 @@ async function connectDB(): Promise<typeof mongoose> {
     try {
       cached.conn = await cached.promise;
       return cached.conn;
-    } catch (e) {
+    } catch {
       cached.promise = null;
       cached.conn = null;
       // Fall through to create a new connection
@@ -61,10 +61,10 @@ async function connectDB(): Promise<typeof mongoose> {
 
   try {
     cached.conn = await cached.promise;
-  } catch (e) {
+  } catch (error) {
     cached.promise = null;
     cached.conn = null;
-    console.error("Error connecting to MongoDB:", e);
+    console.error("Error connecting to MongoDB:", error);
     throw new Error("Failed to connect to the database");
   }
 

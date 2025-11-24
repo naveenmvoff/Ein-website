@@ -32,7 +32,6 @@ export default function CreateBlogPage() {
   const [urlError, setURLError] = useState("");
   const [loading, setLoading] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
-  const [file, setFile] = useState();
   const [thumbnail, setThumbnail] = useState<string | null>(null);
   const [thumbError, setThumbError] = useState("");
 
@@ -360,11 +359,10 @@ export default function CreateBlogPage() {
                 value={pageURL}
                 onChange={handlePageURLChange}
                 placeholder="e.g. my-first-blog"
-                className={`w-full rounded-md border px-3 py-2 text-gray-900 transition focus:outline-none focus:ring-2 ${
-                  urlError
+                className={`w-full rounded-md border px-3 py-2 text-gray-900 transition focus:outline-none focus:ring-2 ${urlError
                     ? "border-red-500 focus:border-red-500 focus:ring-red-100"
                     : "border-gray-300 bg-gray-50 focus:border-blue-500 focus:ring-blue-100"
-                } disabled:opacity-70`}
+                  } disabled:opacity-70`}
                 disabled={loading}
               />
               {formErrors.pageURL || urlError ? (

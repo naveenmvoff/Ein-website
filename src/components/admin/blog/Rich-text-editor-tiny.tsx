@@ -11,12 +11,14 @@ const Editor = dynamic(
 
 interface TextEditorProps {
   value: string;
-  onChange: (value: string) => void;
+  // eslint-disable-next-line no-unused-vars
+  onChange: (content: string) => void;
   height?: number;
   // No cloud API key used; always use self-hosted TinyMCE in /public/tinymce
 }
 
-const TextEditor: React.FC<TextEditorProps> = ({ value, onChange, height = 400 }) => {
+const TextEditor: React.FC<TextEditorProps> = (props) => {
+  const { value, onChange, height = 400 } = props;
   const editorRef = useRef<any>(null);
   const [content, setContent] = useState(value || "");
 
@@ -47,7 +49,7 @@ const TextEditor: React.FC<TextEditorProps> = ({ value, onChange, height = 400 }
     if (value !== content && editorRef.current) {
       setContent(value || "");
     }
-  }, [value]);
+  }, [value, content]);
 
   // Always use the self-hosted TinyMCE script copied to /public/tinymce
   return (

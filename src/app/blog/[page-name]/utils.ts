@@ -58,11 +58,11 @@ export async function getBlogBySlug(
     try {
       await Promise.race([
         connectDB(),
-        new Promise((_, reject) => 
+        new Promise((_, reject) =>
           setTimeout(() => reject(new Error("Connection timeout")), 300)
         )
       ]);
-    } catch (error) {
+    } catch {
       // If connection fails or times out, return null immediately
       return null;
     }
@@ -77,18 +77,18 @@ export async function getBlogBySlug(
 
   // Use maxTimeMS to prevent slow queries from blocking metadata generation
   let query = Blog.findOne({ pageURL: normalizedSlug });
-  
+
   if (selectFields) {
     query = query.select(selectFields);
   }
-  
+
   // Very aggressive timeout for metadata queries - must be fast
   const timeout = options?.metadataOnly ? 500 : 3000;
-  
+
   const blog = await query
     .maxTimeMS(timeout)
     .lean<BlogModelResult | null>();
-    
+
   if (!blog) {
     return null;
   }
@@ -98,8 +98,8 @@ export async function getBlogBySlug(
       typeof blog._id === "string"
         ? blog._id
         : typeof blog._id?.toString === "function"
-        ? blog._id.toString()
-        : "",
+          ? blog._id.toString()
+          : "",
     title: blog.title,
     content: blog.content || "",
     metaTitle: blog.metaTitle ?? "",
