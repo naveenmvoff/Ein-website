@@ -81,7 +81,7 @@ export default function BlogPage() {
           <div className="bg-white rounded-lg shadow p-8 text-center">
             <p className="text-gray-500 mb-4">No blogs yet</p>
             <Link
-              href="/admin/blog/create"
+              href="/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog/create"
               className="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
             >
               Create First Blog
@@ -109,11 +109,10 @@ export default function BlogPage() {
                         {blog.title}
                       </h2>
                       <p
-                        className={`${
-                          blog.status == "Active"
-                            ? "bg-green-300"
-                            : "bg-red-300"
-                        } w-fit rounded-md  p-2 text-sm font-semibold text-gray-800 mb-2`}
+                        className={`${blog.status == "Active"
+                          ? "bg-green-300"
+                          : "bg-red-300"
+                          } w-fit rounded-md  p-2 text-sm font-semibold text-gray-800 mb-2`}
                       >
                         {blog.status}
                       </p>
@@ -126,7 +125,7 @@ export default function BlogPage() {
                     </div>
                     <div className="flex gap-2">
                       <Link
-                        href={`/admin/blog/${blog._id}`}
+                        href={`/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog/${blog._id}`}
                         className="px-3 py-1 bg-gray-200 text-gray-800 rounded text-sm hover:bg-gray-300 transition"
                       >
                         View

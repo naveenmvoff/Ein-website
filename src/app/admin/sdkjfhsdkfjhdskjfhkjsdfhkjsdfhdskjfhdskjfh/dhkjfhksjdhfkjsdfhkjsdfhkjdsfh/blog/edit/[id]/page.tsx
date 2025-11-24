@@ -142,7 +142,7 @@ export default function EditBlogPage() {
     removeFieldError("pageURL", setFormErrors);
   };
 
-  const handleUpdate = async (type?: string): Promise<void> => {
+  const handleUpdate = async (type: any) => {
     try {
       setFormErrors({});
       if (!title.trim()) {
@@ -282,7 +282,7 @@ export default function EditBlogPage() {
           <h1 className="text-2xl font-semibold text-gray-800">Edit Blog</h1>
           <p className="mt-3 text-red-700">{error || "Blog not found"}</p>
           <button
-            onClick={() => router.push("/admin/blog")}
+            onClick={() => router.push("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog")}
             className="mt-6 rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700"
           >
             Back to Blogs
@@ -292,7 +292,7 @@ export default function EditBlogPage() {
     );
   }
 
-  const goBack = () => router.push("/admin/blog");
+  const goBack = () => router.push("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog");
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
@@ -315,7 +315,7 @@ export default function EditBlogPage() {
             </button>
             <button
               type="button"
-              onClick={() => handleUpdate()}
+              onClick={() => handleUpdate("draft")}
               disabled={saving}
               className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
@@ -337,7 +337,7 @@ export default function EditBlogPage() {
           <form
             onSubmit={(event) => {
               event.preventDefault();
-              handleUpdate();
+              handleUpdate("update");
             }}
             className="space-y-6 rounded-lg bg-white p-6 shadow"
           >

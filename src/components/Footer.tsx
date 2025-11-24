@@ -31,11 +31,10 @@ function Footer() {
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
           <div
-            className={`transition-all duration-1000 ${
-              isVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-10 opacity-0"
-            }`}
+            className={`transition-all duration-1000 ${isVisible
+              ? "translate-y-0 opacity-100"
+              : "translate-y-10 opacity-0"
+              }`}
           >
             <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
               Service Areas
@@ -76,11 +75,10 @@ function Footer() {
           </div>
 
           <div
-            className={`transition-all duration-1000 ${
-              isVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-10 opacity-0"
-            }`}
+            className={`transition-all duration-1000 ${isVisible
+              ? "translate-y-0 opacity-100"
+              : "translate-y-10 opacity-0"
+              }`}
           >
             <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
               Service Types
@@ -151,11 +149,10 @@ function Footer() {
           </div>
 
           <div
-            className={`transition-all duration-1000 ${
-              isVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-10 opacity-0"
-            }`}
+            className={`transition-all duration-1000 ${isVisible
+              ? "translate-y-0 opacity-100"
+              : "translate-y-10 opacity-0"
+              }`}
           >
             <h4 className="font-bold text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
               Contact Info
@@ -197,11 +194,10 @@ function Footer() {
           </div>
 
           <div
-            className={`transition-all duration-1000 ${
-              isVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-10 opacity-0"
-            }`}
+            className={`transition-all duration-1000 ${isVisible
+              ? "translate-y-0 opacity-100"
+              : "translate-y-10 opacity-0"
+              }`}
           >
             {/* Quick Links */}
             <div className="mb-6 sm:mb-8">
@@ -210,9 +206,10 @@ function Footer() {
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
                 {[
-                  { name: "FAQ's", href: "#faq" },
-                  { name: "About us", href: "#about" },
-                  { name: "Contact us", href: "#contact" },
+                  { name: "FAQ's", href: "/#faq" },
+                  { name: "About us", href: "/#about" },
+                  { name: "Contact us", href: "/#contact" },
+                  { name: "Blog", href: "/blog" },
                 ].map((link, index) => (
                   <li key={index}>
                     <Link

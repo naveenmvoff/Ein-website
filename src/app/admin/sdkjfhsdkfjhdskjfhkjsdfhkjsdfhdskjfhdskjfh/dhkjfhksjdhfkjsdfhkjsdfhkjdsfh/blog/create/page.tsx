@@ -181,7 +181,7 @@ export default function CreateBlogPage() {
     }
   };
 
-  const goBack = () => router.push("/admin/blog");
+  const goBack = () => router.push("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog");
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     setThumbError(""); // clear error
@@ -360,8 +360,8 @@ export default function CreateBlogPage() {
                 onChange={handlePageURLChange}
                 placeholder="e.g. my-first-blog"
                 className={`w-full rounded-md border px-3 py-2 text-gray-900 transition focus:outline-none focus:ring-2 ${urlError
-                    ? "border-red-500 focus:border-red-500 focus:ring-red-100"
-                    : "border-gray-300 bg-gray-50 focus:border-blue-500 focus:ring-blue-100"
+                  ? "border-red-500 focus:border-red-500 focus:ring-red-100"
+                  : "border-gray-300 bg-gray-50 focus:border-blue-500 focus:ring-blue-100"
                   } disabled:opacity-70`}
                 disabled={loading}
               />
