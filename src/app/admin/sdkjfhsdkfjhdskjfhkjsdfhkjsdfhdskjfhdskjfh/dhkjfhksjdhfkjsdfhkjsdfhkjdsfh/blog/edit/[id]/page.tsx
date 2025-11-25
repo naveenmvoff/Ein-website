@@ -12,8 +12,9 @@ const removeFieldError = (
 ) => {
   setErrors((prev) => {
     if (!prev[field]) return prev;
-    const { [field]: _removed, ...rest } = prev;
-    return rest;
+    const newErrors = { ...prev };
+    delete newErrors[field];
+    return newErrors;
   });
 };
 
@@ -50,52 +51,54 @@ export default function EditBlogPage() {
   const [thumbError, setThumbError] = useState("");
 
   useEffect(() => {
-    fetchBlog();
-  }, [blogId]);
+    const fetchBlog = async () => {
+      try {
+        setLoading(true);
+        setError(null);
 
-  const fetchBlog = async () => {
-    try {
-      setLoading(true);
-      setError(null);
+        const res = await fetch(`/api/admin/blog/${blogId}`);
+        const data = await res.json();
 
-      const res = await fetch(`/api/admin/blog/${blogId}`);
-      const data = await res.json();
+        if (!res.ok || !data.success) {
+          throw new Error(data.message || "Failed to fetch blog");
+        }
 
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || "Failed to fetch blog");
+        const blogData = data.data;
+
+        setBlog(blogData);
+        console.log("blogData", blogData, "sss");
+        setTitle(blogData.title);
+        setContent(blogData.content);
+        setMetaTitle(blogData.metaTitle);
+        setMetaDescription(blogData.metaDescription);
+        setThumbnail(blogData.thumbnail);
+        // setStatus()
+        const keywords = Array.isArray(blogData.metaKeywords)
+          ? blogData.metaKeywords
+            .map((keyword: unknown) =>
+              typeof keyword === "string" ? keyword.trim() : ""
+            )
+            .filter(
+              (keyword: string, index: number, arr: string[]) =>
+                keyword && arr.indexOf(keyword) === index
+            )
+          : [];
+        setMetaKeywords(keywords);
+        setPageURL(blogData.pageURL);
+      } catch (err) {
+        const message =
+          err instanceof Error ? err.message : "Failed to load blog";
+        setError(message);
+        toast.error(message);
+      } finally {
+        setLoading(false);
       }
+    };
 
-      const blogData = data.data;
-
-      setBlog(blogData);
-      console.log("blogData", blogData, "sss");
-      setTitle(blogData.title);
-      setContent(blogData.content);
-      setMetaTitle(blogData.metaTitle);
-      setMetaDescription(blogData.metaDescription);
-      setThumbnail(blogData.thumbnail);
-      // setStatus()
-      const keywords = Array.isArray(blogData.metaKeywords)
-        ? blogData.metaKeywords
-          .map((keyword: unknown) =>
-            typeof keyword === "string" ? keyword.trim() : ""
-          )
-          .filter(
-            (keyword: string, index: number, arr: string[]) =>
-              keyword && arr.indexOf(keyword) === index
-          )
-        : [];
-      setMetaKeywords(keywords);
-      setPageURL(blogData.pageURL);
-    } catch (err) {
-      const message =
-        err instanceof Error ? err.message : "Failed to load blog";
-      setError(message);
-      toast.error(message);
-    } finally {
-      setLoading(false);
+    if (blogId) {
+      fetchBlog();
     }
-  };
+  }, [blogId]);
 
   const handleKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" || e.key === "," || e.key === " ") {
@@ -281,7 +284,11 @@ export default function EditBlogPage() {
           <h1 className="text-2xl font-semibold text-gray-800">Edit Blog</h1>
           <p className="mt-3 text-red-700">{error || "Blog not found"}</p>
           <button
-            onClick={() => router.push("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog")}
+            onClick={() =>
+              router.push(
+                "/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog"
+              )
+            }
             className="mt-6 rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700"
           >
             Back to Blogs
@@ -291,7 +298,10 @@ export default function EditBlogPage() {
     );
   }
 
-  const goBack = () => router.push("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog");
+  const goBack = () =>
+    router.push(
+      "/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog"
+    );
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
@@ -460,8 +470,8 @@ export default function EditBlogPage() {
                 onChange={handlePageURLChange}
                 placeholder="e.g. my-updated-blog"
                 className={`w-full rounded-md border px-3 py-2 text-gray-900 transition focus:outline-none focus:ring-2 ${urlError
-                  ? "border-red-500 focus:border-red-500 focus:ring-red-100"
-                  : "border-gray-300 bg-gray-50 focus:border-blue-500 focus:ring-blue-100"
+                    ? "border-red-500 focus:border-red-500 focus:ring-red-100"
+                    : "border-gray-300 bg-gray-50 focus:border-blue-500 focus:ring-blue-100"
                   } disabled:opacity-70`}
                 disabled={saving}
               />

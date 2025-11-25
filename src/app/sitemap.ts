@@ -17,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // changeFrequency: "weekly",
     priority: 0.9,
   }));
-  const blogPage = cities.map((city) => ({
+  const blogPage = cities.map(() => ({
     url: `${baseUrl}/blog`,
     lastModified: new Date(),
     // changeFrequency: "weekly",

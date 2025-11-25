@@ -27,30 +27,33 @@ export default function ViewBlogPage() {
   const [deleting, setDeleting] = useState(false)
 
   useEffect(() => {
-    fetchBlog()
+    const fetchBlog = async () => {
+      try {
+        setLoading(true)
+        setError(null)
+
+        const res = await fetch(`/api/admin/blog/${blogId}`)
+        const data = await res.json()
+
+        if (!res.ok || !data.success) {
+          throw new Error(data.message || "Failed to fetch blog")
+        }
+
+        setBlog(data.data)
+      } catch (err) {
+        const message = err instanceof Error ? err.message : "Failed to load blog"
+        setError(message)
+        toast.error(message)
+      } finally {
+        setLoading(false)
+      }
+    }
+    if (blogId) {
+      fetchBlog()
+
+    }
   }, [blogId])
 
-  const fetchBlog = async () => {
-    try {
-      setLoading(true)
-      setError(null)
-
-      const res = await fetch(`/api/admin/blog/${blogId}`)
-      const data = await res.json()
-
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || "Failed to fetch blog")
-      }
-
-      setBlog(data.data)
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "Failed to load blog"
-      setError(message)
-      toast.error(message)
-    } finally {
-      setLoading(false)
-    }
-  }
 
   const handleDelete = async () => {
     if (!confirm("Are you sure you want to delete this blog?")) return
