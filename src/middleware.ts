@@ -23,19 +23,19 @@ export function middleware(request: NextRequest) {
     return res;
   }
 
-  if (
-    pathname === "/trucks-service/orderPlaced" ||
-    pathname === "/packers-and-movers/orderPlaced"
-  ) {
-    const isMove = request.cookies.get("isMove")?.value;
-    // debug log (server logs)
-    // console.log('Middleware check for move routes', pathname, isMove);
-    if (isMove !== "true") {
-      return NextResponse.redirect(new URL("/", request.url));
-    }
-  }
+  // if (
+  //   pathname === "/trucks-service/orderPlaced" ||
+  //   pathname === "/packers-and-movers/orderPlaced"
+  // ) {
+  //   const isMove = request.cookies.get("isMove")?.value;
+  //   // debug log (server logs)
+  //   // console.log('Middleware check for move routes', pathname, isMove);
+  //   if (isMove !== "true") {
+  //     return NextResponse.redirect(new URL("/", request.url));
+  //   }
+  // }
 
-  if (pathname.startsWith("/admin/login")) {
+  if (pathname.startsWith("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/login")) {
     // If user IS logged in, redirect to /admin
     if (loginCookie) {
       return NextResponse.redirect(new URL("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog", request.url));
@@ -46,7 +46,7 @@ export function middleware(request: NextRequest) {
 
   // Protect /admin page
   if (pathname === "/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog" && !loginCookie) {
-    return NextResponse.redirect(new URL("/admin/login", request.url));
+    return NextResponse.redirect(new URL("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/login", request.url));
   }
 
   return NextResponse.next();
