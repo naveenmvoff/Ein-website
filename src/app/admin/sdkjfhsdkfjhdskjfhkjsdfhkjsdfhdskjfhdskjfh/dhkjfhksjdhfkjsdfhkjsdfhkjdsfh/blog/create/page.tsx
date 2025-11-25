@@ -32,6 +32,7 @@ export default function CreateBlogPage() {
   const [urlError, setURLError] = useState("");
   const [loading, setLoading] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [file, setFile] = useState();
   const [thumbnail, setThumbnail] = useState<string | null>(null);
   const [thumbError, setThumbError] = useState("");
 

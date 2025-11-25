@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState } from "react"
 import { useRouter, useParams } from "next/navigation"
 import Link from "next/link"
 import { toast } from "react-hot-toast"
@@ -26,7 +26,11 @@ export default function ViewBlogPage() {
   const [error, setError] = useState<string | null>(null)
   const [deleting, setDeleting] = useState(false)
 
-  const fetchBlog = useCallback(async () => {
+  useEffect(() => {
+    fetchBlog()
+  }, [blogId])
+
+  const fetchBlog = async () => {
     try {
       setLoading(true)
       setError(null)
@@ -46,11 +50,7 @@ export default function ViewBlogPage() {
     } finally {
       setLoading(false)
     }
-  }, [blogId])
-
-  useEffect(() => {
-    fetchBlog()
-  }, [fetchBlog])
+  }
 
   const handleDelete = async () => {
     if (!confirm("Are you sure you want to delete this blog?")) return

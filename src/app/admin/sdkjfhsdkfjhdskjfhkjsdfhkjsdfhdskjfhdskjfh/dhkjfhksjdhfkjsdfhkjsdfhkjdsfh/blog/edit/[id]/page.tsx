@@ -1,6 +1,6 @@
 "use client";
 import type React from "react";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { toast } from "react-hot-toast";
 import RichTextEditorTiny from "@/components/admin/blog/Rich-text-editor-tiny";
@@ -12,7 +12,6 @@ const removeFieldError = (
 ) => {
   setErrors((prev) => {
     if (!prev[field]) return prev;
-    // eslint-disable-next-line no-unused-vars
     const { [field]: _removed, ...rest } = prev;
     return rest;
   });
@@ -50,7 +49,11 @@ export default function EditBlogPage() {
   const [thumbnail, setThumbnail] = useState<string | null>(null);
   const [thumbError, setThumbError] = useState("");
 
-  const fetchBlog = useCallback(async () => {
+  useEffect(() => {
+    fetchBlog();
+  }, [blogId]);
+
+  const fetchBlog = async () => {
     try {
       setLoading(true);
       setError(null);
@@ -92,11 +95,7 @@ export default function EditBlogPage() {
     } finally {
       setLoading(false);
     }
-  }, [blogId]);
-
-  useEffect(() => {
-    fetchBlog();
-  }, [fetchBlog]);
+  };
 
   const handleKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" || e.key === "," || e.key === " ") {
@@ -315,7 +314,7 @@ export default function EditBlogPage() {
             </button>
             <button
               type="button"
-              onClick={() => handleUpdate("draft")}
+              onClick={handleUpdate}
               disabled={saving}
               className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
