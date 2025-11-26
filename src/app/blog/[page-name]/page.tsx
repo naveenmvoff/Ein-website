@@ -90,7 +90,6 @@ export async function generateMetadata({
           siteName: "Eintransport Packers and Movers",
           type: "article",
           publishedTime: blog.createdAt || undefined,
-          modifiedTime: blog.updatedAt || undefined,
           locale: "en_IN",
         },
         twitter: {

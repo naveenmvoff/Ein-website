@@ -94,7 +94,6 @@ export default async function BlogPage() {
         headline: blog.title,
         description: blog.metaDescription || blog.title,
         datePublished: blog.createdAt,
-        dateModified: blog.updatedAt || blog.createdAt,
         url: `${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"
           }/blog/${blog.pageURL}`,
       })),

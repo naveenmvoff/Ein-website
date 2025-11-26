@@ -17,13 +17,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // changeFrequency: "weekly",
     priority: 0.9,
   }));
-  const blogPage = cities.map(() => ({
-    url: `${baseUrl}/blog`,
-    lastModified: new Date(),
-    // changeFrequency: "weekly",
-    priority: 0.9,
-  }));
 
+  const staticPages1 = [
+    { url: `${baseUrl}/blog`, priority: 0.9 },
+  ];
 
   const blogs = await Blog.find({ status: "Active" }).select("pageURL updatedAt").lean();
   const dynamicblogs = blogs.map((blog: any) => ({
@@ -32,5 +29,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...cityPages, ...blogPage, ...dynamicblogs];
+  return [...staticPages, ...cityPages, ...staticPages1, ...dynamicblogs];
 }

@@ -35,7 +35,7 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  if (pathname.startsWith("/admin/login")) {
+  if (pathname.startsWith("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/login")) {
     // If user IS logged in, redirect to /admin
     if (loginCookie) {
       return NextResponse.redirect(new URL("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog", request.url));
