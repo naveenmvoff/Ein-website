@@ -16,7 +16,7 @@ export default function BlogPostClient({
   canonicalUrl,
 }: BlogPostClientProps) {
   const createdDate = blog.createdAt ? new Date(blog.createdAt) : null;
-  const updatedDate = blog.updatedAt ? new Date(blog.updatedAt) : null;
+  // const updatedDate = blog.updatedAt ? new Date(blog.updatedAt) : null;
 
   const formattedCreated =
     createdDate && !isNaN(createdDate.getTime())
@@ -27,14 +27,14 @@ export default function BlogPostClient({
         })
       : null;
 
-  const formattedUpdated =
-    updatedDate && !isNaN(updatedDate.getTime())
-      ? updatedDate.toLocaleDateString("en-IN", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })
-      : null;
+  // const formattedUpdated =
+  //   updatedDate && !isNaN(updatedDate.getTime())
+  //     ? updatedDate.toLocaleDateString("en-IN", {
+  //         year: "numeric",
+  //         month: "long",
+  //         day: "numeric",
+  //       })
+  //     : null;
 
   const jsonLd = {
     "@context": "https://schema.org",
