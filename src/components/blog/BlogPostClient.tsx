@@ -110,7 +110,7 @@ export default function BlogPostClient({
                     Published: {formattedCreated}
                   </time>
                 )}
-                {formattedUpdated && formattedUpdated !== formattedCreated && (
+                {/* {formattedUpdated && formattedUpdated !== formattedCreated && (
                   <time
                     dateTime={blog.updatedAt || ""}
                     itemProp="dateModified"
@@ -131,7 +131,7 @@ export default function BlogPostClient({
                     </svg>
                     Updated: {formattedUpdated}
                   </time>
-                )}
+                )} */}
               </div>
             </header>
 
