@@ -159,7 +159,7 @@ export default async function BlogPage() {
                 itemType="https://schema.org/BlogPosting"
               >
                 <Link
-                  href={/blog/${blog.pageURL}}
+                  href={`/blog/${blog.pageURL}`}
                   className="
    
   "
@@ -171,7 +171,7 @@ export default async function BlogPage() {
                         src={
                           blog.thumbnail.startsWith("data:")
                             ? blog.thumbnail
-                            : data:image/jpeg;base64,${blog.thumbnail}
+                            : `data:image/jpeg;base64,${blog.thumbnail}`
                         }
                         alt={blog.title}
                         fill
