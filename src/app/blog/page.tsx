@@ -73,7 +73,7 @@ export default async function BlogPage() {
     name: "Eintransport Packers and Movers Blog",
     description:
       "Expert articles, moving guides, and packing tips for smooth relocation",
-    url: ${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"}/blog,
+    url: `${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"}/blog`,
     publisher: {
       "@type": "Organization",
       name: "Eintransport Packers and Movers",
