@@ -7,16 +7,12 @@ import StaticUI from "@/components/StaticUI/StaticUI";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Blog | Packing & Moving Tips | Eintransport Packers and Movers",
+  title: "Relocation Tips & Guides Blog | Eintransport Packers",
   description:
-    "Explore expert articles, moving guides, and packing tips curated by professionals to help you relocate smoothly. Read our latest blog posts on home shifting, office relocation, and more.",
+    "Discover expert relocation guides, packing tips, and moving advice from Eintransport Packers. Learn smart ways to handle home and office shifting with ease.",
   keywords: [
-    "packing tips",
-    "moving guides",
-    "relocation advice",
-    "packers and movers blog",
-    "home shifting tips",
-    "office relocation guide",
+    "relocation tips and guides",
+    "packers and movers blog"
   ],
   alternates: {
     canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"
@@ -26,7 +22,7 @@ export const metadata: Metadata = {
     title: "Blog | Packing & Moving Tips | Eintransport",
     description:
       "Expert articles and guides for hassle-free relocation. Learn from professionals.",
-    url: `${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"}/blog`,
+    url: ${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"}/blog,
     siteName: "Eintransport Packers and Movers",
     type: "website",
     locale: "en_IN",
@@ -47,7 +43,7 @@ export const revalidate = 300;
 async function getBlogPosts() {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-    const res = await fetch(`${baseUrl}/api/admin/blog?includeContent=false`, {
+    const res = await fetch(${baseUrl}/api/admin/blog?includeContent=false, {
       next: { revalidate: 300 },
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +73,7 @@ export default async function BlogPage() {
     name: "Eintransport Packers and Movers Blog",
     description:
       "Expert articles, moving guides, and packing tips for smooth relocation",
-    url: `${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"}/blog`,
+    url: ${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"}/blog,
     publisher: {
       "@type": "Organization",
       name: "Eintransport Packers and Movers",
@@ -163,7 +159,7 @@ export default async function BlogPage() {
                 itemType="https://schema.org/BlogPosting"
               >
                 <Link
-                  href={`/blog/${blog.pageURL}`}
+                  href={/blog/${blog.pageURL}}
                   className="
    
   "
@@ -175,7 +171,7 @@ export default async function BlogPage() {
                         src={
                           blog.thumbnail.startsWith("data:")
                             ? blog.thumbnail
-                            : `data:image/jpeg;base64,${blog.thumbnail}`
+                            : data:image/jpeg;base64,${blog.thumbnail}
                         }
                         alt={blog.title}
                         fill
