@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "Blog | Packing & Moving Tips | Eintransport",
     description:
       "Expert articles and guides for hassle-free relocation. Learn from professionals.",
-    url: ${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"}/blog,
+    url: `${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"}/blog`,
     siteName: "Eintransport Packers and Movers",
     type: "website",
     locale: "en_IN",
