@@ -21,7 +21,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const staticPages1 = [
-    { url: `${baseUrl}/`, lastModified, priority: 0.9 },
+    { url: `${baseUrl}/privacyPolicy`, lastModified, priority: 0.9 },
+  ];
+
+  const staticPages2 = [
     { url: `${baseUrl}/blog`, lastModified, priority: 0.9 },
   ];
 
@@ -32,5 +35,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...cityPages, ...staticPages1, ...dynamicblogs];
+  return [...staticPages, ...cityPages, ...staticPages1, ...staticPages2, ...dynamicblogs];
 }
