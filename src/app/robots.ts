@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: ["/"],
-      disallow: ["/admin", "/private", "/privacyPolicy", "/thank-you/order-placed"],
+      disallow: ["/admin", "/private", "/thank-you/order-placed"],
     },
   };
 }
