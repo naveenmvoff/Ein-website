@@ -20,17 +20,19 @@ function PrivacyPolicyPage() {
     <section className="bg-gray-50 min-h-screen py-16 px-6 sm:px-12">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-8 sm:p-12">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-          Privacy Policy
+          Privacy Policy - Eintransport Private Limited
         </h1>
         <p className="text-sm text-gray-500 mb-8">
-          <strong>Effective Date:</strong> October 2025
+          <strong>Last Updated:</strong> December 2025
         </p>
 
         <p className="text-gray-700 mb-6">
-          Welcome to <strong>eintransport.in</strong>. We respect your privacy
-          and are committed to protecting your personal information. This
-          Privacy Policy describes how we collect, use, and manage your data
-          when you use our website and services.
+          Welcome to <strong>eintransport.in.</strong>
+          We value your trust and are committed to protecting your personal
+          information. This Privacy Policy explains how we collect, use, store,
+          and safeguard your data when you use our website and services. By
+          accessing or using our website, you agree to the practices described
+          in this Privacy Policy.
         </p>
 
         <p className="text-gray-700 mb-8">
