@@ -206,9 +206,9 @@ function Footer() {
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
                 {[
-                  { name: "FAQ's", href: "/#faq" },
-                  { name: "About us", href: "/#about" },
-                  { name: "Contact us", href: "/#contact" },
+                  { name: "FAQ's", href: "/faq" },
+                  { name: "About us", href: "/about-us" },
+                  { name: "Contact us", href: "/contact-us" },
                   { name: "Blog", href: "/blog" },
                 ].map((link, index) => (
                   <li key={index}>

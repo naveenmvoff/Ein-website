@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useRef, useEffect, type MouseEvent } from "react";
+// import { useState, useRef, useEffect, type MouseEvent } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown, MapPin } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { usePathname } from "next/navigation";
+// import { usePathname } from "next/navigation";
 const locations = [
   { name: "Bangalore", slug: "bangalore" },
   { name: "Chennai", slug: "chennai" },
@@ -20,38 +21,38 @@ export default function HeaderNavbar() {
   const [isPhoneSticky, setIsPhoneSticky] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef<HTMLElement | null>(null);
-  const pathname = usePathname();
+  // const pathname = usePathname();
   const toggleMenu = () => setIsMenuOpen((v) => !v);
   const closeMenu = () => setIsMenuOpen(false);
 
   // Handle smooth scroll to anchor with menu close
-  const handleAnchorClick = (
-    e: MouseEvent<HTMLAnchorElement>,
-    targetId: string
-  ) => {
-    e.preventDefault();
-    closeMenu();
+  // const handleAnchorClick = (
+  //   e: MouseEvent<HTMLAnchorElement>,
+  //   targetId: string
+  // ) => {
+  //   e.preventDefault();
+  //   closeMenu();
 
-    // Update URL hash immediately - preserve current pathname
-    const currentPath = window.location.pathname;
-    window.history.pushState(null, "", `${currentPath}#${targetId}`);
+  //   // Update URL hash immediately - preserve current pathname
+  //   const currentPath = window.location.pathname;
+  //   window.history.pushState(null, "", `${currentPath}#${targetId}`);
 
-    // Wait for menu animation to complete before scrolling
-    setTimeout(() => {
-      const element = document.getElementById(targetId);
-      if (element) {
-        const headerOffset = headerRef.current?.offsetHeight || 0;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition =
-          elementPosition + window.pageYOffset - headerOffset - 20;
+  //   // Wait for menu animation to complete before scrolling
+  //   setTimeout(() => {
+  //     const element = document.getElementById(targetId);
+  //     if (element) {
+  //       const headerOffset = headerRef.current?.offsetHeight || 0;
+  //       const elementPosition = element.getBoundingClientRect().top;
+  //       const offsetPosition =
+  //         elementPosition + window.pageYOffset - headerOffset - 20;
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-      }
-    }, 300); // Wait for menu close animation (matches transition duration)
-  };
+  //       window.scrollTo({
+  //         top: offsetPosition,
+  //         behavior: "smooth",
+  //       });
+  //     }
+  //   }, 300); // Wait for menu close animation (matches transition duration)
+  // };
 
   // Phone number used in the sticky bar. Reusing existing project contact.
   const PHONE_DISPLAY = "+91 9043384332";
@@ -201,24 +202,24 @@ export default function HeaderNavbar() {
             </AnimatePresence>
           </div>
 
-          <a
-            href={pathname.includes("/blog") ? "/#about" : "#about"}
+          <Link
+            href="/about-us"
             className="hover:text-blue-700 transition-colors duration-300 py-2"
           >
             About
-          </a>
-          <a
-            href={pathname.includes("/blog") ? "/#contact" : "#contact"}
+          </Link>
+          <Link
+            href="/contact-us"
             className="hover:text-blue-700 transition-colors duration-300 py-2"
           >
             Contact
-          </a>
-          <a
-            href={pathname.includes("/blog") ? "/#faq" : "#faq"}
+          </Link>
+          <Link
+            href="/faq"
             className="hover:text-blue-700 transition-colors duration-300 py-2"
           >
             FAQ
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -293,27 +294,24 @@ export default function HeaderNavbar() {
                 </AnimatePresence>
               </div>
 
-              <a
-                href="#about"
-                onClick={(e) => handleAnchorClick(e, "about")}
+              <Link
+                href="/about-us"
                 className="text-gray-800 hover:text-blue-700 hover:bg-gray-50 active:bg-blue-50 transition-colors py-3 px-6 text-sm font-medium text-center border-b border-gray-200/50"
               >
                 About
-              </a>
-              <a
-                href="#contact"
-                onClick={(e) => handleAnchorClick(e, "contact")}
+              </Link>
+              <Link
+                href="/contact-us"
                 className="text-gray-800 hover:text-blue-700 hover:bg-gray-50 active:bg-blue-50 transition-colors py-3 px-6 text-sm font-medium text-center border-b border-gray-200/50"
               >
                 Contact
-              </a>
-              <a
-                href="#faq"
-                onClick={(e) => handleAnchorClick(e, "faq")}
+              </Link>
+              <Link
+                href="/faq"
                 className="text-gray-800 hover:text-blue-700 hover:bg-gray-50 active:bg-blue-50 transition-colors py-3 px-6 text-sm font-medium text-center"
               >
                 FAQ
-              </a>
+              </Link>
             </div>
           </motion.nav>
         )}
