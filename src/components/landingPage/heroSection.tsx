@@ -10,7 +10,7 @@ interface HeroSectionProps {
   title?: string;
 }
 
-export default function HeroSection({title}: HeroSectionProps) {
+export default function HeroSection({ title }: HeroSectionProps) {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -41,7 +41,7 @@ export default function HeroSection({title}: HeroSectionProps) {
             #1 Trusted Packers & Movers
           </div>
 
-          <h1 className="text-xl sm:text-xl md:text-xl lg:text-xl font-bold leading-tight text-gray-900 tracking-tight">
+          <h1 className="text-xl  sm:text-xl md:text-xl lg:text-xl font-bold leading-tight text-gray-900 tracking-tight">
             {title}
           </h1>
           <h2 className="hidden md:block text-lg sm:text-4xl md:text-4xl lg:text-5xl font-bold leading-tight text-gray-900 tracking-tight">

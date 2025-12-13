@@ -134,10 +134,10 @@ export function HeroForm() {
   return (
     <>
       <motion.div
-        key={`${pathname}-form-container`}
-        initial={{ opacity: 0, y: 40 }}
-        animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-        transition={{ duration: 0.6 }}
+        // key={`${pathname}-form-container`}
+        // initial={{ opacity: 0, y: 40 }}
+        // animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+        // transition={{ duration: 0.6 }}
         className="bg-gradient-to-br from-white to-blue-50/50 rounded-2xl shadow-2xl border border-gray-100 p-5 sm:p-6 max-w-sm w-full mx-auto backdrop-blur-lg"
       >
         <div className="text-center mb-4">
@@ -367,4 +367,3 @@ function InputField({
     </div>
   );
 }
-

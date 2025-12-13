@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { HeroForm } from "@/components/landingPage/heroForm";
 import React, { useState } from "react";
 import HeaderNavbar from "@/components/landingPage/header";
@@ -47,7 +47,8 @@ const faqs = [
       "We do not transport fuel, flammable items, chemicals, illegal goods, perishable food, or restricted goods.",
   },
   {
-    question: "Does Eintransport provide labour-only services without a vehicle?",
+    question:
+      "Does Eintransport provide labour-only services without a vehicle?",
     answer:
       "Yes, labour-only loading and unloading services are available when needed.",
   },
@@ -83,7 +84,7 @@ const faqs = [
   },
 ];
 
-function FAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
+function FAQItem({ faq, index }: { faq: (typeof faqs)[0]; index: number }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -92,13 +93,13 @@ function FAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between gap-3 p-4 sm:p-5 hover:bg-gray-50 transition-colors duration-200 text-left"
       >
-        <div className="flex items-start gap-3 flex-1">
+        <div className="flex items-center justify-start gap-3 flex-1">
           <div className="flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 bg-blue-100 rounded-full flex items-center justify-center mt-0.5">
             <HelpCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0086ff]" />
           </div>
-          <h2 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 flex-1">
+          <p className="text-left text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-gray-900 flex-1">
             {faq.question}
-          </h2>
+          </p>
         </div>
         <div className="flex-shrink-0">
           {isOpen ? (
@@ -108,7 +109,7 @@ function FAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
           )}
         </div>
       </button>
-      
+
       {isOpen && (
         <div className="px-4 sm:px-5 pb-4 sm:pb-5 pl-12 sm:pl-16">
           <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
@@ -142,8 +143,7 @@ export default function page() {
 
       {/* Main Content with Sidebar */}
       <div className="container mx-auto px-3 sm:px-6 lg:px-8 max-w-7xl py-6 sm:py-8 md:py-10">
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
-          
+        <div className="flex flex-col-reverse lg:flex-row gap-6 lg:gap-8">
           {/* FAQ Content - Left Side */}
           <div className="flex-1 lg:max-w-3xl">
             <div className="space-y-4 sm:space-y-5">
@@ -155,7 +155,7 @@ export default function page() {
 
           {/* Contact Form - Right Side (Fixed/Sticky on Desktop) */}
           <aside className="lg:w-96 sticky lg:top-24 lg:self-start">
-            <div className=" p-4 sm:p-5 lg:p-6">
+            <div className="">
               <HeroForm />
             </div>
           </aside>

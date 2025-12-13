@@ -34,7 +34,7 @@ export default function page() {
       <HeaderNavbar />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-white pt-8 sm:pt-12 md:pt-14 lg:pt-16 pb-4 sm:pb-6">
+      <section className="bg-gradient-to-br mt-14 from-blue-50 to-white pt-8 sm:pt-12 md:pt-14 lg:pt-16 pb-4 sm:pb-6">
         <div className="container mx-auto px-3 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center">
             <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 sm:mb-3">
@@ -57,9 +57,12 @@ export default function page() {
             <div className="bg-white rounded-lg shadow-md border border-gray-200 p-4 sm:p-5 md:p-6 mb-5">
               <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                 At{" "}
-                <span className="font-semibold text-[#0086ff]">
+                <Link
+                  href={"/"}
+                  className="font-semibold hover:underline text-[#0086ff]"
+                >
                   Eintransport Packers and Movers
-                </span>{" "}
+                </Link>{" "}
                 (Eintransport Pvt Ltd), we are available 7 days a week to assist
                 with home shifting, office shifting, vehicle transport, and
                 intercity relocation.
@@ -71,7 +74,7 @@ export default function page() {
               {/* Call or WhatsApp */}
               <div className="bg-white rounded-lg shadow-md border border-gray-200 p-4 sm:p-5">
                 <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                  <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center">
                     <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />
                   </div>
                   <div className="flex-1">
