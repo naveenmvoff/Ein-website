@@ -10,6 +10,42 @@ import Image from "next/image";
 import Link from "next/link";
 import HeaderNavbar from "@/components/landingPage/header";
 import Footer from "@/components/Footer";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us | Eintransport Packers and Movers",
+  description:
+    "Learn about Eintransport Packers and Movers, our mission, expertise, and commitment to safe, reliable relocation services trusted across South India.",
+  keywords: [
+    "About Eintransport Packers and Movers",
+    "Eintransport Packers Mission",
+    "Eintransport Packers Vision",
+    "Eintransport Core Values",
+    "Eintransport Service Locations",
+  ],
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"}/about-us`,
+  },
+  openGraph: {
+    title: "About Us | Eintransport Packers and Movers",
+    description:
+      "Learn about Eintransport Packers and Movers, our mission, expertise, and commitment to safe, reliable relocation services trusted across South India.",
+    url: `${process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"}/about-us`,
+    siteName: "Eintransport Packers and Movers",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us | Eintransport Packers and Movers",
+    description:
+      "Learn about Eintransport Packers and Movers, our mission, expertise, and commitment to safe, reliable relocation services.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 const counts = [
   { name: "Years of Experience", count: 15 },

@@ -4,6 +4,43 @@ import Link from "next/link";
 import React from "react";
 import HeaderNavbar from "@/components/landingPage/header";
 import Footer from "@/components/Footer";
+import type { Metadata } from "next";
+
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in";
+
+export const metadata: Metadata = {
+  title: "Contact Us | Eintransport Packers and Movers",
+  description:
+    "Contact Eintransport for reliable relocation help. Reach us by email or call your branch for quick guidance and smooth, hassle-free shifting support.",
+  keywords: [
+    "Eintransport contact details",
+    "contact Eintransport Packers",
+    "Eintransport relocation support",
+    "Eintransport Packers and Movers contact page",
+  ],
+  alternates: {
+    canonical: `${BASE_URL}/contact-us`,
+  },
+  openGraph: {
+    title: "Contact Us | Eintransport Packers and Movers",
+    description:
+      "Contact Eintransport for reliable relocation help. Reach us by email or call your branch for quick guidance and smooth, hassle-free shifting support.",
+    url: `${BASE_URL}/contact-us`,
+    siteName: "Eintransport Packers and Movers",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Us | Eintransport Packers and Movers",
+    description:
+      "Contact Eintransport for reliable relocation help. Reach us by email or call your branch for quick guidance and smooth, hassle-free shifting support.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 const locations = [
   {

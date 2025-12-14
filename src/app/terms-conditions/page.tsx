@@ -4,6 +4,45 @@ import Link from "next/link";
 import React from "react";
 import HeaderNavbar from "@/components/landingPage/header";
 import Footer from "@/components/Footer";
+import type { Metadata } from "next";
+
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in";
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions | Eintransport Packers and Movers",
+  description:
+    "Read the Terms & Conditions of Eintransport Packers and Movers including service rules, payments, cancellations, damage policy, insurance and liability",
+  keywords: [
+    "Eintransport Terms and Conditions",
+    "Packers and Movers Terms",
+    "Moving Policy",
+    "Relocation Rules",
+    "Eintransport Policies",
+  ],
+  alternates: {
+    canonical: `${BASE_URL}/terms-conditions`,
+  },
+  openGraph: {
+    title: "Terms & Conditions | Eintransport Packers and Movers",
+    description:
+      "Read the Terms & Conditions of Eintransport Packers and Movers including service rules, payments, cancellations, damage policy, insurance and liability",
+    url: `${BASE_URL}/terms-conditions`,
+    siteName: "Eintransport Packers and Movers",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms & Conditions | Eintransport Packers and Movers",
+    description:
+      "Read the Terms & Conditions of Eintransport Packers and Movers including service rules, payments, cancellations, damage policy, insurance and liability",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 
 const sections = [
   {
