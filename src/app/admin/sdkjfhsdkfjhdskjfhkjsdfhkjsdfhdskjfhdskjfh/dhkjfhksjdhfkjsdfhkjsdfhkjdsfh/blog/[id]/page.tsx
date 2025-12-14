@@ -4,6 +4,13 @@ import { useRouter, useParams } from "next/navigation"
 import Link from "next/link"
 import { toast } from "react-hot-toast"
 
+// Prevent static generation for admin routes (required for Cache Components)
+export async function generateStaticParams() {
+  // Return placeholder to satisfy Cache Components requirement
+  // This route is client-side only and doesn't need static generation
+  return [{ id: "placeholder" }];
+}
+
 interface Blog {
   _id: string
   title: string

@@ -6,6 +6,13 @@ import { toast } from "react-hot-toast";
 import RichTextEditorTiny from "@/components/admin/blog/Rich-text-editor-tiny";
 import Image from "next/image";
 
+// Prevent static generation for admin routes (required for Cache Components)
+export async function generateStaticParams() {
+  // Return placeholder to satisfy Cache Components requirement
+  // This route is client-side only and doesn't need static generation
+  return [{ id: "placeholder" }];
+}
+
 const removeFieldError = (
   field: string,
   setErrors: React.Dispatch<React.SetStateAction<Record<string, string>>>
