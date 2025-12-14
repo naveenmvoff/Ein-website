@@ -1,10 +1,6 @@
 import CountUp from "@/components/ui/CountUp";
 import {
   MapPin,
-  Users,
-  Package,
-  Clock,
-  DollarSign,
   CheckCircle2,
   Shield,
   Heart,
@@ -12,7 +8,6 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import HeaderNavbar from "@/components/landingPage/header";
 import Footer from "@/components/Footer";
 
@@ -25,31 +20,26 @@ const counts = [
 
 const whyChooseUs = [
   {
-    icon: Users,
     title: "Professional & Trained Staff",
     description:
       "Our experienced moving team handles every item, including fragile goods, with utmost care, ensuring safe packaging, loading, and unloading.",
   },
   {
-    icon: Package,
     title: "High-Quality Packing Materials",
     description:
       "We use premium packing materials, like bubble wrap, foam, stretch film, and customised boxes, to protect your valuables during transit.",
   },
   {
-    icon: Clock,
     title: "Safe & On-Time Delivery",
     description:
       "Most of our vehicles are GPS-enabled, helping us maintain better coordination and timely delivery for our customers.",
   },
   {
-    icon: DollarSign,
     title: "Transparent Pricing",
     description:
       "No hidden charges. We follow a clear and customer-friendly pricing model based on distance, volume, and required services.",
   },
   {
-    icon: CheckCircle2,
     title: "End-to-End Service",
     description:
       "From disassembling furniture to installation at your new location, we provide complete door-to-door relocation support.",
@@ -108,11 +98,11 @@ export default function page() {
       <HeaderNavbar />
 
       {/* Hero Section */}
-      <section className="bg-gray-50 pt-8 sm:pt-12 md:pt-14 lg:pt-16 pb-4 sm:pb-6 md:pb-8">
+      <section className="bg-gray-50 pt-10 sm:pt-14 md:pt-16 lg:pt-20">
         <div className="text-center mb-4 sm:mb-6 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl pt-10 font-bold text-gray-900 mb-2 sm:mb-3">
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl pt-10 font-bold text-gray-900 sm:mb-1 md:mb-2">
             About Us – Eintransport Packers and Movers
-          </h1>
+          </p>
           <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full"></div>
         </div>
       </section>
@@ -160,25 +150,21 @@ export default function page() {
         {/* Why Choose Us Section */}
         <section className="mb-6 sm:mb-10 md:mb-12">
           <div className="text-center mb-4 sm:mb-6 md:mb-8">
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
               Why Choose Eintransport?
-            </h2>
+            </p>
             <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full"></div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-5">
             {whyChooseUs.map((item, index) => {
-              const Icon = item.icon;
               return (
                 <div
                   key={index}
-                  className="bg-white p-3 sm:p-5 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+                  className="bg-white p-3 sm:p-5 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-1.25rem)] max-w-sm"
                 >
-                  <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 rounded-lg mb-2 sm:mb-3">
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#0086ff]" />
-                  </div>
-                  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-1.5 sm:mb-2">
+                  <p className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-1.5 sm:mb-2">
                     {item.title}
-                  </h3>
+                  </p>
                   <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                     {item.description}
                   </p>
@@ -189,38 +175,36 @@ export default function page() {
         </section>
 
         {/* Stats Section */}
-        <section className="mb-6 sm:mb-10 md:mb-12 bg-gradient-to-br from-[#0086ff] to-blue-600 rounded-lg sm:rounded-xl p-4 sm:p-6 md:p-8 shadow-xl">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5 md:gap-8">
-            {counts.map((item) => (
-              <div key={item.name} className="text-center">
-                <div className="mb-1.5 sm:mb-2">
-                  <CountUp
-                    from={0}
-                    to={item.count}
-                    separator=","
-                    direction="up"
-                    duration={3}
-                    className="text-lg sm:text-2xl md:text-3xl font-bold text-white"
-                  />
-                  <span className="text-lg sm:text-2xl md:text-3xl font-bold text-white">
-                    +
-                  </span>
-                </div>
-                <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-blue-100">
-                  {item.name}
-                </p>
+        <section className="mb-6 sm:mb-10 md:mb-12 p-4 sm:p-6 md:p-8">
+                 <div className="grid grid-cols-2 sm:grid-cols-4">
+          {counts.map((item) => (
+            <div key={item.name} className="text-center">
+              <div className="mb-2">
+                <CountUp
+                  from={0}
+                  to={item.count}
+                  separator=","
+                  direction="up"
+                  duration={3}
+                  className="text-3xl sm:text-4xl font-bold text-[#0086ff]"
+                />
+                <span className="text-3xl sm:text-4xl font-bold text-[#0086ff]">
+                  +
+                </span>
               </div>
-            ))}
-          </div>
+              <p className="text-sm font-semibold text-gray-700">{item.name}</p>
+            </div>
+          ))}
+        </div>
         </section>
 
         {/* Mission & Vision Section */}
         <section className="mb-6 sm:mb-10 md:mb-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <div className="bg-white p-4 sm:p-5 md:p-6 rounded-lg shadow-md border border-gray-100">
-              <h2 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
+              <p className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
                 Our Mission
-              </h2>
+              </p>
               <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed">
                 To provide affordable, efficient, and reliable relocation
                 services that reduce customer stress, save time, and ensure 100%
@@ -228,9 +212,9 @@ export default function page() {
               </p>
             </div>
             <div className="bg-white p-4 sm:p-5 md:p-6 rounded-lg shadow-md border border-gray-100">
-              <h2 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
+              <p className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
                 Our Vision
-              </h2>
+              </p>
               <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed">
                 To become South India's most trusted packers and movers brand by
                 offering safe, smart, and technology-driven moving solutions.
@@ -242,9 +226,9 @@ export default function page() {
         {/* Core Values Section */}
         <section className="mb-6 sm:mb-10 md:mb-12">
           <div className="text-center mb-4 sm:mb-6 md:mb-8">
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
               Our Core Values
-            </h2>
+            </p>
             <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full"></div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
@@ -255,12 +239,14 @@ export default function page() {
                   key={index}
                   className="bg-white p-3 sm:p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100 text-center"
                 >
-                  <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 rounded-lg mb-2 sm:mb-3 mx-auto">
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#0086ff]" />
+                  <div className="flex items-center justify-center gap-2 sm:gap-2.5 mb-2 sm:mb-3">
+                    <div className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 bg-blue-100 rounded-lg">
+                      <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0086ff]" />
+                    </div>
+                    <p className="text-xs sm:text-sm md:text-base font-semibold text-gray-900">
+                      {value.title}
+                    </p>
                   </div>
-                  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-1.5 sm:mb-2">
-                    {value.title}
-                  </h3>
                   <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                     {value.description}
                   </p>
@@ -273,9 +259,9 @@ export default function page() {
         {/* Service Locations Section */}
         <section className="mb-6 sm:mb-10 md:mb-12">
           <div className="text-center mb-4 sm:mb-6 md:mb-8">
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
               Our Service Locations
-            </h2>
+            </p>
             <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full"></div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
@@ -300,32 +286,35 @@ export default function page() {
 
         {/* Customer Promise Section */}
         <section className="mb-6 sm:mb-10 md:mb-12">
-          <div className="bg-white p-4 sm:p-5 md:p-6 lg:p-8 rounded-lg shadow-md border border-gray-100">
-            <div className="text-center mb-4 sm:mb-6">
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
-                Our Customer Promise
-              </h2>
-              <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full"></div>
-            </div>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 max-w-5xl mx-auto">
-              {[
-                "We treat your belongings as our own.",
-                "No last-minute surprises or hidden charges",
-                "Proper packing and safe handling",
-                "Timely service",
-                "Clear communication from start to finish",
-              ].map((promise, index) => (
-                <li
-                  key={index}
-                  className="flex items-start gap-2 p-2 sm:p-3 bg-blue-50 rounded-lg border border-blue-100"
+          <div className="text-center mb-4 sm:mb-6">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
+              Our Customer Promise
+            </p>
+            <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full"></div>
+          </div>
+          <div className="space-y-3 w-fit mx-auto">
+            {[
+              "We treat your belongings as our own.",
+              "No last-minute surprises or hidden charges",
+              "Proper packing and safe handling",
+              "Timely service",
+              "Clear communication from start to finish",
+            ].map((promise, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <svg
+                  className="w-6 h-6 text-[#0086ff] flex-shrink-0 mt-0.5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
                 >
-                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#0086ff] flex-shrink-0 mt-0.5" />
-                  <span className="text-xs sm:text-sm text-gray-700">
-                    {promise}
-                  </span>
-                </li>
-              ))}
-            </ul>
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <p className="text-base text-gray-700">{promise}</p>
+              </div>
+            ))}
           </div>
         </section>
       </div>

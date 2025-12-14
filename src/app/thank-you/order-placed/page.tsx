@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CheckCircle, X } from "lucide-react"; // Add X icon import
 import Link from "next/link";
 import HeaderNavbar from "@/components/landingPage/header";
@@ -9,18 +9,18 @@ import HeroSection from "@/components/landingPage/heroSection";
 
 
 export default function OrderPlacedPage() {
-  const [returnUrl, setReturnUrl] = useState("/");
- 
-  useEffect(() => {
+  const [returnUrl] = useState(() => {
     try {
       const stored = sessionStorage.getItem("returnUrl");
       if (stored) {
-        setReturnUrl(stored);
         sessionStorage.removeItem("returnUrl");
+        return stored;
       }
     } catch {
+      // Ignore sessionStorage access errors
     }
-  }, []);
+    return "/";
+  });
 
   return (
     <div className="relative min-h-screen">

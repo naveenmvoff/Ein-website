@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { HeroForm } from "./heroForm";
 import { PhoneNumberAnimation } from "./phone-number-animation";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, startTransition } from "react";
 
 interface HeroSectionProps {
   title?: string;
@@ -15,7 +15,9 @@ export default function HeroSection({ title }: HeroSectionProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setIsVisible(false);
+    startTransition(() => {
+      setIsVisible(false);
+    });
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 100);

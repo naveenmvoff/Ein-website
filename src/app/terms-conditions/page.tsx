@@ -4,21 +4,10 @@ import Link from "next/link";
 import React from "react";
 import HeaderNavbar from "@/components/landingPage/header";
 import Footer from "@/components/Footer";
-import {
-  FileText,
-  AlertCircle,
-  Shield,
-  Ban,
-  ExternalLink,
-  Gavel,
-  Mail,
-  Globe,
-} from "lucide-react";
 
 const sections = [
   {
     id: 1,
-    icon: FileText,
     title: "Service Usage",
     content: {
       text: "Eintransport provides packing, moving, loading, unloading, and transportation services. Service confirmation is subject to:",
@@ -31,7 +20,6 @@ const sections = [
   },
   {
     id: 2,
-    icon: FileText,
     title: "Payments",
     content: {
       text: "Payments must be made as instructed by the Company.",
@@ -46,7 +34,6 @@ const sections = [
   },
   {
     id: 3,
-    icon: AlertCircle,
     title: "Booking Cancellation",
     content: {
       list: [
@@ -57,7 +44,6 @@ const sections = [
   },
   {
     id: 4,
-    icon: FileText,
     title: "Customer Responsibilities",
     content: {
       text: "Customers must:",
@@ -73,7 +59,6 @@ const sections = [
   },
   {
     id: 5,
-    icon: Shield,
     title: "Damage Policy",
     content: {
       list: [
@@ -85,7 +70,6 @@ const sections = [
   },
   {
     id: 6,
-    icon: Shield,
     title: "Insurance Disclaimer",
     content: {
       text: "Transit insurance is optional and must be requested by the customer in advance. The Company is not responsible for damages to goods that are uninsured.",
@@ -93,7 +77,6 @@ const sections = [
   },
   {
     id: 7,
-    icon: Ban,
     title: "Prohibited Goods",
     content: {
       text: "We do not transport:",
@@ -106,7 +89,6 @@ const sections = [
   },
   {
     id: 8,
-    icon: Globe,
     title: "Website Usage",
     content: {
       text: "You agree not to use the website for:",
@@ -121,7 +103,6 @@ const sections = [
   },
   {
     id: 9,
-    icon: ExternalLink,
     title: "Third-Party Links",
     content: {
       text: "Our website may contain links to external websites.",
@@ -131,7 +112,6 @@ const sections = [
   },
   {
     id: 10,
-    icon: AlertCircle,
     title: "Limitation of Liability",
     content: {
       text: "Eintransport is not liable for:",
@@ -147,7 +127,6 @@ const sections = [
   },
   {
     id: 11,
-    icon: AlertCircle,
     title: "Force Majeure",
     content: {
       text: "The Company is not liable for delays or service failures due to events beyond our control, including natural disasters, strikes, riots, accidents or government restrictions.",
@@ -155,7 +134,6 @@ const sections = [
   },
   {
     id: 12,
-    icon: Gavel,
     title: "Jurisdiction",
     content: {
       text: "All disputes are subject to the exclusive jurisdiction of the Courts of Bengaluru, Karnataka, India and governed by the laws of India.",
@@ -169,28 +147,26 @@ export default function page() {
       <HeaderNavbar />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-white pt-10 sm:pt-18 md:pt-20 lg:pt-20 pb-4 sm:pb-6">
-        <div className="container mx-auto px-3 sm:px-6 lg:px-8 max-w-5xl">
-          <div className="text-center">
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 sm:mb-3">
-              Terms & Conditions
-            </h1>
-            <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full mb-3"></div>
-            <p className="text-xs sm:text-sm text-gray-600 mb-2">
-              Eintransport Private Limited
-            </p>
-            <p className="text-xs sm:text-sm text-gray-500">
-              Last Updated: December 2025
-            </p>
-          </div>
+      <section className="bg-gray-50 mt-10 pt-8 sm:pt-12 md:pt-14 lg:pt-16 pb-3 sm:pb-4 md:pb-6">
+        <div className="text-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+          <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
+            Terms & Conditions
+          </h1>
+          <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full"></div>
+          <p className="text-xs sm:text-sm text-gray-600 mt-2 sm:mt-3">
+            Eintransport Private Limited
+          </p>
+          <p className="text-xs text-gray-500 mt-1">
+            Last Updated: December 2025
+          </p>
         </div>
       </section>
 
       {/* Main Content */}
-      <div className="container mx-auto px-3 sm:px-6 lg:px-8 max-w-5xl py-6 sm:py-8 md:py-10">
-        {/* Introduction */}
-        <div className="bg-white rounded-lg shadow-md border border-gray-200 p-4 sm:p-5 md:p-6 mb-6">
-          <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+      <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-4 sm:py-6 md:py-8">
+        <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-6 sm:p-8 md:p-10">
+          {/* Introduction */}
+          <p className="text-xs sm:text-sm text-gray-700 mb-6 leading-relaxed">
             By using{" "}
             <Link href={"/"} className="font-semibold text-[#0086ff]">
               Eintransport Packers and Movers
@@ -201,71 +177,47 @@ export default function page() {
             </Link>
             , you agree to the following Terms & Conditions:
           </p>
-        </div>
 
-        {/* Terms Sections */}
-        <div className="space-y-5">
-          {sections.map((section) => {
-            const Icon = section.icon;
-            return (
-              <div
-                key={section.id}
-                className="bg-white rounded-lg shadow-md border border-gray-200 p-4 sm:p-5 hover:shadow-lg transition-shadow duration-300"
-              >
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#0086ff]" />
-                  </div>
-                  <div className="flex-1">
-                    <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-3">
-                      {section.id}. {section.title}
-                    </h2>
+          {/* Terms Sections */}
+          <div className="space-y-6 sm:space-y-8">
+            {sections.map((section) => {
+              return (
+                <div key={section.id}>
+                  <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">
+                    {section.id}. {section.title}
+                  </h2>
 
-                    {section.content.text && (
-                      <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed mb-3">
-                        {section.content.text}
-                      </p>
-                    )}
+                  {section.content.text && (
+                    <p className="text-xs sm:text-sm text-gray-700 mb-2 leading-relaxed">
+                      {section.content.text}
+                    </p>
+                  )}
 
-                    {section.content.list && (
-                      <ul className="space-y-2 mb-3">
-                        {section.content.list.map((item, index) => (
-                          <li
-                            key={index}
-                            className="flex items-start gap-2 text-xs sm:text-sm md:text-base text-gray-700"
-                          >
-                            <span className="text-[#0086ff] mt-1.5 flex-shrink-0">
-                              •
-                            </span>
-                            <span className="leading-relaxed">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                  {section.content.list && (
+                    <ul className="list-disc pl-5 sm:pl-6 space-y-1 text-xs sm:text-sm text-gray-700 mb-2">
+                      {section.content.list.map((item, index) => (
+                        <li key={index} className="leading-relaxed">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
-                    {section.content.footer && (
-                      <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed italic">
-                        {section.content.footer}
-                      </p>
-                    )}
-                  </div>
+                  {section.content.footer && (
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed italic mt-2">
+                      {section.content.footer}
+                    </p>
+                  )}
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
 
-        {/* Contact Section */}
-        <div className="mt-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border border-blue-200 p-4 sm:p-5 md:p-6">
-          <div className="flex items-start gap-3 sm:gap-4">
-            <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 bg-white rounded-lg flex items-center justify-center">
-              <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-[#0086ff]" />
-            </div>
-            <div className="flex-1">
-              <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-3">
+            {/* Contact Section */}
+            <div className="pt-4 border-t border-gray-200">
+              <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-3">
                 13. Contact
               </h2>
-              <div className="space-y-1.5 text-xs sm:text-sm md:text-base text-gray-700">
+              <div className="space-y-1.5 text-xs sm:text-sm text-gray-700">
                 <p className="font-semibold">Eintransport Private Limited</p>
                 <p>
                   Email:{" "}

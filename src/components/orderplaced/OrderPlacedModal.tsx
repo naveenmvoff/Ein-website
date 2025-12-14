@@ -1,25 +1,24 @@
 // src/components/orderplaced/OrderPlacedModal.tsx
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CheckCircle, X } from "lucide-react";
 import Link from "next/link";
 
 export default function OrderPlacedModal() {
-  const [returnUrl, setReturnUrl] = useState("/");
-
-  useEffect(() => {
+  const [returnUrl] = useState(() => {
     try {
       const stored = sessionStorage.getItem("returnUrl");
       if (stored) {
-        setReturnUrl(stored);
         // Clear it after reading
         sessionStorage.removeItem("returnUrl");
+        return stored;
       }
     } catch {
       // Ignore sessionStorage access errors
     }
-  }, []);
+    return "/";
+  });
 
   return (
     <div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center z-50 px-4">

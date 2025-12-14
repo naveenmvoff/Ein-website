@@ -84,7 +84,7 @@ const faqs = [
   },
 ];
 
-function FAQItem({ faq, index }: { faq: (typeof faqs)[0]; index: number }) {
+function FAQItem({ faq }: { faq: (typeof faqs)[0] }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -148,16 +148,14 @@ export default function page() {
           <div className="flex-1 lg:max-w-3xl">
             <div className="space-y-4 sm:space-y-5">
               {faqs.map((faq, index) => (
-                <FAQItem key={index} faq={faq} index={index} />
+                <FAQItem key={index} faq={faq} />
               ))}
             </div>
           </div>
 
           {/* Contact Form - Right Side (Fixed/Sticky on Desktop) */}
-          <aside className="lg:w-96 sticky lg:top-24 lg:self-start">
-            <div className="">
+          <aside className="lg:w-96 sticky lg:top-28 lg:self-start">
               <HeroForm />
-            </div>
           </aside>
         </div>
       </div>

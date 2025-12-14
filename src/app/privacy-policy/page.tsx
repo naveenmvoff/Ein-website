@@ -1,6 +1,9 @@
 import StaticUI from "@/components/StaticUI/StaticUI";
 import React from "react";
 import { Metadata } from "next";
+import HeaderNavbar from "@/components/landingPage/header";
+import Footer from "@/components/Footer";
+import Link from "next/link";
 
 export async function generateMetadata({}: {
   params: Promise<{ location: string }>;
@@ -17,6 +20,9 @@ export async function generateMetadata({}: {
 
 function PrivacyPolicyPage() {
   return (
+    <div className="min-h-screen mt-10 bg-gray-50">
+      <HeaderNavbar />
+
     <section className="bg-gray-50 min-h-screen py-16 px-6 sm:px-12">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-8 sm:p-12">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
@@ -27,7 +33,7 @@ function PrivacyPolicyPage() {
         </p>
 
         <p className="text-gray-700 mb-6">
-          Welcome to <strong>eintransport.in.</strong>
+          Welcome to <span className="text-[#0086ff]"><Link href="/">eintransport.in. </Link></span>
           We value your trust and are committed to protecting your personal
           information. This Privacy Policy explains how we collect, use, store,
           and safeguard your data when you use our website and services. By
@@ -182,6 +188,8 @@ function PrivacyPolicyPage() {
       </div>
       <StaticUI />
     </section>
+    <Footer />
+    </div>
   );
 }
 

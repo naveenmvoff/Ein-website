@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, startTransition } from "react";
 import dynamic from "next/dynamic";
 
 // Load the TinyMCE React Editor dynamically on the client to avoid SSR errors
@@ -47,7 +47,9 @@ const TextEditor: React.FC<TextEditorProps> = (props) => {
   /** Keep editor in sync with external value */
   useEffect(() => {
     if (value !== content && editorRef.current) {
-      setContent(value || "");
+      startTransition(() => {
+        setContent(value || "");
+      });
     }
   }, [value, content]);
 
