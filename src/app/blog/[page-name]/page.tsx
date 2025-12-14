@@ -132,14 +132,20 @@ export async function generateStaticParams() {
 
     await connectDB();
 
-    const blogs = await Blog.find().select("pageURL").lean();
+    const blogs = await Blog.find({ status: "Active" }).select("pageURL").lean();
+
+    // Return at least one result for Cache Components validation
+    if (blogs.length === 0) {
+      return [{ "page-name": "placeholder" }];
+    }
 
     return blogs.map((blog: any) => ({
       "page-name": blog.pageURL,
     }));
   } catch (error) {
     console.error("Error generating static params:", error);
-    return [];
+    // Return at least one result when database fails (required for Cache Components)
+    return [{ "page-name": "placeholder" }];
   }
 }
 
