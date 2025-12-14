@@ -1,4 +1,4 @@
-"use client";
+// "use client
 
 import Link from "next/link";
 import React from "react";
@@ -42,7 +42,6 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
-
 
 const sections = [
   {

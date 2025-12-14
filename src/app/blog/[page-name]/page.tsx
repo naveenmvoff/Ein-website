@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getBlogBySlug, buildCanonicalUrl } from "./utils";
 import BlogPostClient from "@/components/blog/BlogPostClient";
+import { Suspense } from "react";
 
 type PageProps = {
   params: Promise<{
@@ -132,7 +133,9 @@ export async function generateStaticParams() {
 
     await connectDB();
 
-    const blogs = await Blog.find({ status: "Active" }).select("pageURL").lean();
+    const blogs = await Blog.find({ status: "Active" })
+      .select("pageURL")
+      .lean();
 
     // Return at least one result for Cache Components validation
     if (blogs.length === 0) {
@@ -159,5 +162,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const canonicalUrl = buildCanonicalUrl(blog.pageURL);
 
-  return <BlogPostClient blog={blog} canonicalUrl={canonicalUrl} />;
+  return (
+    <Suspense fallback={<div>Loading blogs...</div>}>
+      <BlogPostClient blog={blog} canonicalUrl={canonicalUrl} />
+    </Suspense>
+  );
 }
