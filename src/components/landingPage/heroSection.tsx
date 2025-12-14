@@ -3,26 +3,12 @@
 import { motion } from "framer-motion";
 import { HeroForm } from "./heroForm";
 import { PhoneNumberAnimation } from "./phone-number-animation";
-import { usePathname } from "next/navigation";
-import { useEffect, useState, startTransition } from "react";
 
 interface HeroSectionProps {
   title?: string;
 }
 
 export default function HeroSection({ title }: HeroSectionProps) {
-  const pathname = usePathname();
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    startTransition(() => {
-      setIsVisible(false);
-    });
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, [pathname]);
 
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 overflow-hidden flex items-center px-4 sm:px-8 py-16 sm:py-24">
@@ -32,13 +18,7 @@ export default function HeroSection({ title }: HeroSectionProps) {
       <div className="absolute inset-0 bg-[url('/patterns/subtle-grid.svg')] opacity-20 mix-blend-overlay"></div>
 
       <div className="container relative z-10 mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-10 lg:gap-16 items-center">
-        <motion.div
-          key={pathname}
-          initial={{ opacity: 0, x: -40 }}
-          animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
-          transition={{ duration: 0.6 }}
-          className="text-center md:text-left"
-        >
+        <div className="text-center md:text-left">
           <div className="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full mb-4 shadow-sm">
             #1 Trusted Packers & Movers
           </div>
@@ -92,19 +72,13 @@ export default function HeroSection({ title }: HeroSectionProps) {
               Call now for house shifting
             </p>
           </motion.div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          key={`${pathname}-form`}
-          initial={{ opacity: 0, x: 40 }}
-          animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative flex justify-center items-center mt-7"
-        >
+        <div className="relative flex justify-center items-center mt-7">
           <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-blue-200/40 to-blue-100/20 rounded-3xl blur-3xl"></div>
 
           <HeroForm />
-        </motion.div>
+        </div>
       </div>
     </section>
   );
