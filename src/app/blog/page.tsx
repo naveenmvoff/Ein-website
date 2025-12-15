@@ -5,6 +5,8 @@ import HeaderNavbar from "@/components/landingPage/header";
 import Footer from "@/components/Footer";
 import StaticUI from "@/components/StaticUI/StaticUI";
 import Image from "next/image";
+import connectDB from "@/config/db";
+import Blog from "@/models/Blog";
 
 export const metadata: Metadata = {
   title: "Relocation Tips & Guides Blog | Eintransport Packers",
@@ -38,21 +40,16 @@ export const metadata: Metadata = {
 
 async function getBlogPosts() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-    const res = await fetch(`${baseUrl}/api/admin/blog?includeContent=false`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      cache: "no-store",
-    });
+    await connectDB();
 
-    if (!res.ok) {
-      console.error("Failed to fetch blogs:", res.status, res.statusText);
-      return [];
-    }
+    const blogs = await Blog.find({ status: "Active" })
+      .select(
+        "_id title metaDescription metaTitle metaKeywords pageURL status thumbnail createdAt updatedAt"
+      )
+      .sort({ updatedAt: -1 })
+      .lean();
 
-    const json = await res.json();
-    return json?.data.filter((i: any) => i.status == "Active") || [];
+    return blogs;
   } catch (error) {
     console.error("Error fetching blog posts:", error);
     return [];
@@ -79,17 +76,15 @@ export default async function BlogPage() {
         }/logo.png`,
       },
     },
-    blogPost: blogs
-      .filter((i: any) => i.status == "Active")
-      .map((blog: any) => ({
-        "@type": "BlogPosting",
-        headline: blog.title,
-        description: blog.metaDescription || blog.title,
-        datePublished: blog.createdAt,
-        url: `${
-          process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"
-        }/blog/${blog.pageURL}`,
-      })),
+    blogPost: blogs.map((blog: any) => ({
+      "@type": "BlogPosting",
+      headline: blog.title,
+      description: blog.metaDescription || blog.title,
+      datePublished: blog.createdAt,
+      url: `${
+        process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in"
+      }/blog/${blog.pageURL}`,
+    })),
   };
   console.log("blogs", blogs);
 

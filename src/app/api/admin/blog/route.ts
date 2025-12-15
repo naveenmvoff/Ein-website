@@ -3,7 +3,7 @@ import { NextResponse, NextRequest } from "next/server";
 import Blog from "@/models/Blog";
 
 const slugRegex = /^[a-z0-9-]+$/;
-
+export const revalidate = 3600;
 const normalizeSlug = (value: unknown): string => {
   if (typeof value !== "string") return "";
   return value
