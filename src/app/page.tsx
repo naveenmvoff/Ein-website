@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { metaDataByLocation } from "@/lib/dataSet";
 import LandingPageClient from "@/components/landingPage/LandingPageClient";
-
+ 
 export async function generateMetadata(): Promise<Metadata> {
   const meta = metaDataByLocation.main;
 
