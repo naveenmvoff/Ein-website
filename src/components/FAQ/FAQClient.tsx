@@ -127,7 +127,7 @@ export default function page() {
       <HeaderNavbar />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-white pt-10 sm:pt-18 md:pt-20 lg:pt-20 pb-4 sm:pb-6">
+      <section className="bg-gradient-to-br from-blue-50 to-white pt-18 sm:pt-24 md:pt-26 lg:pt-26 pb-4 sm:pb-6">
         <div className="container mx-auto px-3 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center">
             <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 sm:mb-3">

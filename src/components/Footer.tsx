@@ -271,7 +271,7 @@ function Footer() {
               © 2025 Eintransport. All rights reserved.
             </p>
 
-            <div className="flex justify-center items-center flex-col sm:flex-row gap-2">
+            <div className="flex justify-center items-center flex-row gap-2">
               <Link
                 href="/terms-conditions"
                 className="text-xs border-r pr-3 h-fit border-white sm:text-sm text-gray-400 hover:underline hover:text-white transition-colors inline-block"

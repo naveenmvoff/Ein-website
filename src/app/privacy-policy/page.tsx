@@ -23,14 +23,18 @@ function PrivacyPolicyPage() {
     <div className="min-h-screen mt-10 bg-gray-50">
       <HeaderNavbar />
 
-    <section className="bg-gray-50 min-h-screen py-16 px-6 sm:px-12">
-      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-8 sm:p-12">
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-          Privacy Policy - Eintransport Private Limited
-        </h1>
-        <p className="text-sm text-gray-500 mb-8">
+    <section className="bg-gray-50 min-h-screen py-10 md:py-12 sm:py-16 px-6 sm:px-12">
+        <div className="text-center ">
+          <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
+            Privacy Policy - Eintransport Private Limited
+          </h1>
+          <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full"></div>
+          <p className="text-sm text-gray-500 mb-8">
           <strong>Last Updated:</strong> December 2025
         </p>
+        </div>
+     
+      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-8 sm:p-12">
 
         <p className="text-gray-700 mb-6">
           Welcome to <span className="text-[#0086ff]"><Link href="/">eintransport.in. </Link></span>

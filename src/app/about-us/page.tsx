@@ -135,10 +135,10 @@ export default function page() {
 
       {/* Hero Section */}
       <section className="bg-gray-50 pt-10 sm:pt-14 md:pt-16 lg:pt-20">
-        <div className="text-center mb-4 sm:mb-6 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl pt-10 font-bold text-gray-900 sm:mb-1 md:mb-2">
+        <div className="text-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl pt-6 font-bold text-gray-900 sm:mb-1 md:mb-2">
             About Us – Eintransport Packers and Movers
-          </p>
+          </h1>
           <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full"></div>
         </div>
       </section>
@@ -186,9 +186,9 @@ export default function page() {
         {/* Why Choose Us Section */}
         <section className="mb-6 sm:mb-10 md:mb-12">
           <div className="text-center mb-4 sm:mb-6 md:mb-8">
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
               Why Choose Eintransport?
-            </p>
+            </h2>
             <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full"></div>
           </div>
           <div className="flex flex-wrap justify-center gap-3 sm:gap-5">

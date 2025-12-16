@@ -147,7 +147,7 @@ export default function HeaderNavbar() {
               }, 800);
             }
           }}
-          className="flex items-center gap-1 sm:gap-2 group flex-shrink-0 cursor-pointer"
+          className="flex items-center gap-1 sm:gap-2 group shrink-0 cursor-pointer"
           style={{ flexDirection: "row" }}
         >
           <Image
@@ -255,6 +255,12 @@ export default function HeaderNavbar() {
             className="sm:hidden bg-white border-t border-gray-200 shadow-xl overflow-hidden z-50"
           >
             <div className="flex flex-col py-2">
+            <Link
+                href="/"
+                className="text-gray-800 hover:text-blue-700 hover:bg-gray-50 active:bg-blue-50 transition-colors py-3 px-6 text-sm font-medium text-center border-b border-gray-200/50"
+              >
+                Home
+              </Link>
               {/* Services Dropdown in Mobile */}
               <div className="w-full border-b border-gray-200/50">
                 <button
@@ -303,24 +309,11 @@ export default function HeaderNavbar() {
                   )}
                 </AnimatePresence>
               </div>
-
-              <Link
-                href="/about-us"
-                className="text-gray-800 hover:text-blue-700 hover:bg-gray-50 active:bg-blue-50 transition-colors py-3 px-6 text-sm font-medium text-center border-b border-gray-200/50"
-              >
-                About
-              </Link>
               <Link
                 href="/contact-us"
-                className="text-gray-800 hover:text-blue-700 hover:bg-gray-50 active:bg-blue-50 transition-colors py-3 px-6 text-sm font-medium text-center border-b border-gray-200/50"
-              >
-                Contact
-              </Link>
-              <Link
-                href="/faq"
                 className="text-gray-800 hover:text-blue-700 hover:bg-gray-50 active:bg-blue-50 transition-colors py-3 px-6 text-sm font-medium text-center"
               >
-                FAQ
+                Contact
               </Link>
             </div>
           </motion.nav>

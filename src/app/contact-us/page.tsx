@@ -71,7 +71,7 @@ export default function page() {
       <HeaderNavbar />
 
       {/* Hero Section */}
-      <section className="bg-gray-50 mt-14 pt-8 sm:pt-12 md:pt-14 lg:pt-16 pb-3 sm:pb-4 md:pb-6">
+      <section className="bg-gray-50 mt-10 pt-8 sm:pt-12 md:pt-14 lg:pt-16 pb-3 sm:pb-4 md:pb-6">
         <div className="text-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
             Contact Eintransport Packers and Movers
@@ -87,7 +87,7 @@ export default function page() {
       <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-4 sm:py-6 md:py-8">
         <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
           {/* Contact Information - Left Side */}
-          <div className="flex-1 lg:max-w-3xl">
+          <div className="flex-1 lg:max-w-3xl order-2 lg:order-1">
             {/* Single Background Container */}
             <div className="bg-white rounded-lg shadow-md border border-gray-200 p-4 sm:p-5 md:p-6">
               {/* Introduction */}
@@ -217,7 +217,7 @@ export default function page() {
           </div>
 
           {/* Contact Form - Right Side (Fixed/Sticky on Desktop) */}
-          <aside className="lg:w-96 lg:sticky lg:top-28 lg:self-start z-10">
+          <aside className="w-full lg:w-96 order-1 lg:order-2 lg:sticky lg:top-28 lg:self-start z-10">
             <HeroForm />
           </aside>
         </div>
