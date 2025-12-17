@@ -5,6 +5,7 @@ import React from "react";
 import HeaderNavbar from "@/components/landingPage/header";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
+import StaticUI from "@/components/StaticUI/StaticUI";
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in";
 
@@ -62,8 +63,8 @@ const sections = [
     content: {
       text: "Payments must be made as instructed by the Company.",
       list: [
-        "Advance payment",
-        "After pickup",
+        "10% Advance payment",
+        "40% After pickup",
         "Remaining balance before unloading.",
       ],
       footer:
@@ -185,16 +186,13 @@ export default function page() {
       <HeaderNavbar />
 
       {/* Hero Section */}
-      <section className="bg-gray-50 mt-10 pt-8 sm:pt-12 md:pt-14 lg:pt-16 pb-3 sm:pb-4 md:pb-6">
+      <section className="bg-gray-50 mt-10 pt-8 sm:pt-12 md:pt-14 lg:pt-16">
         <div className="text-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
-            Terms & Conditions
+            Terms & Conditions - Eintransport Private Limited
           </h1>
           <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full"></div>
-          <p className="text-xs sm:text-sm text-gray-600 mt-2 sm:mt-3">
-            Eintransport Private Limited
-          </p>
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-3">
             Last Updated: December 2025
           </p>
         </div>
@@ -283,6 +281,7 @@ export default function page() {
         </div>
       </div>
 
+      <StaticUI />
       <Footer />
     </div>
   );

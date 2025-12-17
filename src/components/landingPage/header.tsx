@@ -313,7 +313,7 @@ export default function HeaderNavbar() {
                 href="/contact-us"
                 className="text-gray-800 hover:text-blue-700 hover:bg-gray-50 active:bg-blue-50 transition-colors py-3 px-6 text-sm font-medium text-center"
               >
-                Contact
+                Contact us
               </Link>
             </div>
           </motion.nav>

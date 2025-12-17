@@ -5,6 +5,7 @@ import React from "react";
 import HeaderNavbar from "@/components/landingPage/header";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
+import StaticUI from "@/components/StaticUI/StaticUI";
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://eintransport.in";
 
@@ -115,8 +116,8 @@ export default function page() {
                     <h2 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-1.5">
                       Call or WhatsApp
                     </h2>
-                    <p className="text-xs sm:text-sm font-semibold text-[#0086ff] mb-0.5">
-                      Phone / WhatsApp: +91 90433 84332
+                    <p className="text-xs sm:text-sm font-semibold mb-0.5">
+                    <span className="font-extrabold text-[#0086ff]"><a href="tel:+919043384332" className="hover:underline">+91 90433 84332</a></span>
                     </p>
                     <p className="text-xs text-gray-600">
                       (Instant support for bookings & enquiries)
@@ -222,7 +223,7 @@ export default function page() {
           </aside>
         </div>
       </div>
-
+      <StaticUI />
       <Footer />
     </div>
   );

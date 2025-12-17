@@ -10,15 +10,15 @@ import {
 import Link from "next/link";
 import React, { useState } from "react";
 
-type CompanyInfo = {
-  name: string;
-  value: string;
-};
+// type CompanyInfo = {
+//   name: string;
+//   value: string;
+// };
 
-const companyDetails: CompanyInfo[] = [
-  { name: "GSTIN", value: "29AAICE9652R1ZJ" },
-  { name: "PAN", value: "AAICE9652R" },
-];
+// const companyDetails: CompanyInfo[] = [
+//   { name: "GSTIN", value: "29AAICE9652R1ZJ" },
+//   { name: "PAN", value: "AAICE9652R" },
+// ];
 
 function Footer() {
   const [isVisible] = useState(true);
@@ -192,41 +192,6 @@ function Footer() {
                 >
                   support@eintransport.in
                 </Link>
-              </div>
-            </div>
-            <div>
-              <p className="font-bold mt-4 text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 text-[#0086FF]">
-                Company Details
-              </p>
-              <div className="space-y-2 sm:space-y-3 w-full">
-                {/* Address */}
-                <div className="flex flex-col gap-2 items-start text-xs sm:text-sm mb-3 sm:mb-4">
-                  <span className="font-medium text-[11px] sm:text-base text-gray-300 whitespace-nowrap">
-                    Address:
-                  </span>
-                  {/* <p className="text-gray-400 text-[10px] sm:text-base leading-relaxed flex-1 min-w-0">
-                    NO. 25, GPR LAYOUT, SFS WARD 1, BLOCK 92, Sri Muneshwara
-                    Swamy Temple, Hebbagodi, Bengaluru urban, Karnataka, 560100
-                  </p> */}
-                  <p className="text-gray-400 text-[10px] sm:text-base leading-relaxed flex-1 min-w-0">
-                    22, 4th Cross Rd, Muneshwara Layout, Phase II, Electronic
-                    City, Bengaluru, Karnataka - 560100
-                  </p>
-                </div>
-
-                {companyDetails.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex gap-2 items-start text-xs sm:text-sm"
-                  >
-                    <span className="font-medium text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
-                      {item.name}:
-                    </span>
-                    <span className="font-mono text-gray-400 text-[10px] sm:text-xs break-all flex-1">
-                      {item.value}
-                    </span>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

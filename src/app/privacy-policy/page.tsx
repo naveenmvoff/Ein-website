@@ -5,6 +5,7 @@ import HeaderNavbar from "@/components/landingPage/header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
+
 export async function generateMetadata({}: {
   params: Promise<{ location: string }>;
 }): Promise<Metadata> {
@@ -28,9 +29,9 @@ function PrivacyPolicyPage() {
           <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
             Privacy Policy - Eintransport Private Limited
           </h1>
-          <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full"></div>
-          <p className="text-sm text-gray-500 mb-8">
-          <strong>Last Updated:</strong> December 2025
+          <div className="w-12 sm:w-16 h-0.5 mb-2 bg-[#0086ff] mx-auto rounded-full"></div>
+          <p className="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-3 mb-6">
+          Last Updated: December 2025
         </p>
         </div>
      
@@ -40,13 +41,12 @@ function PrivacyPolicyPage() {
           Welcome to <span className="text-[#0086ff]"><Link href="/">eintransport.in. </Link></span>
           We value your trust and are committed to protecting your personal
           information. This Privacy Policy explains how we collect, use, store,
-          and safeguard your data when you use our website and services. By
-          accessing or using our website, you agree to the practices described
-          in this Privacy Policy.
+          and safeguard your data when you use our website and services. 
         </p>
 
         <p className="text-gray-700 mb-8">
-          By using our services, you agree to the terms outlined below.
+        By accessing or using our website, you agree to the practices described
+          in this Privacy Policy.
         </p>
 
         <div className="space-y-8">
@@ -55,18 +55,17 @@ function PrivacyPolicyPage() {
               1. Information We Collect
             </h2>
             <p className="text-gray-700 mb-2">
-              We may collect the following information when you contact us or
-              fill out a form:
+            We collect only the necessary information required to provide Packers and Movers services, including:
             </p>
             <ul className="list-disc pl-6 space-y-1 text-gray-700">
               <li>Full Name</li>
               <li>Email Address</li>
               <li>Phone Number</li>
               <li>Pickup and Delivery Addresses</li>
+              <li>Any service-related details you provide while contacting us</li>
             </ul>
             <p className="text-gray-700 mt-2">
-              We only collect data that is necessary to provide and manage our
-              services.
+            We do not collect unnecessary or sensitive personal information.
             </p>
           </div>
 
@@ -76,15 +75,19 @@ function PrivacyPolicyPage() {
               2. How We Use Your Information
             </h2>
             <p className="text-gray-700 mb-2">
-              We use the information you provide for purposes such as:
+            Your information is used strictly for operational purposes, such as:
             </p>
             <ul className="list-disc pl-6 space-y-1 text-gray-700">
-              <li>Contacting you about your booking or inquiry</li>
-              <li>Providing quotes and scheduling services</li>
-              <li>Coordinating logistics for your move</li>
-              <li>Responding to support or service-related queries</li>
-              <li>Improving the quality and efficiency of our services</li>
+              <li>Contacting you regarding enquiries or bookings</li>
+              <li>Providing quotations and scheduling your services</li>
+              <li>Coordinating logistics for your relocation</li>
+              <li>Responding to support requests</li>
+              <li>Improving our website and service quality</li>
             </ul>
+
+            <p className="text-gray-700 mt-2">
+            We use your data only to deliver and improve our services.
+            </p>
           </div>
 
           {/* Section 3 */}
@@ -93,10 +96,18 @@ function PrivacyPolicyPage() {
               3. Data Security
             </h2>
             <p className="text-gray-700">
-              We are committed to safeguarding your personal information.
-              Reasonable technical and administrative measures are taken to
-              protect the data you provide from unauthorized access, disclosure,
-              or misuse.
+            We take reasonable technical and administrative measures to safeguard your personal data from:
+            </p>
+
+            <ul className="list-disc pl-6 space-y-1 text-gray-700">
+              <li>Unauthorised access</li>
+              <li>Loss or theft</li>
+              <li>Misuse or alteration</li>
+              <li>Unlawful disclosure</li>
+            </ul>
+
+            <p className="text-gray-700 mt-2">
+            We follow industry-standard security practices to keep your information secure.
             </p>
           </div>
 
@@ -106,10 +117,19 @@ function PrivacyPolicyPage() {
               4. Data Retention
             </h2>
             <p className="text-gray-700">
-              We retain your information only as long as necessary for
-              operational, legal, or regulatory reasons. When your information
-              is no longer required, it will be securely deleted or anonymized.
+            We retain your data only for as long as necessary for:
             </p>
+
+            <ul className="list-disc pl-6 space-y-1 text-gray-700">
+              <li>Service operation</li>
+              <li>Legal compliance</li>
+              <li>Internal record keeping</li>
+            </ul>
+
+            <p className="text-gray-700 mt-2">
+            Once your information is no longer required, it will be securely deleted or anonymised.
+            </p>
+
           </div>
 
           {/* Section 5 */}
@@ -118,76 +138,123 @@ function PrivacyPolicyPage() {
               5. Sharing of Information
             </h2>
             <p className="text-gray-700 mb-2">
-              We do not sell or rent your personal data to any third party. Your
-              information may be shared only:
+            We do not sell, rent, or trade your personal information.
+            </p>
+            <p className="text-gray-700 mb-2">
+            Your data may be shared only:
             </p>
             <ul className="list-disc pl-6 space-y-1 text-gray-700">
               <li>
-                With our internal team or trusted partners involved in providing
-                your requested service
+              With our internal team or trusted partners involved in your moving service
               </li>
-              <li>If required by law or government authorities</li>
-              <li>With your explicit consent</li>
+              <li>To comply with legal obligations or government requests</li>
+              <li>With your explicit consent
+              </li>
             </ul>
           </div>
 
           {/* Section 6 */}
           <div>
             <h2 className="text-xl font-semibold text-gray-900 mb-3">
-              6. Social Media Links
+              6. Cookies & Tracking Technologies
             </h2>
             <p className="text-gray-700">
-              Our website may include links to our official social media pages
-              (e.g., Facebook, Instagram, LinkedIn, YouTube). Please note that
-              when you interact with these platforms, their respective privacy
-              policies apply. We encourage you to review them for more
-              information.
+            We may use cookies and similar tracking technologies to improve your browsing experience, analyse website traffic, enhance overall website performance, and support marketing and analytics activities. Cookies help us understand how users interact with our website and allow certain features to function smoothly. You may choose to disable cookies through your browser settings; however, doing so may affect the proper functioning of some parts of the website.
             </p>
           </div>
 
           {/* Section 7 */}
           <div>
             <h2 className="text-xl font-semibold text-gray-900 mb-3">
-              7. Changes to This Policy
+              7. Third-Party Services
             </h2>
             <p className="text-gray-700">
-              We may update this Privacy Policy as needed. Any updates will be
-              posted on this page with a revised
-              <strong> “Effective Date.”</strong> You are encouraged to check
-              back periodically to stay informed.
+            Our website may also use trusted third-party services such as Google Analytics, Google Ads Conversion Tracking, Facebook Pixel, WhatsApp chat tools, and form submission applications. These services may collect non-personal and device-related usage data to help us monitor performance, measure marketing effectiveness, and improve user experience. Each of these third-party tools operates under its own privacy policy, and we encourage you to review those policies for a clear understanding of how your data may be processed.
             </p>
           </div>
 
           {/* Section 8 */}
           <div>
             <h2 className="text-xl font-semibold text-gray-900 mb-3">
-              8. Contact Us
+              8. Social Media Links
             </h2>
             <p className="text-gray-700">
-              If you have any questions or concerns about this Privacy Policy,
-              please contact us:
+            Our website may contain links to our official social media profiles (e.g., Facebook, Instagram, LinkedIn and YouTube). Interactions on these platforms are governed by their respective privacy policies.
             </p>
-            <ul className="list-none mt-3 text-gray-700 space-y-1">
+          </div>
+
+          {/* Section 9 */}
+          <div>
+            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+              9. Your Rights
+            </h2>
+            <p className="text-gray-700">
+            You may request to:
+            </p>
+            <ul className="list-disc pl-6 space-y-1 text-gray-700">
               <li>
-                📧 <strong>Email:</strong>{" "}
-                <a
-                  href="mailto:support@eintransport.in"
-                  className="text-blue-600 hover:underline"
-                >
-                  support@eintransport.in
-                </a>
+              Access your personal information
               </li>
-              <li>
-                🌐 <strong>Website:</strong>{" "}
-                <a
-                  href="https://eintransport.in"
-                  className="text-blue-600 hover:underline"
-                >
-                  https://eintransport.in
-                </a>
+              <li>Correct or update your data</li>
+              <li>Request deletion of your data (when legally permissible)</li>
+              <li>Withdraw consent for data usage
               </li>
             </ul>
+
+            <p className="text-gray-700 mt-2">
+            To exercise these rights, please contact us at the email address provided below.
+            </p>
           </div>
+
+          {/* Section 10 */}
+          <div>
+            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+              10. Consent
+            </h2>
+            <p className="text-gray-700">
+            By using our website and submitting your personal information through any form or communication method, you consent to the collection, storage, processing, and use of your data as outlined in this Privacy Policy. Your continued use of our website signifies your acceptance of these terms.
+            </p>
+          </div>
+
+            {/* Section 11 */}
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-3">
+                11. Changes to This Policy
+              </h2>
+              <p className="text-gray-700">
+              We may update or modify this Privacy Policy as required. Any changes will be posted on this page with an updated “Last Updated” date.
+              </p>
+              <p className="text-gray-700 mt-2">
+              Continued use of our website, after changes, indicates acceptance of the updated Privacy Policy.
+              </p>
+            </div>
+
+
+          {/* Section 12 */}
+          <div>
+            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+              12. Contact Us
+            </h2>
+            <p className="text-gray-700">
+            If you have any questions or concerns regarding this Privacy Policy, contact:
+            </p>
+            
+          <p className="text-gray-700 mt-2">
+            Email:{" "}
+            <a href="mailto:support@eintransport.in" className="text-[#0086ff] hover:underline">
+              support@eintransport.in
+            </a>
+            </p>
+            <p className="text-gray-700 mt-2">
+            Website:{" "}
+            <a href="https://eintransport.in" className="text-[#0086ff] hover:underline">
+              https://eintransport.in
+            </a>
+            </p>
+          </div>
+
+         
+
         </div>
       </div>
       <StaticUI />

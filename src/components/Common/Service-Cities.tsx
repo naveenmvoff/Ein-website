@@ -107,7 +107,7 @@ function ServiceCities() {
               >
                 <Image
                   src={city.image}
-                  alt={city.name}
+                  alt={city.alt}
                   width={90}
                   height={90}
                   className="
@@ -144,7 +144,7 @@ function ServiceCities() {
               >
                 <Image
                   src={city.image}
-                  alt={`Eintransport Packers and Movers ${city.name}`}
+                  alt={city.alt}
                   width={180}
                   height={180}
                   className="

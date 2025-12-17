@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import HeaderNavbar from "@/components/landingPage/header";
 import Footer from "@/components/Footer";
 import { HelpCircle, ChevronDown, ChevronUp } from "lucide-react";
+import StaticUI from "@/components/StaticUI/StaticUI";
 
 const faqs = [
   {
@@ -159,6 +160,8 @@ export default function page() {
           </aside>
         </div>
       </div>
+
+      <StaticUI/>
 
       <Footer />
     </div>

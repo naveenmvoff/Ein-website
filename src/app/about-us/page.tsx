@@ -11,6 +11,7 @@ import Link from "next/link";
 import HeaderNavbar from "@/components/landingPage/header";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
+import StaticUI from "@/components/StaticUI/StaticUI";
 
 export const metadata: Metadata = {
   title: "About Us | Eintransport Packers and Movers",
@@ -198,9 +199,9 @@ export default function page() {
                   key={index}
                   className="bg-white p-3 sm:p-5 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-1.25rem)] max-w-sm"
                 >
-                  <p className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-1.5 sm:mb-2">
+                  <h2 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-1.5 sm:mb-2">
                     {item.title}
-                  </p>
+                  </h2>
                   <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                     {item.description}
                   </p>
@@ -238,9 +239,9 @@ export default function page() {
         <section className="mb-6 sm:mb-10 md:mb-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <div className="bg-white p-4 sm:p-5 md:p-6 rounded-lg shadow-md border border-gray-100">
-              <p className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
+              <h2 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
                 Our Mission
-              </p>
+              </h2>
               <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed">
                 To provide affordable, efficient, and reliable relocation
                 services that reduce customer stress, save time, and ensure 100%
@@ -248,9 +249,9 @@ export default function page() {
               </p>
             </div>
             <div className="bg-white p-4 sm:p-5 md:p-6 rounded-lg shadow-md border border-gray-100">
-              <p className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
+              <h2 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
                 Our Vision
-              </p>
+              </h2>
               <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed">
                 To become South India's most trusted packers and movers brand by
                 offering safe, smart, and technology-driven moving solutions.
@@ -262,9 +263,9 @@ export default function page() {
         {/* Core Values Section */}
         <section className="mb-6 sm:mb-10 md:mb-12">
           <div className="text-center mb-4 sm:mb-6 md:mb-8">
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
               Our Core Values
-            </p>
+            </h2>
             <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full"></div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
@@ -295,9 +296,9 @@ export default function page() {
         {/* Service Locations Section */}
         <section className="mb-6 sm:mb-10 md:mb-12">
           <div className="text-center mb-4 sm:mb-6 md:mb-8">
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
               Our Service Locations
-            </p>
+            </h2>
             <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full"></div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
@@ -323,9 +324,9 @@ export default function page() {
         {/* Customer Promise Section */}
         <section className="mb-6 sm:mb-10 md:mb-12">
           <div className="text-center mb-4 sm:mb-6">
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
               Our Customer Promise
-            </p>
+            </h2>
             <div className="w-12 sm:w-16 h-0.5 bg-[#0086ff] mx-auto rounded-full"></div>
           </div>
           <div className="space-y-3 w-fit mx-auto">
@@ -355,6 +356,7 @@ export default function page() {
         </section>
       </div>
 
+      <StaticUI />
       <Footer />
     </div>
   );
