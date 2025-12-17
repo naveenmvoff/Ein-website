@@ -4,7 +4,7 @@ import LandingPageClient from "@/components/landingPage/LandingPageClient";
  
 export async function generateMetadata(): Promise<Metadata> {
   const meta = metaDataByLocation.main;
-
+ 
   return {
     title:
       meta.title ||
