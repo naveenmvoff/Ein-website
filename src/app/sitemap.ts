@@ -21,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const staticPages1 = [
-    { url: `${baseUrl}/privacy-policy`, lastModified, priority: 0.9 },
+    { url: `${baseUrl}/privacyPolicy`, lastModified, priority: 0.9 },
     { url: `${baseUrl}/about-us`, lastModified, priority: 0.9 },
     { url: `${baseUrl}/contact-us`, lastModified, priority: 0.9 },
     { url: `${baseUrl}/faq`, lastModified, priority: 0.9 },

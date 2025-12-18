@@ -244,7 +244,7 @@ function Footer() {
                 Terms & Conditions
               </Link>
               <Link
-                href="/privacy-policy"
+                href="/privacyPolicy"
                 className="text-xs sm:text-sm text-gray-400 hover:underline hover:text-white transition-colors inline-block"
               >
                 Privacy Policy
