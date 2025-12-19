@@ -103,7 +103,7 @@ interface RouteParams {
 export async function PUT(request: NextRequest, { params }: RouteParams) {
   try {
     await connectDB();
-    const { id } = params;
+    const { id } = await params;
     if (!id) {
       return NextResponse.json(
         { success: false, message: "Blog id is required" },
@@ -207,7 +207,7 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
 export async function DELETE(_request: NextRequest, { params }: RouteParams) {
   try {
     await connectDB();
-    const { id } = params;
+    const { id } = await params;
 
     if (!id) {
       return NextResponse.json(
