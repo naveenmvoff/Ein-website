@@ -105,6 +105,8 @@ export function HeroForm() {
       try {
         document.cookie = `order_placed=1; path=/; max-age=${30}`;
         sessionStorage.setItem("returnUrl", pathname);
+        // Ensure cookie is written before navigation
+        await new Promise(resolve => setTimeout(resolve, 100));
       } catch {
         // ignore
       }
@@ -120,10 +122,9 @@ export function HeroForm() {
 
   const inputClasses = (fieldName: string) => `
     block w-full h-10 sm:h-11 rounded-lg border text-sm
-    ${
-      focusedField === fieldName
-        ? "border-blue-500 bg-blue-50/50 shadow-sm"
-        : "border-gray-200 bg-white"
+    ${focusedField === fieldName
+      ? "border-blue-500 bg-blue-50/50 shadow-sm"
+      : "border-gray-200 bg-white"
     }
     text-gray-900 placeholder:text-gray-400 pl-9 pr-3
     transition-all duration-200 ease-out
@@ -343,9 +344,8 @@ function InputField({
       </label>
       <div className="relative">
         <div
-          className={`pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 flex items-center text-gray-400 transition-colors ${
-            focusedField === name ? "text-blue-500" : "text-gray-400"
-          }`}
+          className={`pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 flex items-center text-gray-400 transition-colors ${focusedField === name ? "text-blue-500" : "text-gray-400"
+            }`}
         >
           {icon}
         </div>

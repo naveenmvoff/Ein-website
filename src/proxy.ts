@@ -17,10 +17,8 @@ export function proxy(request: NextRequest) {
       return NextResponse.redirect(new URL("/", request.url));
     }
 
-    // Allow and clear the cookie so it's single-use
-    const res = NextResponse.next();
-    res.cookies.set("order_placed", "", { path: "/", maxAge: 0 });
-    return res;
+    // Allow access - cookie will be cleared client-side
+    return NextResponse.next();
   }
 
   // if (
@@ -51,6 +49,10 @@ export function proxy(request: NextRequest) {
 
   return NextResponse.next();
 }
+
+// Next.js 16.0.10 requires a named "middleware" export
+export { proxy as middleware };
+
 
 export const config = {
   matcher: [

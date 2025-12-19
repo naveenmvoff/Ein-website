@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CheckCircle, X } from "lucide-react"; // Add X icon import
 import Link from "next/link";
 import HeaderNavbar from "@/components/landingPage/header";
@@ -22,6 +22,11 @@ export default function OrderPlacedPage() {
     return "/";
   });
 
+  // Clear the cookie after page loads successfully (prevents middleware race condition)
+  useEffect(() => {
+    document.cookie = "order_placed=; path=/; max-age=0";
+  }, []);
+
   return (
     <div className="relative min-h-screen">
       {/* Background Content */}
@@ -35,7 +40,7 @@ export default function OrderPlacedPage() {
       <div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center z-50 px-4">
         <div className="relative max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center animate-fadeIn">
           {/* Close Icon */}
-          <Link 
+          <Link
             href={returnUrl}
             className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
           >
@@ -49,16 +54,16 @@ export default function OrderPlacedPage() {
           <h1 className="text-2xl font-bold text-gray-800 mb-4">
             Thank you for trusting Packers & Movers!
           </h1>
-          
+
           <p className="text-gray-600 mb-8">
             We've received your request and will get in touch with you soon to confirm the details.
           </p>
 
-          <Link 
+          <Link
             href={returnUrl}
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition-all duration-200"
           >
-            close 
+            close
           </Link>
         </div>
       </div>
