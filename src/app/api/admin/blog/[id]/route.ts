@@ -1,6 +1,7 @@
 import connectDB from "@/config/db";
 import { NextResponse, NextRequest } from "next/server";
 import Blog from "@/models/Blog";
+import { revalidatePath } from "next/cache";
 
 const slugRegex = /^[a-z0-9-]+$/;
 
@@ -148,6 +149,10 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
       );
     }
 
+    // Revalidate the blog list page and the individual blog page
+    revalidatePath("/blog");
+    revalidatePath(`/blog/${sanitized.pageURL}`);
+
     return NextResponse.json({
       success: true,
       message: "Blog updated successfully",
@@ -223,6 +228,9 @@ export async function DELETE(_request: NextRequest, { params }: RouteParams) {
         { status: 404 }
       );
     }
+
+    // Revalidate the blog list page
+    revalidatePath("/blog");
 
     return NextResponse.json({
       success: true,

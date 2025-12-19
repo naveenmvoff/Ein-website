@@ -1,6 +1,7 @@
 import connectDB from "@/config/db";
 import { NextResponse, NextRequest } from "next/server";
 import Blog from "@/models/Blog";
+import { revalidatePath } from "next/cache";
 
 const slugRegex = /^[a-z0-9-]+$/;
 export const revalidate = 3600;
@@ -120,6 +121,10 @@ export async function POST(request: NextRequest) {
     }
 
     const newBlog = await Blog.create(sanitized);
+
+    // Revalidate the blog list page
+    revalidatePath("/blog");
+
     return NextResponse.json({
       success: true,
       message: "Blog created successfully",

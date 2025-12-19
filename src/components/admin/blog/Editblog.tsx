@@ -81,13 +81,13 @@ export default function EditBlogPage({ id }: { id: string }) {
         // setStatus()
         const keywords = Array.isArray(blogData.metaKeywords)
           ? blogData.metaKeywords
-              .map((keyword: unknown) =>
-                typeof keyword === "string" ? keyword.trim() : ""
-              )
-              .filter(
-                (keyword: string, index: number, arr: string[]) =>
-                  keyword && arr.indexOf(keyword) === index
-              )
+            .map((keyword: unknown) =>
+              typeof keyword === "string" ? keyword.trim() : ""
+            )
+            .filter(
+              (keyword: string, index: number, arr: string[]) =>
+                keyword && arr.indexOf(keyword) === index
+            )
           : [];
         setMetaKeywords(keywords);
         setPageURL(blogData.pageURL);
@@ -205,7 +205,7 @@ export default function EditBlogPage({ id }: { id: string }) {
         metaTitle: metaTitle.trim(),
         pageURL: pageURL.trim(),
         thumbnail: thumbnail,
-        status: type == "publish" ? "Active" : "Draft",
+        status: type === "publish" ? "Active" : "Draft",
       };
 
       const res = await fetch(`/api/admin/blog/${blogId}`, {
@@ -330,7 +330,7 @@ export default function EditBlogPage({ id }: { id: string }) {
             </button>
             <button
               type="button"
-              onClick={handleUpdate}
+              onClick={() => handleUpdate("update")}
               disabled={saving}
               className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
@@ -475,11 +475,10 @@ export default function EditBlogPage({ id }: { id: string }) {
                 value={pageURL}
                 onChange={handlePageURLChange}
                 placeholder="e.g. my-updated-blog"
-                className={`w-full rounded-md border px-3 py-2 text-gray-900 transition focus:outline-none focus:ring-2 ${
-                  urlError
-                    ? "border-red-500 focus:border-red-500 focus:ring-red-100"
-                    : "border-gray-300 bg-gray-50 focus:border-blue-500 focus:ring-blue-100"
-                } disabled:opacity-70`}
+                className={`w-full rounded-md border px-3 py-2 text-gray-900 transition focus:outline-none focus:ring-2 ${urlError
+                  ? "border-red-500 focus:border-red-500 focus:ring-red-100"
+                  : "border-gray-300 bg-gray-50 focus:border-blue-500 focus:ring-blue-100"
+                  } disabled:opacity-70`}
                 disabled={saving}
               />
               {formErrors.pageURL || urlError ? (
