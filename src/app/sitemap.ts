@@ -2,6 +2,9 @@ import { MetadataRoute } from "next";
 import connectDB from "@/config/db";
 import Blog from "@/models/Blog";
 
+
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   await connectDB();
   const baseUrl = "https://eintransport.in";

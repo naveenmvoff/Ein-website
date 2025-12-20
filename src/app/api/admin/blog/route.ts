@@ -101,7 +101,7 @@ export async function POST(request: NextRequest) {
     await connectDB();
     const body = await request.json();
     const { isValid, errors, sanitized } = validatePayload(body);
-    console.log("sanitized", sanitized);
+    // console.log("sanitized", sanitized);
     if (!isValid) {
       return NextResponse.json(
         { success: false, message: "Validation failed", errors },

@@ -72,7 +72,7 @@ export default function EditBlogPage({ id }: { id: string }) {
         const blogData = data.data;
 
         setBlog(blogData);
-        console.log("blogData", blogData, "sss");
+        // console.log("blogData", blogData, "sss");
         setTitle(blogData.title);
         setContent(blogData.content);
         setMetaTitle(blogData.metaTitle);

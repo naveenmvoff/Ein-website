@@ -40,7 +40,7 @@ function AdminLoginForm() {
     }
 
     setError("");
-    console.log("Login Data:", formData);
+    // console.log("Login Data:", formData);
     // localStorage.setItem("login", JSON.stringify(formData));
     document.cookie = `login=${encodeURIComponent(
       JSON.stringify(formData)

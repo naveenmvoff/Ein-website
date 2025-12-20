@@ -86,7 +86,7 @@ export default async function BlogPage() {
       }/blog/${blog.pageURL}`,
     })),
   };
-  console.log("blogs", blogs);
+  // console.log("blogs", blogs);
 
   return (
     <div className="bg-blue-50/50 min-h-screen">
