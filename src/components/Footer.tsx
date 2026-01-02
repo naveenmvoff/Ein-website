@@ -168,12 +168,6 @@ function Footer() {
                 </span>
                 <div className="space-y-1 text-[11px] sm:text-base flex-1 min-w-0">
                   <Link
-                    href="tel:+919489847336"
-                    className="block hover:text-white transition-colors duration-300"
-                  >
-                    +91 94898 47336
-                  </Link>
-                  <Link
                     href="tel:+919043384332"
                     className="block hover:text-white transition-colors duration-300"
                   >

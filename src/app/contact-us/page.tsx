@@ -1,5 +1,5 @@
 import { HeroForm } from "@/components/landingPage/heroForm";
-import { MapPin, Phone, Mail, Clock, MapPinned } from "lucide-react";
+import { MapPin, Phone, Mail, MapPinned } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import HeaderNavbar from "@/components/landingPage/header";
@@ -146,20 +146,7 @@ export default function page() {
                   </div>
                 </div>
 
-                {/* Working Hours */}
-                <div className="flex items-start gap-2 sm:gap-3">
-                  <div className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#0086ff]" />
-                  </div>
-                  <div className="flex-1">
-                    <h2 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-1.5">
-                      Working Hours
-                    </h2>
-                    <p className="text-xs sm:text-sm text-gray-700">
-                      Monday to Sunday — 7:00 AM to 10:00 PM
-                    </p>
-                  </div>
-                </div>
+                
 
                 {/* Office Address */}
                 <div className="flex items-start gap-2 sm:gap-3">
@@ -168,7 +155,7 @@ export default function page() {
                   </div>
                   <div className="flex-1">
                     <h2 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-1.5">
-                      Office Address
+                      Registered Office (Administrative Purpose Only)
                     </h2>
                     <p className="text-xs sm:text-sm text-gray-700 leading-relaxed mb-2">
                       Eintransport Packer and Movers (Entransport Pvt Ltd)
@@ -186,6 +173,9 @@ export default function page() {
                       </p>
                       <p>
                         <span className="font-medium">PAN:</span> AAICE9652R
+                      </p>
+                      <p className="text-[10px] text-gray-600 italic">
+                        Note: Customer visits are not accepted. We provide doorstep pickup and delivery services only.
                       </p>
                     </div>
                   </div>
