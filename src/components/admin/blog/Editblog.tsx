@@ -260,9 +260,43 @@ export default function EditBlogPage({ id }: { id: string }) {
       return;
     }
 
+    // Compress image to reduce payload size
     const reader = new FileReader();
     reader.onloadend = () => {
-      setThumbnail(reader.result as string);
+      const img = document.createElement("img") as HTMLImageElement;
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const MAX_WIDTH = 1200;
+        const MAX_HEIGHT = 800;
+        let width = img.width;
+        let height = img.height;
+
+        // Resize if image is too large
+        if (width > MAX_WIDTH || height > MAX_HEIGHT) {
+          if (width > height) {
+            if (width > MAX_WIDTH) {
+              height *= MAX_WIDTH / width;
+              width = MAX_WIDTH;
+            }
+          } else {
+            if (height > MAX_HEIGHT) {
+              width *= MAX_HEIGHT / height;
+              height = MAX_HEIGHT;
+            }
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          ctx.drawImage(img, 0, 0, width, height);
+          // Convert to base64 with 85% quality to reduce size
+          const compressedBase64 = canvas.toDataURL("image/jpeg", 0.85);
+          setThumbnail(compressedBase64);
+        }
+      };
+      img.src = reader.result as string;
     };
 
     reader.readAsDataURL(file);
