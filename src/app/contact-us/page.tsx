@@ -160,19 +160,16 @@ export default function page() {
                     <p className="text-xs sm:text-sm text-gray-700 leading-relaxed mb-2">
                       Eintransport Packer and Movers (Entransport Pvt Ltd)
                       <br />
-                      No. 22, 4th Cross Rd, Muneshwara Layout,
+                      No. 25, GPR Layout,
                       <br />
-                      Phase II, Electronic City,
+                      Hebbagodi, Bengaluru,
                       <br />
-                      Bengaluru, Karnataka – 560100
+                      Karnataka – 560100
                     </p>
                     <div className="text-xs text-gray-600 space-y-0.5">
                       <p>
                         <span className="font-medium">GSTIN:</span>{" "}
                         29AAICE9652R1ZJ
-                      </p>
-                      <p>
-                        <span className="font-medium">PAN:</span> AAICE9652R
                       </p>
                       <p className="text-[10px] text-gray-600 italic">
                         Note: Customer visits are not accepted. We provide doorstep pickup and delivery services only.
