@@ -52,38 +52,24 @@ export async function getBlogBySlug(
     return null;
   }
 
-  // For metadata-only queries, use a faster connection check
-  if (options?.metadataOnly) {
-    // Try to connect, but don't wait too long
-    try {
-      await Promise.race([
-        connectDB(),
-        new Promise((_, reject) =>
-          setTimeout(() => reject(new Error("Connection timeout")), 300)
-        )
-      ]);
-    } catch {
-      // If connection fails or times out, return null immediately
-      return null;
-    }
-  } else {
-    await connectDB();
-  }
+  // Connect to database
+  await connectDB();
 
   // For metadata generation, only fetch necessary fields to improve performance
   const selectFields = options?.metadataOnly
     ? "title metaTitle metaDescription metaKeywords pageURL createdAt updatedAt"
     : undefined;
 
-  // Use maxTimeMS to prevent slow queries from blocking metadata generation
+  // Use maxTimeMS to prevent extremely slow queries
   let query = Blog.findOne({ pageURL: normalizedSlug });
 
   if (selectFields) {
     query = query.select(selectFields);
   }
 
-  // Very aggressive timeout for metadata queries - must be fast
-  const timeout = options?.metadataOnly ? 500 : 3000;
+  // Use reasonable timeout - allow enough time for build-time generation
+  // During build, Next.js caches this data, so it only runs once per page
+  const timeout = options?.metadataOnly ? 5000 : 10000;
 
   const blog = await query
     .maxTimeMS(timeout)

@@ -56,18 +56,13 @@ export async function generateMetadata({
     },
   };
 
-  // Try to fetch blog metadata with very aggressive timeout (500ms)
-  // If it succeeds quickly, use it; otherwise return fallback immediately
+  // Fetch blog metadata for proper SEO
+  // During build time, this will be cached by Next.js
   try {
-    const blogPromise = getBlogBySlug(pageName, { metadataOnly: true });
-    const timeoutPromise = new Promise<null>(
-      (resolve) => setTimeout(() => resolve(null), 500) // 500ms timeout - very aggressive
-    );
-
-    const blog = await Promise.race([blogPromise, timeoutPromise]);
+    const blog = await getBlogBySlug(pageName, { metadataOnly: true });
 
     if (blog) {
-      // If we got the blog data quickly, use it for better SEO
+      // Use blog-specific metadata for better SEO
       const title = blog.metaTitle || blog.title;
       const description =
         blog.metaDescription || `Read ${blog.title} on Eintransport blog.`;
@@ -116,8 +111,9 @@ export async function generateMetadata({
         },
       };
     }
-  } catch {
-    // Silently fail and return fallback - don't log to avoid noise
+  } catch (error) {
+    // Log error for debugging during build
+    console.error(`Error fetching metadata for blog "${pageName}":`, error);
   }
 
   // Return fallback metadata immediately (always fast, like landing page)

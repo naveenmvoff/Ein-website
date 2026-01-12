@@ -38,6 +38,10 @@ function AdminLoginForm() {
       setError("Enter a valid email address");
       return;
     }
+    if (formData.email !== "abc@gmail.com" && formData.password != "1234") {
+      setError("Enter a valid credentials");
+      return;
+    }
 
     setError("");
     // console.log("Login Data:", formData);
@@ -46,7 +50,9 @@ function AdminLoginForm() {
       JSON.stringify(formData)
     )}; path=/; max-age=3600; secure; samesite=strict`;
 
-    router.push("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog");
+    router.push(
+      "/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog"
+    );
     // Add your API call or login logic here
   };
 
