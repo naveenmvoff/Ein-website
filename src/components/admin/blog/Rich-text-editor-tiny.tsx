@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useState, startTransition } from "react";
 import dynamic from "next/dynamic";
+import { uploadImageToCloudinary } from "@/services/cloudinaryService";
 
 // Load the TinyMCE React Editor dynamically on the client to avoid SSR errors
 const Editor = dynamic(
@@ -22,20 +23,10 @@ const TextEditor: React.FC<TextEditorProps> = (props) => {
   const editorRef = useRef<any>(null);
   const [content, setContent] = useState(value || "");
 
-  /** Convert uploaded image to Base64 */
+  /** Upload image to Cloudinary */
   const handleImageUpload = async (blobInfo: any): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(blobInfo.blob());
-      reader.onload = () => {
-        if (typeof reader.result === "string") {
-          resolve(reader.result);
-        } else {
-          reject(new Error("Failed to convert image to Base64"));
-        }
-      };
-      reader.onerror = () => reject(new Error("Image conversion failed"));
-    });
+    const blob = blobInfo.blob();
+    return uploadImageToCloudinary(blob);
   };
 
   /** Handle content change */
