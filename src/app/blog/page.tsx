@@ -163,6 +163,8 @@ export default async function BlogPage() {
                         src={
                           blog.thumbnail.startsWith("data:")
                             ? blog.thumbnail
+                            : blog.thumbnail.startsWith("http")
+                            ? blog.thumbnail
                             : `data:image/jpeg;base64,${blog.thumbnail}`
                         }
                         alt={blog.title}
