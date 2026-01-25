@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import RichTextEditorTiny from "@/components/admin/blog/Rich-text-editor-tiny";
+import { uploadThumbnailToCloudinary } from "@/services/cloudinaryService";
 import Image from "next/image";
 
 const removeFieldError = (
@@ -183,7 +184,7 @@ export default function CreateBlogPage() {
 
   const goBack = () => router.push("/admin/sdkjfhsdkfjhdskjfhkjsdfhkjsdfhdskjfhdskjfh/dhkjfhksjdhfkjsdfhkjsdfhkjdsfh/blog");
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setThumbError(""); // clear error
     const file = e.target.files?.[0];
 
@@ -192,12 +193,23 @@ export default function CreateBlogPage() {
       return;
     }
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setThumbnail(reader.result as string);
-    };
-
-    reader.readAsDataURL(file);
+    try {
+      setLoading(true);
+      const url = await uploadThumbnailToCloudinary(file, {
+        maxWidth: 1200,
+        maxHeight: 800,
+        quality: 0.85,
+      });
+      setThumbnail(url);
+      toast.success("Thumbnail uploaded successfully");
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : "Failed to upload thumbnail";
+      setThumbError(message);
+      toast.error(message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
