@@ -162,9 +162,11 @@ export default function page() {
                       <br />
                       No. 25, GPR Layout,
                       <br />
-                      Hebbagodi, Bengaluru,
+                      SFS Ward 1, Block 92,
                       <br />
-                      Karnataka – 560100
+                      Hebbagodi,
+                      <br />
+                      Bengaluru Urban,  Bengaluru, Karnataka – 560100, India
                     </p>
                     <div className="text-xs text-gray-600 space-y-0.5">
                       <p>
