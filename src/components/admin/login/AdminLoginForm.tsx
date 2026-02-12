@@ -38,7 +38,10 @@ function AdminLoginForm() {
       setError("Enter a valid email address");
       return;
     }
-    if (formData.email !== "abc@gmail.com" && formData.password != "1234") {
+    if (
+      formData.email !== process.env.NEXT_PUBLIC_ADMIN_EMAIL ||
+      formData.password !== process.env.NEXT_PUBLIC_ADMIN_PASSWORD
+    ) {
       setError("Enter a valid credentials");
       return;
     }
