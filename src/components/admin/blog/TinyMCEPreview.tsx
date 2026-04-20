@@ -22,7 +22,7 @@ export default function TinyMCEPreview({
     const doc = iframe.contentDocument;
     doc.open();
     doc.write(
-      `<!DOCTYPE html><html><head><base href="/" target="_blank"><link rel="stylesheet" href="/tinymce/skins/content/default/content.min.css"><style>body{margin:1rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;font-size:14px;line-height:1.6}img{max-width:100%;height:auto;display:block}</style></head><body class="mce-content-body">${content || "<p></p>"}</body></html>`
+      `<!DOCTYPE html><html><head><base href="/" target="_parent"><link rel="stylesheet" href="/tinymce/skins/content/default/content.min.css"><style>body{margin:1rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;font-size:14px;line-height:1.6}img{max-width:100%;height:auto;display:block}</style></head><body class="mce-content-body">${content || "<p></p>"}</body></html>`
     );
     doc.close();
 
@@ -60,7 +60,7 @@ export default function TinyMCEPreview({
       title="Content preview"
       className={`w-full border border-gray-200 rounded bg-white ${autoHeight ? "min-h-[200px]" : "h-[400px]"
         }`}
-      sandbox="allow-same-origin allow-popups"
+      sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"
     />
   );
 }

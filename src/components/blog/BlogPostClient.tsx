@@ -2,7 +2,6 @@
 
 import type { BlogDocument } from "@/app/blog/[page-name]/utils";
 import HeaderNavbar from "@/components/landingPage/header";
-import TinyMCEPreview from "@/components/admin/blog/TinyMCEPreview";
 import Footer from "@/components/Footer";
 import StaticUI from "@/components/StaticUI/StaticUI";
 import FormPopUp from "@/components/PopUP/FormPop";
@@ -137,7 +136,10 @@ export default function BlogPostClient({
             </header>
 
             <section itemProp="articleBody">
-              <TinyMCEPreview content={blog.content || ""} autoHeight />
+              <div 
+                className="prose prose-lg max-w-none text-gray-800 prose-headings:font-bold prose-a:text-blue-600 hover:prose-a:text-blue-500"
+                dangerouslySetInnerHTML={{ __html: blog.content || "" }} 
+              />
             </section>
 
             {/* Hidden structured data for search engines */}

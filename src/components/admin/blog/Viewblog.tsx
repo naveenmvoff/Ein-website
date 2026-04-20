@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { toast } from "react-hot-toast";
-import TinyMCEPreview from "@/components/admin/blog/TinyMCEPreview";
+
 
 interface Blog {
   _id: string;
@@ -173,8 +173,11 @@ export default function ViewBlogPage({ id }: { id: string }) {
         )}
 
         <div className="bg-white shadow rounded-lg p-8 mb-6">
-         <TinyMCEPreview content={blog.content} />
-         </div>
+          <div 
+            className="prose prose-lg max-w-none text-gray-800 prose-headings:font-bold prose-a:text-blue-600 hover:prose-a:text-blue-500"
+            dangerouslySetInnerHTML={{ __html: blog.content || "" }} 
+          />
+        </div>
 
         {blog.metaKeywords && blog.metaKeywords.length > 0 && (
           <div className="bg-white shadow rounded-lg p-6">

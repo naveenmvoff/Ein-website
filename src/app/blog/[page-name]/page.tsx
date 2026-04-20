@@ -159,7 +159,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const canonicalUrl = buildCanonicalUrl(blog.pageURL);
 
   return (
-    <Suspense fallback={<div>Loading blogs...</div>}>
+    <Suspense fallback={<div></div>}>
       <BlogPostClient blog={blog} canonicalUrl={canonicalUrl} />
     </Suspense>
   );
