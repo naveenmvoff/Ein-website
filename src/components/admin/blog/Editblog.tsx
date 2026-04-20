@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import RichTextEditorTiny from "@/components/admin/blog/Rich-text-editor-tiny";
-import TinyMCEPreview from "@/components/admin/blog/TinyMCEPreview";
 import { uploadThumbnailToCloudinary } from "@/services/cloudinaryService";
 import Image from "next/image";
 
@@ -586,7 +585,10 @@ export default function EditBlogPage({ id }: { id: string }) {
                 Live Update
               </span>
             </div>
-            <TinyMCEPreview content={content} />
+            <div 
+              className="prose prose-lg max-w-none text-gray-800 prose-headings:font-bold prose-a:text-blue-600 hover:prose-a:text-blue-500"
+              dangerouslySetInnerHTML={{ __html: content || "" }} 
+            />
           </div>
         </div>
       </div>
