@@ -83,7 +83,6 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        <MicroData />
         {children}
       </body>
     </html>

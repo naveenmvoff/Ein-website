@@ -116,54 +116,34 @@ export function buildWebSiteSchema() {
 // ─── 3. MovingCompany / Homepage ─────────────────────────────────────────────
 
 export function buildMovingCompanySchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "MovingCompany",
-    "@id": `${BASE_URL}/#movingcompany`,
-    name: EINTRANSPORT.name,
-    image: EINTRANSPORT.image,
-    url: BASE_URL,
-    telephone: EINTRANSPORT.telephone,
-    priceRange: "₹₹",
-    currenciesAccepted: "INR",
-    paymentAccepted: "Cash, UPI, Bank Transfer",
-    address: EINTRANSPORT.address,
-    openingHoursSpecification: EINTRANSPORT.openingHours,
-    areaServed: EINTRANSPORT.areaServed,
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Moving Services",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Home Shifting",
-            description:
-              "Safe and reliable home shifting with professional packing and unpacking.",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Office Shifting",
-            description:
-              "Minimal downtime office relocation services across South India.",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Intercity Relocation",
-            description:
-              "Long-distance and intercity transport services with full insurance.",
-          },
-        },
-      ],
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "MovingCompany",
+      name: "Eintransport packers and Movers",
+      image: "",
+      "@id": "https://www.eintransport.com/#Movingcompany",
+      url: "https://www.eintransport.com/",
+      telephone: "+919043384332",
+      email: "info@eintransport.in",
+      areaServed: "Bangalore, Chennai, Coim, Koch, Thiru.",
+      priceRange: "₹₹",
     },
-  };
+    {
+      "@type": "PostalAddress",
+      streetAddress: "",
+      addressLocality: "Bangalore",
+      addressRegion: "Karnataka",
+      postalCode: "560100",
+      addressCountry: "IN",
+      sameAs: "FB, Inst, Linkdin, Youtube",
+    },
+    {
+      "@type": "AggregateRating",
+      ratingValue: "4.7",
+      reviewCount: "4",
+    }
+  ];
 }
 
 // ─── 4. FAQPage ──────────────────────────────────────────────────────────────
@@ -230,8 +210,8 @@ export function buildLocalBusinessSchema(city: string) {
     city === "kochi" || city === "thiruvananthapuram"
       ? "Kerala"
       : city === "bangalore"
-      ? "Karnataka"
-      : "Tamil Nadu";
+        ? "Karnataka"
+        : "Tamil Nadu";
 
   return {
     "@context": "https://schema.org",

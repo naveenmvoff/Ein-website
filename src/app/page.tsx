@@ -69,8 +69,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function Page() {
   return (
     <>
-      {/* WebSite schema — enables Google Sitelinks Searchbox */}
-      <JsonLd schema={buildWebSiteSchema()} />
       {/* MovingCompany schema — services, hours, area served */}
       <JsonLd schema={buildMovingCompanySchema()} />
       <LandingPageClient />
