@@ -5,7 +5,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "react-day-picker/dist/style.css";
 import Script from "next/script";
-import MicroData from "@/components/seo/MicroData";
 
 export const viewport = {
   width: "device-width",

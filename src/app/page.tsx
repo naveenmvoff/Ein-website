@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { metaDataByLocation } from "@/lib/dataSet";
 import LandingPageClient from "@/components/landingPage/LandingPageClient";
 import JsonLd from "@/components/seo/JsonLd";
-import { buildWebSiteSchema, buildMovingCompanySchema } from "@/lib/schemas";
+import { buildMovingCompanySchema } from "@/lib/schemas";
 
 export async function generateMetadata(): Promise<Metadata> {
   const meta = metaDataByLocation.main;
