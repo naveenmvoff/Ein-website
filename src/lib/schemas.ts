@@ -81,7 +81,7 @@ export function buildOrganizationSchema() {
     address: EINTRANSPORT.address,
     areaServed: EINTRANSPORT.areaServed,
     contactPoint: EINTRANSPORT.contactPoint,
-    sameAs: EINTRANSPORT.sameAs,
+    sameAs: EINTRANSPORT,
     foundingDate: EINTRANSPORT.foundingDate,
   };
 }
