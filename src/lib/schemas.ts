@@ -45,10 +45,6 @@ export const EINTRANSPORT = {
     areaServed: "IN",
     availableLanguage: ["English", "Hindi", "Tamil", "Kannada", "Malayalam"],
   },
-  sameAs: [
-    "https://www.facebook.com/eintransport",
-    "https://www.instagram.com/eintransport",
-  ],
   openingHours: {
     "@type": "OpeningHoursSpecification",
     dayOfWeek: [
@@ -121,22 +117,26 @@ export function buildMovingCompanySchema() {
       "@context": "https://schema.org",
       "@type": "MovingCompany",
       name: "Eintransport packers and Movers",
-      image: "",
+      image: EINTRANSPORT.logo,
       "@id": "https://www.eintransport.com/#Movingcompany",
       url: "https://www.eintransport.com/",
       telephone: "+919043384332",
       email: "info@eintransport.in",
-      areaServed: "Bangalore, Chennai, Coim, Koch, Thiru.",
+      areaServed: "Bangalore, Chennai, Coimbatore, Kochi, Trivandrum",
       priceRange: "₹₹",
     },
     {
       "@type": "PostalAddress",
-      streetAddress: "",
       addressLocality: "Bangalore",
       addressRegion: "Karnataka",
       postalCode: "560100",
       addressCountry: "IN",
-      sameAs: "FB, Inst, Linkdin, Youtube",
+      sameAs: [
+        "https://www.facebook.com/people/Eintransport/61565764442291/",
+        "https://www.instagram.com/eintransport_pvt_ltd",
+        "https://www.youtube.com/@Eintransport",
+        "https://in.linkedin.com/company/eintransport",
+      ],
     },
     {
       "@type": "AggregateRating",
